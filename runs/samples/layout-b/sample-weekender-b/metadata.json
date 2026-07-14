@@ -16,6 +16,10 @@
     "outputTokens": 0,
     "reasoningOutputTokens": 0
   },
+  "codeStats": {
+    "sourceFiles": 1,
+    "sourceLines": 38
+  },
   "subscription": {
     "observedChangePercent": null
   },

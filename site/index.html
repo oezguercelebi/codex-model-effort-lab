@@ -55,7 +55,7 @@
         <div class="section-heading">
           <div>
             <div class="eyebrow"><span></span> The arena</div>
-            <h2 id="compare-title">Build against build.</h2>
+            <h2 id="compare-title">Choose. Then use it.</h2>
           </div>
           <div class="viewport-control" aria-label="Preview viewport">
             <button type="button" data-viewport="desktop" class="active">Desktop</button>
@@ -69,23 +69,53 @@
           <span>These two builds are hand-made samples. Real Codex runs have not been captured yet.</span>
         </div>
 
-        <div class="compare-toolbar">
-          <label>
-            <span>Build A</span>
-            <select id="left-select" aria-label="Select first build"></select>
-          </label>
-          <button class="swap-button" id="swap-builds" type="button" aria-label="Swap builds">⇄</button>
-          <label>
-            <span>Build B</span>
-            <select id="right-select" aria-label="Select second build"></select>
-          </label>
-          <button class="share-button" id="copy-link" type="button">Copy comparison link</button>
+        <div class="selection-console">
+          <div class="slider-control">
+            <div class="slider-heading">
+              <label for="model-slider">Model</label>
+              <output id="model-value" for="model-slider"></output>
+            </div>
+            <input id="model-slider" type="range" min="0" max="0" value="0" step="1" />
+            <div class="slider-ticks" id="model-ticks" aria-hidden="true"></div>
+          </div>
+          <div class="slider-control">
+            <div class="slider-heading">
+              <label for="effort-slider">Reasoning effort</label>
+              <output id="effort-value" for="effort-slider"></output>
+            </div>
+            <input id="effort-slider" type="range" min="0" max="0" value="0" step="1" />
+            <div class="slider-ticks" id="effort-ticks" aria-hidden="true"></div>
+          </div>
+          <button class="share-button" id="copy-link" type="button">Copy this selection</button>
         </div>
 
-        <div class="comparison-grid" id="comparison-grid">
-          <article class="result-panel" data-side="left"></article>
-          <article class="result-panel" data-side="right"></article>
-        </div>
+        <article class="result-viewer" id="result-viewer">
+          <header class="result-heading">
+            <div>
+              <div class="result-kicker" id="result-kicker"></div>
+              <h3 id="result-title"></h3>
+            </div>
+            <span class="status-pill" id="result-status"></span>
+          </header>
+          <div class="preview-shell" id="preview-shell">
+            <iframe id="result-frame" title="Generated app preview" sandbox="allow-scripts allow-forms"></iframe>
+            <div class="floating-metrics" id="floating-metrics" aria-label="Selected run metrics"></div>
+          </div>
+          <details class="run-detail-panel">
+            <summary>Inspect this run <span aria-hidden="true">+</span></summary>
+            <p class="run-notes" id="run-notes"></p>
+            <dl class="run-facts" id="run-facts"></dl>
+            <div class="run-links" id="run-links"></div>
+          </details>
+        </article>
+
+        <section class="matrix-section" aria-labelledby="matrix-title">
+          <div class="matrix-heading">
+            <div><span>All captured configurations</span><h3 id="matrix-title">The run matrix</h3></div>
+            <p>Select any cell to load that build above.</p>
+          </div>
+          <div class="matrix-scroll"><table class="result-matrix" id="result-matrix"></table></div>
+        </section>
       </section>
 
       <section class="method-section" id="method" aria-labelledby="method-title">
@@ -95,8 +125,8 @@
         </div>
         <div class="method-copy">
           <p>
-            Quality is not reduced to a synthetic score. Open both apps, change the viewport,
-            click through the flows, and notice what each build prioritized or forgot.
+            Quality is not reduced to a synthetic score. Move through the captured settings,
+            use each finished app, and notice what the model prioritized or forgot.
           </p>
           <ul>
             <li><span>Look for</span> hierarchy, polish, useful states, and coherent decisions.</li>
@@ -120,22 +150,5 @@
       <div id="prompt-content" class="prompt-content"></div>
     </dialog>
 
-    <template id="result-template">
-      <div class="result-heading">
-        <div>
-          <div class="result-kicker"></div>
-          <h3></h3>
-        </div>
-        <span class="status-pill"></span>
-      </div>
-      <div class="preview-shell"><iframe title="Generated app preview" sandbox="allow-scripts allow-forms"></iframe></div>
-      <div class="metrics" aria-label="Run metrics"></div>
-      <details>
-        <summary>Run notes <span aria-hidden="true">+</span></summary>
-        <p class="run-notes"></p>
-        <dl class="run-facts"></dl>
-        <div class="run-links"></div>
-      </details>
-    </template>
   </body>
 </html>

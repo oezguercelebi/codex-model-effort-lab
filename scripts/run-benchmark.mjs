@@ -138,6 +138,29 @@ async function hashDirectory(directory) {
   return hash.digest("hex")
 }
 
+async function collectCodeStats(directory) {
+  const codeExtensions = new Set([".css", ".html", ".js", ".jsx", ".ts", ".tsx"])
+  let sourceFiles = 0
+  let sourceLines = 0
+
+  async function visit(current) {
+    const entries = await readdir(current, { withFileTypes: true })
+    for (const entry of entries) {
+      if ([".git", "dist", "node_modules"].includes(entry.name)) continue
+      const absolute = path.join(current, entry.name)
+      if (entry.isDirectory()) await visit(absolute)
+      else if (codeExtensions.has(path.extname(entry.name))) {
+        const contents = await readFile(absolute, "utf8")
+        sourceFiles += 1
+        sourceLines += contents.split(/\r?\n/).filter((line) => line.trim()).length
+      }
+    }
+  }
+
+  await visit(directory)
+  return { sourceFiles, sourceLines }
+}
+
 function parseEvents(jsonl) {
   const events = []
   for (const line of jsonl.split("\n")) {
@@ -296,6 +319,7 @@ const buildResult = await run("npm", ["run", "build"], {
 })
 const buildSucceeded = buildResult.code === 0
 const parsed = parseEvents(rawEvents)
+const codeStats = await collectCodeStats(workspace)
 
 let finalMessage = parsed.finalMessage
 try {
@@ -346,6 +370,7 @@ const metadata = {
   promptSha256,
   starterSha256,
   usage: parsed.usage,
+  codeStats,
   subscription: {
     planLabel: options.planLabel ?? null,
     windowLabel: options.windowLabel ?? null,

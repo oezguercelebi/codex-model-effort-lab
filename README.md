@@ -20,10 +20,11 @@ The benchmark is not primarily a test suite or an abstract model score. The fini
 The public site has one page:
 
 1. Read the shared benchmark prompt.
-2. Select a model and reasoning effort.
-3. See the finished app produced by that configuration in a live preview.
-4. Select a second configuration to compare the two builds side by side.
-5. Inspect usage, duration, screenshots, final response, and source code when wanted.
+2. Move the model and reasoning-effort sliders.
+3. Use the finished app for the current selection in one large live preview.
+4. Keep tokens, duration, subscription movement, and source lines visible in cards over the preview corner.
+5. Use the matrix below to scan every captured configuration or jump directly to one.
+6. Expand the run details for the exact token breakdown, Codex version, final response, and source code.
 
 No Codex account, subscription, API key, or local setup is required to view the results. The public page never starts a model run and has no prompt-submission form in the first version.
 
@@ -105,10 +106,10 @@ If a run fails to produce a working app, its error or broken preview is still pu
 
 Useful controls:
 
-- model selector
-- effort selector
-- side-by-side comparison toggle
+- model slider
+- effort slider
 - desktop, tablet, and mobile viewport buttons
+- clickable model/effort result matrix
 - show prompt
 - show run details
 
