@@ -8,6 +8,8 @@ The benchmark runs are performed and captured by this repository's maintainers. 
 
 The benchmark is not primarily a test suite or an abstract model score. The finished app is the benchmark result.
 
+An engineering review companion is now being defined in [`benchmark/code-review-v1.md`](benchmark/code-review-v1.md). It is intentionally still a draft. The full matrix will not be reviewed until the blind rubric, reviewer configuration, deterministic checks, and calibration process are approved and frozen.
+
 ## Current status
 
 - `weekender-v1` prompt and starter are frozen.

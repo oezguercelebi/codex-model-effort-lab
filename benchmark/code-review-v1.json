@@ -1,0 +1,58 @@
+{
+  "schemaVersion": 1,
+  "id": "weekender-code-review-v1",
+  "status": "draft",
+  "targetBenchmarkId": "weekender-v1",
+  "reviewer": {
+    "model": "gpt-5.6-sol",
+    "effort": "xhigh",
+    "freshTask": true,
+    "attemptsPerRun": 1,
+    "followUpMessages": 0,
+    "maxDurationMinutes": 20,
+    "network": false,
+    "mayModifySource": false
+  },
+  "blinding": {
+    "hideBuilderModel": true,
+    "hideBuilderEffort": true,
+    "hideBuilderUsage": true,
+    "hideOtherReviews": true,
+    "reviewOrder": "seeded-random"
+  },
+  "inputs": [
+    "prompt/weekender-v1.md",
+    "frozen starter manifest",
+    "generated source copy",
+    "deterministic check results"
+  ],
+  "deterministicChecks": [
+    "dependency-diff",
+    "npm-run-check",
+    "desktop-acceptance",
+    "mobile-acceptance",
+    "browser-console-errors"
+  ],
+  "rubric": [
+    { "id": "correctness", "label": "Brief fidelity and functional correctness", "weight": 30 },
+    { "id": "reliability", "label": "Reliability and state integrity", "weight": 15 },
+    { "id": "accessibility", "label": "Accessibility", "weight": 15 },
+    { "id": "maintainability", "label": "Maintainability and code clarity", "weight": 15 },
+    { "id": "security", "label": "Security, privacy, and dependency compliance", "weight": 10 },
+    { "id": "performance", "label": "Performance and responsive robustness", "weight": 10 },
+    { "id": "verification", "label": "Verification readiness", "weight": 5 }
+  ],
+  "scoreScale": {
+    "minimum": 0,
+    "maximum": 4,
+    "weightedTotalMaximum": 100
+  },
+  "severityLevels": ["critical", "high", "medium", "low", "note"],
+  "calibration": {
+    "requiredBeforeFreeze": true,
+    "blindRuns": 4,
+    "humanAuditRequired": true
+  },
+  "prompt": "prompt/code-review-v1.md",
+  "specification": "benchmark/code-review-v1.md"
+}
