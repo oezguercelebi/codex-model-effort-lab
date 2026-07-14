@@ -1,3 +1,4 @@
+import { createHash } from "node:crypto"
 import { access, cp, mkdir, readdir, readFile, rm, writeFile } from "node:fs/promises"
 import path from "node:path"
 import process from "node:process"
@@ -90,9 +91,24 @@ const manifest = {
   results: results.sort((a, b) => a.runId.localeCompare(b.runId)),
 }
 
+const manifestJson = `${JSON.stringify(manifest, null, 2)}\n`
+await writeFile(path.join(output, "results-manifest.json"), manifestJson)
+
+const appSource = await readFile(path.join(output, "app.js"), "utf8")
+const stylesSource = await readFile(path.join(output, "styles.css"), "utf8")
+const assetVersion = createHash("sha256")
+  .update(appSource)
+  .update(stylesSource)
+  .update(manifestJson)
+  .digest("hex")
+  .slice(0, 12)
+const indexFile = path.join(output, "index.html")
+const indexSource = await readFile(indexFile, "utf8")
 await writeFile(
-  path.join(output, "results-manifest.json"),
-  `${JSON.stringify(manifest, null, 2)}\n`,
+  indexFile,
+  indexSource
+    .replace('href="./styles.css"', `href="./styles.css?v=${assetVersion}"`)
+    .replace('src="./app.js"', `src="./app.js?v=${assetVersion}"`),
 )
 
 process.stdout.write(`Built ${output} with ${results.length} result(s).\n`)

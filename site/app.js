@@ -30,8 +30,13 @@ const elements = {
 }
 
 const formatNumber = new Intl.NumberFormat("en", { notation: "compact", maximumFractionDigits: 1 })
+const assetVersion = new URL(import.meta.url).searchParams.get("v")
 const effortOrder = ["default", "low", "medium", "high", "xhigh", "max"]
 const modelOrder = ["default", "gpt-5.5", "gpt-5.6-luna", "gpt-5.6-terra", "gpt-5.6-sol"]
+
+function assetPath(path) {
+  return assetVersion ? `${path}?v=${encodeURIComponent(assetVersion)}` : path
+}
 
 function uniqueBy(items, key) {
   return [...new Map(items.map((item) => [key(item), item])).values()]
@@ -299,7 +304,7 @@ function resultById(id) {
 }
 
 async function loadPrompt() {
-  const response = await fetch("./prompt.txt")
+  const response = await fetch(assetPath("./prompt.txt"))
   const prompt = await response.text()
   elements.promptContent.replaceChildren(
     ...prompt
@@ -315,7 +320,7 @@ async function loadPrompt() {
 }
 
 async function initialize() {
-  const response = await fetch("./results-manifest.json")
+  const response = await fetch(assetPath("./results-manifest.json"))
   if (!response.ok) throw new Error(`Could not load results (${response.status})`)
   const manifest = await response.json()
   state.results = manifest.results
