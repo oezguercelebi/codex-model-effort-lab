@@ -57,11 +57,9 @@ a { color: inherit; }
 .section-heading { display: flex; justify-content: space-between; align-items: end; max-width: 1500px; margin: 0 auto 42px; gap: 24px; }
 .section-heading h2, .method-section h2 { font-size: clamp(43px, 6vw, 86px); letter-spacing: -0.065em; line-height: 0.95; margin: 22px 0 0; }
 .viewer-controls { display: flex; align-items: center; gap: 8px; }
-.plan-cycle { min-height: 46px; padding: 4px 12px 4px 14px; display: flex; align-items: center; gap: 7px; border: 1px solid var(--ink); border-radius: 100px; color: var(--ink); background: var(--acid); cursor: pointer; }
+.plan-cycle { min-height: 46px; padding: 4px 14px; display: flex; align-items: center; gap: 8px; border: 1px solid var(--ink); border-radius: 100px; color: var(--ink); background: var(--acid); cursor: pointer; }
 .plan-cycle span { font: 500 8px "DM Mono", monospace; letter-spacing: .08em; text-transform: uppercase; }
 .plan-cycle strong { min-width: 26px; font-size: 13px; }
-.plan-cycle i { font-style: normal; font-size: 13px; transition: transform .18s ease; }
-.plan-cycle:hover i { transform: rotate(90deg); }
 .plan-cycle:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
 .viewport-control { border: 1px solid var(--line); border-radius: 100px; display: flex; padding: 4px; background: #f1efe9; }
 .viewport-control button { border: 0; padding: 10px 16px; border-radius: 100px; background: transparent; cursor: pointer; font-size: 12px; font-weight: 600; }
