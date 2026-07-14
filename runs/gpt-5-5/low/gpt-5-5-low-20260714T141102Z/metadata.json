@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "benchmarkId": "weekender-v1",
+  "runId": "gpt-5-5-low-20260714T141102Z",
+  "status": "published",
+  "title": "Weekender",
+  "model": "gpt-5.5",
+  "modelLabel": "GPT-5.5",
+  "effort": "low",
+  "effortLabel": "Light",
+  "recordedAt": "2026-07-14T14:14:16.629Z",
+  "durationMs": 185889,
+  "codexVersion": "codex-cli 0.144.2",
+  "codexExitCode": 0,
+  "previewDirectory": "preview",
+  "promptSha256": "e520b27a68f9f6bb40970d3d86ad7e02b65c33c3e956f43cd5b313847d94ea5f",
+  "starterSha256": "eb37b56a2b1f81ac888d39edbfdc4b684b79882d3db94c0d9ddb4b0538f9457e",
+  "usage": {
+    "inputTokens": 210294,
+    "cachedInputTokens": 188544,
+    "outputTokens": 8757,
+    "reasoningOutputTokens": 505
+  },
+  "codeStats": {
+    "sourceFiles": 5,
+    "sourceLines": 463
+  },
+  "subscription": {
+    "planLabel": "Pro 5x",
+    "windowLabel": "weekly",
+    "remainingBeforePercent": null,
+    "remainingAfterPercent": null,
+    "observedChangePercent": null
+  },
+  "verification": {
+    "buildSucceeded": true,
+    "screenshotsCaptured": true
+  },
+  "notes": "Captured without follow-up messages or manual repair."
+}

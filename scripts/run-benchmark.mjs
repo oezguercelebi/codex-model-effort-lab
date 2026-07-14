@@ -37,6 +37,7 @@ function timestamp() {
 }
 
 function modelLabel(model) {
+  if (/^gpt-[\d.]+$/.test(model)) return model.toUpperCase()
   const name = model.replace(/^gpt-[\d.]+-/, "")
   return name.charAt(0).toUpperCase() + name.slice(1)
 }

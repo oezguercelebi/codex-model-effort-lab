@@ -18,6 +18,9 @@
     "publishFailures": true
   },
   "configurations": [
+    { "model": "gpt-5.5", "effort": "low", "effortLabel": "Light" },
+    { "model": "gpt-5.5", "effort": "medium", "effortLabel": "Medium" },
+    { "model": "gpt-5.5", "effort": "high", "effortLabel": "High" },
     { "model": "gpt-5.6-luna", "effort": "low", "effortLabel": "Light" },
     { "model": "gpt-5.6-luna", "effort": "medium", "effortLabel": "Medium" },
     { "model": "gpt-5.6-luna", "effort": "high", "effortLabel": "High" },

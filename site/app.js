@@ -31,7 +31,7 @@ const elements = {
 
 const formatNumber = new Intl.NumberFormat("en", { notation: "compact", maximumFractionDigits: 1 })
 const effortOrder = ["default", "low", "medium", "high", "xhigh", "max"]
-const modelOrder = ["default", "gpt-5.6-luna", "gpt-5.6-terra", "gpt-5.6-sol"]
+const modelOrder = ["default", "gpt-5.5", "gpt-5.6-luna", "gpt-5.6-terra", "gpt-5.6-sol"]
 
 function uniqueBy(items, key) {
   return [...new Map(items.map((item) => [key(item), item])).values()]
