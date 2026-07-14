@@ -17,6 +17,7 @@ const elements = {
   facts: document.querySelector("#run-facts"),
   links: document.querySelector("#run-links"),
   matrix: document.querySelector("#result-matrix"),
+  matrixTooltip: document.querySelector("#matrix-tooltip"),
   modelSlider: document.querySelector("#model-slider"),
   modelValue: document.querySelector("#model-value"),
   modelTicks: document.querySelector("#model-ticks"),
@@ -179,6 +180,55 @@ function statusLabel(status) {
   return "Sample"
 }
 
+function hideMatrixTooltip() {
+  elements.matrixTooltip.hidden = true
+}
+
+function showMatrixTooltip(button, result) {
+  const heading = document.createElement("div")
+  heading.className = "matrix-tooltip-heading"
+  const eyebrow = document.createElement("span")
+  const title = document.createElement("strong")
+  eyebrow.textContent = "Token breakdown"
+  title.textContent = `${result.modelLabel} · ${result.effortLabel}`
+  heading.append(eyebrow, title)
+
+  const breakdown = document.createElement("dl")
+  for (const [label, value] of [
+    ["Input", result.usage?.inputTokens],
+    ["Cached input", result.usage?.cachedInputTokens],
+    ["Output", result.usage?.outputTokens],
+    ["Reasoning", result.usage?.reasoningOutputTokens],
+  ]) {
+    const row = document.createElement("div")
+    const term = document.createElement("dt")
+    const detail = document.createElement("dd")
+    term.textContent = label
+    detail.textContent = valueLabel(value)
+    row.append(term, detail)
+    breakdown.append(row)
+  }
+
+  const total = document.createElement("p")
+  total.innerHTML = `<span>Shown total</span><strong>${valueLabel(totalTokens(result.usage))}</strong>`
+  elements.matrixTooltip.replaceChildren(heading, breakdown, total)
+  elements.matrixTooltip.hidden = false
+
+  window.requestAnimationFrame(() => {
+    if (elements.matrixTooltip.hidden) return
+    const anchor = button.getBoundingClientRect()
+    const tooltip = elements.matrixTooltip.getBoundingClientRect()
+    const left = Math.min(
+      window.innerWidth - tooltip.width - 12,
+      Math.max(12, anchor.left + (anchor.width - tooltip.width) / 2),
+    )
+    const above = anchor.top - tooltip.height - 10
+    const top = above >= 12 ? above : anchor.bottom + 10
+    elements.matrixTooltip.style.left = `${left}px`
+    elements.matrixTooltip.style.top = `${top}px`
+  })
+}
+
 function setSlider(slider, ticks, items, currentIndex, labelKey) {
   const maximum = Math.max(0, items.length - 1)
   slider.max = maximum
@@ -284,6 +334,10 @@ function matrixCell(result, count) {
   button.className = "matrix-cell"
   button.dataset.runId = result.runId
   button.setAttribute("aria-pressed", String(result.runId === state.result.runId))
+  button.setAttribute(
+    "aria-label",
+    `${result.modelLabel}, ${result.effortLabel}. ${valueLabel(totalTokens(result.usage))} shown tokens. Input ${valueLabel(result.usage?.inputTokens)}, cached input ${valueLabel(result.usage?.cachedInputTokens)}, output ${valueLabel(result.usage?.outputTokens)}, reasoning ${valueLabel(result.usage?.reasoningOutputTokens)}.`,
+  )
   if (result.runId === state.result.runId) button.classList.add("selected")
 
   const top = document.createElement("span")
@@ -294,7 +348,12 @@ function matrixCell(result, count) {
   const secondary = document.createElement("span")
   secondary.textContent = `${durationLabel(result.durationMs)} · ${result.codeStats?.sourceFiles ?? "—"} files`
   button.append(top, primary, secondary)
+  button.addEventListener("mouseenter", () => showMatrixTooltip(button, result))
+  button.addEventListener("mouseleave", hideMatrixTooltip)
+  button.addEventListener("focus", () => showMatrixTooltip(button, result))
+  button.addEventListener("blur", hideMatrixTooltip)
   button.addEventListener("click", () => {
+    hideMatrixTooltip()
     state.result = result
     render()
   })
@@ -454,5 +513,8 @@ document.querySelector("#prompt-close").addEventListener("click", () => elements
 elements.promptDialog.addEventListener("click", (event) => {
   if (event.target === elements.promptDialog) elements.promptDialog.close()
 })
+
+window.addEventListener("scroll", hideMatrixTooltip, true)
+window.addEventListener("resize", hideMatrixTooltip)
 
 await Promise.all([initialize(), loadPrompt()])

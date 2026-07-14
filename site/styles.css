@@ -139,6 +139,18 @@ a { color: inherit; }
 .matrix-cell > span:last-child { color: #77736c; font-size: 9px; }
 .matrix-cell.selected > span:last-child { color: #aaa; }
 .matrix-empty { height: 100%; display: grid; place-items: center; border: 1px dashed var(--line); border-radius: 11px; color: #99958d; font-size: 10px; }
+.matrix-tooltip { position: fixed; z-index: 20; width: 242px; padding: 14px; border: 1px solid #3e3e3e; border-radius: 12px; color: white; background: rgba(19,19,19,.96); box-shadow: 0 14px 38px rgba(0,0,0,.22); backdrop-filter: blur(16px); pointer-events: none; }
+.matrix-tooltip[hidden] { display: none; }
+.matrix-tooltip-heading { display: flex; flex-direction: column; gap: 5px; padding-bottom: 11px; border-bottom: 1px solid #3d3d3d; }
+.matrix-tooltip-heading span { color: var(--acid); font: 500 8px "DM Mono", monospace; letter-spacing: .08em; text-transform: uppercase; }
+.matrix-tooltip-heading strong { font-size: 12px; }
+.matrix-tooltip dl { margin: 10px 0; display: grid; grid-template-columns: repeat(2, 1fr); gap: 7px; }
+.matrix-tooltip dl div { padding: 8px; border-radius: 7px; background: #252525; }
+.matrix-tooltip dt { color: #92908a; font: 500 7px "DM Mono", monospace; text-transform: uppercase; }
+.matrix-tooltip dd { margin: 5px 0 0; font-size: 13px; font-weight: 700; }
+.matrix-tooltip > p { margin: 0; padding-top: 10px; border-top: 1px solid #3d3d3d; display: flex; align-items: center; justify-content: space-between; }
+.matrix-tooltip > p span { color: #92908a; font: 500 8px "DM Mono", monospace; text-transform: uppercase; }
+.matrix-tooltip > p strong { font-size: 14px; }
 
 .usage-guide { max-width: 1500px; margin: 70px auto 0; padding: 26px; border: 1px solid var(--line); border-radius: 16px; background: var(--paper); }
 .usage-guide-heading { display: flex; align-items: end; justify-content: space-between; gap: 24px; margin-bottom: 22px; }
