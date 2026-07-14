@@ -1,0 +1,775 @@
+{
+  "schemaVersion": 1,
+  "reviewBenchmarkId": "weekender-code-review-v1",
+  "targetRunId": "gpt-5-6-luna-xhigh-20260714T151140Z",
+  "reviewer": {
+    "model": "gpt-5.6-sol",
+    "effort": "xhigh",
+    "codexVersion": "codex-cli 0.144.2",
+    "durationMs": 370697,
+    "usage": {
+      "inputTokens": 317782,
+      "cachedInputTokens": 251904,
+      "outputTokens": 14802,
+      "reasoningOutputTokens": 10590
+    }
+  },
+  "deterministicChecks": {
+    "schemaVersion": 1,
+    "reviewBenchmarkId": "weekender-code-review-v1",
+    "generatedAt": "2026-07-14T20:59:31.394Z",
+    "dependencyDiff": {
+      "status": "pass",
+      "added": [],
+      "removed": [],
+      "changed": []
+    },
+    "source": {
+      "files": 5,
+      "nonEmptyLines": 582,
+      "remoteReferences": [
+        {
+          "file": "src/index.css",
+          "url": "http://www.w3.org/2000/svg"
+        }
+      ],
+      "hashBefore": "2ba06d26604226288e0012840fdce75161ad7af5ed0a539764818ade516311e8",
+      "hashAfter": "2ba06d26604226288e0012840fdce75161ad7af5ed0a539764818ade516311e8",
+      "unchangedByChecks": true,
+      "productionAssetBytes": 292949
+    },
+    "commands": {
+      "npmCi": {
+        "status": "pass",
+        "exitCode": 0,
+        "timedOut": false,
+        "durationMs": 2230,
+        "output": "added 83 packages in 2s"
+      },
+      "npmRunCheck": {
+        "status": "pass",
+        "exitCode": 0,
+        "timedOut": false,
+        "durationMs": 5845,
+        "output": "> weekender-benchmark-starter@1.0.0 check\n> npm run typecheck && npm run build\n\n\n> weekender-benchmark-starter@1.0.0 typecheck\n> tsc --noEmit\n\n\n> weekender-benchmark-starter@1.0.0 build\n> tsc --noEmit && vite build\n\nvite v6.4.3 building for production...\ntransforming...\n✓ 1786 modules transformed.\nrendering chunks...\ncomputing gzip size...\ndist/index.html                   0.48 kB │ gzip:  0.29 kB\ndist/assets/index-CXmxQIr2.css   67.95 kB │ gzip: 14.63 kB\ndist/assets/index-GEre48jd.js   224.53 kB │ gzip: 68.75 kB\n✓ built in 1.72s"
+      }
+    },
+    "browser": {
+      "browserVersion": "150.0.7871.115",
+      "desktop": {
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "checks": [
+          {
+            "id": "multiple-destinations",
+            "status": "pass",
+            "evidence": "13 destination/article regions and 8 visible headings detected."
+          },
+          {
+            "id": "expected-budget",
+            "status": "pass",
+            "evidence": "2 monetary values detected; budget wording absent."
+          },
+          {
+            "id": "travel-time",
+            "status": "pass",
+            "evidence": "6 travel-time signals detected."
+          },
+          {
+            "id": "vote-interaction",
+            "status": "pass",
+            "evidence": "button \"Vote\" changed visible text or control state."
+          },
+          {
+            "id": "winner-itinerary",
+            "status": "pass",
+            "evidence": "Winner or itinerary language was visible or reachable."
+          },
+          {
+            "id": "no-sign-in-or-backend",
+            "status": "pass",
+            "evidence": "0 password fields; 2141 visible text characters."
+          },
+          {
+            "id": "horizontal-overflow",
+            "status": "pass",
+            "evidence": "0px document-level horizontal overflow."
+          },
+          {
+            "id": "accessible-controls-and-keyboard",
+            "status": "fail",
+            "evidence": "1 enabled controls lacked a detectable name; 10 unique controls received focus across 12 Tab presses."
+          },
+          {
+            "id": "uncaught-browser-errors",
+            "status": "pass",
+            "evidence": "0 console errors and 0 page errors."
+          }
+        ],
+        "evidence": {
+          "headings": [
+            "Where should wego next?",
+            "Compare your options",
+            "Lisbon",
+            "Lake Como",
+            "Copenhagen",
+            "What everyone’s feeling",
+            "A little taste of the plan",
+            "One weekend.Zero group chat chaos."
+          ],
+          "controls": [
+            {
+              "index": 0,
+              "tag": "button",
+              "name": "Overview",
+              "disabled": false
+            },
+            {
+              "index": 1,
+              "tag": "button",
+              "name": "Destinations",
+              "disabled": false
+            },
+            {
+              "index": 2,
+              "tag": "button",
+              "name": "Itinerary3",
+              "disabled": false
+            },
+            {
+              "index": 3,
+              "tag": "button",
+              "name": "SCSam CarterTrip organizer",
+              "disabled": false
+            },
+            {
+              "index": 4,
+              "tag": "button",
+              "name": "Notifications",
+              "disabled": false
+            },
+            {
+              "index": 5,
+              "tag": "button",
+              "name": "Invite friends",
+              "disabled": false
+            },
+            {
+              "index": 6,
+              "tag": "button",
+              "name": "All options",
+              "disabled": false
+            },
+            {
+              "index": 7,
+              "tag": "button",
+              "name": "Under €350",
+              "disabled": false
+            },
+            {
+              "index": 8,
+              "tag": "button",
+              "name": "Under 3 hours",
+              "disabled": false
+            },
+            {
+              "index": 9,
+              "tag": "button",
+              "name": "More filters",
+              "disabled": false
+            },
+            {
+              "index": 10,
+              "tag": "button",
+              "name": "Save Lisbon",
+              "disabled": false
+            },
+            {
+              "index": 11,
+              "tag": "button",
+              "name": "Vote",
+              "disabled": false
+            },
+            {
+              "index": 12,
+              "tag": "button",
+              "name": "Save Lake Como",
+              "disabled": false
+            },
+            {
+              "index": 13,
+              "tag": "button",
+              "name": "Vote",
+              "disabled": false
+            },
+            {
+              "index": 14,
+              "tag": "button",
+              "name": "Save Copenhagen",
+              "disabled": false
+            },
+            {
+              "index": 15,
+              "tag": "button",
+              "name": "Vote",
+              "disabled": false
+            },
+            {
+              "index": 16,
+              "tag": "button",
+              "name": "",
+              "disabled": false
+            },
+            {
+              "index": 17,
+              "tag": "button",
+              "name": "View full plan",
+              "disabled": false
+            },
+            {
+              "index": 18,
+              "tag": "button",
+              "name": "Share itinerary",
+              "disabled": false
+            },
+            {
+              "index": 19,
+              "tag": "button",
+              "name": "Explore the Lisbon plan",
+              "disabled": false
+            },
+            {
+              "index": 20,
+              "tag": "button",
+              "name": "Share this trip",
+              "disabled": false
+            }
+          ],
+          "keyboardTargets": [
+            "button:Save Lake Como",
+            "button:Vote",
+            "button:Save Copenhagen",
+            "button:",
+            "button:View full plan",
+            "button:Share itinerary",
+            "button:Explore the Lisbon plan",
+            "button:Share this trip",
+            "button:Overview",
+            "button:Destinations"
+          ],
+          "consoleErrors": [],
+          "pageErrors": [],
+          "externalRequests": []
+        }
+      },
+      "mobile": {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "checks": [
+          {
+            "id": "multiple-destinations",
+            "status": "pass",
+            "evidence": "13 destination/article regions and 8 visible headings detected."
+          },
+          {
+            "id": "expected-budget",
+            "status": "pass",
+            "evidence": "2 monetary values detected; budget wording absent."
+          },
+          {
+            "id": "travel-time",
+            "status": "pass",
+            "evidence": "6 travel-time signals detected."
+          },
+          {
+            "id": "vote-interaction",
+            "status": "pass",
+            "evidence": "button \"Vote\" changed visible text or control state."
+          },
+          {
+            "id": "winner-itinerary",
+            "status": "pass",
+            "evidence": "Winner or itinerary language was visible or reachable."
+          },
+          {
+            "id": "no-sign-in-or-backend",
+            "status": "pass",
+            "evidence": "0 password fields; 2049 visible text characters."
+          },
+          {
+            "id": "horizontal-overflow",
+            "status": "pass",
+            "evidence": "0px document-level horizontal overflow."
+          },
+          {
+            "id": "accessible-controls-and-keyboard",
+            "status": "fail",
+            "evidence": "1 enabled controls lacked a detectable name; 11 unique controls received focus across 12 Tab presses."
+          },
+          {
+            "id": "uncaught-browser-errors",
+            "status": "pass",
+            "evidence": "0 console errors and 0 page errors."
+          }
+        ],
+        "evidence": {
+          "headings": [
+            "Where should wego next?",
+            "Compare your options",
+            "Lisbon",
+            "Lake Como",
+            "Copenhagen",
+            "What everyone’s feeling",
+            "A little taste of the plan",
+            "One weekend.Zero group chat chaos."
+          ],
+          "controls": [
+            {
+              "index": 0,
+              "tag": "button",
+              "name": "Overview",
+              "disabled": false
+            },
+            {
+              "index": 1,
+              "tag": "button",
+              "name": "Destinations",
+              "disabled": false
+            },
+            {
+              "index": 2,
+              "tag": "button",
+              "name": "Itinerary3",
+              "disabled": false
+            },
+            {
+              "index": 3,
+              "tag": "button",
+              "name": "SCSam CarterTrip organizer",
+              "disabled": false
+            },
+            {
+              "index": 4,
+              "tag": "button",
+              "name": "Toggle menu",
+              "disabled": false
+            },
+            {
+              "index": 5,
+              "tag": "button",
+              "name": "Notifications",
+              "disabled": false
+            },
+            {
+              "index": 6,
+              "tag": "button",
+              "name": "Invite friends",
+              "disabled": false
+            },
+            {
+              "index": 7,
+              "tag": "button",
+              "name": "All options",
+              "disabled": false
+            },
+            {
+              "index": 8,
+              "tag": "button",
+              "name": "Under €350",
+              "disabled": false
+            },
+            {
+              "index": 9,
+              "tag": "button",
+              "name": "Under 3 hours",
+              "disabled": false
+            },
+            {
+              "index": 10,
+              "tag": "button",
+              "name": "More filters",
+              "disabled": false
+            },
+            {
+              "index": 11,
+              "tag": "button",
+              "name": "Save Lisbon",
+              "disabled": false
+            },
+            {
+              "index": 12,
+              "tag": "button",
+              "name": "Vote",
+              "disabled": false
+            },
+            {
+              "index": 13,
+              "tag": "button",
+              "name": "Save Lake Como",
+              "disabled": false
+            },
+            {
+              "index": 14,
+              "tag": "button",
+              "name": "Vote",
+              "disabled": false
+            },
+            {
+              "index": 15,
+              "tag": "button",
+              "name": "Save Copenhagen",
+              "disabled": false
+            },
+            {
+              "index": 16,
+              "tag": "button",
+              "name": "Vote",
+              "disabled": false
+            },
+            {
+              "index": 17,
+              "tag": "button",
+              "name": "",
+              "disabled": false
+            },
+            {
+              "index": 18,
+              "tag": "button",
+              "name": "View full plan",
+              "disabled": false
+            },
+            {
+              "index": 19,
+              "tag": "button",
+              "name": "Share itinerary",
+              "disabled": false
+            },
+            {
+              "index": 20,
+              "tag": "button",
+              "name": "Explore the Lisbon plan",
+              "disabled": false
+            },
+            {
+              "index": 21,
+              "tag": "button",
+              "name": "Share this trip",
+              "disabled": false
+            },
+            {
+              "index": 22,
+              "tag": "button",
+              "name": "Home",
+              "disabled": false
+            },
+            {
+              "index": 23,
+              "tag": "button",
+              "name": "Places",
+              "disabled": false
+            },
+            {
+              "index": 24,
+              "tag": "button",
+              "name": "Plan",
+              "disabled": false
+            },
+            {
+              "index": 25,
+              "tag": "button",
+              "name": "People",
+              "disabled": false
+            }
+          ],
+          "keyboardTargets": [
+            "button:Save Lake Como",
+            "button:Vote",
+            "button:Save Copenhagen",
+            "button:",
+            "button:View full plan",
+            "button:Share itinerary",
+            "button:Explore the Lisbon plan",
+            "button:Share this trip",
+            "button:Home",
+            "button:Places",
+            "button:Plan"
+          ],
+          "consoleErrors": [],
+          "pageErrors": [],
+          "externalRequests": []
+        }
+      }
+    },
+    "guardrailFacts": {
+      "npmRunCheckFailed": false,
+      "corePathUnusable": false,
+      "corePathDefinition": "npm run check failed, or at least two core acceptance items failed at both viewports."
+    }
+  },
+  "findings": [
+    {
+      "severity": "medium",
+      "category": "correctness",
+      "title": "The open trip points to an already elapsed itinerary",
+      "file": "source/src/App.tsx",
+      "lineStart": 403,
+      "lineEnd": 418,
+      "evidence": "The itinerary is dated October 11–13, 2024, the callout is labeled “WEEKENDER 2024,” and the footer says “Last updated just now,” while source/src/App.tsx:324 presents voting as currently open and closing in two days. On the 2026-07-14 review date, these states cannot all describe a current trip.",
+      "impact": "The core planning experience asks the group to vote for a weekend that occurred nearly two years earlier, undermining the sample data’s realism and making the trip status misleading.",
+      "remediation": "Define one coherent future trip date and derive the voting deadline, itinerary dates, year label, and update status from it."
+    },
+    {
+      "severity": "low",
+      "category": "correctness",
+      "title": "Full-plan actions never reveal the full itinerary",
+      "file": "source/src/App.tsx",
+      "lineStart": 403,
+      "lineEnd": 408,
+      "evidence": "Both “View full plan” and “Explore the Lisbon plan” call goTo(\"Itinerary\"), which only scrolls to this same card. The timeline renders itinerary.slice(0, 3), although source/src/App.tsx:120-145 defines four itinerary items.",
+      "impact": "Users activating either promised full-plan action remain on the three-item preview and cannot reach the fourth item.",
+      "remediation": "Render an expanded itinerary or dedicated plan view from these actions, or relabel/remove them if the preview is the complete plan."
+    },
+    {
+      "severity": "low",
+      "category": "correctness",
+      "title": "Destination secondary actions are exposed as enabled placeholders",
+      "file": "source/src/App.tsx",
+      "lineStart": 356,
+      "lineEnd": 371,
+      "evidence": "The enabled “More filters” button and each accessible-name-bearing “Save [destination]” button have no onClick handler or other behavior, while the adjacent filter and vote buttons are functional.",
+      "impact": "Users receive no response from controls that explicitly promise additional filtering and saving.",
+      "remediation": "Implement local filter/saved state with visible and accessible feedback, or remove/disable these affordances until available."
+    },
+    {
+      "severity": "medium",
+      "category": "reliability",
+      "title": "Voting updates only part of the vote model",
+      "file": "source/src/App.tsx",
+      "lineStart": 201,
+      "lineEnd": 209,
+      "evidence": "A vote is represented only by adding one to displayVotes. The baseline destination counts total 13, so a vote makes 14, but source/src/App.tsx:395-397 continues to display and calculate against a hard-coded denominator of 13. The voter avatars rendered from the unchanged destination.voters array at line 381 also retain the old count while the button and numeric total update.",
+      "impact": "After a core voting interaction, the total, percentage, voter avatars, and “friends voted” summary can contradict one another, so users cannot reliably interpret group support.",
+      "remediation": "Store canonical participant ballots and derive destination counts, unique voters, avatars, denominators, percentages, and completion status from that single state."
+    },
+    {
+      "severity": "low",
+      "category": "reliability",
+      "title": "Clipboard failure is reported as success",
+      "file": "source/src/App.tsx",
+      "lineStart": 224,
+      "lineEnd": 231,
+      "evidence": "handleCopy catches clipboard errors—and optional chaining also permits a missing clipboard API—but unconditionally calls setCopied(true) afterward.",
+      "impact": "When clipboard access is unavailable or denied, the UI says “Copied” even though no link reached the clipboard.",
+      "remediation": "Set the success state only after writeText resolves; otherwise show failure feedback or provide a selectable fallback."
+    },
+    {
+      "severity": "medium",
+      "category": "accessibility",
+      "title": "The closed mobile sidebar remains keyboard-focusable off-screen",
+      "file": "source/src/index.css",
+      "lineStart": 148,
+      "lineEnd": 150,
+      "evidence": "At widths below 780px the sidebar is hidden solely with transform: translateX(-102%). Its navigation and profile buttons in source/src/App.tsx:265-296 remain rendered and enabled; the supplied mobile control inventory likewise detects them before the visible menu toggle.",
+      "impact": "Keyboard users can tab through several invisible controls before reaching visible page content, losing track of focus and potentially activating hidden navigation.",
+      "remediation": "Remove the closed sidebar from the focus and accessibility trees using inert/visibility management, expose aria-expanded on the toggle, and move/restore focus when opening and closing it."
+    },
+    {
+      "severity": "medium",
+      "category": "accessibility",
+      "title": "The modal does not move, contain, or restore keyboard focus",
+      "file": "source/src/App.tsx",
+      "lineStart": 426,
+      "lineEnd": 435,
+      "evidence": "The dialog is conditionally appended with role=\"dialog\" and aria-modal, but there is no initial focus, focus trap, background inert state, Escape handler, or focus restoration. Backdrop dismissal is mouse-only.",
+      "impact": "After opening the dialog, focus remains on the obscured trigger and subsequent Tab presses can traverse background controls before reaching the modal, creating a meaningful keyboard and screen-reader barrier.",
+      "remediation": "Focus an element inside the dialog on open, make background content inert, contain Tab navigation, support Escape, and return focus to the trigger on close."
+    },
+    {
+      "severity": "medium",
+      "category": "accessibility",
+      "title": "Core comparison and itinerary text has insufficient contrast",
+      "file": "source/src/index.css",
+      "lineStart": 131,
+      "lineEnd": 137,
+      "evidence": "Destination descriptions use #899395 at 10px on white (approximately 3.15:1 contrast), and itinerary descriptions use #9ba5a5 at 9px on white (approximately 2.52:1). Both are normal-size text below the 4.5:1 minimum, and similarly pale labels recur throughout these core sections.",
+      "impact": "Users with low vision may be unable to read destination context and itinerary details needed to compare and plan the trip.",
+      "remediation": "Darken the muted text tokens used on white panels to achieve at least 4.5:1 contrast and verify all normal-size variants."
+    },
+    {
+      "severity": "low",
+      "category": "accessibility",
+      "title": "The group-pulse overflow button has no accessible name",
+      "file": "source/src/App.tsx",
+      "lineStart": 394,
+      "lineEnd": 394,
+      "evidence": "The button contains only a MoreHorizontal icon and has no aria-label or visible text. Deterministic checks found exactly one enabled unnamed control at both viewports and confirmed that it received keyboard focus.",
+      "impact": "Screen-reader users encounter a focusable button without knowing its purpose.",
+      "remediation": "Give the button a specific accessible label and behavior, or remove it if it is decorative."
+    },
+    {
+      "severity": "low",
+      "category": "accessibility",
+      "title": "Vote buttons do not identify their destination",
+      "file": "source/src/App.tsx",
+      "lineStart": 380,
+      "lineEnd": 382,
+      "evidence": "Every unselected destination renders a button whose accessible name is only “Vote”; the deterministic control inventory reports three indistinguishable “Vote” buttons.",
+      "impact": "Users navigating by a screen-reader button list cannot tell which destination each vote will select.",
+      "remediation": "Include the destination in each accessible name, such as “Vote for Lisbon,” and expose the selected state with aria-pressed."
+    },
+    {
+      "severity": "low",
+      "category": "maintainability",
+      "title": "Navigation accepts an unsupported People view",
+      "file": "source/src/App.tsx",
+      "lineStart": 422,
+      "lineEnd": 423,
+      "evidence": "The mobile navigation passes view=\"People\" into goTo, while source/src/App.tsx:234-246 accepts any string but implements behavior only for Overview, Destinations, and Itinerary. Clicking People changes the active styling without navigating to or rendering people content.",
+      "impact": "A current mobile action is inert, and future navigation mismatches cannot be caught by TypeScript because view names are unrestricted strings.",
+      "remediation": "Use a typed view union with an exhaustive view-to-target mapping, and either implement the People destination or remove the item."
+    }
+  ],
+  "categories": [
+    {
+      "id": "correctness",
+      "label": "Brief fidelity and functional correctness",
+      "score": 2,
+      "weight": 30,
+      "evidence": [
+        "source/src/App.tsx:60-145 and source/src/App.tsx:334-408 provide three destinations with per-person cost, travel time, voting, ranking, and a multi-item Lisbon itinerary.",
+        "The deterministic desktop and mobile checks passed destination comparison, expected budget, travel time, vote interaction, and winner/itinerary reachability, but the source also confirms stale trip timing and misleading secondary actions described in the findings."
+      ],
+      "findingCounts": {
+        "critical": 0,
+        "high": 0,
+        "medium": 1,
+        "low": 2,
+        "note": 0
+      }
+    },
+    {
+      "id": "reliability",
+      "label": "Reliability and state integrity",
+      "score": 2,
+      "weight": 15,
+      "evidence": [
+        "source/src/App.tsx:195-222 uses stable destination IDs and a toggleable votedFor state; deterministic checks observed the vote control changing visible state and reported no console or page errors.",
+        "Vote-derived information is split between displayVotes, static voter arrays, hard-coded denominators, and separate friend-count strings, producing the demonstrated contradictions after interaction."
+      ],
+      "findingCounts": {
+        "critical": 0,
+        "high": 0,
+        "medium": 1,
+        "low": 1,
+        "note": 0
+      }
+    },
+    {
+      "id": "accessibility",
+      "label": "Accessibility",
+      "score": 1,
+      "weight": 15,
+      "evidence": [
+        "source/src/App.tsx includes main and navigation landmarks, a single h1 with subsequent h2/h3 structure, native buttons, named filter groups, and a labeled dialog.",
+        "Deterministic checks failed accessible controls at both viewports because one enabled button had no detectable name; source inspection additionally confirms off-screen focusable navigation, incomplete dialog focus handling, repeated low-contrast text, and ambiguous Vote labels."
+      ],
+      "findingCounts": {
+        "critical": 0,
+        "high": 0,
+        "medium": 3,
+        "low": 2,
+        "note": 0
+      }
+    },
+    {
+      "id": "maintainability",
+      "label": "Maintainability and code clarity",
+      "score": 3,
+      "weight": 15,
+      "evidence": [
+        "source/src/App.tsx:35-58 defines useful Destination and ItineraryItem types, and source/src/App.tsx:60-152 centralizes the sample destination and itinerary data.",
+        "The unrestricted navigation string permits a current unsupported People state; otherwise the deterministic strict TypeScript check completed successfully."
+      ],
+      "findingCounts": {
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 1,
+        "note": 0
+      }
+    },
+    {
+      "id": "security",
+      "label": "Security, privacy, and dependency compliance",
+      "score": 4,
+      "weight": 10,
+      "evidence": [
+        "The deterministic dependency comparison passed with no added, removed, or changed packages, and both browser runs recorded zero external requests.",
+        "source/src/App.tsx contains no unsafe HTML injection, network calls, user-data collection, or secret-like configuration; its only privileged API use writes a fixed sample URL to the clipboard."
+      ],
+      "findingCounts": {
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "note": 0
+      }
+    },
+    {
+      "id": "performance",
+      "label": "Performance and responsive robustness",
+      "score": 4,
+      "weight": 10,
+      "evidence": [
+        "The supplied production assets total 292,949 bytes, with 68.75 kB gzip JavaScript and 14.63 kB gzip CSS reported by the successful build.",
+        "Both 1440×900 and 390×844 deterministic checks measured zero document-level horizontal overflow, while source/src/index.css:145-153 supplies explicit desktop, tablet, and mobile layout breakpoints. No external media requests occur."
+      ],
+      "findingCounts": {
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "note": 0
+      }
+    },
+    {
+      "id": "verification",
+      "label": "Verification readiness",
+      "score": 4,
+      "weight": 5,
+      "evidence": [
+        "source/package.json:6-10 defines typecheck, build, and combined check scripts; source/tsconfig.json:2-17 enables strict TypeScript and noEmit.",
+        "The supplied npm run check completed with exit code 0, including tsc and the Vite production build, and the harness verified that source hashes were unchanged by checks. Browser checks covered both required viewports, voting, itinerary reachability, overflow, keyboard signals, and runtime errors."
+      ],
+      "findingCounts": {
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "note": 0
+      }
+    }
+  ],
+  "rawWeightedScore": 62.5,
+  "capsApplied": [],
+  "totalScore": 62.5,
+  "strengths": [
+    "The complete core comparison-and-planning path is present and was reproducibly reachable at both required viewports, including a visible vote state change and itinerary (source/src/App.tsx:334-408).",
+    "Destination data is centralized, typed, and keyed by stable IDs, with correct average budget arithmetic and working budget/time filters (source/src/App.tsx:35-110 and source/src/App.tsx:201-218).",
+    "The app is self-contained: the dependency diff is clean, deterministic browser runs made no external requests, and the artwork is implemented locally in source/src/App.tsx:167-189 and source/src/index.css:108-127.",
+    "Responsive rules collapse destination and lower-panel grids and reserve space for mobile navigation; deterministic checks confirmed no page-level overflow at 390×844 or 1440×900 (source/src/index.css:145-153)."
+  ],
+  "risks": [
+    "Vote information will drift further as interactions or participant data expand because counts, unique voters, avatars, completion status, and percentages do not share one canonical model (source/src/App.tsx:201-209).",
+    "Keyboard-only and low-vision users face multiple independent barriers in overlays, mobile navigation, labels, and text contrast (source/src/App.tsx:394-435; source/src/index.css:131-150).",
+    "Static 2024 trip dates combined with live-status wording make the demo increasingly contradictory over time (source/src/App.tsx:403-418).",
+    "Several enabled secondary actions promise behavior that is absent, reducing confidence that visible controls are functional (source/src/App.tsx:356-371 and source/src/App.tsx:403-408)."
+  ],
+  "recommendation": "Address the canonical vote model and coherent trip timing first. Then fix modal/sidebar focus behavior and contrast, implement or remove placeholder actions, and rerun the existing check plus focused keyboard flows at both viewports.",
+  "reviewStatus": "frozen",
+  "reviewedAt": "2026-07-14T21:05:42.202Z"
+}

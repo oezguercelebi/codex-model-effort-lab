@@ -8,7 +8,7 @@ The benchmark runs are performed and captured by this repository's maintainers. 
 
 The benchmark is not primarily a test suite or an abstract model score. The finished app is the benchmark result.
 
-An engineering review companion is now being defined in [`benchmark/code-review-v1.md`](benchmark/code-review-v1.md). It is intentionally still a draft. The full matrix will not be reviewed until the blind rubric, reviewer configuration, deterministic checks, and calibration process are approved and frozen.
+The engineering review companion in [`benchmark/code-review-v1.md`](benchmark/code-review-v1.md) is frozen after three blinded calibration passes. The reviewer returns evidenced findings, while the harness derives category and total scores deterministically.
 
 ## Current status
 
@@ -16,6 +16,7 @@ An engineering review companion is now being defined in [`benchmark/code-review-
 - The static comparison site includes one permanent hand-built Default plus captured GPT-5.5, Luna, Terra, and Sol results.
 - The local runner has passed an end-to-end no-model dry run, including desktop and mobile screenshot capture.
 - Light-, Medium-, High-, and Extra-High-effort runs for GPT-5.5, Luna, Terra, and Sol have been published.
+- Frozen engineering reviews are published for Luna, Terra, and Sol at Extra High. The GPT-5.5 Extra High review attempt is preserved as unavailable because the fixed reviewer was at capacity.
 
 ## The experience
 
@@ -26,7 +27,7 @@ The public site has one page:
 3. Use the finished app for the current selection in one large live preview.
 4. Cycle the 1x / 5x / 20x plan control to recalculate estimated plan usage for the selected run.
 5. Keep tokens, duration, estimated plan usage, and source lines visible in cards over the preview corner.
-6. Use the matrix below to scan every captured configuration, with a token breakdown on hover or keyboard focus.
+6. Use the matrix below to scan every captured configuration, with token and engineering-review breakdowns on hover or keyboard focus.
 7. Read the data-driven summary and qualified recommendations beneath the matrix.
 8. Expand the run details for the exact token breakdown, Codex version, final response, and source code.
 
@@ -38,7 +39,7 @@ Example comparisons:
 - Luna with Medium effort versus Sol with Medium effort
 - a faster configuration versus a more expensive configuration
 
-The visitor decides which result is better by using and looking at the apps. Automated checks can provide supporting facts, but they do not replace the preview.
+The visitor decides which result is better by using and looking at the apps. Engineering reviews and automated checks provide supporting facts, but they do not replace the preview or score visual design.
 
 ## What stays identical
 
@@ -105,6 +106,7 @@ For each result:
 - Codex version and run date
 - final Codex response
 - link to the generated source and patch
+- frozen engineering review score, category breakdown, and evidenced findings when available
 
 If a run fails to produce a working app, its error or broken preview is still published. A failed attempt is part of the comparison rather than something silently discarded.
 
@@ -191,6 +193,7 @@ runs/
       index.html
       assets/
     metadata.json
+    code-review.json
     final.md
     screenshot-desktop.png
     screenshot-mobile.png
@@ -276,6 +279,14 @@ Assemble the static gallery locally:
 npm run build:site
 python3 -m http.server 4173 --directory _site
 ```
+
+Run the frozen Extra High engineering reviews once:
+
+```bash
+npm run review:xhigh
+```
+
+The review harness blinds builder identity, rebuilds and exercises the source, validates every cited file and line range, derives scores from finding severity, and refuses to overwrite an existing frozen result.
 
 ## GitHub Pages
 

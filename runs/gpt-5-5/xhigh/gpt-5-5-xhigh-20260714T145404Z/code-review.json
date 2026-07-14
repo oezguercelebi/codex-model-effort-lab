@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "reviewBenchmarkId": "weekender-code-review-v1",
+  "reviewStatus": "failed",
+  "targetRunId": "gpt-5-5-xhigh-20260714T145404Z",
+  "reviewedAt": "2026-07-14T21:11:48.908Z",
+  "reviewer": {
+    "model": "gpt-5.6-sol",
+    "effort": "xhigh",
+    "codexVersion": "codex-cli 0.144.2"
+  },
+  "failure": {
+    "stage": "reviewer",
+    "code": "model_at_capacity",
+    "message": "Selected reviewer model was at capacity before producing a review. The frozen one-attempt policy does not allow a retry."
+  }
+}

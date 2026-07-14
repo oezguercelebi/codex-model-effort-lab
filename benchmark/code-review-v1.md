@@ -1,6 +1,6 @@
 # Weekender Code Review Benchmark v1
 
-Status: **Draft. Do not run the full matrix until this document is approved and frozen.**
+Status: **Frozen on July 14, 2026 after three four-build calibration passes. Changes require a new benchmark version.**
 
 ## Purpose
 
@@ -79,6 +79,8 @@ Use the same browser version at 1440 by 900 and 390 by 844. Verify:
 
 The harness stores pass, fail, not-applicable, and supporting evidence for every item.
 
+For itinerary reachability, the defined path checks the initial page, visible direct actions, and one visible navigation-menu action followed by a visible itinerary or plan action. The harness records the actions it attempted. Browser checks are reproducible signals, but the reviewer must confirm a failed heuristic against source before treating it as a product defect.
+
 ## Review rubric
 
 Each category receives an integer score from 0 to 4. The weighted total is out of 100.
@@ -90,6 +92,16 @@ Each category receives an integer score from 0 to 4. The weighted total is out o
 | 2 | Mixed implementation with at least one meaningful gap or fragile choice. |
 | 1 | Major gaps, repeated problems, or a serious user-impacting issue. |
 | 0 | Missing, nonfunctional, unsafe, or not reviewable. |
+
+The reviewer does not choose these numbers. The harness derives each category score from findings whose primary category matches it:
+
+- 4: no actionable finding, or notes only;
+- 3: one or more low findings and no medium, high, or critical finding;
+- 2: exactly one medium finding and no high or critical finding;
+- 1: two or more medium findings, or any high finding, with no critical finding;
+- 0: any critical finding.
+
+This rule makes repeated material problems more costly without letting an arbitrary category judgment move the score. A finding has only one primary category, so one root cause is not deducted twice. Category evidence can still describe related effects elsewhere.
 
 ### 1. Brief fidelity and functional correctness, 30%
 
@@ -156,6 +168,8 @@ Every critical, high, medium, or low finding requires:
 
 Do not report formatting preferences, speculative abstractions, or generic best practices without demonstrated impact. Do not count the same root cause multiple times.
 
+Use medium for a demonstrated defect in a core task, a reproducible state contradiction, or a repeated barrier with meaningful impact. Use low for a secondary-action defect, redundant-label problem, or limited polish issue that does not block the core task. Judge enabled but inert controls by the behavior they promise, not by their mere presence.
+
 ## Score guardrails
 
 - If `npm run check` fails, correctness is 0 and the total score cannot exceed 39.
@@ -200,7 +214,7 @@ Each review is stored beside its target run with this shape:
 }
 ```
 
-The harness validates the schema, recalculates the weighted score, applies caps, and rejects missing evidence. The reviewer does not calculate its own final total.
+The reviewer returns findings, unscored category evidence, strengths, risks, and a recommendation using `benchmark/code-review-output-v1.schema.json`. The harness validates the schema, derives category scores from finding severity, calculates the weighted score, applies caps, and rejects missing evidence. The reviewer does not calculate category scores or the final total.
 
 ## Calibration and freeze process
 

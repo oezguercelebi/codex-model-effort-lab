@@ -133,13 +133,18 @@ a { color: inherit; }
 .matrix-cell { width: 100%; height: 100%; padding: 13px; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-between; text-align: left; border: 1px solid var(--line); border-radius: 11px; background: white; color: var(--ink); cursor: pointer; transition: transform .18s ease, border-color .18s ease; }
 .matrix-cell:hover { transform: translateY(-2px); border-color: #77736c; }
 .matrix-cell.selected { color: white; background: var(--ink); border-color: var(--ink); box-shadow: inset 4px 0 0 var(--acid); }
+.matrix-cell-header { width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 8px; }
 .matrix-cell-top { font: 500 8px "DM Mono", monospace; text-transform: uppercase; letter-spacing: .06em; color: #88847d; }
 .matrix-cell.selected .matrix-cell-top { color: var(--acid); }
+.matrix-score { flex: 0 0 auto; min-width: 32px; padding: 4px 6px; border-radius: 100px; color: var(--ink); background: var(--acid); font: 700 9px "DM Mono", monospace; text-align: center; }
+.matrix-cell.selected .matrix-score { color: var(--ink); background: var(--acid); }
+.matrix-score.unavailable { color: #77736c; background: #ebe9e3; }
+.matrix-cell.selected .matrix-score.unavailable { color: #aaa69e; background: #353535; }
 .matrix-cell strong { font-size: 13px; }
 .matrix-cell > span:last-child { color: #77736c; font-size: 9px; }
 .matrix-cell.selected > span:last-child { color: #aaa; }
 .matrix-empty { height: 100%; display: grid; place-items: center; border: 1px dashed var(--line); border-radius: 11px; color: #99958d; font-size: 10px; }
-.matrix-tooltip { position: fixed; z-index: 20; width: 242px; padding: 14px; border: 1px solid #3e3e3e; border-radius: 12px; color: white; background: rgba(19,19,19,.96); box-shadow: 0 14px 38px rgba(0,0,0,.22); backdrop-filter: blur(16px); pointer-events: none; }
+.matrix-tooltip { position: fixed; z-index: 20; width: 286px; padding: 14px; border: 1px solid #3e3e3e; border-radius: 12px; color: white; background: rgba(19,19,19,.96); box-shadow: 0 14px 38px rgba(0,0,0,.22); backdrop-filter: blur(16px); pointer-events: none; }
 .matrix-tooltip[hidden] { display: none; }
 .matrix-tooltip-heading { display: flex; flex-direction: column; gap: 5px; padding-bottom: 11px; border-bottom: 1px solid #3d3d3d; }
 .matrix-tooltip-heading span { color: var(--acid); font: 500 8px "DM Mono", monospace; letter-spacing: .08em; text-transform: uppercase; }
@@ -148,9 +153,18 @@ a { color: inherit; }
 .matrix-tooltip dl div { padding: 8px; border-radius: 7px; background: #252525; }
 .matrix-tooltip dt { color: #92908a; font: 500 7px "DM Mono", monospace; text-transform: uppercase; }
 .matrix-tooltip dd { margin: 5px 0 0; font-size: 13px; font-weight: 700; }
-.matrix-tooltip > p { margin: 0; padding-top: 10px; border-top: 1px solid #3d3d3d; display: flex; align-items: center; justify-content: space-between; }
-.matrix-tooltip > p span { color: #92908a; font: 500 8px "DM Mono", monospace; text-transform: uppercase; }
-.matrix-tooltip > p strong { font-size: 14px; }
+.matrix-tooltip-total { margin: 0; padding-top: 10px; border-top: 1px solid #3d3d3d; display: flex; align-items: center; justify-content: space-between; }
+.matrix-tooltip-total span { color: #92908a; font: 500 8px "DM Mono", monospace; text-transform: uppercase; }
+.matrix-tooltip-total strong { font-size: 14px; }
+.matrix-tooltip-review { margin-top: 12px; padding-top: 12px; border-top: 1px solid #3d3d3d; }
+.matrix-tooltip-review > div { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+.matrix-tooltip-review > div span { color: var(--acid); font: 500 8px "DM Mono", monospace; letter-spacing: .07em; text-transform: uppercase; }
+.matrix-tooltip-review > div strong { font-size: 14px; }
+.matrix-tooltip-categories { margin: 9px 0 0 !important; grid-template-columns: repeat(2, minmax(0, 1fr)) !important; gap: 5px !important; }
+.matrix-tooltip-categories div { padding: 6px 7px !important; display: flex; align-items: center; justify-content: space-between; gap: 5px; }
+.matrix-tooltip-categories dt { overflow: hidden; text-overflow: ellipsis; }
+.matrix-tooltip-categories dd { margin: 0 !important; font-size: 10px !important; }
+.matrix-tooltip-review > p { margin: 8px 0 0; color: #aaa69e; font: 500 8px "DM Mono", monospace; line-height: 1.45; }
 
 .summary-section { max-width: 1500px; margin: 70px auto 0; }
 .summary-heading { display: flex; align-items: end; justify-content: space-between; gap: 24px; margin-bottom: 18px; }

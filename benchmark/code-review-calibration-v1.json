@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "reviewBenchmarkId": "weekender-code-review-v1",
+  "status": "completed",
+  "seed": "weekender-code-review-v1-calibration-20260714",
+  "runs": [
+    "gpt-5-5-high-20260714T142026Z",
+    "gpt-5-6-luna-low-20260714T124139Z",
+    "gpt-5-6-terra-high-20260714T133416Z",
+    "gpt-5-6-sol-low-20260714T125036Z"
+  ],
+  "coverage": {
+    "builderModels": 4,
+    "efforts": ["low", "high"]
+  },
+  "publishResults": false,
+  "completedAt": "2026-07-14T20:45:00.000Z",
+  "finalSessionId": "20260714T203106Z-6727d2a54f",
+  "notes": "These preliminary reviews are private calibration evidence and are discarded before the frozen full-matrix run."
+}

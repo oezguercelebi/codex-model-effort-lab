@@ -1,7 +1,8 @@
 {
   "schemaVersion": 1,
   "id": "weekender-code-review-v1",
-  "status": "draft",
+  "status": "frozen",
+  "frozenAt": "2026-07-14T21:15:00.000Z",
   "targetBenchmarkId": "weekender-v1",
   "reviewer": {
     "model": "gpt-5.6-sol",
@@ -45,14 +46,21 @@
   "scoreScale": {
     "minimum": 0,
     "maximum": 4,
-    "weightedTotalMaximum": 100
+    "weightedTotalMaximum": 100,
+    "derivedFromFindings": true
   },
   "severityLevels": ["critical", "high", "medium", "low", "note"],
   "calibration": {
     "requiredBeforeFreeze": true,
     "blindRuns": 4,
-    "humanAuditRequired": true
+    "humanAuditRequired": true,
+    "completed": true,
+    "finalSessionId": "20260714T203106Z-6727d2a54f",
+    "finalHarnessAudit": "Extra High review evidence exposed false-negative vote and itinerary selectors. Both were corrected and deterministically rechecked before the public freeze."
   },
   "prompt": "prompt/code-review-v1.md",
+  "outputSchema": "benchmark/code-review-output-v1.schema.json",
+  "calibrationManifest": "benchmark/code-review-calibration-v1.json",
+  "harness": "scripts/run-code-review.mjs",
   "specification": "benchmark/code-review-v1.md"
 }

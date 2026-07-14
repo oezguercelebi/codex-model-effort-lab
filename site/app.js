@@ -49,6 +49,15 @@ const plans = [
   { id: "5x", label: "Pro 5x", multiplier: "5×", allowance: 15000 },
   { id: "20x", label: "Pro 20x", multiplier: "20×", allowance: 60000 },
 ]
+const reviewCategoryLabels = {
+  correctness: "Correctness",
+  reliability: "Reliability",
+  accessibility: "Accessibility",
+  maintainability: "Maintainability",
+  security: "Security",
+  performance: "Performance",
+  verification: "Verification",
+}
 
 function assetPath(path) {
   return assetVersion ? `${path}?v=${encodeURIComponent(assetVersion)}` : path
@@ -148,6 +157,19 @@ function valueLabel(value, suffix = "") {
   return value ? `${formatNumber.format(value)}${suffix}` : "—"
 }
 
+function scoreLabel(value) {
+  if (!Number.isFinite(value)) return "N/A"
+  return Number.isInteger(value) ? String(value) : value.toFixed(2).replace(/0+$/, "").replace(/\.$/, "")
+}
+
+function findingSummary(review) {
+  if (!review) return ""
+  return ["critical", "high", "medium", "low"]
+    .filter((severity) => review.findingCounts?.[severity])
+    .map((severity) => `${review.findingCounts[severity]} ${severity}`)
+    .join(" · ") || "No actionable findings"
+}
+
 function fact(label, value) {
   const row = document.createElement("div")
   const term = document.createElement("dt")
@@ -203,7 +225,7 @@ function showMatrixTooltip(button, result) {
   heading.className = "matrix-tooltip-heading"
   const eyebrow = document.createElement("span")
   const title = document.createElement("strong")
-  eyebrow.textContent = "Token breakdown"
+  eyebrow.textContent = result.engineeringReview ? "Tokens + engineering" : "Token breakdown"
   title.textContent = `${result.modelLabel} · ${result.effortLabel}`
   heading.append(eyebrow, title)
 
@@ -224,8 +246,41 @@ function showMatrixTooltip(button, result) {
   }
 
   const total = document.createElement("p")
+  total.className = "matrix-tooltip-total"
   total.innerHTML = `<span>Shown total</span><strong>${valueLabel(totalTokens(result.usage))}</strong>`
-  elements.matrixTooltip.replaceChildren(heading, breakdown, total)
+  const contents = [heading, breakdown, total]
+  if (result.engineeringReview) {
+    const review = document.createElement("section")
+    review.className = "matrix-tooltip-review"
+    const reviewHeading = document.createElement("div")
+    const reviewLabel = document.createElement("span")
+    const reviewScore = document.createElement("strong")
+    reviewLabel.textContent = "Engineering review"
+    reviewScore.textContent = result.engineeringReview.status === "failed"
+      ? "Unavailable"
+      : `${scoreLabel(result.engineeringReview.totalScore)} / 100`
+    reviewHeading.append(reviewLabel, reviewScore)
+    const categories = document.createElement("dl")
+    categories.className = "matrix-tooltip-categories"
+    for (const category of result.engineeringReview.categories) {
+      const row = document.createElement("div")
+      const term = document.createElement("dt")
+      const detail = document.createElement("dd")
+      term.textContent = reviewCategoryLabels[category.id] ?? category.id
+      detail.textContent = `${category.score}/4`
+      row.append(term, detail)
+      categories.append(row)
+    }
+    const findings = document.createElement("p")
+    findings.textContent = result.engineeringReview.status === "failed"
+      ? result.engineeringReview.failure?.message ?? "The frozen review attempt did not complete."
+      : findingSummary(result.engineeringReview)
+    review.append(reviewHeading)
+    if (result.engineeringReview.categories.length) review.append(categories)
+    review.append(findings)
+    contents.push(review)
+  }
+  elements.matrixTooltip.replaceChildren(...contents)
   elements.matrixTooltip.hidden = false
 
   window.requestAnimationFrame(() => {
@@ -317,10 +372,12 @@ function renderResult() {
     fact("Allowance reference", usage.allowance == null ? "—" : `${formatNumber.format(usage.allowance)} credits`),
     fact("Estimated plan share", usage.share == null ? subscriptionRange : usage.value),
     fact("Rate card checked", "Jul 14, 2026"),
+    fact("Engineering review", result.engineeringReview ? result.engineeringReview.status === "failed" ? "Unavailable" : `${scoreLabel(result.engineeringReview.totalScore)} / 100` : "Not reviewed"),
+    fact("Review instrument", result.engineeringReview ? `${result.engineeringReview.reviewer.model} · ${result.engineeringReview.reviewer.effort}` : "Not reviewed"),
   )
 
   elements.links.replaceChildren()
-  for (const [label, url] of [["Generated source ↗", result.sourceUrl], ["Final response ↗", result.finalUrl]]) {
+  for (const [label, url] of [["Generated source ↗", result.sourceUrl], ["Final response ↗", result.finalUrl], ["Engineering review ↗", result.reviewUrl]]) {
     if (!url) continue
     const link = document.createElement("a")
     link.href = url
@@ -348,20 +405,36 @@ function matrixCell(result, count) {
   button.className = "matrix-cell"
   button.dataset.runId = result.runId
   button.setAttribute("aria-pressed", String(result.runId === state.result.runId))
+  const reviewAria = result.engineeringReview
+    ? result.engineeringReview.status === "failed"
+      ? " Engineering review unavailable."
+      : ` Engineering review ${scoreLabel(result.engineeringReview.totalScore)} out of 100.`
+    : ""
   button.setAttribute(
     "aria-label",
-    `${result.modelLabel}, ${result.effortLabel}. ${valueLabel(totalTokens(result.usage))} shown tokens. Input ${valueLabel(result.usage?.inputTokens)}, cached input ${valueLabel(result.usage?.cachedInputTokens)}, output ${valueLabel(result.usage?.outputTokens)}, reasoning ${valueLabel(result.usage?.reasoningOutputTokens)}.`,
+    `${result.modelLabel}, ${result.effortLabel}. ${valueLabel(totalTokens(result.usage))} shown tokens. Input ${valueLabel(result.usage?.inputTokens)}, cached input ${valueLabel(result.usage?.cachedInputTokens)}, output ${valueLabel(result.usage?.outputTokens)}, reasoning ${valueLabel(result.usage?.reasoningOutputTokens)}.${reviewAria}`,
   )
   if (result.runId === state.result.runId) button.classList.add("selected")
 
+  const header = document.createElement("span")
+  header.className = "matrix-cell-header"
   const top = document.createElement("span")
   top.className = "matrix-cell-top"
   top.textContent = result.status === "failed" ? "Failed" : count > 1 ? `${count} runs` : statusLabel(result.status)
+  header.append(top)
+  if (result.engineeringReview) {
+    const score = document.createElement("span")
+    score.className = "matrix-score"
+    score.textContent = result.engineeringReview.status === "failed" ? "N/A" : scoreLabel(result.engineeringReview.totalScore)
+    if (result.engineeringReview.status === "failed") score.classList.add("unavailable")
+    score.setAttribute("aria-hidden", "true")
+    header.append(score)
+  }
   const primary = document.createElement("strong")
   primary.textContent = totalTokens(result.usage) ? `${formatNumber.format(totalTokens(result.usage))} tokens` : `${result.codeStats?.sourceLines ?? "—"} source lines`
   const secondary = document.createElement("span")
   secondary.textContent = `${durationLabel(result.durationMs)} · ${result.codeStats?.sourceFiles ?? "—"} files`
-  button.append(top, primary, secondary)
+  button.append(header, primary, secondary)
   button.addEventListener("mouseenter", () => showMatrixTooltip(button, result))
   button.addEventListener("mouseleave", hideMatrixTooltip)
   button.addEventListener("focus", () => showMatrixTooltip(button, result))

@@ -72,15 +72,39 @@ for (const metadataFile of metadataFiles) {
 
   const repositoryPath = path.relative(root, runDirectory).split(path.sep).join("/")
   const repositoryUrl = "https://github.com/oezguercelebi/codex-model-effort-lab"
+  const reviewFile = path.join(runDirectory, "code-review.json")
+  const review = (await exists(reviewFile)) ? JSON.parse(await readFile(reviewFile, "utf8")) : null
+  const engineeringReview = review
+    ? {
+        benchmarkId: review.reviewBenchmarkId,
+        status: review.reviewStatus,
+        reviewedAt: review.reviewedAt,
+        totalScore: review.totalScore ?? null,
+        categories: review.categories ?? [],
+        findingCounts: Object.fromEntries(
+          ["critical", "high", "medium", "low", "note"].map((severity) => [
+            severity,
+            (review.findings ?? []).filter((finding) => finding.severity === severity).length,
+          ]),
+        ),
+        recommendation: review.recommendation ?? null,
+        reviewer: review.reviewer,
+        failure: review.failure ?? null,
+      }
+    : null
 
   results.push({
     ...metadata,
+    engineeringReview,
     previewPath: `./previews/${encodeURIComponent(runId)}/index.html`,
     sourceUrl: (await exists(path.join(runDirectory, "source")))
       ? `${repositoryUrl}/tree/main/${repositoryPath}/source`
       : null,
     finalUrl: (await exists(path.join(runDirectory, "final.md")))
       ? `${repositoryUrl}/blob/main/${repositoryPath}/final.md`
+      : null,
+    reviewUrl: review
+      ? `${repositoryUrl}/blob/main/${repositoryPath}/code-review.json`
       : null,
   })
 }

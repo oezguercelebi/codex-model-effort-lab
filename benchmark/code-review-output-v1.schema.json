@@ -1,0 +1,103 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://oezguercelebi.github.io/codex-model-effort-lab/benchmark/code-review-output-v1.schema.json",
+  "title": "Weekender code review model output v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "reviewBenchmarkId",
+    "findings",
+    "categories",
+    "strengths",
+    "risks",
+    "recommendation"
+  ],
+  "properties": {
+    "schemaVersion": { "type": "integer", "const": 1 },
+    "reviewBenchmarkId": { "type": "string", "const": "weekender-code-review-v1" },
+    "findings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "severity",
+          "category",
+          "title",
+          "file",
+          "lineStart",
+          "lineEnd",
+          "evidence",
+          "impact",
+          "remediation"
+        ],
+        "properties": {
+          "severity": {
+            "type": "string",
+            "enum": ["critical", "high", "medium", "low", "note"]
+          },
+          "category": {
+            "type": "string",
+            "enum": [
+              "correctness",
+              "reliability",
+              "accessibility",
+              "maintainability",
+              "security",
+              "performance",
+              "verification"
+            ]
+          },
+          "title": { "type": "string", "minLength": 1 },
+          "file": { "type": "string", "pattern": "^source/" },
+          "lineStart": { "type": "integer", "minimum": 1 },
+          "lineEnd": { "type": "integer", "minimum": 1 },
+          "evidence": { "type": "string", "minLength": 1 },
+          "impact": { "type": "string", "minLength": 1 },
+          "remediation": { "type": "string", "minLength": 1 }
+        }
+      }
+    },
+    "categories": {
+      "type": "array",
+      "minItems": 7,
+      "maxItems": 7,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "evidence"],
+        "properties": {
+          "id": {
+            "type": "string",
+            "enum": [
+              "correctness",
+              "reliability",
+              "accessibility",
+              "maintainability",
+              "security",
+              "performance",
+              "verification"
+            ]
+          },
+          "evidence": {
+            "type": "array",
+            "minItems": 1,
+            "items": { "type": "string", "minLength": 1 }
+          }
+        }
+      }
+    },
+    "strengths": {
+      "type": "array",
+      "maxItems": 5,
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "risks": {
+      "type": "array",
+      "maxItems": 5,
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "recommendation": { "type": "string", "minLength": 1 }
+  }
+}
