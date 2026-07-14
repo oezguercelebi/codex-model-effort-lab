@@ -13,7 +13,7 @@ The benchmark is not primarily a test suite or an abstract model score. The fini
 - `weekender-v1` prompt and starter are frozen.
 - The static comparison site includes one permanent hand-built Default plus captured GPT-5.5, Luna, Terra, and Sol results.
 - The local runner has passed an end-to-end no-model dry run, including desktop and mobile screenshot capture.
-- Light-, Medium-, and High-effort runs for GPT-5.5, Luna, Terra, and Sol have been published.
+- Light-, Medium-, High-, and Extra-High-effort runs for GPT-5.5, Luna, Terra, and Sol have been published.
 
 ## The experience
 
@@ -160,9 +160,10 @@ Start with a small, understandable matrix rather than every possible combination
 
 | Model | Efforts |
 | --- | --- |
-| Luna | Light, Medium, High |
-| Terra | Light, Medium, High |
-| Sol | Light, Medium, High |
+| GPT-5.5 | Light, Medium, High, Extra High |
+| Luna | Light, Medium, High, Extra High |
+| Terra | Light, Medium, High, Extra High |
+| Sol | Light, Medium, High, Extra High |
 
 Run each combination at least three times eventually, because model output varies. For the first public prototype, one run per combination is sufficient to prove the experience.
 

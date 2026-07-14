@@ -21,14 +21,18 @@
     { "model": "gpt-5.5", "effort": "low", "effortLabel": "Light" },
     { "model": "gpt-5.5", "effort": "medium", "effortLabel": "Medium" },
     { "model": "gpt-5.5", "effort": "high", "effortLabel": "High" },
+    { "model": "gpt-5.5", "effort": "xhigh", "effortLabel": "Extra High" },
     { "model": "gpt-5.6-luna", "effort": "low", "effortLabel": "Light" },
     { "model": "gpt-5.6-luna", "effort": "medium", "effortLabel": "Medium" },
     { "model": "gpt-5.6-luna", "effort": "high", "effortLabel": "High" },
+    { "model": "gpt-5.6-luna", "effort": "xhigh", "effortLabel": "Extra High" },
     { "model": "gpt-5.6-terra", "effort": "low", "effortLabel": "Light" },
     { "model": "gpt-5.6-terra", "effort": "medium", "effortLabel": "Medium" },
     { "model": "gpt-5.6-terra", "effort": "high", "effortLabel": "High" },
+    { "model": "gpt-5.6-terra", "effort": "xhigh", "effortLabel": "Extra High" },
     { "model": "gpt-5.6-sol", "effort": "low", "effortLabel": "Light" },
     { "model": "gpt-5.6-sol", "effort": "medium", "effortLabel": "Medium" },
-    { "model": "gpt-5.6-sol", "effort": "high", "effortLabel": "High" }
+    { "model": "gpt-5.6-sol", "effort": "high", "effortLabel": "High" },
+    { "model": "gpt-5.6-sol", "effort": "xhigh", "effortLabel": "Extra High" }
   ]
 }

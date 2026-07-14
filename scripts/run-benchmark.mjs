@@ -8,7 +8,7 @@ import { captureScreenshots } from "./capture-screenshots.mjs"
 
 const root = path.resolve(import.meta.dirname, "..")
 const benchmark = JSON.parse(await readFile(path.join(root, "benchmark", "v1.json"), "utf8"))
-const validEfforts = new Set(["low", "medium", "high"])
+const validEfforts = new Set(["low", "medium", "high", "xhigh"])
 
 function parseArgs(argv) {
   const options = { dryRun: false, recordSubscription: false }
@@ -43,7 +43,9 @@ function modelLabel(model) {
 }
 
 function effortLabel(effort) {
-  return effort === "low" ? "Light" : effort.charAt(0).toUpperCase() + effort.slice(1)
+  if (effort === "low") return "Light"
+  if (effort === "xhigh") return "Extra High"
+  return effort.charAt(0).toUpperCase() + effort.slice(1)
 }
 
 function asPercent(value, label) {
@@ -212,7 +214,7 @@ async function writeFailurePreview(directory, title, detail) {
 const options = parseArgs(process.argv.slice(2))
 if (!options.model) throw new Error("Missing --model")
 if (!options.effort || !validEfforts.has(options.effort)) {
-  throw new Error("Use --effort low, medium, or high")
+  throw new Error("Use --effort low, medium, high, or xhigh")
 }
 
 const listedConfiguration = benchmark.configurations.some(
