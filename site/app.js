@@ -2,6 +2,7 @@ const state = {
   results: [],
   result: null,
   viewport: "desktop",
+  planId: "5x",
   models: [],
 }
 
@@ -27,6 +28,8 @@ const elements = {
   noticeCopy: document.querySelector("#notice-copy"),
   promptDialog: document.querySelector("#prompt-dialog"),
   promptContent: document.querySelector("#prompt-content"),
+  planCycle: document.querySelector("#plan-cycle"),
+  planMultiplier: document.querySelector("#plan-multiplier"),
 }
 
 const formatNumber = new Intl.NumberFormat("en", { notation: "compact", maximumFractionDigits: 1 })
@@ -39,11 +42,11 @@ const creditRates = {
   "gpt-5.6-terra": { input: 62.5, cachedInput: 6.25, output: 375 },
   "gpt-5.6-sol": { input: 125, cachedInput: 12.5, output: 750 },
 }
-const planAllowances = {
-  Plus: 3000,
-  "Pro 5x": 15000,
-  "Pro 20x": 60000,
-}
+const plans = [
+  { id: "plus", label: "Plus", multiplier: "1×", allowance: 3000 },
+  { id: "5x", label: "Pro 5x", multiplier: "5×", allowance: 15000 },
+  { id: "20x", label: "Pro 20x", multiplier: "20×", allowance: 60000 },
+]
 
 function assetPath(path) {
   return assetVersion ? `${path}?v=${encodeURIComponent(assetVersion)}` : path
@@ -99,15 +102,15 @@ function estimatedCredits(result) {
 
 function planUsage(result) {
   const credits = estimatedCredits(result)
-  const planLabel = result.subscription?.planLabel
-  const allowance = planAllowances[planLabel]
+  const plan = plans.find((item) => item.id === state.planId) ?? plans[1]
+  const allowance = plan.allowance
   if (credits != null && allowance) {
     const share = (credits / allowance) * 100
     return {
       allowance,
       credits,
       detail: `≈ ${credits.toFixed(1)} of ${formatNumber.format(allowance)} credits`,
-      label: `Plan usage · ${planLabel}`,
+      label: `Plan usage · ${plan.label}`,
       share,
       value: `${share < 0.01 ? "<0.01" : share.toFixed(2)}%`,
     }
@@ -244,10 +247,12 @@ function renderResult() {
     fact("Source lines", valueLabel(result.codeStats?.sourceLines)),
     fact("Codex", result.codexVersion),
     fact("Captured", dateLabel(result.recordedAt)),
-    fact("Plan", result.subscription?.planLabel),
+    fact("Capture plan", result.subscription?.planLabel),
+    fact("Selected plan", plans.find((item) => item.id === state.planId)?.label),
     fact("Estimated credits", usage.credits == null ? "—" : `≈ ${usage.credits.toFixed(2)}`),
     fact("Allowance reference", usage.allowance == null ? "—" : `${formatNumber.format(usage.allowance)} credits`),
     fact("Estimated plan share", usage.share == null ? subscriptionRange : usage.value),
+    fact("Rate card checked", "Jul 14, 2026"),
   )
 
   elements.links.replaceChildren()
@@ -344,6 +349,7 @@ function setQuery() {
   const url = new URL(window.location.href)
   url.searchParams.set("result", state.result?.runId ?? "")
   url.searchParams.set("viewport", state.viewport)
+  url.searchParams.set("plan", state.planId)
   history.replaceState(null, "", url)
 }
 
@@ -353,6 +359,13 @@ function render() {
   renderMatrix()
   document.querySelectorAll("[data-viewport]").forEach((button) => {
     button.classList.toggle("active", button.dataset.viewport === state.viewport)
+  })
+  const plan = plans.find((item) => item.id === state.planId) ?? plans[1]
+  elements.planMultiplier.textContent = plan.multiplier
+  elements.planCycle.setAttribute("aria-label", `Plan ${plan.multiplier}, ${plan.label}. Activate to select the next plan.`)
+  elements.planCycle.title = `${plan.label} · ${formatNumber.format(plan.allowance)} credits. Click to change.`
+  document.querySelectorAll(".allowance-guide [data-plan]").forEach((card) => {
+    card.classList.toggle("current", card.dataset.plan === state.planId)
   })
   setQuery()
 }
@@ -394,6 +407,9 @@ async function initialize() {
   state.viewport = ["desktop", "tablet", "mobile"].includes(query.get("viewport"))
     ? query.get("viewport")
     : "desktop"
+  state.planId = plans.some((plan) => plan.id === query.get("plan"))
+    ? query.get("plan")
+    : plans.find((plan) => plan.label === state.result.subscription?.planLabel)?.id ?? "5x"
   render()
 }
 
@@ -417,6 +433,12 @@ document.querySelectorAll("[data-viewport]").forEach((button) => {
     state.viewport = button.dataset.viewport
     render()
   })
+})
+
+elements.planCycle.addEventListener("click", () => {
+  const currentIndex = plans.findIndex((plan) => plan.id === state.planId)
+  state.planId = plans[(currentIndex + 1) % plans.length].id
+  render()
 })
 
 document.querySelector("#copy-link").addEventListener("click", async (event) => {
