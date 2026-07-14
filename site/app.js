@@ -30,8 +30,8 @@ const elements = {
 }
 
 const formatNumber = new Intl.NumberFormat("en", { notation: "compact", maximumFractionDigits: 1 })
-const effortOrder = ["reference", "low", "medium", "high", "xhigh", "max", "sample"]
-const modelOrder = ["reference-default", "gpt-5.6-luna", "gpt-5.6-terra", "gpt-5.6-sol"]
+const effortOrder = ["default", "low", "medium", "high", "xhigh", "max"]
+const modelOrder = ["default", "gpt-5.6-luna", "gpt-5.6-terra", "gpt-5.6-sol"]
 
 function uniqueBy(items, key) {
   return [...new Map(items.map((item) => [key(item), item])).values()]
@@ -110,7 +110,7 @@ function floatingMetric(label, value, accent = false) {
 }
 
 function statusLabel(status) {
-  if (status === "reference") return "Default reference"
+  if (status === "default") return "Default"
   if (status === "published") return "Captured run"
   if (status === "failed") return "Failed run"
   return "Sample"
@@ -153,7 +153,7 @@ function renderResult() {
   elements.status.textContent = statusLabel(result.status)
   if (result.status === "published") elements.status.classList.add("real")
   if (result.status === "failed") elements.status.classList.add("failed")
-  if (result.status === "reference") elements.status.classList.add("reference")
+  if (result.status === "default") elements.status.classList.add("reference")
 
   if (elements.frame.getAttribute("src") !== result.previewPath) {
     elements.frame.src = result.previewPath
@@ -195,11 +195,8 @@ function renderResult() {
     elements.links.append(link)
   }
 
-  elements.notice.hidden = !["reference", "sample"].includes(result.status)
-  if (result.status === "reference") {
-    elements.noticeTitle.textContent = "Permanent default"
-    elements.noticeCopy.textContent = "This hand-built reference is preserved before the model runs and will not be replaced."
-  } else if (result.status === "sample") {
+  elements.notice.hidden = result.status !== "sample"
+  if (result.status === "sample") {
     elements.noticeTitle.textContent = "Interface preview"
     elements.noticeCopy.textContent = "This hand-built sample is not a Codex benchmark result."
   }

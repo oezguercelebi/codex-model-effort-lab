@@ -11,9 +11,9 @@ The benchmark is not primarily a test suite or an abstract model score. The fini
 ## Current status
 
 - `weekender-v1` prompt and starter are frozen.
-- The static comparison site is implemented with one permanent hand-built default reference and one clearly labeled interface sample.
+- The static comparison site includes one permanent hand-built Default plus captured Luna, Terra, and Sol results.
 - The local runner has passed an end-to-end no-model dry run, including desktop and mobile screenshot capture.
-- No real Codex benchmark result has been published yet.
+- Light- and Medium-effort runs for Luna, Terra, and Sol have been published.
 
 ## The experience
 

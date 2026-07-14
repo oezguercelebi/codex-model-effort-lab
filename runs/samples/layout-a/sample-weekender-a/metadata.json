@@ -2,13 +2,13 @@
   "schemaVersion": 1,
   "benchmarkId": "weekender-v1",
   "runId": "sample-weekender-a",
-  "status": "reference",
+  "status": "default",
   "isDefault": true,
   "title": "Weekender — Editorial",
-  "model": "reference-default",
-  "modelLabel": "Default reference",
-  "effort": "reference",
-  "effortLabel": "Hand-built",
+  "model": "default",
+  "modelLabel": "Default",
+  "effort": "default",
+  "effortLabel": "Default",
   "durationMs": 0,
   "previewDirectory": "preview",
   "usage": {
@@ -24,5 +24,5 @@
   "subscription": {
     "observedChangePercent": null
   },
-  "notes": "Permanent hand-built default preserved as a visual reference. This is not a Codex result."
+  "notes": "Permanent hand-built default. This is not a Codex result."
 }
