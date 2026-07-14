@@ -123,9 +123,10 @@ function setSlider(slider, ticks, items, currentIndex, labelKey) {
   slider.disabled = items.length < 2
   slider.style.setProperty("--slider-progress", maximum ? `${(currentIndex / maximum) * 100}%` : "0%")
   ticks.replaceChildren(
-    ...items.map((item) => {
+    ...items.map((item, index) => {
       const tick = document.createElement("span")
       tick.textContent = item[labelKey]
+      tick.style.left = maximum ? `${(index / maximum) * 100}%` : "50%"
       return tick
     }),
   )
