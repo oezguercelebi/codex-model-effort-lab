@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Compare complete one-prompt Codex builds across models and reasoning efforts."
+    />
+    <title>Codex Build Arena</title>
+    <link rel="stylesheet" href="./styles.css" />
+    <script type="module" src="./app.js"></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="./" aria-label="Codex Build Arena home">
+        <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span>
+        <span>Build Arena</span>
+      </a>
+      <nav aria-label="Primary navigation">
+        <a href="#compare">Compare</a>
+        <a href="#method">Method</a>
+        <a
+          class="github-link"
+          href="https://github.com/oezguercelebi/codex-model-effort-lab"
+          >GitHub <span aria-hidden="true">↗</span></a
+        >
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="eyebrow"><span></span> One prompt. Different decisions.</div>
+        <h1 id="hero-title">See what more<br /><em>thinking</em> buys you.</h1>
+        <p>
+          The same brief. The same starter. No follow-ups. Compare the finished apps—not a
+          leaderboard—and decide which model and effort earned its usage.
+        </p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="#compare">Open the comparison</a>
+          <button class="button button-quiet" id="prompt-open" type="button">
+            Read the exact prompt <span aria-hidden="true">→</span>
+          </button>
+        </div>
+      </section>
+
+      <section class="principles" aria-label="Benchmark guarantees">
+        <article><span>01</span><strong>One frozen prompt</strong><p>Every run receives identical words.</p></article>
+        <article><span>02</span><strong>Zero steering</strong><p>No repairs, hints, or second chances.</p></article>
+        <article><span>03</span><strong>Complete builds</strong><p>Use the actual result in your browser.</p></article>
+        <article><span>04</span><strong>Usage attached</strong><p>Tokens and time sit beside the outcome.</p></article>
+      </section>
+
+      <section class="arena-section" id="compare" aria-labelledby="compare-title">
+        <div class="section-heading">
+          <div>
+            <div class="eyebrow"><span></span> The arena</div>
+            <h2 id="compare-title">Build against build.</h2>
+          </div>
+          <div class="viewport-control" aria-label="Preview viewport">
+            <button type="button" data-viewport="desktop" class="active">Desktop</button>
+            <button type="button" data-viewport="tablet">Tablet</button>
+            <button type="button" data-viewport="mobile">Mobile</button>
+          </div>
+        </div>
+
+        <div class="demo-notice" id="demo-notice" hidden>
+          <strong>Interface preview</strong>
+          <span>These two builds are hand-made samples. Real Codex runs have not been captured yet.</span>
+        </div>
+
+        <div class="compare-toolbar">
+          <label>
+            <span>Build A</span>
+            <select id="left-select" aria-label="Select first build"></select>
+          </label>
+          <button class="swap-button" id="swap-builds" type="button" aria-label="Swap builds">⇄</button>
+          <label>
+            <span>Build B</span>
+            <select id="right-select" aria-label="Select second build"></select>
+          </label>
+          <button class="share-button" id="copy-link" type="button">Copy comparison link</button>
+        </div>
+
+        <div class="comparison-grid" id="comparison-grid">
+          <article class="result-panel" data-side="left"></article>
+          <article class="result-panel" data-side="right"></article>
+        </div>
+      </section>
+
+      <section class="method-section" id="method" aria-labelledby="method-title">
+        <div>
+          <div class="eyebrow eyebrow-light"><span></span> How to read this</div>
+          <h2 id="method-title">Your eyes are the evaluator.</h2>
+        </div>
+        <div class="method-copy">
+          <p>
+            Quality is not reduced to a synthetic score. Open both apps, change the viewport,
+            click through the flows, and notice what each build prioritized or forgot.
+          </p>
+          <ul>
+            <li><span>Look for</span> hierarchy, polish, useful states, and coherent decisions.</li>
+            <li><span>Then check</span> whether extra time and tokens created visible value.</li>
+            <li><span>Remember</span> one run is evidence, not a universal model ranking.</li>
+          </ul>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <span>Codex Build Arena</span>
+      <span>Open runs. Visible tradeoffs.</span>
+    </footer>
+
+    <dialog id="prompt-dialog">
+      <div class="dialog-heading">
+        <div><span>Frozen brief</span><h2>Weekender v1</h2></div>
+        <button id="prompt-close" type="button" aria-label="Close prompt">×</button>
+      </div>
+      <div id="prompt-content" class="prompt-content"></div>
+    </dialog>
+
+    <template id="result-template">
+      <div class="result-heading">
+        <div>
+          <div class="result-kicker"></div>
+          <h3></h3>
+        </div>
+        <span class="status-pill"></span>
+      </div>
+      <div class="preview-shell"><iframe title="Generated app preview" sandbox="allow-scripts allow-forms"></iframe></div>
+      <div class="metrics" aria-label="Run metrics"></div>
+      <details>
+        <summary>Run notes <span aria-hidden="true">+</span></summary>
+        <p class="run-notes"></p>
+        <dl class="run-facts"></dl>
+        <div class="run-links"></div>
+      </details>
+    </template>
+  </body>
+</html>

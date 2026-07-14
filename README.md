@@ -8,6 +8,13 @@ The benchmark runs are performed and captured by this repository's maintainers. 
 
 The benchmark is not primarily a test suite or an abstract model score. The finished app is the benchmark result.
 
+## Current status
+
+- `weekender-v1` prompt and starter are frozen.
+- The static comparison site is implemented with two clearly labeled hand-built samples.
+- The local runner has passed an end-to-end no-model dry run, including desktop and mobile screenshot capture.
+- No real Codex benchmark result has been published yet.
+
 ## The experience
 
 The public site has one page:
@@ -57,26 +64,11 @@ The comparison site reads only the committed manifest and files. Hosting can the
 
 A published run is immutable. If Codex, the prompt, starter, or run policy changes, a new run ID or benchmark version is created rather than replacing the old evidence.
 
-## Proposed first prompt
+## Frozen first prompt
 
 The first prompt should leave enough room for product, design, and engineering decisions to become visible. It should describe the desired outcome without prescribing the layout or implementation.
 
-```text
-Build a polished responsive web app called Weekender that helps a group of
-friends choose and plan a weekend trip.
-
-Users should be able to compare destinations, understand the expected budget
-and travel time, vote on their favorites, and view a simple itinerary for the
-winning destination. Use realistic sample data so the complete experience can
-be explored without signing in or connecting a backend.
-
-The result should feel like a finished consumer product, work well on desktop
-and mobile, and include the interactions and states you believe are important.
-
-Implement the app in this repository. Run the relevant checks and leave it in
-a state where it can be started and previewed locally. Do not ask follow-up
-questions; make sensible product and design decisions yourself.
-```
+The exact versioned prompt is [`prompt/weekender-v1.md`](prompt/weekender-v1.md). It asks Codex to build a polished responsive group weekend-planning app, using only the installed dependencies and no external services. The run must finish with `npm run check` passing and receives no follow-up questions or human steering.
 
 Why this prompt works:
 
@@ -87,7 +79,7 @@ Why this prompt works:
 - It is self-contained and does not require accounts, APIs, or private data.
 - A visitor can evaluate it within a few minutes.
 
-The prompt is provisional. It should be tested once with a baseline configuration before the full matrix is run, then frozen as version 1.
+Changing this prompt, the starter, or the policy creates a new benchmark version rather than silently changing `weekender-v1`.
 
 ## What the comparison page shows
 
@@ -117,10 +109,8 @@ Useful controls:
 - effort selector
 - side-by-side comparison toggle
 - desktop, tablet, and mobile viewport buttons
-- synchronize navigation and viewport between both previews
 - show prompt
 - show run details
-- open preview in a separate tab
 
 ## Quality is visible, not assumed
 
@@ -180,9 +170,12 @@ Max can be added later as a separate high-compute option. Ultra should be labele
 ## Repository shape
 
 ```text
+benchmark/
+  v1.json
 prompt/
-  v1.md
+  weekender-v1.md
 starter/
+  package-lock.json
   package.json
   src/
 runs/
@@ -199,14 +192,16 @@ site/
   index.html
   app.js
   styles.css
-  results-manifest.json
 scripts/
+  build-site.mjs
+  capture-screenshots.mjs
+  run-benchmark.mjs
   run-benchmark.sh
-  collect-result.mjs
-  sanitize-result.mjs
+.github/workflows/
+  pages.yml
 ```
 
-Each generated app can be built to static files and hosted below a unique path, allowing the comparison page to load it in an isolated iframe.
+`scripts/build-site.mjs` scans committed run metadata, builds `_site/results-manifest.json`, and copies every generated preview below a unique URL for isolated iframes.
 
 Raw JSONL can be retained locally for verification, but the public repository should contain only a sanitized event summary. Raw agent traces can contain private machine details or information that is unnecessary for comparing the result.
 
@@ -214,28 +209,71 @@ Raw JSONL can be retained locally for verification, but the public repository sh
 
 ```json
 {
-  "schema_version": 1,
-  "prompt_version": "weekender-v1",
+  "schemaVersion": 1,
+  "benchmarkId": "weekender-v1",
+  "runId": "gpt-5-6-sol-high-20260714T120000Z",
+  "status": "published",
   "model": "exact-model-id",
   "effort": "medium",
-  "run_id": "2026-07-14-001",
-  "codex_version": "record-at-run-time",
-  "duration_ms": 0,
-  "preview_path": "preview/index.html",
+  "codexVersion": "record-at-run-time",
+  "durationMs": 0,
   "usage": {
-    "input_tokens": 0,
-    "cached_input_tokens": 0,
-    "output_tokens": 0,
-    "reasoning_output_tokens": 0
+    "inputTokens": 0,
+    "cachedInputTokens": 0,
+    "outputTokens": 0,
+    "reasoningOutputTokens": 0
   },
-  "subscription_observation": {
-    "plan_label": "Pro 5x",
-    "window_label": "weekly",
-    "remaining_before_percent": null,
-    "remaining_after_percent": null
+  "subscription": {
+    "planLabel": "Pro 5x",
+    "windowLabel": "weekly",
+    "remainingBeforePercent": null,
+    "remainingAfterPercent": null,
+    "observedChangePercent": null
   }
 }
 ```
+
+## Maintainer workflow
+
+Install the small root-level tooling dependency and verify the complete capture pipeline without calling a model:
+
+```bash
+npm ci
+npm run dry-run
+```
+
+Capture a real run:
+
+```bash
+./scripts/run-benchmark.sh \
+  --model gpt-5.6-sol \
+  --effort high \
+  --record-subscription \
+  --plan-label "Pro 5x" \
+  --window-label weekly
+```
+
+The runner:
+
+1. installs the frozen starter from its lockfile;
+2. creates a clean Git repository;
+3. invokes one ephemeral `codex exec --json` task with user configuration and rules ignored;
+4. stores raw JSONL and stderr only in ignored private directories;
+5. builds the generated app and preserves failures without retrying;
+6. publishes sanitized metadata, source, preview, final response, and screenshots under `runs/`.
+
+Use `CODEX_BIN=/path/to/codex` when a non-default CLI installation is required. Screenshot capture uses local Chrome or Chromium; set `CHROME_BIN` when it is installed in a non-standard location.
+
+Assemble the static gallery locally:
+
+```bash
+npm run build:site
+python3 -m http.server 4173 --directory _site
+```
+
+## GitHub Pages
+
+The Pages workflow assembles and deploys `_site` on every push to `main`. In the GitHub repository settings, choose **GitHub Actions** as the Pages source once; no server, database, API key, or runtime model access is used by the public page.
 
 ## Fair-run rules
 

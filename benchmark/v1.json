@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "id": "weekender-v1",
+  "status": "frozen",
+  "prompt": "prompt/weekender-v1.md",
+  "starter": "starter",
+  "runtime": {
+    "node": "22",
+    "packageManager": "npm"
+  },
+  "policy": {
+    "freshTask": true,
+    "followUpMessages": 0,
+    "attemptsPerPublishedRun": 1,
+    "sandbox": "workspace-write",
+    "networkForGeneratedCommands": false,
+    "maxDurationMinutes": 30,
+    "publishFailures": true
+  },
+  "configurations": [
+    { "model": "gpt-5.6-luna", "effort": "low", "effortLabel": "Light" },
+    { "model": "gpt-5.6-luna", "effort": "medium", "effortLabel": "Medium" },
+    { "model": "gpt-5.6-luna", "effort": "high", "effortLabel": "High" },
+    { "model": "gpt-5.6-terra", "effort": "low", "effortLabel": "Light" },
+    { "model": "gpt-5.6-terra", "effort": "medium", "effortLabel": "Medium" },
+    { "model": "gpt-5.6-terra", "effort": "high", "effortLabel": "High" },
+    { "model": "gpt-5.6-sol", "effort": "low", "effortLabel": "Light" },
+    { "model": "gpt-5.6-sol", "effort": "medium", "effortLabel": "Medium" },
+    { "model": "gpt-5.6-sol", "effort": "high", "effortLabel": "High" }
+  ]
+}
+

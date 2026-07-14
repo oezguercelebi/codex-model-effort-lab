@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "benchmarkId": "weekender-v1",
+  "runId": "sample-weekender-a",
+  "status": "sample",
+  "title": "Weekender — Editorial",
+  "model": "sample-a",
+  "modelLabel": "Sample build A",
+  "effort": "sample",
+  "effortLabel": "Interface demo",
+  "durationMs": 0,
+  "previewDirectory": "preview",
+  "usage": {
+    "inputTokens": 0,
+    "cachedInputTokens": 0,
+    "outputTokens": 0,
+    "reasoningOutputTokens": 0
+  },
+  "subscription": {
+    "observedChangePercent": null
+  },
+  "notes": "Hand-built sample used only to verify the comparison interface. This is not a Codex result."
+}
+

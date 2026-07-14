@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Weekender sample B</title>
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap");
+    :root{font-family:Manrope,sans-serif;color:#f2f1ef;background:#121716}*{box-sizing:border-box}body{margin:0;min-width:320px;background:#121716}button{font:inherit}
+    header{height:64px;padding:0 4vw;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #29302e}.logo{font-weight:700;letter-spacing:-.04em;display:flex;align-items:center;gap:10px}.logo i{display:grid;place-items:center;width:25px;height:25px;border:1px solid #b6ff64;border-radius:8px;color:#b6ff64;font-style:normal;font-size:12px}.new{border:1px solid #3b4542;background:#1b2220;color:#ddd;border-radius:9px;padding:8px 11px;font-size:10px}
+    main{display:grid;grid-template-columns:1.25fr .75fr;min-height:calc(100vh - 64px)}.map{position:relative;overflow:hidden;min-height:570px;background:radial-gradient(circle at 40% 30%,#324d47 0 5%,transparent 6%),linear-gradient(25deg,#182523,#263d38)}.map::before,.map::after{content:"";position:absolute;inset:-20%;background-image:linear-gradient(#52625e 1px,transparent 1px),linear-gradient(90deg,#52625e 1px,transparent 1px);background-size:60px 60px;opacity:.13;transform:rotate(9deg)}.map::after{background:none;inset:0;background:radial-gradient(circle at center,transparent,#121716 90%)}
+    .map-title{position:absolute;z-index:2;left:5vw;top:50px}.map-title small{color:#9fa9a5;text-transform:uppercase;letter-spacing:.14em;font-size:8px}.map-title h1{font-size:clamp(34px,5vw,65px);line-height:.98;letter-spacing:-.06em;margin:10px 0}.map-title h1 span{color:#b6ff64}.map-title p{color:#a8b0ad;font-size:11px;max-width:310px;line-height:1.6}
+    .route{position:absolute;z-index:2;left:12%;right:12%;top:52%;border-top:2px dashed rgba(182,255,100,.45);transform:rotate(-9deg)}.pin{position:absolute;z-index:3;width:95px;background:#eef0e8;color:#19201e;padding:10px;border-radius:12px;box-shadow:0 12px 30px #0006}.pin::after{content:"";position:absolute;bottom:-7px;left:18px;width:14px;height:14px;background:#eef0e8;transform:rotate(45deg)}.pin strong{display:block;font-size:11px}.pin span{display:block;font-size:8px;color:#65706d;margin-top:3px}.pin.a{left:16%;top:59%}.pin.b{right:17%;top:38%;background:#b6ff64}.pin.b::after{background:#b6ff64}
+    .panel{background:#171c1b;border-left:1px solid #29302e;padding:28px 25px}.panel-head{display:flex;justify-content:space-between;align-items:start}.label{font-size:8px;text-transform:uppercase;letter-spacing:.13em;color:#858f8b}.panel h2{font-size:25px;letter-spacing:-.05em;margin:7px 0 0}.score{width:48px;height:48px;border:1px solid #3c4643;border-radius:50%;display:grid;place-items:center;color:#b6ff64;font-weight:700;font-size:12px}
+    .stats{display:grid;grid-template-columns:repeat(3,1fr);margin:23px 0;border:1px solid #313936;border-radius:12px}.stat{padding:12px 9px;border-right:1px solid #313936}.stat:last-child{border:0}.stat span{display:block;color:#7e8985;font-size:7px;text-transform:uppercase;margin-bottom:6px}.stat strong{font-size:11px}
+    .tabs{display:flex;border-bottom:1px solid #303735;margin-bottom:20px}.tabs button{color:#7d8884;background:transparent;border:0;border-bottom:2px solid transparent;padding:10px 0;margin-right:20px;font-size:9px;cursor:pointer}.tabs button.active{color:white;border-color:#b6ff64}
+    .day{display:none}.day.active{display:block}.event{display:grid;grid-template-columns:45px 1fr;gap:10px;margin-bottom:10px}.time{font-size:9px;color:#7f8986;padding-top:12px}.event-card{background:#202725;border:1px solid #303a37;border-radius:11px;padding:11px}.event-card strong{font-size:10px;display:block}.event-card span{font-size:8px;color:#89928f;display:block;margin-top:4px}.event-card.acid{background:#b6ff64;color:#18201e;border-color:#b6ff64}.event-card.acid span{color:#536246}
+    .vote{margin-top:19px;width:100%;height:43px;border:0;border-radius:10px;background:#b6ff64;color:#19201e;font-weight:700;font-size:10px;cursor:pointer}.vote.done{background:#2d3834;color:#b6ff64}
+    @media(max-width:700px){main{grid-template-columns:1fr}.map{min-height:480px}.panel{border-left:0;border-top:1px solid #29302e}.map-title{left:6vw;top:35px}.pin{width:82px}.pin.a{left:8%}.pin.b{right:8%}}
+  </style>
+</head>
+<body>
+  <header><div class="logo"><i>W</i>Weekender</div><button class="new">+ New trip</button></header>
+  <main>
+    <section class="map"><div class="map-title"><small>Berlin → Copenhagen</small><h1>Two days.<br><span>Zero planning stress.</span></h1><p>Your group’s leading route balances the shortest journey with the most saved places.</p></div><div class="route"></div><div class="pin a"><strong>Berlin Hbf</strong><span>Fri · 18:37</span></div><div class="pin b"><strong>Copenhagen</strong><span>Sat · 06:55</span></div></section>
+    <aside class="panel"><div class="panel-head"><div><div class="label">Winning plan</div><h2>Copenhagen</h2></div><div class="score">92</div></div><div class="stats"><div class="stat"><span>Travel</span><strong>8h 18m</strong></div><div class="stat"><span>Budget</span><strong>€485</strong></div><div class="stat"><span>Votes</span><strong>4 / 5</strong></div></div>
+      <div class="tabs"><button class="active" data-day="sat">Saturday</button><button data-day="sun">Sunday</button></div>
+      <div class="day active" id="sat"><div class="event"><span class="time">09:30</span><div class="event-card acid"><strong>Cardamom buns at Juno</strong><span>Østerbro · saved by Maya</span></div></div><div class="event"><span class="time">11:00</span><div class="event-card"><strong>Designmuseum Danmark</strong><span>2 hours · indoor</span></div></div><div class="event"><span class="time">15:30</span><div class="event-card"><strong>Harbour walk</strong><span>Nyhavn to Reffen</span></div></div></div>
+      <div class="day" id="sun"><div class="event"><span class="time">10:00</span><div class="event-card acid"><strong>Slow breakfast at Atelier</strong><span>Frederiksberg · table saved</span></div></div><div class="event"><span class="time">13:00</span><div class="event-card"><strong>Louisiana Museum</strong><span>40 min by train</span></div></div></div>
+      <button class="vote">Vote for this plan</button>
+    </aside>
+  </main>
+  <script>
+    document.querySelectorAll('.tabs button').forEach(button=>button.addEventListener('click',()=>{document.querySelectorAll('.tabs button,.day').forEach(el=>el.classList.remove('active'));button.classList.add('active');document.querySelector('#'+button.dataset.day).classList.add('active')}));
+    document.querySelector('.vote').addEventListener('click',event=>{event.currentTarget.classList.toggle('done');event.currentTarget.textContent=event.currentTarget.classList.contains('done')?'Vote recorded ✓':'Vote for this plan'});
+  </script>
+</body>
+</html>

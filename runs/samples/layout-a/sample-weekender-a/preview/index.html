@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Weekender sample A</title>
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@1,600&display=swap");
+    :root { font-family: "DM Sans", sans-serif; color: #29251f; background: #f8f4ea; }
+    * { box-sizing: border-box; }
+    body { margin: 0; min-width: 320px; }
+    button { font: inherit; }
+    header { height: 66px; padding: 0 5vw; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid #ded7c9; background: rgba(248,244,234,.92); position: sticky; top: 0; z-index: 5; backdrop-filter: blur(12px); }
+    .logo { font-weight: 700; letter-spacing: -.05em; font-size: 19px; display: flex; align-items: center; gap: 9px; }
+    .logo i { width: 24px; height: 24px; border-radius: 50% 50% 45% 55%; background: #fb715b; display: inline-block; transform: rotate(18deg); }
+    .avatars { display: flex; align-items: center; gap: 8px; font-size: 11px; color: #71695f; }
+    .faces { display: flex; }
+    .face { width: 27px; height: 27px; display: grid; place-items: center; border-radius: 50%; color: white; border: 2px solid #f8f4ea; margin-left: -7px; font-size: 9px; font-weight: 700; }
+    .face:nth-child(1) { background: #455950; }.face:nth-child(2) { background: #c66c52; }.face:nth-child(3) { background: #8b705a; }.face:nth-child(4) { background: #5c7691; }
+    main { padding: 32px 5vw 70px; max-width: 1180px; margin: auto; }
+    .topline { display: flex; align-items: end; justify-content: space-between; gap: 20px; margin-bottom: 26px; }
+    .topline span { text-transform: uppercase; letter-spacing: .13em; font-size: 9px; font-weight: 700; color: #8b8175; }
+    h1 { margin: 7px 0 0; font-size: clamp(32px, 5vw, 57px); line-height: .95; letter-spacing: -.055em; }
+    h1 em { font-family: "Playfair Display", serif; font-weight: 600; color: #fb715b; }
+    .date { border: 1px solid #d8d0c3; border-radius: 100px; padding: 11px 15px; font-size: 11px; white-space: nowrap; }
+    .feature { min-height: 315px; border-radius: 24px; overflow: hidden; position: relative; background: linear-gradient(130deg,#183c39,#4f7668 55%,#e2a875); color: white; padding: 30px; display: flex; align-items: end; box-shadow: 0 18px 45px rgba(64,52,37,.15); }
+    .sun { position: absolute; width: 180px; height: 180px; border-radius: 50%; right: 12%; top: -58px; background: #ffc965; opacity: .92; }
+    .hill { position: absolute; border-radius: 50% 50% 0 0; bottom: -20%; width: 75%; height: 65%; background: #335c4c; }
+    .hill.one { left: -18%; transform: rotate(8deg); }.hill.two { right: -24%; background: #22463f; transform: rotate(-8deg); }
+    .feature-copy { z-index: 2; width: 100%; display: flex; justify-content: space-between; align-items: end; gap: 20px; }
+    .feature small { font-size: 10px; text-transform: uppercase; letter-spacing: .13em; }
+    .feature h2 { font-size: clamp(36px, 5vw, 62px); line-height: 1; letter-spacing: -.05em; margin: 6px 0 0; }
+    .feature-metrics { display: flex; background: rgba(255,255,255,.14); border: 1px solid rgba(255,255,255,.25); border-radius: 15px; backdrop-filter: blur(14px); }
+    .feature-metrics div { padding: 12px 17px; border-right: 1px solid rgba(255,255,255,.22); }
+    .feature-metrics div:last-child { border: 0; }
+    .feature-metrics span { display: block; opacity: .7; text-transform: uppercase; letter-spacing: .1em; font-size: 7px; margin-bottom: 5px; }
+    .feature-metrics strong { font-size: 13px; }
+    .section-title { display: flex; justify-content: space-between; align-items: end; margin: 34px 0 15px; }
+    .section-title h3 { font-size: 20px; letter-spacing: -.04em; margin: 0; }
+    .section-title span { font-size: 10px; color: #897f72; }
+    .cards { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; }
+    .card { border: 1px solid #ddd5c8; border-radius: 17px; padding: 10px; background: #fffdf7; cursor: pointer; text-align: left; color: inherit; transition: transform .2s, border-color .2s; }
+    .card:hover { transform: translateY(-3px); border-color: #a89d8c; }
+    .card.active { border: 2px solid #fb715b; padding: 9px; }
+    .card-art { height: 105px; border-radius: 11px; position: relative; overflow: hidden; }
+    .card:nth-child(1) .card-art { background: linear-gradient(135deg,#f2b85f,#d95a45); }.card:nth-child(2) .card-art { background: linear-gradient(135deg,#9ec9d8,#4b7493); }.card:nth-child(3) .card-art { background: linear-gradient(135deg,#d79262,#7d4235); }
+    .card-art::after { content:""; position:absolute; width:80%; height:80%; border-radius:50% 50% 0 0; background:rgba(43,57,48,.48); bottom:-42%; left:10%; }
+    .card-row { display: flex; justify-content: space-between; align-items: center; padding: 12px 4px 3px; }
+    .card strong { display: block; font-size: 14px; }.card small { color: #8b8175; font-size: 9px; }
+    .votes { background: #edf06d; padding: 6px 8px; border-radius: 100px; font-size: 9px; font-weight: 700; }
+    @media(max-width:650px){
+      main{padding-top:24px}.topline{align-items:start}.date{display:none}.feature{min-height:360px;padding:22px}.feature-copy{display:block}.feature-metrics{margin-top:22px;width:max-content}.feature-metrics div{padding:10px 12px}.cards{grid-template-columns:1fr}.card{display:grid;grid-template-columns:120px 1fr;align-items:center}.card-art{height:85px}.avatars>span{display:none}
+    }
+  </style>
+</head>
+<body>
+  <header><div class="logo"><i></i> weekender</div><div class="avatars"><span>Lisbon crew</span><div class="faces"><b class="face">MO</b><b class="face">JA</b><b class="face">LE</b><b class="face">+2</b></div></div></header>
+  <main>
+    <div class="topline"><div><span>Decision board · 5 friends</span><h1>Where should we<br><em>disappear</em> to?</h1></div><div class="date">03–05 October · from Berlin</div></div>
+    <section class="feature"><div class="sun"></div><div class="hill one"></div><div class="hill two"></div><div class="feature-copy"><div><small>Currently leading</small><h2 id="hero-name">Lisbon</h2></div><div class="feature-metrics"><div><span>Return</span><strong id="travel">3h 40m</strong></div><div><span>Est. each</span><strong id="budget">€420</strong></div><div><span>Forecast</span><strong id="weather">24° sun</strong></div></div></div></section>
+    <div class="section-title"><h3>Three good reasons to leave</h3><span>Tap a city to compare</span></div>
+    <div class="cards">
+      <button class="card active" data-name="Lisbon" data-travel="3h 40m" data-budget="€420" data-weather="24° sun"><div class="card-art"></div><div class="card-row"><div><strong>Lisbon</strong><small>Food · coast · late nights</small></div><span class="votes">4 votes</span></div></button>
+      <button class="card" data-name="Copenhagen" data-travel="1h 05m" data-budget="€510" data-weather="14° crisp"><div class="card-art"></div><div class="card-row"><div><strong>Copenhagen</strong><small>Design · bikes · bakeries</small></div><span class="votes">3 votes</span></div></button>
+      <button class="card" data-name="Marrakech" data-travel="4h 10m" data-budget="€390" data-weather="29° warm"><div class="card-art"></div><div class="card-row"><div><strong>Marrakech</strong><small>Markets · riads · desert</small></div><span class="votes">2 votes</span></div></button>
+    </div>
+  </main>
+  <script>
+    const fields={name:document.querySelector('#hero-name'),travel:document.querySelector('#travel'),budget:document.querySelector('#budget'),weather:document.querySelector('#weather')};
+    document.querySelectorAll('.card').forEach(card=>card.addEventListener('click',()=>{document.querySelectorAll('.card').forEach(c=>c.classList.remove('active'));card.classList.add('active');Object.keys(fields).forEach(key=>fields[key].textContent=card.dataset[key]);}));
+  </script>
+</body>
+</html>
+
