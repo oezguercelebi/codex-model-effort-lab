@@ -18,6 +18,7 @@ const elements = {
   links: document.querySelector("#run-links"),
   matrix: document.querySelector("#result-matrix"),
   matrixTooltip: document.querySelector("#matrix-tooltip"),
+  summaryInsights: document.querySelector("#summary-insights"),
   modelSlider: document.querySelector("#model-slider"),
   modelValue: document.querySelector("#model-value"),
   modelTicks: document.querySelector("#model-ticks"),
@@ -170,6 +171,19 @@ function floatingMetric(label, value, accent = false, detail = null) {
     context.textContent = detail
     card.append(context)
   }
+  return card
+}
+
+function summaryInsight(label, title, detail, accent = false) {
+  const card = document.createElement("article")
+  if (accent) card.classList.add("accent")
+  const eyebrow = document.createElement("span")
+  const heading = document.createElement("strong")
+  const copy = document.createElement("p")
+  eyebrow.textContent = label
+  heading.textContent = title
+  copy.textContent = detail
+  card.append(eyebrow, heading, copy)
   return card
 }
 
@@ -404,6 +418,52 @@ function renderMatrix() {
   elements.matrix.replaceChildren(head, body)
 }
 
+function renderSummary() {
+  const captured = state.results.filter((result) => result.status === "published")
+  if (!captured.length) {
+    elements.summaryInsights.replaceChildren()
+    return
+  }
+
+  const fastest = captured.reduce((best, result) => result.durationMs < best.durationMs ? result : best)
+  const mostSource = captured.reduce((best, result) => (result.codeStats?.sourceLines ?? 0) > (best.codeStats?.sourceLines ?? 0) ? result : best)
+  const largest = captured.reduce((best, result) => totalTokens(result.usage) > totalTokens(best.usage) ? result : best)
+  const solHigh = captured.find((result) => result.model === "gpt-5.6-sol" && result.effort === "high")
+  const solExtraHigh = captured.find((result) => result.model === "gpt-5.6-sol" && result.effort === "xhigh")
+
+  const insights = [
+    summaryInsight(
+      "Fastest captured",
+      `${fastest.modelLabel} · ${fastest.effortLabel}`,
+      `${durationLabel(fastest.durationMs)} · ${valueLabel(totalTokens(fastest.usage))} shown tokens · ≈ ${estimatedCredits(fastest).toFixed(2)} credits`,
+    ),
+    summaryInsight(
+      "Most source lines",
+      `${formatNumber.format(mostSource.codeStats.sourceLines)} lines`,
+      `${mostSource.modelLabel} · ${mostSource.effortLabel} · ${durationLabel(mostSource.durationMs)} · ≈ ${estimatedCredits(mostSource).toFixed(2)} credits`,
+      true,
+    ),
+    summaryInsight(
+      "Largest token result",
+      `${formatNumber.format(totalTokens(largest.usage))} tokens`,
+      `${largest.modelLabel} · ${largest.effortLabel} · ${durationLabel(largest.durationMs)} · ≈ ${estimatedCredits(largest).toFixed(2)} credits`,
+    ),
+  ]
+
+  if (solHigh && solExtraHigh) {
+    const tokenDrop = Math.round((1 - totalTokens(solExtraHigh.usage) / totalTokens(solHigh.usage)) * 100)
+    const outputGain = Math.round(((solExtraHigh.usage.outputTokens / solHigh.usage.outputTokens) - 1) * 100)
+    const sourceRatio = (solExtraHigh.codeStats.sourceLines / solHigh.codeStats.sourceLines).toFixed(1)
+    insights.push(summaryInsight(
+      "Sol High vs Extra High",
+      `${tokenDrop}% fewer shown tokens`,
+      `${outputGain}% more output · ${sourceRatio}× source lines · nearly identical time and credits`,
+    ))
+  }
+
+  elements.summaryInsights.replaceChildren(...insights)
+}
+
 function setQuery() {
   const url = new URL(window.location.href)
   url.searchParams.set("result", state.result?.runId ?? "")
@@ -416,6 +476,7 @@ function render() {
   syncSliders()
   renderResult()
   renderMatrix()
+  renderSummary()
   document.querySelectorAll("[data-viewport]").forEach((button) => {
     button.classList.toggle("active", button.dataset.viewport === state.viewport)
   })

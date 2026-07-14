@@ -25,7 +25,8 @@ The public site has one page:
 4. Cycle the 1x / 5x / 20x plan control to recalculate estimated plan usage for the selected run.
 5. Keep tokens, duration, estimated plan usage, and source lines visible in cards over the preview corner.
 6. Use the matrix below to scan every captured configuration, with a token breakdown on hover or keyboard focus.
-7. Expand the run details for the exact token breakdown, Codex version, final response, and source code.
+7. Read the data-driven summary and qualified recommendations beneath the matrix.
+8. Expand the run details for the exact token breakdown, Codex version, final response, and source code.
 
 No Codex account, subscription, API key, or local setup is required to view the results. The public page never starts a model run and has no prompt-submission form in the first version.
 
