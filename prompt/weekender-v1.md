@@ -9,4 +9,3 @@ The result should feel like a finished consumer product, work well on desktop an
 Implement the app in this repository. Use the dependencies already installed and do not add new packages or external services. Run `npm run check` before finishing and leave the project in a state where `npm run build` succeeds and the app can be previewed locally.
 
 Do not ask follow-up questions. Make sensible product, design, and engineering decisions yourself. In your final response, briefly summarize what you built and the checks you ran.
-

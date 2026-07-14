@@ -132,4 +132,3 @@ if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) 
   if (!options.preview || !options.output) throw new Error("Use --preview <dir> --output <dir>")
   await captureScreenshots(path.resolve(options.preview), path.resolve(options.output))
 }
-

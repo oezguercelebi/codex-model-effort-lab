@@ -17,4 +17,3 @@ Commands:
 - `npm run check`
 
 Benchmark runs may edit application files but must not add packages or contact external services.
-

@@ -372,4 +372,3 @@ process.stdout.write(`Screenshots: ${screenshotsCaptured ? "captured" : "not cap
 if (!options.dryRun) process.stdout.write("Run npm run build:site to refresh the local public gallery.\n")
 
 if (!options.dryRun && status === "failed") process.exitCode = 1
-
