@@ -33,6 +33,17 @@ const formatNumber = new Intl.NumberFormat("en", { notation: "compact", maximumF
 const assetVersion = new URL(import.meta.url).searchParams.get("v")
 const effortOrder = ["default", "low", "medium", "high", "xhigh", "max"]
 const modelOrder = ["default", "gpt-5.5", "gpt-5.6-luna", "gpt-5.6-terra", "gpt-5.6-sol"]
+const creditRates = {
+  "gpt-5.5": { input: 125, cachedInput: 12.5, output: 750 },
+  "gpt-5.6-luna": { input: 25, cachedInput: 2.5, output: 150 },
+  "gpt-5.6-terra": { input: 62.5, cachedInput: 6.25, output: 375 },
+  "gpt-5.6-sol": { input: 125, cachedInput: 12.5, output: 750 },
+}
+const planAllowances = {
+  Plus: 3000,
+  "Pro 5x": 15000,
+  "Pro 20x": 60000,
+}
 
 function assetPath(path) {
   return assetVersion ? `${path}?v=${encodeURIComponent(assetVersion)}` : path
@@ -73,6 +84,45 @@ function totalTokens(usage = {}) {
   return (usage.inputTokens ?? 0) + (usage.outputTokens ?? 0) + (usage.reasoningOutputTokens ?? 0)
 }
 
+function estimatedCredits(result) {
+  const rate = creditRates[result.model]
+  if (!rate || !result.usage) return null
+  const cachedInput = result.usage.cachedInputTokens ?? 0
+  const uncachedInput = Math.max(0, (result.usage.inputTokens ?? 0) - cachedInput)
+  const output = result.usage.outputTokens ?? 0
+  return (
+    uncachedInput * rate.input
+    + cachedInput * rate.cachedInput
+    + output * rate.output
+  ) / 1_000_000
+}
+
+function planUsage(result) {
+  const credits = estimatedCredits(result)
+  const planLabel = result.subscription?.planLabel
+  const allowance = planAllowances[planLabel]
+  if (credits != null && allowance) {
+    const share = (credits / allowance) * 100
+    return {
+      allowance,
+      credits,
+      detail: `≈ ${credits.toFixed(1)} of ${formatNumber.format(allowance)} credits`,
+      label: `Plan usage · ${planLabel}`,
+      share,
+      value: `${share < 0.01 ? "<0.01" : share.toFixed(2)}%`,
+    }
+  }
+  const observed = result.subscription?.observedChangePercent
+  return {
+    allowance: null,
+    credits,
+    detail: result.status === "default" ? "Not a Codex run" : "Allowance not recorded",
+    label: "Plan usage",
+    share: observed,
+    value: observed == null ? "—" : `${observed}%`,
+  }
+}
+
 function durationLabel(milliseconds) {
   if (!milliseconds) return "—"
   const minutes = Math.floor(milliseconds / 60000)
@@ -103,7 +153,7 @@ function fact(label, value) {
   return row
 }
 
-function floatingMetric(label, value, accent = false) {
+function floatingMetric(label, value, accent = false, detail = null) {
   const card = document.createElement("div")
   card.className = `floating-metric${accent ? " accent" : ""}`
   const name = document.createElement("span")
@@ -111,6 +161,11 @@ function floatingMetric(label, value, accent = false) {
   name.textContent = label
   number.textContent = value
   card.append(name, number)
+  if (detail) {
+    const context = document.createElement("small")
+    context.textContent = detail
+    card.append(context)
+  }
   return card
 }
 
@@ -151,6 +206,7 @@ function syncSliders() {
 function renderResult() {
   const result = state.result
   if (!result) return
+  const usage = planUsage(result)
 
   elements.viewer.dataset.viewport = state.viewport
   elements.kicker.textContent = `${result.modelLabel} · ${result.effortLabel} effort`
@@ -169,7 +225,7 @@ function renderResult() {
   elements.metrics.replaceChildren(
     floatingMetric("Total tokens", valueLabel(totalTokens(result.usage)), true),
     floatingMetric("Duration", durationLabel(result.durationMs)),
-    floatingMetric("Plan usage", result.subscription?.observedChangePercent == null ? "—" : `${result.subscription.observedChangePercent}%`),
+    floatingMetric(usage.label, usage.value, false, usage.detail),
     floatingMetric("Source lines", valueLabel(result.codeStats?.sourceLines)),
   )
 
@@ -189,7 +245,9 @@ function renderResult() {
     fact("Codex", result.codexVersion),
     fact("Captured", dateLabel(result.recordedAt)),
     fact("Plan", result.subscription?.planLabel),
-    fact("Plan remaining", subscriptionRange),
+    fact("Estimated credits", usage.credits == null ? "—" : `≈ ${usage.credits.toFixed(2)}`),
+    fact("Allowance reference", usage.allowance == null ? "—" : `${formatNumber.format(usage.allowance)} credits`),
+    fact("Estimated plan share", usage.share == null ? subscriptionRange : usage.value),
   )
 
   elements.links.replaceChildren()

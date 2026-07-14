@@ -22,7 +22,7 @@ The public site has one page:
 1. Read the shared benchmark prompt.
 2. Move the model and reasoning-effort sliders.
 3. Use the finished app for the current selection in one large live preview.
-4. Keep tokens, duration, subscription movement, and source lines visible in cards over the preview corner.
+4. Keep tokens, duration, estimated plan usage, and source lines visible in cards over the preview corner.
 5. Use the matrix below to scan every captured configuration or jump directly to one.
 6. Expand the run details for the exact token breakdown, Codex version, final response, and source code.
 
@@ -140,7 +140,7 @@ Votes must be blind until after a choice is made so the model name does not bias
 
 `codex exec --json` provides machine-readable token usage for a run, including input, cached-input, output, and reasoning-output tokens.
 
-Subscription rate-limit percentage is recorded separately. It must be shown as an observed before/after value because a 5x subscription does not provide a documented fixed token-to-percentage conversion.
+Plan usage is estimated from the [Codex token-based credit rate card](https://help.openai.com/en/articles/20001106-codex-rate-card), checked July 14, 2026: uncached input, cached input, and output tokens are priced separately for each model. The public page compares that estimate with a measured 3k / 15k / 60k allowance reference for Plus, Pro 5x, and Pro 20x. Approximate message ranges are context, not fixed quotas; actual consumption changes with the model, token mix, task complexity, codebase size, and conversation length.
 
 Example:
 
@@ -152,7 +152,7 @@ Remaining after: 79%
 Observed change: 3 percentage points
 ```
 
-Token totals and observed subscription movement are facts displayed beside the preview; neither is presented as a quality score.
+Token totals and estimated credit usage are displayed beside the preview; neither is presented as a quality score.
 
 ## Run matrix
 
