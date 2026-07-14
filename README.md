@@ -1,0 +1,256 @@
+# Codex One-Prompt Build Arena
+
+See what model and reasoning effort actually change.
+
+This is a public, visual comparison of complete apps produced by Codex from the exact same prompt and exact same starter repository. It is inspired by the one-prompt experience of app builders such as Lovable: submit one product idea, let the agent work without follow-up guidance, and judge the final build it returns.
+
+The benchmark runs are performed and captured by this repository's maintainers. Public visitors do not run Codex themselves. They browse a set of precomputed, versioned results that are already stored in the repository and deployed as static previews.
+
+The benchmark is not primarily a test suite or an abstract model score. The finished app is the benchmark result.
+
+## The experience
+
+The public site has one page:
+
+1. Read the shared benchmark prompt.
+2. Select a model and reasoning effort.
+3. See the finished app produced by that configuration in a live preview.
+4. Select a second configuration to compare the two builds side by side.
+5. Inspect usage, duration, screenshots, final response, and source code when wanted.
+
+No Codex account, subscription, API key, or local setup is required to view the results. The public page never starts a model run and has no prompt-submission form in the first version.
+
+Example comparisons:
+
+- Sol with Light effort versus Sol with High effort
+- Luna with Medium effort versus Sol with Medium effort
+- a faster configuration versus a more expensive configuration
+
+The visitor decides which result is better by using and looking at the apps. Automated checks can provide supporting facts, but they do not replace the preview.
+
+## What stays identical
+
+Every run receives:
+
+- the exact same one-shot prompt
+- the exact same clean starter repository
+- the same tools and permissions
+- the same time and network policy
+- no follow-up messages, corrections, or human steering
+
+Each run starts in a new session and must finish with a runnable build.
+
+## How results are produced and published
+
+Maintainers run the matrix locally in this repository:
+
+1. Copy the frozen starter into a clean temporary workspace.
+2. Start one fresh `codex exec --json` run with a fixed model and effort.
+3. Capture the final response, usage event, duration, and generated source.
+4. Build the generated app into static assets.
+5. Capture desktop and mobile screenshots.
+6. Sanitize the public metadata so it contains no credentials, account data, private paths, or hidden reasoning.
+7. Store the source, static preview, screenshots, and metadata under a permanent run ID.
+8. Add the run to the public manifest and commit it to the repository.
+
+The comparison site reads only the committed manifest and files. Hosting can therefore use GitHub Pages with no backend and no runtime model cost.
+
+A published run is immutable. If Codex, the prompt, starter, or run policy changes, a new run ID or benchmark version is created rather than replacing the old evidence.
+
+## Proposed first prompt
+
+The first prompt should leave enough room for product, design, and engineering decisions to become visible. It should describe the desired outcome without prescribing the layout or implementation.
+
+```text
+Build a polished responsive web app called Weekender that helps a group of
+friends choose and plan a weekend trip.
+
+Users should be able to compare destinations, understand the expected budget
+and travel time, vote on their favorites, and view a simple itinerary for the
+winning destination. Use realistic sample data so the complete experience can
+be explored without signing in or connecting a backend.
+
+The result should feel like a finished consumer product, work well on desktop
+and mobile, and include the interactions and states you believe are important.
+
+Implement the app in this repository. Run the relevant checks and leave it in
+a state where it can be started and previewed locally. Do not ask follow-up
+questions; make sensible product and design decisions yourself.
+```
+
+Why this prompt works:
+
+- It produces an immediately understandable visual result.
+- It allows different information architecture and visual-design choices.
+- It requires several connected interactions, not just a landing page.
+- It exposes product judgment through features and states the model chooses.
+- It is self-contained and does not require accounts, APIs, or private data.
+- A visitor can evaluate it within a few minutes.
+
+The prompt is provisional. It should be tested once with a baseline configuration before the full matrix is run, then frozen as version 1.
+
+## What the comparison page shows
+
+The live build is the largest element on the page. Supporting information should remain secondary.
+
+For each result:
+
+- live interactive preview in an isolated frame
+- desktop and mobile screenshot
+- exact model identifier
+- reasoning effort
+- run duration
+- input tokens
+- cached input tokens
+- output tokens
+- reasoning output tokens
+- observed subscription usage before and after, when available
+- Codex version and run date
+- final Codex response
+- link to the generated source and patch
+
+If a run fails to produce a working app, its error or broken preview is still published. A failed attempt is part of the comparison rather than something silently discarded.
+
+Useful controls:
+
+- model selector
+- effort selector
+- side-by-side comparison toggle
+- desktop, tablet, and mobile viewport buttons
+- synchronize navigation and viewport between both previews
+- show prompt
+- show run details
+- open preview in a separate tab
+
+## Quality is visible, not assumed
+
+The project exists because “newer model” and “more effort” do not automatically tell a user what the resulting app will feel like.
+
+Visitors should be able to directly compare:
+
+- visual polish
+- product decisions
+- information hierarchy
+- interaction design
+- responsiveness
+- completeness
+- error and empty states
+- consistency
+- apparent bugs
+- whether extra effort produced a meaningful improvement
+
+Optional community voting can ask one simple question:
+
+> Which build would you keep?
+
+Votes must be blind until after a choice is made so the model name does not bias the decision.
+
+## Usage reporting
+
+`codex exec --json` provides machine-readable token usage for a run, including input, cached-input, output, and reasoning-output tokens.
+
+Subscription rate-limit percentage is recorded separately. It must be shown as an observed before/after value because a 5x subscription does not provide a documented fixed token-to-percentage conversion.
+
+Example:
+
+```text
+Plan label: Pro 5x
+Usage window: weekly
+Remaining before: 82%
+Remaining after: 79%
+Observed change: 3 percentage points
+```
+
+Token totals and observed subscription movement are facts displayed beside the preview; neither is presented as a quality score.
+
+## Run matrix
+
+Start with a small, understandable matrix rather than every possible combination:
+
+| Model | Efforts |
+| --- | --- |
+| Luna | Light, Medium, High |
+| Terra | Light, Medium, High |
+| Sol | Light, Medium, High |
+
+Run each combination at least three times eventually, because model output varies. For the first public prototype, one run per combination is sufficient to prove the experience.
+
+Max can be added later as a separate high-compute option. Ultra should be labeled as a multi-agent configuration rather than treated as another ordinary effort level.
+
+## Repository shape
+
+```text
+prompt/
+  v1.md
+starter/
+  package.json
+  src/
+runs/
+  <model>/<effort>/<run-id>/
+    source/
+    preview/
+      index.html
+      assets/
+    metadata.json
+    final.md
+    screenshot-desktop.png
+    screenshot-mobile.png
+site/
+  index.html
+  app.js
+  styles.css
+  results-manifest.json
+scripts/
+  run-benchmark.sh
+  collect-result.mjs
+  sanitize-result.mjs
+```
+
+Each generated app can be built to static files and hosted below a unique path, allowing the comparison page to load it in an isolated iframe.
+
+Raw JSONL can be retained locally for verification, but the public repository should contain only a sanitized event summary. Raw agent traces can contain private machine details or information that is unnecessary for comparing the result.
+
+## Run record
+
+```json
+{
+  "schema_version": 1,
+  "prompt_version": "weekender-v1",
+  "model": "exact-model-id",
+  "effort": "medium",
+  "run_id": "2026-07-14-001",
+  "codex_version": "record-at-run-time",
+  "duration_ms": 0,
+  "preview_path": "preview/index.html",
+  "usage": {
+    "input_tokens": 0,
+    "cached_input_tokens": 0,
+    "output_tokens": 0,
+    "reasoning_output_tokens": 0
+  },
+  "subscription_observation": {
+    "plan_label": "Pro 5x",
+    "window_label": "weekly",
+    "remaining_before_percent": null,
+    "remaining_after_percent": null
+  }
+}
+```
+
+## Fair-run rules
+
+1. Freeze the prompt and starter before generating comparison results.
+2. Reset the starter completely before every run.
+3. Use a fresh Codex task for every run.
+4. Do not send follow-up prompts or repair failed builds manually.
+5. Record failures as results; do not silently rerun until an attractive app appears.
+6. Pin and publish the Codex version and exact configuration.
+7. Give every configuration the same permissions and runtime limits.
+8. Preserve the complete raw run output for auditability.
+9. Never publish authentication data or account identifiers.
+
+Raw run output in rule 8 may be kept in a private local archive. The public repository receives the generated source, preview, final response, screenshots, configuration, and sanitized usage summary.
+
+## Product references
+
+Codex documents model and reasoning controls in [model selection](https://learn.chatgpt.com/docs/models). Machine-readable run events and token counts are available through [`codex exec --json`](https://learn.chatgpt.com/docs/non-interactive-mode). Plan descriptions and relative limits are documented under [Codex pricing](https://learn.chatgpt.com/docs/pricing).
