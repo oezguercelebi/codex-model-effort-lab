@@ -13,7 +13,7 @@ The benchmark is not primarily a test suite or an abstract model score. The fini
 - `weekender-v1` prompt and starter are frozen.
 - The static comparison site includes one permanent hand-built Default plus captured Luna, Terra, and Sol results.
 - The local runner has passed an end-to-end no-model dry run, including desktop and mobile screenshot capture.
-- Light- and Medium-effort runs for Luna, Terra, and Sol have been published.
+- Light-, Medium-, and High-effort runs for Luna, Terra, and Sol have been published.
 
 ## The experience
 
