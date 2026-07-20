@@ -18,7 +18,11 @@ const elements = {
   kicker: document.querySelector("#result-kicker"),
   title: document.querySelector("#result-title"),
   status: document.querySelector("#result-status"),
-  metrics: document.querySelector("#floating-metrics"),
+  currentBuildBar: document.querySelector("#current-build-bar"),
+  currentBuildName: document.querySelector("#current-build-name"),
+  currentBuildContext: document.querySelector("#current-build-context"),
+  currentBuildMetrics: document.querySelector("#current-build-metrics"),
+  currentBuildToggle: document.querySelector("#current-build-toggle"),
   notes: document.querySelector("#run-notes"),
   facts: document.querySelector("#run-facts"),
   links: document.querySelector("#run-links"),
@@ -233,20 +237,19 @@ function fact(label, value) {
   return row
 }
 
-function floatingMetric(label, value, accent = false, detail = null) {
-  const card = document.createElement("div")
-  card.className = `floating-metric${accent ? " accent" : ""}`
-  const name = document.createElement("span")
-  const number = document.createElement("strong")
+function currentBuildMetric(label, value, detail = null) {
+  const item = document.createElement("div")
+  const name = document.createElement("dt")
+  const number = document.createElement("dd")
   name.textContent = label
   number.textContent = value
-  card.append(name, number)
+  item.append(name, number)
   if (detail) {
     const context = document.createElement("small")
     context.textContent = detail
-    card.append(context)
+    item.append(context)
   }
-  return card
+  return item
 }
 
 function summaryInsight(label, title, detail, accent = false) {
@@ -494,6 +497,7 @@ function renderResult() {
   const result = state.result
   if (!result) return
   const usage = planUsage(result)
+  const plan = plans.find((item) => item.id === state.planId) ?? plans[1]
 
   elements.viewer.dataset.viewport = state.viewport
   elements.kicker.textContent = `${result.modelLabel} · ${result.effortLabel} effort`
@@ -510,11 +514,24 @@ function renderResult() {
   }
   elements.frame.title = `${result.modelLabel} with ${result.effortLabel} effort generated app preview`
 
-  elements.metrics.replaceChildren(
-    floatingMetric("Total tokens", valueLabel(totalTokens(result.usage)), true),
-    floatingMetric("Duration", durationLabel(result.durationMs)),
-    floatingMetric(usage.label, usage.value, false, usage.detail),
-    floatingMetric("Source lines", valueLabel(result.codeStats?.sourceLines)),
+  const reviewScore = result.engineeringReview
+    ? result.engineeringReview.status === "failed"
+      ? "Unavailable"
+      : `${scoreLabel(result.engineeringReview.totalScore)}/100`
+    : "Not reviewed"
+  const viewportLabel = state.viewport.charAt(0).toUpperCase() + state.viewport.slice(1)
+  elements.currentBuildName.textContent = `${result.modelLabel} · ${result.effortLabel}`
+  elements.currentBuildContext.textContent = `${viewportLabel} · ${plan.label}`
+  elements.currentBuildMetrics.replaceChildren(
+    currentBuildMetric("Engineering", reviewScore),
+    currentBuildMetric("Tokens", valueLabel(totalTokens(result.usage))),
+    currentBuildMetric("Duration", durationLabel(result.durationMs)),
+    currentBuildMetric(
+      "Credits",
+      usage.credits == null ? "N/A" : `≈ ${usage.credits.toFixed(2)}`,
+      usage.share == null ? null : `${usage.value} of ${formatNumber.format(usage.allowance)}`,
+    ),
+    currentBuildMetric("Source", result.codeStats?.sourceLines == null ? "N/A" : `${valueLabel(result.codeStats.sourceLines)} lines`),
   )
 
   elements.notes.textContent = result.notes ?? "No notes were recorded for this run."
@@ -1188,6 +1205,12 @@ elements.planCycle.addEventListener("click", () => {
   const currentIndex = plans.findIndex((plan) => plan.id === state.planId)
   state.planId = plans[(currentIndex + 1) % plans.length].id
   render()
+})
+
+elements.currentBuildToggle.addEventListener("click", () => {
+  const expanded = elements.currentBuildBar.classList.toggle("expanded")
+  elements.currentBuildToggle.setAttribute("aria-expanded", String(expanded))
+  elements.currentBuildToggle.querySelector("span").textContent = expanded ? "Hide metrics" : "Metrics"
 })
 
 document.querySelector("#copy-link").addEventListener("click", async (event) => {

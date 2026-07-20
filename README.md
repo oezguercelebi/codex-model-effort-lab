@@ -30,7 +30,7 @@ The public site has one page:
 6. Explore the value map to compare engineering score with estimated credits, duration, or tokens.
 7. Open the evidence sheet for category scores, findings, strengths, risks, and remediation details.
 8. Cycle the 1x / 5x / 20x plan control to recalculate estimated plan usage for the selected run.
-9. Keep tokens, duration, estimated plan usage, and source lines visible below the preview.
+9. Keep the active model, effort, viewport, plan, engineering score, tokens, duration, estimated credits, and source lines together in one compact Current build bar.
 10. Use the matrix below to scan every captured configuration, with token and engineering-review breakdowns on hover or keyboard focus.
 11. Read the data-driven summary and qualified recommendations beneath the matrix.
 12. Expand the run details for the exact token breakdown, Codex version, final response, and source code.

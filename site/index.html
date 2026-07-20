@@ -106,10 +106,22 @@
               <span class="status-pill" id="result-status"></span>
             </div>
           </header>
+          <aside class="current-build-bar" id="current-build-bar" aria-label="Current build and metrics">
+            <div class="current-build-identity">
+              <div>
+                <span>Current build</span>
+                <strong id="current-build-name"></strong>
+                <small id="current-build-context"></small>
+              </div>
+              <button class="current-build-toggle" id="current-build-toggle" type="button" aria-expanded="false" aria-controls="current-build-metrics">
+                <span>Metrics</span><i aria-hidden="true">+</i>
+              </button>
+            </div>
+            <dl class="current-build-metrics" id="current-build-metrics"></dl>
+          </aside>
           <div class="preview-shell" id="preview-shell">
             <iframe id="result-frame" title="Generated app preview" sandbox="allow-scripts allow-forms"></iframe>
           </div>
-          <div class="floating-metrics" id="floating-metrics" aria-label="Selected run metrics"></div>
           <details class="run-detail-panel">
             <summary>Inspect this run <span aria-hidden="true">+</span></summary>
             <p class="run-notes" id="run-notes"></p>
