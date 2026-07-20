@@ -81,6 +81,9 @@ for (const metadataFile of metadataFiles) {
         reviewedAt: review.reviewedAt,
         totalScore: review.totalScore ?? null,
         categories: review.categories ?? [],
+        findings: review.findings ?? [],
+        strengths: review.strengths ?? [],
+        risks: review.risks ?? [],
         findingCounts: Object.fromEntries(
           ["critical", "high", "medium", "low", "note"].map((severity) => [
             severity,

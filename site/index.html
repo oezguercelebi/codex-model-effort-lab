@@ -100,12 +100,16 @@
               <div class="result-kicker" id="result-kicker"></div>
               <h3 id="result-title"></h3>
             </div>
-            <span class="status-pill" id="result-status"></span>
+            <div class="result-actions">
+              <button class="result-action" id="evidence-open" type="button" hidden>Review evidence</button>
+              <button class="result-action primary" id="compare-open" type="button">Compare full screen</button>
+              <span class="status-pill" id="result-status"></span>
+            </div>
           </header>
           <div class="preview-shell" id="preview-shell">
             <iframe id="result-frame" title="Generated app preview" sandbox="allow-scripts allow-forms"></iframe>
-            <div class="floating-metrics" id="floating-metrics" aria-label="Selected run metrics"></div>
           </div>
+          <div class="floating-metrics" id="floating-metrics" aria-label="Selected run metrics"></div>
           <details class="run-detail-panel">
             <summary>Inspect this run <span aria-hidden="true">+</span></summary>
             <p class="run-notes" id="run-notes"></p>
@@ -114,10 +118,27 @@
           </details>
         </article>
 
+        <section class="value-section" id="value-map" aria-labelledby="value-map-title">
+          <div class="value-heading">
+            <div>
+              <span>Quality against usage</span>
+              <h3 id="value-map-title">Find the efficient frontier.</h3>
+            </div>
+            <div class="value-controls" aria-label="Value map horizontal metric">
+              <button type="button" data-value-metric="credits" class="active">Credits</button>
+              <button type="button" data-value-metric="duration">Duration</button>
+              <button type="button" data-value-metric="tokens">Tokens</button>
+            </div>
+          </div>
+          <p class="value-intro">Higher is better. Further left uses less. The connecting line marks configurations that improve the best score available as usage increases.</p>
+          <div class="value-chart" id="value-chart"></div>
+          <div class="value-detail" id="value-detail"></div>
+        </section>
+
         <section class="matrix-section" aria-labelledby="matrix-title">
           <div class="matrix-heading">
             <div><span>All captured configurations</span><h3 id="matrix-title">The run matrix</h3></div>
-            <p>Scores review engineering, not visual design. Hover or focus a reviewed cell for evidence.</p>
+            <p>Scores review engineering, not visual design. Select a run, then open its evidence.</p>
           </div>
           <div class="matrix-scroll"><table class="result-matrix" id="result-matrix"></table></div>
           <div class="matrix-tooltip" id="matrix-tooltip" role="tooltip" hidden></div>
@@ -226,6 +247,54 @@
         <button id="prompt-close" type="button" aria-label="Close prompt">×</button>
       </div>
       <div id="prompt-content" class="prompt-content"></div>
+    </dialog>
+
+    <dialog class="compare-dialog" id="compare-dialog" aria-labelledby="compare-dialog-title">
+      <header class="compare-dialog-header">
+        <div>
+          <span>Focused comparison</span>
+          <h2 id="compare-dialog-title">Two builds. One decision.</h2>
+        </div>
+        <div class="compare-dialog-actions">
+          <button class="compare-copy" id="compare-copy" type="button">Copy comparison</button>
+          <button class="compare-close" id="compare-close" type="button" aria-label="Close comparison">×</button>
+        </div>
+      </header>
+      <div class="compare-toolbar">
+        <label>Build A<select id="compare-a-select"></select></label>
+        <button class="compare-swap" id="compare-swap" type="button" aria-label="Swap build A and build B">⇄</button>
+        <label>Build B<select id="compare-b-select"></select></label>
+        <div class="compare-viewport" aria-label="Comparison viewport">
+          <button type="button" data-compare-viewport="desktop" class="active">Desktop</button>
+          <button type="button" data-compare-viewport="tablet">Tablet</button>
+          <button type="button" data-compare-viewport="mobile">Mobile</button>
+        </div>
+      </div>
+      <div class="compare-delta" id="compare-delta"></div>
+      <div class="compare-mobile-tabs" aria-label="Visible comparison build">
+        <button type="button" data-compare-side="a" class="active">Build A</button>
+        <button type="button" data-compare-side="b">Build B</button>
+      </div>
+      <div class="compare-stage" id="compare-stage" data-active-side="a" data-viewport="desktop">
+        <article class="compare-pane" data-side="a">
+          <header><div><span>Build A</span><strong id="compare-a-title"></strong></div><button type="button" id="compare-a-evidence">Evidence</button></header>
+          <dl class="compare-metrics" id="compare-a-metrics"></dl>
+          <div class="compare-frame-shell"><iframe id="compare-a-frame" title="Build A generated app preview" sandbox="allow-scripts allow-forms"></iframe></div>
+        </article>
+        <article class="compare-pane" data-side="b">
+          <header><div><span>Build B</span><strong id="compare-b-title"></strong></div><button type="button" id="compare-b-evidence">Evidence</button></header>
+          <dl class="compare-metrics" id="compare-b-metrics"></dl>
+          <div class="compare-frame-shell"><iframe id="compare-b-frame" title="Build B generated app preview" sandbox="allow-scripts allow-forms"></iframe></div>
+        </article>
+      </div>
+    </dialog>
+
+    <dialog class="evidence-dialog" id="evidence-dialog" aria-labelledby="evidence-title">
+      <header class="evidence-header">
+        <div><span>Engineering review</span><h2 id="evidence-title">Review evidence</h2></div>
+        <button id="evidence-close" type="button" aria-label="Close review evidence">×</button>
+      </header>
+      <div class="evidence-body" id="evidence-body"></div>
     </dialog>
 
   </body>

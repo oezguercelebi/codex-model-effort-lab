@@ -25,11 +25,15 @@ The public site has one page:
 1. Read the shared benchmark prompt.
 2. Move the model and reasoning-effort sliders.
 3. Use the finished app for the current selection in one large live preview.
-4. Cycle the 1x / 5x / 20x plan control to recalculate estimated plan usage for the selected run.
-5. Keep tokens, duration, estimated plan usage, and source lines visible in cards over the preview corner.
-6. Use the matrix below to scan every captured configuration, with token and engineering-review breakdowns on hover or keyboard focus.
-7. Read the data-driven summary and qualified recommendations beneath the matrix.
-8. Expand the run details for the exact token breakdown, Codex version, final response, and source code.
+4. Open a full-screen A/B workspace to use two live builds side by side, with a compact A/B switch on mobile.
+5. Share the exact comparison through its URL.
+6. Explore the value map to compare engineering score with estimated credits, duration, or tokens.
+7. Open the evidence sheet for category scores, findings, strengths, risks, and remediation details.
+8. Cycle the 1x / 5x / 20x plan control to recalculate estimated plan usage for the selected run.
+9. Keep tokens, duration, estimated plan usage, and source lines visible below the preview.
+10. Use the matrix below to scan every captured configuration, with token and engineering-review breakdowns on hover or keyboard focus.
+11. Read the data-driven summary and qualified recommendations beneath the matrix.
+12. Expand the run details for the exact token breakdown, Codex version, final response, and source code.
 
 No Codex account, subscription, API key, or local setup is required to view the results. The public page never starts a model run and has no prompt-submission form in the first version.
 
@@ -116,6 +120,9 @@ Useful controls:
 - effort slider
 - desktop, tablet, and mobile viewport buttons
 - clickable model/effort result matrix
+- full-screen A/B comparison with shareable URLs
+- engineering-score value map with credits, duration, and token views
+- run-level review evidence sheet
 - show prompt
 - show run details
 
