@@ -1,0 +1,676 @@
+{
+  "schemaVersion": 1,
+  "reviewBenchmarkId": "weekender-code-review-v1",
+  "targetRunId": "gpt-5-5-high-20260714T142026Z",
+  "reviewer": {
+    "model": "gpt-5.6-sol",
+    "effort": "xhigh",
+    "codexVersion": "codex-cli 0.145.0-alpha.18",
+    "durationMs": 235249,
+    "usage": {
+      "inputTokens": 312487,
+      "cachedInputTokens": 263936,
+      "outputTokens": 9703,
+      "reasoningOutputTokens": 5892
+    }
+  },
+  "deterministicChecks": {
+    "schemaVersion": 1,
+    "reviewBenchmarkId": "weekender-code-review-v1",
+    "generatedAt": "2026-07-20T08:51:04.910Z",
+    "dependencyDiff": {
+      "status": "pass",
+      "added": [],
+      "removed": [],
+      "changed": []
+    },
+    "source": {
+      "files": 6,
+      "nonEmptyLines": 823,
+      "remoteReferences": [],
+      "hashBefore": "15cc966c41bd571bc2bb3f359dfe779c0450d3e5364f3bee68c88d38cafbd564",
+      "hashAfter": "15cc966c41bd571bc2bb3f359dfe779c0450d3e5364f3bee68c88d38cafbd564",
+      "unchangedByChecks": true,
+      "productionAssetBytes": 2771498
+    },
+    "commands": {
+      "npmCi": {
+        "status": "pass",
+        "exitCode": 0,
+        "timedOut": false,
+        "durationMs": 1850,
+        "output": "added 83 packages in 2s"
+      },
+      "npmRunCheck": {
+        "status": "pass",
+        "exitCode": 0,
+        "timedOut": false,
+        "durationMs": 5615,
+        "output": "> weekender-benchmark-starter@1.0.0 check\n> npm run typecheck && npm run build\n\n\n> weekender-benchmark-starter@1.0.0 typecheck\n> tsc --noEmit\n\n\n> weekender-benchmark-starter@1.0.0 build\n> tsc --noEmit && vite build\n\nvite v6.4.3 building for production...\ntransforming...\n✓ 1787 modules transformed.\nrendering chunks...\ncomputing gzip size...\ndist/index.html                              0.48 kB │ gzip:  0.29 kB\ndist/assets/weekender-hero-BmsOwC3u.png  2,490.11 kB\ndist/assets/index-Cmpz68tC.css              55.13 kB │ gzip: 10.58 kB\ndist/assets/index-C4s8go92.js              225.78 kB │ gzip: 69.40 kB\n✓ built in 1.68s"
+      }
+    },
+    "browser": {
+      "browserVersion": "150.0.7871.125",
+      "desktop": {
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "checks": [
+          {
+            "id": "multiple-destinations",
+            "status": "pass",
+            "evidence": "7 destination/article regions and 13 visible headings detected."
+          },
+          {
+            "id": "expected-budget",
+            "status": "pass",
+            "evidence": "11 monetary values detected; budget wording present."
+          },
+          {
+            "id": "travel-time",
+            "status": "pass",
+            "evidence": "10 travel-time signals detected."
+          },
+          {
+            "id": "vote-interaction",
+            "status": "pass",
+            "evidence": "button \"Your vote\" changed visible text or control state."
+          },
+          {
+            "id": "winner-itinerary",
+            "status": "pass",
+            "evidence": "Winner or itinerary content was visible or reachable. 0 visible itinerary regions detected."
+          },
+          {
+            "id": "no-sign-in-or-backend",
+            "status": "pass",
+            "evidence": "0 password fields; 2528 visible text characters."
+          },
+          {
+            "id": "horizontal-overflow",
+            "status": "pass",
+            "evidence": "0px document-level horizontal overflow."
+          },
+          {
+            "id": "accessible-controls-and-keyboard",
+            "status": "pass",
+            "evidence": "0 enabled controls lacked a detectable name; 9 unique controls received focus across 12 Tab presses."
+          },
+          {
+            "id": "uncaught-browser-errors",
+            "status": "pass",
+            "evidence": "0 console errors and 0 page errors."
+          }
+        ],
+        "evidence": {
+          "headings": [
+            "Pick the weekend everyone can actually make.",
+            "Hudson Valley",
+            "Hudson Valley",
+            "Asheville",
+            "Montreal",
+            "Lake Tahoe",
+            "Hudson Valley",
+            "$470",
+            "Votes and readiness",
+            "Hudson Valley",
+            "Arrive by rail",
+            "River town crawl",
+            "Slow exit"
+          ],
+          "controls": [
+            {
+              "index": 0,
+              "tag": "button",
+              "name": "Hudson Valley4",
+              "disabled": false
+            },
+            {
+              "index": 1,
+              "tag": "button",
+              "name": "Asheville2",
+              "disabled": false
+            },
+            {
+              "index": 2,
+              "tag": "button",
+              "name": "Montreal1",
+              "disabled": false
+            },
+            {
+              "index": 3,
+              "tag": "button",
+              "name": "Lake Tahoe0",
+              "disabled": false
+            },
+            {
+              "index": 4,
+              "tag": "button",
+              "name": "All trips",
+              "disabled": false
+            },
+            {
+              "index": 5,
+              "tag": "button",
+              "name": "Under $600",
+              "disabled": false
+            },
+            {
+              "index": 6,
+              "tag": "button",
+              "name": "Under 5h",
+              "disabled": false
+            },
+            {
+              "index": 7,
+              "tag": "button",
+              "name": "Low logistics",
+              "disabled": false
+            },
+            {
+              "index": 8,
+              "tag": "select",
+              "name": "Sort destinations",
+              "disabled": false
+            },
+            {
+              "index": 9,
+              "tag": "button",
+              "name": "New YorkHudson Valley94%match",
+              "disabled": false
+            },
+            {
+              "index": 10,
+              "tag": "button",
+              "name": "Your vote",
+              "disabled": false
+            },
+            {
+              "index": 11,
+              "tag": "button",
+              "name": "View Hudson Valley details",
+              "disabled": false
+            },
+            {
+              "index": 12,
+              "tag": "button",
+              "name": "North CarolinaAsheville88%match",
+              "disabled": false
+            },
+            {
+              "index": 13,
+              "tag": "button",
+              "name": "Vote for this",
+              "disabled": false
+            },
+            {
+              "index": 14,
+              "tag": "button",
+              "name": "View Asheville details",
+              "disabled": false
+            },
+            {
+              "index": 15,
+              "tag": "button",
+              "name": "QuebecMontreal82%match",
+              "disabled": false
+            },
+            {
+              "index": 16,
+              "tag": "button",
+              "name": "Vote for this",
+              "disabled": false
+            },
+            {
+              "index": 17,
+              "tag": "button",
+              "name": "View Montreal details",
+              "disabled": false
+            },
+            {
+              "index": 18,
+              "tag": "button",
+              "name": "CaliforniaLake Tahoe79%match",
+              "disabled": false
+            },
+            {
+              "index": 19,
+              "tag": "button",
+              "name": "Vote for this",
+              "disabled": false
+            },
+            {
+              "index": 20,
+              "tag": "button",
+              "name": "View Lake Tahoe details",
+              "disabled": false
+            }
+          ],
+          "keyboardTargets": [
+            "button:View Hudson Valley details",
+            "button:North CarolinaAsheville88%match",
+            "button:Vote for this",
+            "button:View Asheville details",
+            "button:QuebecMontreal82%match",
+            "button:View Montreal details",
+            "button:CaliforniaLake Tahoe79%match",
+            "button:View Lake Tahoe details",
+            "button:Hudson Valley3"
+          ],
+          "consoleErrors": [],
+          "pageErrors": [],
+          "externalRequests": []
+        }
+      },
+      "mobile": {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "checks": [
+          {
+            "id": "multiple-destinations",
+            "status": "pass",
+            "evidence": "7 destination/article regions and 13 visible headings detected."
+          },
+          {
+            "id": "expected-budget",
+            "status": "pass",
+            "evidence": "11 monetary values detected; budget wording present."
+          },
+          {
+            "id": "travel-time",
+            "status": "pass",
+            "evidence": "10 travel-time signals detected."
+          },
+          {
+            "id": "vote-interaction",
+            "status": "pass",
+            "evidence": "button \"Your vote\" changed visible text or control state."
+          },
+          {
+            "id": "winner-itinerary",
+            "status": "pass",
+            "evidence": "Winner or itinerary content was visible or reachable. 0 visible itinerary regions detected."
+          },
+          {
+            "id": "no-sign-in-or-backend",
+            "status": "pass",
+            "evidence": "0 password fields; 2499 visible text characters."
+          },
+          {
+            "id": "horizontal-overflow",
+            "status": "pass",
+            "evidence": "0px document-level horizontal overflow."
+          },
+          {
+            "id": "accessible-controls-and-keyboard",
+            "status": "pass",
+            "evidence": "0 enabled controls lacked a detectable name; 9 unique controls received focus across 12 Tab presses."
+          },
+          {
+            "id": "uncaught-browser-errors",
+            "status": "pass",
+            "evidence": "0 console errors and 0 page errors."
+          }
+        ],
+        "evidence": {
+          "headings": [
+            "Pick the weekend everyone can actually make.",
+            "Hudson Valley",
+            "Hudson Valley",
+            "Asheville",
+            "Montreal",
+            "Lake Tahoe",
+            "Hudson Valley",
+            "$470",
+            "Votes and readiness",
+            "Hudson Valley",
+            "Arrive by rail",
+            "River town crawl",
+            "Slow exit"
+          ],
+          "controls": [
+            {
+              "index": 0,
+              "tag": "button",
+              "name": "Hudson Valley4",
+              "disabled": false
+            },
+            {
+              "index": 1,
+              "tag": "button",
+              "name": "Asheville2",
+              "disabled": false
+            },
+            {
+              "index": 2,
+              "tag": "button",
+              "name": "Montreal1",
+              "disabled": false
+            },
+            {
+              "index": 3,
+              "tag": "button",
+              "name": "Lake Tahoe0",
+              "disabled": false
+            },
+            {
+              "index": 4,
+              "tag": "button",
+              "name": "All trips",
+              "disabled": false
+            },
+            {
+              "index": 5,
+              "tag": "button",
+              "name": "Under $600",
+              "disabled": false
+            },
+            {
+              "index": 6,
+              "tag": "button",
+              "name": "Under 5h",
+              "disabled": false
+            },
+            {
+              "index": 7,
+              "tag": "button",
+              "name": "Low logistics",
+              "disabled": false
+            },
+            {
+              "index": 8,
+              "tag": "select",
+              "name": "Sort destinations",
+              "disabled": false
+            },
+            {
+              "index": 9,
+              "tag": "button",
+              "name": "New YorkHudson Valley94%match",
+              "disabled": false
+            },
+            {
+              "index": 10,
+              "tag": "button",
+              "name": "Your vote",
+              "disabled": false
+            },
+            {
+              "index": 11,
+              "tag": "button",
+              "name": "View Hudson Valley details",
+              "disabled": false
+            },
+            {
+              "index": 12,
+              "tag": "button",
+              "name": "North CarolinaAsheville88%match",
+              "disabled": false
+            },
+            {
+              "index": 13,
+              "tag": "button",
+              "name": "Vote for this",
+              "disabled": false
+            },
+            {
+              "index": 14,
+              "tag": "button",
+              "name": "View Asheville details",
+              "disabled": false
+            },
+            {
+              "index": 15,
+              "tag": "button",
+              "name": "QuebecMontreal82%match",
+              "disabled": false
+            },
+            {
+              "index": 16,
+              "tag": "button",
+              "name": "Vote for this",
+              "disabled": false
+            },
+            {
+              "index": 17,
+              "tag": "button",
+              "name": "View Montreal details",
+              "disabled": false
+            },
+            {
+              "index": 18,
+              "tag": "button",
+              "name": "CaliforniaLake Tahoe79%match",
+              "disabled": false
+            },
+            {
+              "index": 19,
+              "tag": "button",
+              "name": "Vote for this",
+              "disabled": false
+            },
+            {
+              "index": 20,
+              "tag": "button",
+              "name": "View Lake Tahoe details",
+              "disabled": false
+            }
+          ],
+          "keyboardTargets": [
+            "button:View Hudson Valley details",
+            "button:North CarolinaAsheville88%match",
+            "button:Vote for this",
+            "button:View Asheville details",
+            "button:QuebecMontreal82%match",
+            "button:View Montreal details",
+            "button:CaliforniaLake Tahoe79%match",
+            "button:View Lake Tahoe details",
+            "button:Hudson Valley3"
+          ],
+          "consoleErrors": [],
+          "pageErrors": [],
+          "externalRequests": []
+        }
+      }
+    },
+    "guardrailFacts": {
+      "npmRunCheckFailed": false,
+      "corePathUnusable": false,
+      "corePathDefinition": "npm run check failed, or at least two core acceptance items failed at both viewports."
+    }
+  },
+  "findings": [
+    {
+      "severity": "low",
+      "category": "accessibility",
+      "title": "Destination vote buttons have indistinguishable accessible names",
+      "file": "source/src/App.tsx",
+      "lineStart": 562,
+      "lineEnd": 572,
+      "evidence": "Every unselected destination renders the same button text, \"Vote for this\", without a destination-specific aria-label. The deterministic control inventory consequently reports three separate enabled buttons with the identical name \"Vote for this\".",
+      "impact": "Screen-reader users navigating by controls cannot determine which destination each vote button selects without repeatedly exploring surrounding content.",
+      "remediation": "Include the destination name in each button's visible or accessible name, such as `aria-label={`Vote for ${destination.name}`}`."
+    },
+    {
+      "severity": "low",
+      "category": "accessibility",
+      "title": "Sort control suppresses its focus indicator",
+      "file": "source/src/App.tsx",
+      "lineStart": 377,
+      "lineEnd": 384,
+      "evidence": "The destination sort select applies `outline-none`, while neither the select nor its containing label defines a `focus-visible` or `focus-within` replacement.",
+      "impact": "Keyboard users can lose track of focus when they reach this secondary but useful comparison control.",
+      "remediation": "Remove `outline-none` or add a clearly visible focus ring on the select or its `focus-within` container."
+    },
+    {
+      "severity": "low",
+      "category": "accessibility",
+      "title": "Small metric labels fall below normal-text contrast requirements",
+      "file": "source/src/App.tsx",
+      "lineStart": 607,
+      "lineEnd": 610,
+      "evidence": "The reusable CardMetric component renders 12px labels in `#7a756d` on `#f6f1ea`; those colors have approximately 4.07:1 contrast, below the 4.5:1 threshold for normal text. This component labels every card's budget, travel mode, and vote count.",
+      "impact": "Users with low vision may have difficulty identifying the meaning of otherwise visible comparison values.",
+      "remediation": "Darken the label color or lighten the background until the combination reaches at least 4.5:1 contrast."
+    },
+    {
+      "severity": "low",
+      "category": "performance",
+      "title": "Above-the-fold hero downloads an oversized PNG at every viewport",
+      "file": "source/src/App.tsx",
+      "lineStart": 273,
+      "lineEnd": 277,
+      "evidence": "The hero immediately loads `weekender-hero.png` through a single `src` with no responsive variants. Deterministic build evidence identifies that 1672×941 raster as a 2,490.11 kB production asset, accounting for most of the reported 2,771,498 production asset bytes even on the 390px viewport.",
+      "impact": "Mobile visitors must transfer and decode substantially more image data than their display needs, delaying initial rendering on constrained networks and devices.",
+      "remediation": "Encode the image in a modern format and provide appropriately sized responsive variants with `srcset` and `sizes`."
+    }
+  ],
+  "categories": [
+    {
+      "id": "correctness",
+      "label": "Brief fidelity and functional correctness",
+      "score": 4,
+      "weight": 30,
+      "evidence": [
+        "The deterministic suite reports all nine desktop and all nine mobile acceptance checks passing, including destination comparison, budgets, travel times, vote state changes, no horizontal overflow, and no browser errors.",
+        "Four realistic destinations include per-person budgets, travel modes and times, existing votes, and three-day itineraries in source/src/App.tsx:54-207; source/src/App.tsx:393-418 renders the comparison cards, detail panels, group status, and winning itinerary.",
+        "The winner-itinerary heuristic mentions 0 detected itinerary regions, but source/src/App.tsx:765-807 unconditionally renders a visible \"Winning itinerary\" section with Friday, Saturday, and Sunday articles. This is a harness-region-detection limitation rather than a product defect."
+      ],
+      "findingCounts": {
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "note": 0
+      }
+    },
+    {
+      "id": "reliability",
+      "label": "Reliability and state integrity",
+      "score": 4,
+      "weight": 15,
+      "evidence": [
+        "Vote totals and the winner are derived from immutable sample votes plus the single `userVote` identifier in source/src/App.tsx:231-259, so changing or retracting a vote does not increment mutable counters or allow multiple personal votes.",
+        "Winner ties use a deterministic match-score fallback in source/src/App.tsx:257-259, and destination rendering uses stable destination IDs as keys in source/src/App.tsx:393-403.",
+        "The deterministic interaction path completed at both viewports with zero console errors and zero page errors."
+      ],
+      "findingCounts": {
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "note": 0
+      }
+    },
+    {
+      "id": "accessibility",
+      "label": "Accessibility",
+      "score": 3,
+      "weight": 15,
+      "evidence": [
+        "The app uses native buttons and a native select, a main landmark, semantic headings, and descriptive hero alternative text in source/src/App.tsx:270-301 and source/src/App.tsx:357-405.",
+        "Deterministic checks found no enabled control lacking a detectable name and confirmed keyboard focus reached nine unique controls at each viewport.",
+        "Source review identified bounded barriers in repeated vote-button naming, sort-control focus visibility, and small metric-label contrast."
+      ],
+      "findingCounts": {
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 3,
+        "note": 0
+      }
+    },
+    {
+      "id": "maintainability",
+      "label": "Maintainability and code clarity",
+      "score": 4,
+      "weight": 15,
+      "evidence": [
+        "The data model is explicitly typed in source/src/App.tsx:26-50, filter and sort IDs are constrained unions in source/src/App.tsx:209-217, and strict TypeScript is enabled in source/tsconfig.json:2-17.",
+        "UI responsibilities are separated into focused components for vote rows, destination cards, details, budgets, group status, and itineraries in source/src/App.tsx:425-807.",
+        "The deterministic typecheck and production build both passed."
+      ],
+      "findingCounts": {
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "note": 0
+      }
+    },
+    {
+      "id": "security",
+      "label": "Security, privacy, and dependency compliance",
+      "score": 4,
+      "weight": 10,
+      "evidence": [
+        "The dependency diff passed with no added, removed, or changed packages, and deterministic inspection found no remote references or external browser requests.",
+        "The source contains no network calls, credential collection, external links, or unsafe HTML injection; all rendered content comes from local typed sample data.",
+        "The application fulfills the no-sign-in/no-backend path at both tested viewports."
+      ],
+      "findingCounts": {
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "note": 0
+      }
+    },
+    {
+      "id": "performance",
+      "label": "Performance and responsive robustness",
+      "score": 3,
+      "weight": 10,
+      "evidence": [
+        "Both deterministic viewport checks report 0px document-level horizontal overflow, and responsive grid transitions are defined throughout source/src/App.tsx:279-320 and source/src/App.tsx:357-419.",
+        "The production JavaScript and CSS outputs were 225.78 kB and 55.13 kB respectively, while the single 2,490.11 kB hero raster dominates the 2,771,498-byte production footprint and is the actionable performance concern."
+      ],
+      "findingCounts": {
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 1,
+        "note": 0
+      }
+    },
+    {
+      "id": "verification",
+      "label": "Verification readiness",
+      "score": 4,
+      "weight": 5,
+      "evidence": [
+        "source/package.json:6-10 provides separate typecheck and build scripts plus a combined check script, and source/tsconfig.json:2-17 enables strict type checking.",
+        "The supplied `npm run check` completed successfully with exit code 0, including TypeScript validation and a Vite production build.",
+        "Deterministic browser checks exercised desktop and mobile core paths and recorded zero uncaught console or page errors."
+      ],
+      "findingCounts": {
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "note": 0
+      }
+    }
+  ],
+  "rawWeightedScore": 93.75,
+  "capsApplied": [],
+  "totalScore": 93.75,
+  "strengths": [
+    "The complete destination-comparison, voting, winner, budget, travel-time, group-status, and itinerary experience is available without authentication or a backend.",
+    "Vote state is represented as one stable destination ID and all displayed totals and winner data are derived from it, avoiding counter drift.",
+    "The layout remained usable without page-level horizontal overflow at both 1440×900 and 390×844.",
+    "Strict type checking and the production build pass with the frozen dependency set.",
+    "No remote services, remote assets, external requests, or user-data collection are present."
+  ],
+  "risks": [
+    "Screen-reader users encounter multiple destination vote controls with the same accessible name.",
+    "The sort select lacks a visible keyboard-focus treatment, and small comparison labels have insufficient contrast.",
+    "The 2.49 MB hero PNG dominates the production payload and is delivered unchanged to mobile devices."
+  ],
+  "recommendation": "The core app is functionally complete and deployable. Before release, make vote controls destination-specific for assistive technology, restore a visible sort-control focus state, raise metric-label contrast, and ship responsive compressed variants of the hero image.",
+  "reviewStatus": "frozen",
+  "reviewedAt": "2026-07-20T08:55:00.410Z"
+}

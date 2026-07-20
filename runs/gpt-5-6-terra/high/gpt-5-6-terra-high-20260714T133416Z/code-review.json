@@ -1,0 +1,762 @@
+{
+  "schemaVersion": 1,
+  "reviewBenchmarkId": "weekender-code-review-v1",
+  "targetRunId": "gpt-5-6-terra-high-20260714T133416Z",
+  "reviewer": {
+    "model": "gpt-5.6-sol",
+    "effort": "xhigh",
+    "codexVersion": "codex-cli 0.145.0-alpha.18",
+    "durationMs": 399928,
+    "usage": {
+      "inputTokens": 120632,
+      "cachedInputTokens": 83968,
+      "outputTokens": 14780,
+      "reasoningOutputTokens": 11440
+    }
+  },
+  "deterministicChecks": {
+    "schemaVersion": 1,
+    "reviewBenchmarkId": "weekender-code-review-v1",
+    "generatedAt": "2026-07-20T08:44:14.204Z",
+    "dependencyDiff": {
+      "status": "pass",
+      "added": [],
+      "removed": [],
+      "changed": []
+    },
+    "source": {
+      "files": 5,
+      "nonEmptyLines": 161,
+      "remoteReferences": [],
+      "hashBefore": "9f5b8f11a4fe41b4deb9f4b326f56d4f41e078aa090219ba283be24859341c2e",
+      "hashAfter": "9f5b8f11a4fe41b4deb9f4b326f56d4f41e078aa090219ba283be24859341c2e",
+      "unchangedByChecks": true,
+      "productionAssetBytes": 271744
+    },
+    "commands": {
+      "npmCi": {
+        "status": "pass",
+        "exitCode": 0,
+        "timedOut": false,
+        "durationMs": 1879,
+        "output": "added 83 packages in 2s"
+      },
+      "npmRunCheck": {
+        "status": "pass",
+        "exitCode": 0,
+        "timedOut": false,
+        "durationMs": 5431,
+        "output": "> weekender-benchmark-starter@1.0.0 check\n> npm run typecheck && npm run build\n\n\n> weekender-benchmark-starter@1.0.0 typecheck\n> tsc --noEmit\n\n\n> weekender-benchmark-starter@1.0.0 build\n> tsc --noEmit && vite build\n\nvite v6.4.3 building for production...\ntransforming...\n✓ 1786 modules transformed.\nrendering chunks...\ncomputing gzip size...\ndist/index.html                   0.48 kB │ gzip:  0.29 kB\ndist/assets/index-fIqlfr8d.css   55.96 kB │ gzip: 11.71 kB\ndist/assets/index-ChB7-l5b.js   215.31 kB │ gzip: 66.58 kB\n✓ built in 1.68s"
+      }
+    },
+    "browser": {
+      "browserVersion": "150.0.7871.125",
+      "desktop": {
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "checks": [
+          {
+            "id": "multiple-destinations",
+            "status": "pass",
+            "evidence": "10 destination/article regions and 9 visible headings detected."
+          },
+          {
+            "id": "expected-budget",
+            "status": "pass",
+            "evidence": "8 monetary values detected; budget wording present."
+          },
+          {
+            "id": "travel-time",
+            "status": "pass",
+            "evidence": "4 travel-time signals detected."
+          },
+          {
+            "id": "vote-interaction",
+            "status": "pass",
+            "evidence": "button \"Vote for Lisbon\" changed visible text or control state."
+          },
+          {
+            "id": "winner-itinerary",
+            "status": "pass",
+            "evidence": "Winner or itinerary content was visible or reachable. 2 visible itinerary regions detected."
+          },
+          {
+            "id": "no-sign-in-or-backend",
+            "status": "pass",
+            "evidence": "0 password fields; 1732 visible text characters."
+          },
+          {
+            "id": "horizontal-overflow",
+            "status": "pass",
+            "evidence": "0px document-level horizontal overflow."
+          },
+          {
+            "id": "accessible-controls-and-keyboard",
+            "status": "fail",
+            "evidence": "1 enabled controls lacked a detectable name; 10 unique controls received focus across 12 Tab presses."
+          },
+          {
+            "id": "uncaught-browser-errors",
+            "status": "pass",
+            "evidence": "0 console errors and 0 page errors."
+          }
+        ],
+        "evidence": {
+          "headings": [
+            "Where should we go?",
+            "Three excellent excuses to leave town",
+            "Lisbon",
+            "Copenhagen",
+            "Lake Como",
+            "A comfortable €485 each",
+            "Everyone’s in",
+            "A weekend with room to wander",
+            "Late summer escape"
+          ],
+          "controls": [
+            {
+              "index": 0,
+              "tag": "a",
+              "name": "Overview",
+              "disabled": false
+            },
+            {
+              "index": 1,
+              "tag": "a",
+              "name": "Destinations 3",
+              "disabled": false
+            },
+            {
+              "index": 2,
+              "tag": "a",
+              "name": "Budget",
+              "disabled": false
+            },
+            {
+              "index": 3,
+              "tag": "a",
+              "name": "Itinerary",
+              "disabled": false
+            },
+            {
+              "index": 4,
+              "tag": "a",
+              "name": "Group 5",
+              "disabled": false
+            },
+            {
+              "index": 5,
+              "tag": "button",
+              "name": "Invite friends",
+              "disabled": false
+            },
+            {
+              "index": 6,
+              "tag": "button",
+              "name": "Share plan",
+              "disabled": false
+            },
+            {
+              "index": 7,
+              "tag": "button",
+              "name": "You",
+              "disabled": false
+            },
+            {
+              "index": 8,
+              "tag": "button",
+              "name": "Compare all details",
+              "disabled": false
+            },
+            {
+              "index": 9,
+              "tag": "button",
+              "name": "Vote for Lisbon",
+              "disabled": false
+            },
+            {
+              "index": 10,
+              "tag": "button",
+              "name": "Vote for this",
+              "disabled": false
+            },
+            {
+              "index": 11,
+              "tag": "button",
+              "name": "Selected",
+              "disabled": false
+            },
+            {
+              "index": 12,
+              "tag": "button",
+              "name": "Vote for Copenhagen",
+              "disabled": false
+            },
+            {
+              "index": 13,
+              "tag": "button",
+              "name": "Vote for this",
+              "disabled": false
+            },
+            {
+              "index": 14,
+              "tag": "button",
+              "name": "View plan",
+              "disabled": false
+            },
+            {
+              "index": 15,
+              "tag": "button",
+              "name": "Vote for Lake Como",
+              "disabled": false
+            },
+            {
+              "index": 16,
+              "tag": "button",
+              "name": "Vote for this",
+              "disabled": false
+            },
+            {
+              "index": 17,
+              "tag": "button",
+              "name": "View plan",
+              "disabled": false
+            },
+            {
+              "index": 18,
+              "tag": "button",
+              "name": "Suggest another place",
+              "disabled": false
+            },
+            {
+              "index": 19,
+              "tag": "button",
+              "name": "",
+              "disabled": false
+            },
+            {
+              "index": 20,
+              "tag": "button",
+              "name": "Manage",
+              "disabled": false
+            },
+            {
+              "index": 21,
+              "tag": "button",
+              "name": "Invite another friend",
+              "disabled": false
+            },
+            {
+              "index": 22,
+              "tag": "button",
+              "name": "Open itinerary",
+              "disabled": false
+            },
+            {
+              "index": 23,
+              "tag": "button",
+              "name": "Aug 12–14",
+              "disabled": false
+            }
+          ],
+          "keyboardTargets": [
+            "button:Your pick",
+            "button:Selected",
+            "button:Vote for Copenhagen",
+            "button:Vote for this",
+            "button:View plan",
+            "button:Vote for Lake Como",
+            "button:Suggest another place",
+            "button:",
+            "button:Manage",
+            "button:Invite another friend"
+          ],
+          "consoleErrors": [],
+          "pageErrors": [],
+          "externalRequests": []
+        }
+      },
+      "mobile": {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "checks": [
+          {
+            "id": "multiple-destinations",
+            "status": "pass",
+            "evidence": "10 destination/article regions and 9 visible headings detected."
+          },
+          {
+            "id": "expected-budget",
+            "status": "pass",
+            "evidence": "8 monetary values detected; budget wording present."
+          },
+          {
+            "id": "travel-time",
+            "status": "pass",
+            "evidence": "4 travel-time signals detected."
+          },
+          {
+            "id": "vote-interaction",
+            "status": "pass",
+            "evidence": "button \"Vote for Lisbon\" changed visible text or control state."
+          },
+          {
+            "id": "winner-itinerary",
+            "status": "pass",
+            "evidence": "Winner or itinerary content was visible or reachable. 2 visible itinerary regions detected."
+          },
+          {
+            "id": "no-sign-in-or-backend",
+            "status": "pass",
+            "evidence": "0 password fields; 1721 visible text characters."
+          },
+          {
+            "id": "horizontal-overflow",
+            "status": "pass",
+            "evidence": "0px document-level horizontal overflow."
+          },
+          {
+            "id": "accessible-controls-and-keyboard",
+            "status": "fail",
+            "evidence": "1 enabled controls lacked a detectable name; 10 unique controls received focus across 12 Tab presses."
+          },
+          {
+            "id": "uncaught-browser-errors",
+            "status": "pass",
+            "evidence": "0 console errors and 0 page errors."
+          }
+        ],
+        "evidence": {
+          "headings": [
+            "Where should we go?",
+            "Three excellent excuses to leave town",
+            "Lisbon",
+            "Copenhagen",
+            "Lake Como",
+            "A comfortable €485 each",
+            "Everyone’s in",
+            "A weekend with room to wander",
+            "Late summer escape"
+          ],
+          "controls": [
+            {
+              "index": 0,
+              "tag": "button",
+              "name": "Close menu",
+              "disabled": false
+            },
+            {
+              "index": 1,
+              "tag": "a",
+              "name": "Overview",
+              "disabled": false
+            },
+            {
+              "index": 2,
+              "tag": "a",
+              "name": "Destinations 3",
+              "disabled": false
+            },
+            {
+              "index": 3,
+              "tag": "a",
+              "name": "Budget",
+              "disabled": false
+            },
+            {
+              "index": 4,
+              "tag": "a",
+              "name": "Itinerary",
+              "disabled": false
+            },
+            {
+              "index": 5,
+              "tag": "a",
+              "name": "Group 5",
+              "disabled": false
+            },
+            {
+              "index": 6,
+              "tag": "button",
+              "name": "Invite friends",
+              "disabled": false
+            },
+            {
+              "index": 7,
+              "tag": "button",
+              "name": "Open menu",
+              "disabled": false
+            },
+            {
+              "index": 8,
+              "tag": "button",
+              "name": "You",
+              "disabled": false
+            },
+            {
+              "index": 9,
+              "tag": "button",
+              "name": "Compare all details",
+              "disabled": false
+            },
+            {
+              "index": 10,
+              "tag": "button",
+              "name": "Vote for Lisbon",
+              "disabled": false
+            },
+            {
+              "index": 11,
+              "tag": "button",
+              "name": "Vote for this",
+              "disabled": false
+            },
+            {
+              "index": 12,
+              "tag": "button",
+              "name": "Selected",
+              "disabled": false
+            },
+            {
+              "index": 13,
+              "tag": "button",
+              "name": "Vote for Copenhagen",
+              "disabled": false
+            },
+            {
+              "index": 14,
+              "tag": "button",
+              "name": "Vote for this",
+              "disabled": false
+            },
+            {
+              "index": 15,
+              "tag": "button",
+              "name": "View plan",
+              "disabled": false
+            },
+            {
+              "index": 16,
+              "tag": "button",
+              "name": "Vote for Lake Como",
+              "disabled": false
+            },
+            {
+              "index": 17,
+              "tag": "button",
+              "name": "Vote for this",
+              "disabled": false
+            },
+            {
+              "index": 18,
+              "tag": "button",
+              "name": "View plan",
+              "disabled": false
+            },
+            {
+              "index": 19,
+              "tag": "button",
+              "name": "Suggest another place",
+              "disabled": false
+            },
+            {
+              "index": 20,
+              "tag": "button",
+              "name": "",
+              "disabled": false
+            },
+            {
+              "index": 21,
+              "tag": "button",
+              "name": "Manage",
+              "disabled": false
+            },
+            {
+              "index": 22,
+              "tag": "button",
+              "name": "Invite another friend",
+              "disabled": false
+            },
+            {
+              "index": 23,
+              "tag": "button",
+              "name": "Open itinerary",
+              "disabled": false
+            },
+            {
+              "index": 24,
+              "tag": "button",
+              "name": "Aug 12–14",
+              "disabled": false
+            }
+          ],
+          "keyboardTargets": [
+            "button:Your pick",
+            "button:Selected",
+            "button:Vote for Copenhagen",
+            "button:Vote for this",
+            "button:View plan",
+            "button:Vote for Lake Como",
+            "button:Suggest another place",
+            "button:",
+            "button:Manage",
+            "button:Invite another friend"
+          ],
+          "consoleErrors": [],
+          "pageErrors": [],
+          "externalRequests": []
+        }
+      }
+    },
+    "guardrailFacts": {
+      "npmRunCheckFailed": false,
+      "corePathUnusable": false,
+      "corePathDefinition": "npm run check failed, or at least two core acceptance items failed at both viewports."
+    }
+  },
+  "findings": [
+    {
+      "severity": "medium",
+      "category": "reliability",
+      "title": "Viewed destination is incorrectly treated as the voting leader",
+      "file": "source/src/App.tsx",
+      "lineStart": 61,
+      "lineEnd": 67,
+      "evidence": "`winner` is derived from the independently controlled `selected` index, while vote totals are derived from `voted`. Lines 104-108 then use `selected` to display the “Front runner” badge. Clicking Lake Como’s “View plan” therefore marks its 2-vote card as front-runner while Lisbon still visibly has 4 votes.",
+      "impact": "The displayed winner can directly contradict the vote totals, undermining the app’s core group-decision result.",
+      "remediation": "Keep viewed-plan selection separate from the winner and derive the front-runner/winner from vote totals with an explicit tie rule."
+    },
+    {
+      "severity": "medium",
+      "category": "reliability",
+      "title": "Group vote status is hardcoded instead of following vote state",
+      "file": "source/src/App.tsx",
+      "lineStart": 117,
+      "lineEnd": 117,
+      "evidence": "The user row always renders “Voted for Lisbon” solely because its array index is 4. This appears even when `voted` initially equals `null`, and remains unchanged after voting for Copenhagen or Lake Como.",
+      "impact": "Two parts of the interface report different choices for the same user, creating a reproducible contradiction in the core voting state.",
+      "remediation": "Derive the user’s group-row status from `voted`, including a clear not-yet-voted state."
+    },
+    {
+      "severity": "medium",
+      "category": "correctness",
+      "title": "Non-Lisbon plans reuse a Lisbon-only itinerary",
+      "file": "source/src/App.tsx",
+      "lineStart": 54,
+      "lineEnd": 57,
+      "evidence": "Every itinerary item is explicitly Lisbon-specific, including “Touch down in Lisbon,” Alfama, Cascais, and “LIS → BER.” Line 120 changes the displayed destination name and country from `winner` but unconditionally maps this same itinerary. Selecting Copenhagen consequently produces a Copenhagen heading with Lisbon activities.",
+      "impact": "The simple itinerary—a core brief requirement—becomes factually wrong whenever a user views either alternative destination.",
+      "remediation": "Store itinerary data per destination and render the itinerary associated with the viewed destination, or restrict the itinerary action to the destination for which data exists."
+    },
+    {
+      "severity": "medium",
+      "category": "accessibility",
+      "title": "Closed mobile navigation remains in the keyboard focus order",
+      "file": "source/src/index.css",
+      "lineStart": 20,
+      "lineEnd": 20,
+      "evidence": "At the mobile breakpoint the closed sidebar is only moved off-screen with `transform: translateX(-100%)`; it is not hidden or made inert. Its close button, five links, and invite button remain focusable in the always-rendered sidebar at App.tsx lines 75-85. The mobile check also detected those controls in the document.",
+      "impact": "Keyboard users must traverse multiple invisible controls before reaching the visible page, and focus can move into an off-screen drawer without an announced open state.",
+      "remediation": "Make the closed drawer inert or non-rendered, expose `aria-expanded`/`aria-controls`, and manage focus when opening and closing it, including Escape handling."
+    },
+    {
+      "severity": "low",
+      "category": "correctness",
+      "title": "Budget bar ignores the calculated segment widths",
+      "file": "source/src/index.css",
+      "lineStart": 17,
+      "lineEnd": 17,
+      "evidence": "`.budget-bar i` assigns `flex: 1` to every segment. That shorthand uses a zero flex basis, overriding the meaningful inline widths calculated in App.tsx line 116, so stay, food, and travel render as equal thirds despite unequal amounts.",
+      "impact": "The visual budget breakdown misrepresents the otherwise-correct monetary legend.",
+      "remediation": "Size segments proportionally with `flex-grow` values or a nonzero basis and remove the equal `flex: 1` rule."
+    },
+    {
+      "severity": "low",
+      "category": "correctness",
+      "title": "Trip duration contradicts the itinerary dates",
+      "file": "source/src/App.tsx",
+      "lineStart": 95,
+      "lineEnd": 97,
+      "evidence": "The overview labels Aug 12–14 as “3 NIGHTS,” while the itinerary runs from Friday the 12th through a flight home on Sunday the 14th, which provides two nights.",
+      "impact": "Users receive conflicting basic planning information about the sample trip’s duration.",
+      "remediation": "Change the summary to two nights or extend the dates and itinerary to cover a third night."
+    },
+    {
+      "severity": "low",
+      "category": "correctness",
+      "title": "Enabled planning actions have no behavior",
+      "file": "source/src/App.tsx",
+      "lineStart": 117,
+      "lineEnd": 120,
+      "evidence": "The enabled “Manage,” “Invite another friend,” “Open itinerary,” and date buttons have no event handlers or navigation targets.",
+      "impact": "These secondary controls promise meaningful group or itinerary actions but produce no response when activated.",
+      "remediation": "Implement lightweight local interactions for these controls, or remove/disable them with a clear unavailable state."
+    },
+    {
+      "severity": "low",
+      "category": "accessibility",
+      "title": "Budget options button has no accessible name",
+      "file": "source/src/App.tsx",
+      "lineStart": 116,
+      "lineEnd": 116,
+      "evidence": "The button contains only a `MoreHorizontal` icon and has no visible text, `aria-label`, or title. Deterministic checks found exactly one enabled unnamed control at both desktop and mobile viewports, matching this element.",
+      "impact": "Screen-reader users cannot determine the control’s purpose.",
+      "remediation": "Give the control a specific accessible name and behavior, or remove it if it is decorative."
+    },
+    {
+      "severity": "low",
+      "category": "accessibility",
+      "title": "Text vote buttons have duplicate destination-agnostic names",
+      "file": "source/src/App.tsx",
+      "lineStart": 107,
+      "lineEnd": 108,
+      "evidence": "Each card’s main text vote button is named “Vote for this” without including the destination. The deterministic control inventory confirms three controls with the same name, while the adjacent icon vote buttons do include destination-specific labels.",
+      "impact": "Users navigating by a screen reader’s button list cannot tell which destination each text vote control affects.",
+      "remediation": "Include the destination in each accessible name and expose the toggle state consistently, such as `aria-label=\"Vote for Copenhagen\"` with `aria-pressed`."
+    }
+  ],
+  "categories": [
+    {
+      "id": "correctness",
+      "label": "Brief fidelity and functional correctness",
+      "score": 2,
+      "weight": 30,
+      "evidence": [
+        "At both 1440×900 and 390×844, deterministic checks passed multiple destinations, expected budget, travel time, vote interaction, winner/itinerary reachability, and backend-free use.",
+        "The source-confirmed non-default itinerary mismatch affects a core task; bounded defects also affect the budget graphic, trip duration, and enabled secondary actions."
+      ],
+      "findingCounts": {
+        "critical": 0,
+        "high": 0,
+        "medium": 1,
+        "low": 3,
+        "note": 0
+      }
+    },
+    {
+      "id": "reliability",
+      "label": "Reliability and state integrity",
+      "score": 1,
+      "weight": 15,
+      "evidence": [
+        "`castVote` supports selecting, changing, and removing one vote, and the browser path recorded no console or page errors at either viewport.",
+        "Winner selection and group-member status are maintained separately from the actual vote state, producing two reproducible contradictions."
+      ],
+      "findingCounts": {
+        "critical": 0,
+        "high": 0,
+        "medium": 2,
+        "low": 0,
+        "note": 0
+      }
+    },
+    {
+      "id": "accessibility",
+      "label": "Accessibility",
+      "score": 2,
+      "weight": 15,
+      "evidence": [
+        "The app uses native links and buttons, a main landmark, navigation, ordered headings, and explicit labels for icon-only menu and destination-heart controls.",
+        "Both viewport checks found one unnamed enabled control. Source inspection additionally shows that the visually closed mobile drawer remains focusable and that repeated text vote controls lack destination-specific names."
+      ],
+      "findingCounts": {
+        "critical": 0,
+        "high": 0,
+        "medium": 1,
+        "low": 2,
+        "note": 0
+      }
+    },
+    {
+      "id": "maintainability",
+      "label": "Maintainability and code clarity",
+      "score": 4,
+      "weight": 15,
+      "evidence": [
+        "No material maintainability finding was identified: `source/src/App.tsx:25-58` defines typed destination data and centralized fixtures, while the small set of state transitions is localized at lines 60-71.",
+        "The concrete data/state coupling defects are reported under correctness and reliability rather than treating the single-component structure or source size as defects."
+      ],
+      "findingCounts": {
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "note": 0
+      }
+    },
+    {
+      "id": "security",
+      "label": "Security, privacy, and dependency compliance",
+      "score": 4,
+      "weight": 10,
+      "evidence": [
+        "No material security, privacy, or dependency issue was identified. The dependency diff passed with no additions, removals, or changes, and `source/package.json:12-24` contains only frozen-starter packages.",
+        "The source scan found no remote references, and browser checks recorded no external requests; the app contains no backend calls, credential fields, unsafe HTML injection, or user-data persistence."
+      ],
+      "findingCounts": {
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "note": 0
+      }
+    },
+    {
+      "id": "performance",
+      "label": "Performance and responsive robustness",
+      "score": 4,
+      "weight": 10,
+      "evidence": [
+        "No material performance or responsive finding was identified. Deterministic checks measured zero document-level horizontal overflow at 1440×900 and 390×844.",
+        "`source/src/index.css:19-20` supplies explicit tablet and mobile layouts, while the production output was 271,744 bytes total with 66.58 kB gzip JavaScript and 11.71 kB gzip CSS and uses no remote media."
+      ],
+      "findingCounts": {
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "note": 0
+      }
+    },
+    {
+      "id": "verification",
+      "label": "Verification readiness",
+      "score": 4,
+      "weight": 5,
+      "evidence": [
+        "No material verification-readiness issue was identified. `source/package.json:6-10` provides typecheck, build, and combined check scripts.",
+        "The supplied `npm run check` completed successfully with TypeScript and Vite production build; browser checks recorded zero console and page errors, and source hashes confirm checks did not mutate the submission."
+      ],
+      "findingCounts": {
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "note": 0
+      }
+    }
+  ],
+  "rawWeightedScore": 66.25,
+  "capsApplied": [],
+  "totalScore": 66.25,
+  "strengths": [
+    "The primary destination comparison exposes realistic travel times, per-person totals, category costs, descriptions, and visible vote counts for three choices.",
+    "Voting is keyboard-operable through native buttons and visibly updates both the selected control and vote total in the deterministic desktop and mobile paths.",
+    "The responsive layout passed both defined viewports without horizontal page overflow, and the itinerary stacks into mobile-friendly day sections.",
+    "The app is fully local: dependency compliance passed, no remote assets or requests were detected, and the core experience requires no sign-in or backend.",
+    "Type checking and the production build pass cleanly, with no uncaught browser errors during the acceptance paths."
+  ],
+  "risks": [
+    "Vote totals are not the source of truth for the displayed front-runner, and the group card independently reports a hardcoded user vote.",
+    "Only the default Lisbon plan is internally coherent; alternative destination plans retain Lisbon-specific activities.",
+    "The mobile drawer’s hidden focus targets and incomplete control naming create avoidable barriers for keyboard and screen-reader users.",
+    "Several secondary controls appear available despite having no implementation."
+  ],
+  "recommendation": "Correct the vote-derived winner and member status first, then provide destination-specific itinerary data. Before release, make the mobile drawer inert with managed focus when closed, repair control names, fix the budget and duration inconsistencies, and either implement or remove inert actions. Re-run the existing check plus interaction coverage for voting and viewing every destination.",
+  "reviewStatus": "frozen",
+  "reviewedAt": "2026-07-20T08:50:54.263Z"
+}

@@ -1,0 +1,757 @@
+{
+  "schemaVersion": 1,
+  "reviewBenchmarkId": "weekender-code-review-v1",
+  "targetRunId": "gpt-5-6-luna-high-20260714T132559Z",
+  "reviewer": {
+    "model": "gpt-5.6-sol",
+    "effort": "xhigh",
+    "codexVersion": "codex-cli 0.145.0-alpha.18",
+    "durationMs": 290093,
+    "usage": {
+      "inputTokens": 306367,
+      "cachedInputTokens": 240896,
+      "outputTokens": 11020,
+      "reasoningOutputTokens": 7662
+    }
+  },
+  "deterministicChecks": {
+    "schemaVersion": 1,
+    "reviewBenchmarkId": "weekender-code-review-v1",
+    "generatedAt": "2026-07-20T08:39:13.203Z",
+    "dependencyDiff": {
+      "status": "pass",
+      "added": [],
+      "removed": [],
+      "changed": []
+    },
+    "source": {
+      "files": 5,
+      "nonEmptyLines": 343,
+      "remoteReferences": [],
+      "hashBefore": "5efb46091d67d7f6968ebe6af2eb967e51d46748b006084c41113633252f4a4d",
+      "hashAfter": "5efb46091d67d7f6968ebe6af2eb967e51d46748b006084c41113633252f4a4d",
+      "unchangedByChecks": true,
+      "productionAssetBytes": 290718
+    },
+    "commands": {
+      "npmCi": {
+        "status": "pass",
+        "exitCode": 0,
+        "timedOut": false,
+        "durationMs": 1797,
+        "output": "added 83 packages in 2s"
+      },
+      "npmRunCheck": {
+        "status": "pass",
+        "exitCode": 0,
+        "timedOut": false,
+        "durationMs": 5903,
+        "output": "> weekender-benchmark-starter@1.0.0 check\n> npm run typecheck && npm run build\n\n\n> weekender-benchmark-starter@1.0.0 typecheck\n> tsc --noEmit\n\n\n> weekender-benchmark-starter@1.0.0 build\n> tsc --noEmit && vite build\n\nvite v6.4.3 building for production...\ntransforming...\n✓ 1786 modules transformed.\nrendering chunks...\ncomputing gzip size...\ndist/index.html                   0.48 kB │ gzip:  0.29 kB\ndist/assets/index-BS3XOxZN.css   67.32 kB │ gzip: 13.96 kB\ndist/assets/index-BlswzxdN.js   222.93 kB │ gzip: 68.46 kB\n✓ built in 1.72s"
+      }
+    },
+    "browser": {
+      "browserVersion": "150.0.7871.125",
+      "desktop": {
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "checks": [
+          {
+            "id": "multiple-destinations",
+            "status": "pass",
+            "evidence": "11 destination/article regions and 9 visible headings detected."
+          },
+          {
+            "id": "expected-budget",
+            "status": "pass",
+            "evidence": "3 monetary values detected; budget wording absent."
+          },
+          {
+            "id": "travel-time",
+            "status": "pass",
+            "evidence": "4 travel-time signals detected."
+          },
+          {
+            "id": "vote-interaction",
+            "status": "fail",
+            "evidence": "a \"Vote\" did not change visible text or control state."
+          },
+          {
+            "id": "winner-itinerary",
+            "status": "pass",
+            "evidence": "Winner or itinerary content was visible or reachable. 2 visible itinerary regions detected."
+          },
+          {
+            "id": "no-sign-in-or-backend",
+            "status": "pass",
+            "evidence": "0 password fields; 1873 visible text characters."
+          },
+          {
+            "id": "horizontal-overflow",
+            "status": "pass",
+            "evidence": "0px document-level horizontal overflow."
+          },
+          {
+            "id": "accessible-controls-and-keyboard",
+            "status": "pass",
+            "evidence": "0 enabled controls lacked a detectable name; 10 unique controls received focus across 12 Tab presses."
+          },
+          {
+            "id": "uncaught-browser-errors",
+            "status": "pass",
+            "evidence": "0 console errors and 0 page errors."
+          }
+        ],
+        "evidence": {
+          "headings": [
+            "A weekend worthremembering.",
+            "Where should we go?",
+            "Lisbon",
+            "Copenhagen",
+            "Ljubljana",
+            "A little Lisbon magic",
+            "Arrive & wander",
+            "Who’s in?",
+            "Five friends, one escape"
+          ],
+          "controls": [
+            {
+              "index": 0,
+              "tag": "a",
+              "name": "Weekender home",
+              "disabled": false
+            },
+            {
+              "index": 1,
+              "tag": "a",
+              "name": "Overview",
+              "disabled": false
+            },
+            {
+              "index": 2,
+              "tag": "a",
+              "name": "Vote",
+              "disabled": false
+            },
+            {
+              "index": 3,
+              "tag": "a",
+              "name": "Plan",
+              "disabled": false
+            },
+            {
+              "index": 4,
+              "tag": "button",
+              "name": "June escape",
+              "disabled": false
+            },
+            {
+              "index": 5,
+              "tag": "button",
+              "name": "Notifications",
+              "disabled": false
+            },
+            {
+              "index": 6,
+              "tag": "button",
+              "name": "Open profile",
+              "disabled": false
+            },
+            {
+              "index": 7,
+              "tag": "button",
+              "name": "More trip options",
+              "disabled": false
+            },
+            {
+              "index": 8,
+              "tag": "button",
+              "name": "Compare",
+              "disabled": false
+            },
+            {
+              "index": 9,
+              "tag": "button",
+              "name": "Results 18",
+              "disabled": false
+            },
+            {
+              "index": 10,
+              "tag": "button",
+              "name": "Share trip",
+              "disabled": false
+            },
+            {
+              "index": 11,
+              "tag": "button",
+              "name": "Save Lisbon",
+              "disabled": false
+            },
+            {
+              "index": 12,
+              "tag": "button",
+              "name": "Vote",
+              "disabled": false
+            },
+            {
+              "index": 13,
+              "tag": "button",
+              "name": "Save Copenhagen",
+              "disabled": false
+            },
+            {
+              "index": 14,
+              "tag": "button",
+              "name": "Vote",
+              "disabled": false
+            },
+            {
+              "index": 15,
+              "tag": "button",
+              "name": "Save Ljubljana",
+              "disabled": false
+            },
+            {
+              "index": 16,
+              "tag": "button",
+              "name": "Vote",
+              "disabled": false
+            },
+            {
+              "index": 17,
+              "tag": "button",
+              "name": "Add activity",
+              "disabled": false
+            },
+            {
+              "index": 18,
+              "tag": "button",
+              "name": "Friday14 Jun",
+              "disabled": false
+            },
+            {
+              "index": 19,
+              "tag": "button",
+              "name": "Saturday15 Jun",
+              "disabled": false
+            },
+            {
+              "index": 20,
+              "tag": "button",
+              "name": "Sunday16 Jun",
+              "disabled": false
+            },
+            {
+              "index": 21,
+              "tag": "button",
+              "name": "Edit day",
+              "disabled": false
+            },
+            {
+              "index": 22,
+              "tag": "button",
+              "name": "View full itinerary",
+              "disabled": false
+            },
+            {
+              "index": 23,
+              "tag": "button",
+              "name": "More crew options",
+              "disabled": false
+            },
+            {
+              "index": 24,
+              "tag": "button",
+              "name": "Invite someone",
+              "disabled": false
+            },
+            {
+              "index": 25,
+              "tag": "button",
+              "name": "Dismiss suggestion",
+              "disabled": false
+            }
+          ],
+          "keyboardTargets": [
+            "button:Compare",
+            "button:Results 18",
+            "button:Share trip",
+            "button:Save Lisbon",
+            "button:Vote",
+            "button:Save Copenhagen",
+            "button:Save Ljubljana",
+            "button:Add activity",
+            "button:Friday14 Jun",
+            "button:Saturday15 Jun"
+          ],
+          "consoleErrors": [],
+          "pageErrors": [],
+          "externalRequests": []
+        }
+      },
+      "mobile": {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "checks": [
+          {
+            "id": "multiple-destinations",
+            "status": "pass",
+            "evidence": "11 destination/article regions and 9 visible headings detected."
+          },
+          {
+            "id": "expected-budget",
+            "status": "pass",
+            "evidence": "3 monetary values detected; budget wording absent."
+          },
+          {
+            "id": "travel-time",
+            "status": "pass",
+            "evidence": "4 travel-time signals detected."
+          },
+          {
+            "id": "vote-interaction",
+            "status": "pass",
+            "evidence": "button \"Vote\" changed visible text or control state."
+          },
+          {
+            "id": "winner-itinerary",
+            "status": "pass",
+            "evidence": "Winner or itinerary content was visible or reachable. 2 visible itinerary regions detected."
+          },
+          {
+            "id": "no-sign-in-or-backend",
+            "status": "pass",
+            "evidence": "0 password fields; 1867 visible text characters."
+          },
+          {
+            "id": "horizontal-overflow",
+            "status": "pass",
+            "evidence": "0px document-level horizontal overflow."
+          },
+          {
+            "id": "accessible-controls-and-keyboard",
+            "status": "pass",
+            "evidence": "0 enabled controls lacked a detectable name; 11 unique controls received focus across 12 Tab presses."
+          },
+          {
+            "id": "uncaught-browser-errors",
+            "status": "pass",
+            "evidence": "0 console errors and 0 page errors."
+          }
+        ],
+        "evidence": {
+          "headings": [
+            "A weekend worthremembering.",
+            "Where should we go?",
+            "Lisbon",
+            "Copenhagen",
+            "Ljubljana",
+            "A little Lisbon magic",
+            "Arrive & wander",
+            "Who’s in?",
+            "Five friends, one escape"
+          ],
+          "controls": [
+            {
+              "index": 0,
+              "tag": "a",
+              "name": "Weekender home",
+              "disabled": false
+            },
+            {
+              "index": 1,
+              "tag": "button",
+              "name": "Open profile",
+              "disabled": false
+            },
+            {
+              "index": 2,
+              "tag": "button",
+              "name": "More trip options",
+              "disabled": false
+            },
+            {
+              "index": 3,
+              "tag": "button",
+              "name": "Compare",
+              "disabled": false
+            },
+            {
+              "index": 4,
+              "tag": "button",
+              "name": "Results 18",
+              "disabled": false
+            },
+            {
+              "index": 5,
+              "tag": "button",
+              "name": "Share trip",
+              "disabled": false
+            },
+            {
+              "index": 6,
+              "tag": "button",
+              "name": "Save Lisbon",
+              "disabled": false
+            },
+            {
+              "index": 7,
+              "tag": "button",
+              "name": "Vote",
+              "disabled": false
+            },
+            {
+              "index": 8,
+              "tag": "button",
+              "name": "Save Copenhagen",
+              "disabled": false
+            },
+            {
+              "index": 9,
+              "tag": "button",
+              "name": "Vote",
+              "disabled": false
+            },
+            {
+              "index": 10,
+              "tag": "button",
+              "name": "Save Ljubljana",
+              "disabled": false
+            },
+            {
+              "index": 11,
+              "tag": "button",
+              "name": "Vote",
+              "disabled": false
+            },
+            {
+              "index": 12,
+              "tag": "button",
+              "name": "Add activity",
+              "disabled": false
+            },
+            {
+              "index": 13,
+              "tag": "button",
+              "name": "Friday14 Jun",
+              "disabled": false
+            },
+            {
+              "index": 14,
+              "tag": "button",
+              "name": "Saturday15 Jun",
+              "disabled": false
+            },
+            {
+              "index": 15,
+              "tag": "button",
+              "name": "Sunday16 Jun",
+              "disabled": false
+            },
+            {
+              "index": 16,
+              "tag": "button",
+              "name": "Edit day",
+              "disabled": false
+            },
+            {
+              "index": 17,
+              "tag": "button",
+              "name": "View full itinerary",
+              "disabled": false
+            },
+            {
+              "index": 18,
+              "tag": "button",
+              "name": "More crew options",
+              "disabled": false
+            },
+            {
+              "index": 19,
+              "tag": "button",
+              "name": "Invite someone",
+              "disabled": false
+            },
+            {
+              "index": 20,
+              "tag": "button",
+              "name": "Dismiss suggestion",
+              "disabled": false
+            },
+            {
+              "index": 21,
+              "tag": "a",
+              "name": "Overview",
+              "disabled": false
+            },
+            {
+              "index": 22,
+              "tag": "a",
+              "name": "Vote",
+              "disabled": false
+            },
+            {
+              "index": 23,
+              "tag": "a",
+              "name": "Plan",
+              "disabled": false
+            },
+            {
+              "index": 24,
+              "tag": "button",
+              "name": "Crew",
+              "disabled": false
+            }
+          ],
+          "keyboardTargets": [
+            "button:Save Copenhagen",
+            "button:Vote",
+            "button:Save Ljubljana",
+            "button:Add activity",
+            "button:Friday14 Jun",
+            "button:Saturday15 Jun",
+            "button:Sunday16 Jun",
+            "button:Edit day",
+            "button:View full itinerary",
+            "button:More crew options",
+            "button:Invite someone"
+          ],
+          "consoleErrors": [],
+          "pageErrors": [],
+          "externalRequests": []
+        }
+      }
+    },
+    "guardrailFacts": {
+      "npmRunCheckFailed": false,
+      "corePathUnusable": false,
+      "corePathDefinition": "npm run check failed, or at least two core acceptance items failed at both viewports."
+    }
+  },
+  "findings": [
+    {
+      "severity": "low",
+      "category": "correctness",
+      "title": "Two destination save controls are enabled but inert",
+      "file": "source/src/App.tsx",
+      "lineStart": 228,
+      "lineEnd": 228,
+      "evidence": "Every destination renders an enabled `Save {destination.name}` button, but the click handler and saved styling only act when `index === 0`. Clicking Save Copenhagen or Save Ljubljana therefore produces no state change.",
+      "impact": "Users are offered a meaningful secondary action that silently fails for two of the three destinations.",
+      "remediation": "Track saved destination IDs and toggle the clicked destination, or remove/disable save controls that are unavailable."
+    },
+    {
+      "severity": "low",
+      "category": "correctness",
+      "title": "Copy link reports success without copying anything",
+      "file": "source/src/App.tsx",
+      "lineStart": 174,
+      "lineEnd": 177,
+      "evidence": "`handleCopy` only sets `copied` to true and schedules its reset; it never calls the Clipboard API. The modal invokes this handler and changes its label to `Copied` at line 272.",
+      "impact": "Users can leave the share flow believing the trip link is on their clipboard when it is not.",
+      "remediation": "Call `navigator.clipboard.writeText` with the displayed URL and show success only after fulfillment, with an error/fallback state."
+    },
+    {
+      "severity": "low",
+      "category": "correctness",
+      "title": "Enabled itinerary actions have no behavior",
+      "file": "source/src/App.tsx",
+      "lineStart": 252,
+      "lineEnd": 265,
+      "evidence": "The prominent Add activity, Edit day, and View full itinerary buttons have no click handlers; the Dismiss suggestion button is likewise inert.",
+      "impact": "Several secondary planning actions promise editing, expansion, or dismissal but do nothing, making the finished-product surface misleading.",
+      "remediation": "Implement the promised state transitions or render these affordances as clearly unavailable rather than enabled buttons."
+    },
+    {
+      "severity": "medium",
+      "category": "reliability",
+      "title": "Vote totals contradict each other after voting",
+      "file": "source/src/App.tsx",
+      "lineStart": 242,
+      "lineEnd": 247,
+      "evidence": "The results introduction hard-codes `18 votes cast`, while the footer renders the derived `totalVotes`. After any vote, the footer becomes `19 of 20 votes in` but the results introduction—and the `Results 18` tab at line 218—remain at 18.",
+      "impact": "A core voting interaction creates simultaneous, visibly conflicting totals, undermining confidence in the result state.",
+      "remediation": "Render every vote-total label from the same derived total and update any associated last-vote metadata with the vote transition."
+    },
+    {
+      "severity": "medium",
+      "category": "accessibility",
+      "title": "Results-view vote buttons have no accessible names",
+      "file": "source/src/App.tsx",
+      "lineStart": 243,
+      "lineEnd": 243,
+      "evidence": "Each result row ends with a button containing only a Plus or Check icon, without text, `aria-label`, or destination-specific state semantics. This affects all three voting controls in the results view.",
+      "impact": "Screen-reader users cannot determine which destination an icon-only control votes for or whether activating it will add or remove their vote, creating a repeated barrier in a core task.",
+      "remediation": "Give each button a destination- and action-specific accessible name and expose its selected state with `aria-pressed` or equivalent semantics."
+    },
+    {
+      "severity": "medium",
+      "category": "accessibility",
+      "title": "Essential comparison and voting text has insufficient contrast",
+      "file": "source/src/index.css",
+      "lineStart": 42,
+      "lineEnd": 42,
+      "evidence": "The 9px budget/travel labels use `#a0a9a4` on white (approximately 2.41:1), and the 10px Vote text uses white on `#e47d54` (approximately 2.85:1). Both are below the 4.5:1 contrast requirement for normal-sized text and recur on every destination card.",
+      "impact": "Low-vision users may struggle to read the context for core budget/travel values and the primary voting action.",
+      "remediation": "Use darker foreground or background colors that provide at least 4.5:1 contrast for these small text sizes."
+    },
+    {
+      "severity": "low",
+      "category": "accessibility",
+      "title": "Invite dialog lacks keyboard focus management",
+      "file": "source/src/App.tsx",
+      "lineStart": 272,
+      "lineEnd": 272,
+      "evidence": "Opening the modal only changes `showInvite`; the dialog has no initial-focus logic, focus trap, Escape handler, background inerting, or focus restoration. From the desktop Share trip opener, subsequent Tab presses can continue through controls behind the appended dialog.",
+      "impact": "Keyboard users can lose the dialog context, traverse background content while a modal is open, and lose their prior position when it closes.",
+      "remediation": "Move focus into the dialog on open, contain it while open, close on Escape, make the background inert, and restore focus to the opener."
+    }
+  ],
+  "categories": [
+    {
+      "id": "correctness",
+      "label": "Brief fidelity and functional correctness",
+      "score": 3,
+      "weight": 30,
+      "evidence": [
+        "source/src/App.tsx:43-124 supplies three realistic destinations with per-person prices, travel times, ratings, descriptions, tags, and three days of itinerary data.",
+        "The supplied desktop and mobile checks both passed destination comparison, budget, travel-time, winner/itinerary reachability, backend-free operation, and browser-error checks.",
+        "The desktop vote heuristic failure is not treated as a defect: source/src/App.tsx:234 provides a clear state-changing vote handler and the supplied mobile check successfully observed the button change. The failed desktop heuristic therefore has conflicting source/browser evidence rather than a confirmed broken path.",
+        "Secondary save, copy, and itinerary controls do not fulfill their enabled affordances, as detailed in the correctness findings."
+      ],
+      "findingCounts": {
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 3,
+        "note": 0
+      }
+    },
+    {
+      "id": "reliability",
+      "label": "Reliability and state integrity",
+      "score": 2,
+      "weight": 15,
+      "evidence": [
+        "source/src/App.tsx:159-173 uses a stable destination ID for the user's single vote and derives destination and aggregate counts without mutating the sample data.",
+        "source/src/App.tsx:234 and source/src/App.tsx:243 both support selecting, switching, and removing the current vote.",
+        "Vote-count text is duplicated between derived and hard-coded values at source/src/App.tsx:218 and source/src/App.tsx:242-247, producing the documented state contradiction."
+      ],
+      "findingCounts": {
+        "critical": 0,
+        "high": 0,
+        "medium": 1,
+        "low": 0,
+        "note": 0
+      }
+    },
+    {
+      "id": "accessibility",
+      "label": "Accessibility",
+      "score": 1,
+      "weight": 15,
+      "evidence": [
+        "The supplied initial-state checks found no enabled unnamed controls and focused 10 unique desktop and 11 unique mobile controls during their keyboard paths.",
+        "source/src/App.tsx:181-270 provides header, main, navigation, section, article, aside, heading, and native button landmarks/elements, with labels on the initial icon-only controls.",
+        "The initial-state heuristic did not exercise the results-row icon buttons or modal focus lifecycle; source/src/App.tsx:243 and source/src/App.tsx:272 expose the documented barriers, while source/src/index.css:42 declares repeated sub-threshold text contrast."
+      ],
+      "findingCounts": {
+        "critical": 0,
+        "high": 0,
+        "medium": 2,
+        "low": 1,
+        "note": 0
+      }
+    },
+    {
+      "id": "maintainability",
+      "label": "Maintainability and code clarity",
+      "score": 4,
+      "weight": 15,
+      "evidence": [
+        "source/src/App.tsx:29-124 centralizes typed destination data, friends, and itinerary content, while source/src/App.tsx:126-156 extracts repeated avatars and destination artwork.",
+        "State and derived vote calculations are localized at source/src/App.tsx:158-177. No separate actionable maintainability defect was found beyond the state and behavior defects assigned to their primary categories."
+      ],
+      "findingCounts": {
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "note": 0
+      }
+    },
+    {
+      "id": "security",
+      "label": "Security, privacy, and dependency compliance",
+      "score": 4,
+      "weight": 10,
+      "evidence": [
+        "The supplied dependency comparison passed with no added, removed, or changed packages; remote-reference and external-request lists were empty.",
+        "The source uses React-rendered text and contains no `dangerouslySetInnerHTML`, secret-like configuration, data collection, or external service integration. No actionable security or privacy issue was found."
+      ],
+      "findingCounts": {
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "note": 0
+      }
+    },
+    {
+      "id": "performance",
+      "label": "Performance and responsive robustness",
+      "score": 4,
+      "weight": 10,
+      "evidence": [
+        "The supplied production output was 290,718 bytes, with 68.46 kB gzip JavaScript and 13.96 kB gzip CSS, and no remote asset requests.",
+        "Both supplied viewport checks recorded 0px document-level horizontal overflow, and source/src/index.css:53-54 supplies dedicated tablet and mobile layout rules. No material performance or responsive-robustness defect was demonstrated."
+      ],
+      "findingCounts": {
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "note": 0
+      }
+    },
+    {
+      "id": "verification",
+      "label": "Verification readiness",
+      "score": 4,
+      "weight": 5,
+      "evidence": [
+        "The supplied `npm run check` completed successfully, including strict TypeScript checking and a Vite production build, with zero browser console or page errors on both defined viewports.",
+        "source/package.json:6-10 provides separate typecheck, build, and aggregate check scripts, and source/tsconfig.json:2-17 enables strict TypeScript. No actionable verification-readiness defect was found."
+      ],
+      "findingCounts": {
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "note": 0
+      }
+    }
+  ],
+  "rawWeightedScore": 73.75,
+  "capsApplied": [],
+  "totalScore": 73.75,
+  "strengths": [
+    "The core compare-vote-plan experience is present without authentication or backend dependencies, and both supplied viewports reached the destination and itinerary content.",
+    "Voting is modeled with stable destination IDs and supports selecting, switching, and removing a vote across both compare and results presentations.",
+    "The three-day itinerary is interactive and contains realistic times, activities, reservations, and travel details.",
+    "Responsive checks found no horizontal overflow or uncaught browser errors at either 1440×900 or 390×844.",
+    "Dependency compliance, strict type checking, and the production build all passed, with no remote references or external requests."
+  ],
+  "risks": [
+    "Duplicated vote metadata can diverge immediately after a user action and may cause users to distrust the displayed result.",
+    "Core comparison and results controls present repeated contrast and accessible-name barriers for low-vision and screen-reader users.",
+    "Several enabled secondary controls either do nothing or falsely report completion, so users cannot reliably infer which planning features are functional.",
+    "The invite modal can leave keyboard focus in background content and does not provide a predictable Escape or focus-restoration path."
+  ],
+  "recommendation": "The core Weekender path is deployable and responsive, but the vote total should be made single-source-of-truth before release. Next, label the results controls, correct core text contrast, add modal focus management, and either implement or clearly disable the misleading save, copy, and itinerary actions.",
+  "reviewStatus": "frozen",
+  "reviewedAt": "2026-07-20T08:44:03.408Z"
+}

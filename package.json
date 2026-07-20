@@ -8,6 +8,7 @@
     "check:site": "node --check site/app.js && node --check scripts/build-site.mjs && node scripts/build-site.mjs",
     "review:calibrate": "node scripts/run-code-review.mjs --calibration",
     "review:checks": "node scripts/run-code-review.mjs --calibration --checks-only",
+    "review:high": "node scripts/run-code-review.mjs --effort high --publish --seed weekender-code-review-v1-high-20260720",
     "review:xhigh": "node scripts/run-code-review.mjs --effort xhigh --publish --seed weekender-code-review-v1-xhigh-20260714",
     "dry-run": "node scripts/run-benchmark.mjs --model gpt-5.6-luna --effort low --dry-run"
   },

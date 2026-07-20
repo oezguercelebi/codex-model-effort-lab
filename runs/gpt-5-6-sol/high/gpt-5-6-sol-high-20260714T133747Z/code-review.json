@@ -1,0 +1,729 @@
+{
+  "schemaVersion": 1,
+  "reviewBenchmarkId": "weekender-code-review-v1",
+  "targetRunId": "gpt-5-6-sol-high-20260714T133747Z",
+  "reviewer": {
+    "model": "gpt-5.6-sol",
+    "effort": "xhigh",
+    "codexVersion": "codex-cli 0.145.0-alpha.18",
+    "durationMs": 427521,
+    "usage": {
+      "inputTokens": 418368,
+      "cachedInputTokens": 350976,
+      "outputTokens": 15335,
+      "reasoningOutputTokens": 10885
+    }
+  },
+  "deterministicChecks": {
+    "schemaVersion": 1,
+    "reviewBenchmarkId": "weekender-code-review-v1",
+    "generatedAt": "2026-07-20T08:55:12.931Z",
+    "dependencyDiff": {
+      "status": "pass",
+      "added": [],
+      "removed": [],
+      "changed": []
+    },
+    "source": {
+      "files": 6,
+      "nonEmptyLines": 839,
+      "remoteReferences": [
+        {
+          "file": "src/App.tsx",
+          "url": "https://weekender.local/trip/coast-or-culture"
+        }
+      ],
+      "hashBefore": "8b1dc2e9ba6c696f499f602836d5ddeec700eed8255e268f060c42d4f4965c2c",
+      "hashAfter": "8b1dc2e9ba6c696f499f602836d5ddeec700eed8255e268f060c42d4f4965c2c",
+      "unchangedByChecks": true,
+      "productionAssetBytes": 3137605
+    },
+    "commands": {
+      "npmCi": {
+        "status": "pass",
+        "exitCode": 0,
+        "timedOut": false,
+        "durationMs": 1911,
+        "output": "added 83 packages in 2s"
+      },
+      "npmRunCheck": {
+        "status": "pass",
+        "exitCode": 0,
+        "timedOut": false,
+        "durationMs": 7188,
+        "output": "> weekender-benchmark-starter@1.0.0 check\n> npm run typecheck && npm run build\n\n\n> weekender-benchmark-starter@1.0.0 typecheck\n> tsc --noEmit\n\n\n> weekender-benchmark-starter@1.0.0 build\n> tsc --noEmit && vite build\n\nvite v6.4.3 building for production...\ntransforming...\n✓ 1787 modules transformed.\nrendering chunks...\ncomputing gzip size...\ndist/index.html                                    0.55 kB │ gzip:  0.33 kB\ndist/assets/weekend-destinations-B5_ZfocF.png  2,840.77 kB\ndist/assets/index-Cf-BrKxg.css                    65.73 kB │ gzip: 13.44 kB\ndist/assets/index-Duz8VQmi.js                    230.56 kB │ gzip: 71.22 kB\n✓ built in 1.78s"
+      }
+    },
+    "browser": {
+      "browserVersion": "150.0.7871.125",
+      "desktop": {
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "checks": [
+          {
+            "id": "multiple-destinations",
+            "status": "pass",
+            "evidence": "4 destination/article regions and 6 visible headings detected."
+          },
+          {
+            "id": "expected-budget",
+            "status": "pass",
+            "evidence": "3 monetary values detected; budget wording present."
+          },
+          {
+            "id": "travel-time",
+            "status": "pass",
+            "evidence": "4 travel-time signals detected."
+          },
+          {
+            "id": "vote-interaction",
+            "status": "pass",
+            "evidence": "button \"Vote\" changed visible text or control state."
+          },
+          {
+            "id": "winner-itinerary",
+            "status": "pass",
+            "evidence": "Winner or itinerary content was visible or reachable. 3 visible itinerary regions detected."
+          },
+          {
+            "id": "no-sign-in-or-backend",
+            "status": "pass",
+            "evidence": "0 password fields; 2093 visible text characters."
+          },
+          {
+            "id": "horizontal-overflow",
+            "status": "pass",
+            "evidence": "0px document-level horizontal overflow."
+          },
+          {
+            "id": "accessible-controls-and-keyboard",
+            "status": "pass",
+            "evidence": "0 enabled controls lacked a detectable name; 11 unique controls received focus across 12 Tab presses."
+          },
+          {
+            "id": "uncaught-browser-errors",
+            "status": "pass",
+            "evidence": "0 console errors and 0 page errors."
+          }
+        ],
+        "evidence": {
+          "headings": [
+            "Three places.One great weekend.",
+            "Where should we go?",
+            "Cinque Terre is out in front",
+            "Cinque Terrecoastal reset",
+            "Good plans, plenty of room.",
+            "Four friends, one decision."
+          ],
+          "controls": [
+            {
+              "index": 0,
+              "tag": "a",
+              "name": "Weekender home",
+              "disabled": false
+            },
+            {
+              "index": 1,
+              "tag": "button",
+              "name": "Compare",
+              "disabled": false
+            },
+            {
+              "index": 2,
+              "tag": "button",
+              "name": "Weekend plan",
+              "disabled": false
+            },
+            {
+              "index": 3,
+              "tag": "button",
+              "name": "Saved ideas",
+              "disabled": false
+            },
+            {
+              "index": 4,
+              "tag": "button",
+              "name": "Invite",
+              "disabled": false
+            },
+            {
+              "index": 5,
+              "tag": "button",
+              "name": "Edit trip dates",
+              "disabled": false
+            },
+            {
+              "index": 6,
+              "tag": "button",
+              "name": "Per person",
+              "disabled": false
+            },
+            {
+              "index": 7,
+              "tag": "button",
+              "name": "Group total",
+              "disabled": false
+            },
+            {
+              "index": 8,
+              "tag": "select",
+              "name": "SortGroup favoriteLowest budgetShortest journey",
+              "disabled": false
+            },
+            {
+              "index": 9,
+              "tag": "button",
+              "name": "View Cinque Terre",
+              "disabled": false
+            },
+            {
+              "index": 10,
+              "tag": "button",
+              "name": "Your pick",
+              "disabled": false
+            },
+            {
+              "index": 11,
+              "tag": "button",
+              "name": "View Marrakech",
+              "disabled": false
+            },
+            {
+              "index": 12,
+              "tag": "button",
+              "name": "Vote",
+              "disabled": false
+            },
+            {
+              "index": 13,
+              "tag": "button",
+              "name": "View Innsbruck",
+              "disabled": false
+            },
+            {
+              "index": 14,
+              "tag": "button",
+              "name": "Vote",
+              "disabled": false
+            },
+            {
+              "index": 15,
+              "tag": "button",
+              "name": "Suggest another place",
+              "disabled": false
+            },
+            {
+              "index": 16,
+              "tag": "button",
+              "name": "See the weekend plan",
+              "disabled": false
+            },
+            {
+              "index": 17,
+              "tag": "button",
+              "name": "Save plan",
+              "disabled": false
+            },
+            {
+              "index": 18,
+              "tag": "button",
+              "name": "Day 1Friday",
+              "disabled": false
+            },
+            {
+              "index": 19,
+              "tag": "button",
+              "name": "Day 2Saturday",
+              "disabled": false
+            },
+            {
+              "index": 20,
+              "tag": "button",
+              "name": "Day 3Sunday",
+              "disabled": false
+            },
+            {
+              "index": 21,
+              "tag": "button",
+              "name": "Room for one more?Invite a friend to compare and vote",
+              "disabled": false
+            },
+            {
+              "index": 22,
+              "tag": "a",
+              "name": "weekender",
+              "disabled": false
+            }
+          ],
+          "keyboardTargets": [
+            "button:View Cinque Terre",
+            "button:Vote",
+            "button:View Innsbruck",
+            "button:Suggest another place",
+            "button:See the weekend plan",
+            "button:Save plan",
+            "button:Day 1Friday",
+            "button:Day 2Saturday",
+            "button:Day 3Sunday",
+            "button:Room for one more?Invite a friend to compare and vote",
+            "a:weekender"
+          ],
+          "consoleErrors": [],
+          "pageErrors": [],
+          "externalRequests": []
+        }
+      },
+      "mobile": {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "checks": [
+          {
+            "id": "multiple-destinations",
+            "status": "pass",
+            "evidence": "4 destination/article regions and 6 visible headings detected."
+          },
+          {
+            "id": "expected-budget",
+            "status": "pass",
+            "evidence": "3 monetary values detected; budget wording present."
+          },
+          {
+            "id": "travel-time",
+            "status": "pass",
+            "evidence": "4 travel-time signals detected."
+          },
+          {
+            "id": "vote-interaction",
+            "status": "pass",
+            "evidence": "button \"Vote\" changed visible text or control state."
+          },
+          {
+            "id": "winner-itinerary",
+            "status": "pass",
+            "evidence": "Winner or itinerary content was visible or reachable. 3 visible itinerary regions detected."
+          },
+          {
+            "id": "no-sign-in-or-backend",
+            "status": "pass",
+            "evidence": "0 password fields; 2018 visible text characters."
+          },
+          {
+            "id": "horizontal-overflow",
+            "status": "pass",
+            "evidence": "0px document-level horizontal overflow."
+          },
+          {
+            "id": "accessible-controls-and-keyboard",
+            "status": "pass",
+            "evidence": "0 enabled controls lacked a detectable name; 11 unique controls received focus across 12 Tab presses."
+          },
+          {
+            "id": "uncaught-browser-errors",
+            "status": "pass",
+            "evidence": "0 console errors and 0 page errors."
+          }
+        ],
+        "evidence": {
+          "headings": [
+            "Three places.One great weekend.",
+            "Where should we go?",
+            "Cinque Terre is out in front",
+            "Cinque Terrecoastal reset",
+            "Good plans, plenty of room.",
+            "Four friends, one decision."
+          ],
+          "controls": [
+            {
+              "index": 0,
+              "tag": "a",
+              "name": "Weekender home",
+              "disabled": false
+            },
+            {
+              "index": 1,
+              "tag": "button",
+              "name": "Invite",
+              "disabled": false
+            },
+            {
+              "index": 2,
+              "tag": "button",
+              "name": "Toggle menu",
+              "disabled": false
+            },
+            {
+              "index": 3,
+              "tag": "button",
+              "name": "Edit trip dates",
+              "disabled": false
+            },
+            {
+              "index": 4,
+              "tag": "button",
+              "name": "Per person",
+              "disabled": false
+            },
+            {
+              "index": 5,
+              "tag": "button",
+              "name": "Group total",
+              "disabled": false
+            },
+            {
+              "index": 6,
+              "tag": "select",
+              "name": "SortGroup favoriteLowest budgetShortest journey",
+              "disabled": false
+            },
+            {
+              "index": 7,
+              "tag": "button",
+              "name": "View Cinque Terre",
+              "disabled": false
+            },
+            {
+              "index": 8,
+              "tag": "button",
+              "name": "Your pick",
+              "disabled": false
+            },
+            {
+              "index": 9,
+              "tag": "button",
+              "name": "View Marrakech",
+              "disabled": false
+            },
+            {
+              "index": 10,
+              "tag": "button",
+              "name": "Vote",
+              "disabled": false
+            },
+            {
+              "index": 11,
+              "tag": "button",
+              "name": "View Innsbruck",
+              "disabled": false
+            },
+            {
+              "index": 12,
+              "tag": "button",
+              "name": "Vote",
+              "disabled": false
+            },
+            {
+              "index": 13,
+              "tag": "button",
+              "name": "Suggest another place",
+              "disabled": false
+            },
+            {
+              "index": 14,
+              "tag": "button",
+              "name": "See the weekend plan",
+              "disabled": false
+            },
+            {
+              "index": 15,
+              "tag": "button",
+              "name": "Save plan",
+              "disabled": false
+            },
+            {
+              "index": 16,
+              "tag": "button",
+              "name": "Day 1Friday",
+              "disabled": false
+            },
+            {
+              "index": 17,
+              "tag": "button",
+              "name": "Day 2Saturday",
+              "disabled": false
+            },
+            {
+              "index": 18,
+              "tag": "button",
+              "name": "Day 3Sunday",
+              "disabled": false
+            },
+            {
+              "index": 19,
+              "tag": "button",
+              "name": "Room for one more?Invite a friend to compare and vote",
+              "disabled": false
+            },
+            {
+              "index": 20,
+              "tag": "a",
+              "name": "weekender",
+              "disabled": false
+            }
+          ],
+          "keyboardTargets": [
+            "button:View Cinque Terre",
+            "button:Vote",
+            "button:View Innsbruck",
+            "button:Suggest another place",
+            "button:See the weekend plan",
+            "button:Save plan",
+            "button:Day 1Friday",
+            "button:Day 2Saturday",
+            "button:Day 3Sunday",
+            "button:Room for one more?Invite a friend to compare and vote",
+            "a:weekender"
+          ],
+          "consoleErrors": [],
+          "pageErrors": [],
+          "externalRequests": []
+        }
+      }
+    },
+    "guardrailFacts": {
+      "npmRunCheckFailed": false,
+      "corePathUnusable": false,
+      "corePathDefinition": "npm run check failed, or at least two core acceptance items failed at both viewports."
+    }
+  },
+  "findings": [
+    {
+      "severity": "medium",
+      "category": "reliability",
+      "title": "Tied votes still produce an arbitrary winner",
+      "file": "source/src/App.tsx",
+      "lineStart": 307,
+      "lineEnd": 314,
+      "evidence": "The leader calculation sorts solely by vote count and immediately selects element 0. Removing the initial Cinque Terre user vote leaves every destination with one non-user vote, so the stable source order still selects Cinque Terre even while the UI describes the vote as wide open and presents its itinerary as the front-runner.",
+      "impact": "The displayed winner and plan can contradict the actual voting state, undermining the core group decision.",
+      "remediation": "Compute the maximum count and all matching destinations; expose a winner only when it is unique, or apply and disclose a consistent tie-breaking rule throughout the UI."
+    },
+    {
+      "severity": "medium",
+      "category": "accessibility",
+      "title": "Destination dialog lacks an accessible keyboard lifecycle",
+      "file": "source/src/App.tsx",
+      "lineStart": 508,
+      "lineEnd": 511,
+      "evidence": "Opening the dialog only mounts a role=\"dialog\" element. There is no initial-focus move, focus containment, Escape handler, or focus restoration, and the close button contains only an untitled X icon with no accessible name. The deterministic keyboard path did not open this modal.",
+      "impact": "Keyboard and screen-reader users can remain focused behind the overlay, tab through the obscured page, and cannot reliably identify or invoke the close action.",
+      "remediation": "Use a native modal dialog or implement initial focus, focus trapping, Escape dismissal, opener-focus restoration, and an accessible name for the close button."
+    },
+    {
+      "severity": "medium",
+      "category": "accessibility",
+      "title": "Core itinerary details use insufficient text contrast",
+      "file": "source/src/index.css",
+      "lineStart": 146,
+      "lineEnd": 150,
+      "evidence": "Timeline times and descriptions use #898c86/#898b86 on the inherited #fffdfa paper background, yielding approximately 3.36–3.39:1 contrast, while the text is only 9px. These styles repeat across every itinerary item.",
+      "impact": "Low-vision users may be unable to read travel times and activity details in the core weekend plan.",
+      "remediation": "Use darker text colors that reach at least 4.5:1 against the paper background and verify all small itinerary text states."
+    },
+    {
+      "severity": "low",
+      "category": "correctness",
+      "title": "Shortest-journey sorting ignores minutes",
+      "file": "source/src/App.tsx",
+      "lineStart": 298,
+      "lineEnd": 303,
+      "evidence": "The comparator calls Number.parseFloat on display strings such as \"4h 35m\" and \"4h 10m\". Both parse to 4, so selecting \"Shortest journey\" preserves Cinque Terre before the actually shorter Marrakech trip.",
+      "impact": "A secondary comparison control returns an incorrect order, requiring users to compare the displayed times manually.",
+      "remediation": "Store travel duration as numeric minutes and derive the formatted label from that value."
+    },
+    {
+      "severity": "low",
+      "category": "correctness",
+      "title": "Submitted destination suggestions are discarded",
+      "file": "source/src/App.tsx",
+      "lineStart": 532,
+      "lineEnd": 541,
+      "evidence": "Submission closes the modal, announces that the destination was added, and resets the only suggestion string; it never adds the value to a collection or renders it elsewhere.",
+      "impact": "Users receive confirmation for an action that has no lasting visible result.",
+      "remediation": "Store and render submitted suggestions in the shortlist or ideas board, or remove the persistence claim."
+    },
+    {
+      "severity": "low",
+      "category": "reliability",
+      "title": "Invite reports success before clipboard completion",
+      "file": "source/src/App.tsx",
+      "lineStart": 328,
+      "lineEnd": 330,
+      "evidence": "shareTrip discards the clipboard Promise and unconditionally shows \"Invite link copied to clipboard\". It also always copies a hard-coded weekender.local URL rather than the current deployment URL.",
+      "impact": "If clipboard access is unavailable or denied, users are told the invite succeeded when nothing was copied; the fixed URL may also not identify the running preview.",
+      "remediation": "Build the share URL from the deployed location, await writeText, and show success only after fulfillment with an error or manual-copy fallback."
+    },
+    {
+      "severity": "low",
+      "category": "maintainability",
+      "title": "Crew picks duplicate vote data by array position",
+      "file": "source/src/App.tsx",
+      "lineStart": 493,
+      "lineEnd": 495,
+      "evidence": "The crew display creates a separate ordered picks array and selects entries with the friend map index instead of deriving each person's pick from destination.votes. Friend ordering and vote data must therefore be updated in lockstep.",
+      "impact": "A routine reorder or sample-data edit can make the crew panel contradict vote totals and avatars without a type or runtime error.",
+      "remediation": "Represent votes by stable friend and destination IDs and derive each crew member's displayed pick from that single source of truth."
+    },
+    {
+      "severity": "low",
+      "category": "performance",
+      "title": "Unconditional PNG dominates the production payload",
+      "file": "source/src/App.tsx",
+      "lineStart": 36,
+      "lineEnd": 36,
+      "evidence": "The imported collage is a 2172×724 RGB PNG emitted at 2,840.77 kB. Deterministic checks report 3,137,605 production asset bytes total, so this one initially used asset accounts for about 90% of the payload.",
+      "impact": "The initial experience incurs avoidable transfer and decode cost, especially on mobile or constrained connections.",
+      "remediation": "Encode the collage as an appropriately sized AVIF or WebP asset and verify responsive display quality."
+    }
+  ],
+  "categories": [
+    {
+      "id": "correctness",
+      "label": "Brief fidelity and functional correctness",
+      "score": 3,
+      "weight": 30,
+      "evidence": [
+        "Deterministic checks passed destination visibility, budget, travel time, voting, and reachable winner/itinerary checks at both 1440×900 and 390×844.",
+        "source/src/App.tsx:65 centralizes realistic data for three destinations, while source/src/App.tsx:162 provides destination-specific Friday-to-Sunday itineraries.",
+        "The shortest-journey comparator and suggestion submission contain the bounded functional defects documented above."
+      ],
+      "findingCounts": {
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 2,
+        "note": 0
+      }
+    },
+    {
+      "id": "reliability",
+      "label": "Reliability and state integrity",
+      "score": 2,
+      "weight": 15,
+      "evidence": [
+        "Stable destination IDs and immutable source arrays are used for rendering and vote derivation in source/src/App.tsx:237 and source/src/App.tsx:298.",
+        "The source produces an arbitrary leader during a three-way tie and can issue an unverified clipboard success message.",
+        "Both deterministic browser paths completed with zero console errors and zero page errors."
+      ],
+      "findingCounts": {
+        "critical": 0,
+        "high": 0,
+        "medium": 1,
+        "low": 1,
+        "note": 0
+      }
+    },
+    {
+      "id": "accessibility",
+      "label": "Accessibility",
+      "score": 1,
+      "weight": 15,
+      "evidence": [
+        "The initial page uses header, navigation, main, section, article, and button semantics; both browser checks found no enabled initial control without a detectable name and focused 11 unique controls during the defined keyboard path.",
+        "source/src/index.css:299 honors reduced-motion preferences.",
+        "The acceptance path did not open either modal, and source inspection identifies missing dialog focus management plus repeated sub-threshold itinerary contrast."
+      ],
+      "findingCounts": {
+        "critical": 0,
+        "high": 0,
+        "medium": 2,
+        "low": 0,
+        "note": 0
+      }
+    },
+    {
+      "id": "maintainability",
+      "label": "Maintainability and code clarity",
+      "score": 3,
+      "weight": 15,
+      "evidence": [
+        "source/src/App.tsx:38 defines a useful Destination type, and destination, itinerary, and friend sample data are centralized and keyed consistently for primary rendering.",
+        "The crew panel separately encodes picks by friend-array position in source/src/App.tsx:493, creating an avoidable duplicate source of truth.",
+        "Strict TypeScript is enabled in source/tsconfig.json:10, and the supplied typecheck passed."
+      ],
+      "findingCounts": {
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 1,
+        "note": 0
+      }
+    },
+    {
+      "id": "security",
+      "label": "Security, privacy, and dependency compliance",
+      "score": 4,
+      "weight": 10,
+      "evidence": [
+        "The deterministic dependency comparison passed with no added, removed, or changed packages.",
+        "Both browser paths recorded zero external requests; images and application data are bundled locally.",
+        "The source contains no unsafe HTML injection, secret-like values, authentication collection, or backend submission; suggestion text is rendered through React interpolation."
+      ],
+      "findingCounts": {
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "note": 0
+      }
+    },
+    {
+      "id": "performance",
+      "label": "Performance and responsive robustness",
+      "score": 3,
+      "weight": 10,
+      "evidence": [
+        "Deterministic checks recorded zero document-level horizontal overflow at both required viewports, and source/src/index.css:215 through source/src/index.css:297 provides tablet and mobile layout adaptations.",
+        "The production build emitted 230.56 kB of JavaScript and 65.73 kB of CSS, but the 2,840.77 kB collage dominates the 3,137,605-byte production asset total.",
+        "The app uses a single local collage request rather than external or per-card remote images."
+      ],
+      "findingCounts": {
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 1,
+        "note": 0
+      }
+    },
+    {
+      "id": "verification",
+      "label": "Verification readiness",
+      "score": 4,
+      "weight": 5,
+      "evidence": [
+        "The supplied npm run check completed successfully, including tsc --noEmit and a Vite production build; the source hash was unchanged by checks.",
+        "All nine deterministic browser acceptance checks passed at both required viewports with no uncaught errors.",
+        "The acceptance path verifies an initial vote but does not select alternate sort modes or open the dialogs, as shown by the recorded control/action evidence; those branches therefore required source inspection."
+      ],
+      "findingCounts": {
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "note": 0
+      }
+    }
+  ],
+  "rawWeightedScore": 67.5,
+  "capsApplied": [],
+  "totalScore": 67.5,
+  "strengths": [
+    "The core compare-vote-plan experience is complete and passed every supplied desktop and mobile acceptance check.",
+    "Vote counts, price-mode changes, leader selection, and destination-specific itinerary content react visibly to user state.",
+    "Responsive layouts avoid document overflow at both target viewports and include reduced-motion handling.",
+    "Dependencies remain exactly within the frozen starter, all runtime assets are local, and no external requests occurred.",
+    "Strict TypeScript and stable entity IDs provide a sound baseline for further verification."
+  ],
+  "risks": [
+    "A tied vote can be presented as a concrete front-runner and itinerary despite there being no unique winner.",
+    "The modal interaction model and low-contrast itinerary text create meaningful barriers not covered by the initial browser accessibility path.",
+    "Several secondary actions confirm results that are not persisted or not verified, reducing trust in saved and shared state.",
+    "The collage imposes most of the production transfer weight on every initial visit."
+  ],
+  "recommendation": "Address tied-winner handling and the dialog/contrast accessibility barriers before release. Then correct duration sorting, make secondary-action confirmations truthful, and optimize the collage; the build, dependency, responsive, and primary acceptance baselines are otherwise solid.",
+  "reviewStatus": "frozen",
+  "reviewedAt": "2026-07-20T09:02:20.731Z"
+}
