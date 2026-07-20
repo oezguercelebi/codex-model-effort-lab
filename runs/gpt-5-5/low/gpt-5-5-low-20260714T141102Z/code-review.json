@@ -1,0 +1,587 @@
+{
+  "schemaVersion": 1,
+  "reviewBenchmarkId": "weekender-code-review-v1",
+  "targetRunId": "gpt-5-5-low-20260714T141102Z",
+  "reviewer": {
+    "model": "gpt-5.6-sol",
+    "effort": "xhigh",
+    "codexVersion": "codex-cli 0.145.0-alpha.18",
+    "durationMs": 195906,
+    "usage": {
+      "inputTokens": 86993,
+      "cachedInputTokens": 50432,
+      "outputTokens": 8685,
+      "reasoningOutputTokens": 5683
+    }
+  },
+  "deterministicChecks": {
+    "schemaVersion": 1,
+    "reviewBenchmarkId": "weekender-code-review-v1",
+    "generatedAt": "2026-07-20T09:54:14.500Z",
+    "dependencyDiff": {
+      "status": "pass",
+      "added": [],
+      "removed": [],
+      "changed": []
+    },
+    "source": {
+      "files": 5,
+      "nonEmptyLines": 463,
+      "remoteReferences": [],
+      "hashBefore": "de9e2eed47dfdc9b9505589f1ea7a965dae98e16184ea519f7cb79e44d48d22e",
+      "hashAfter": "de9e2eed47dfdc9b9505589f1ea7a965dae98e16184ea519f7cb79e44d48d22e",
+      "unchangedByChecks": true,
+      "productionAssetBytes": 284570
+    },
+    "commands": {
+      "npmCi": {
+        "status": "pass",
+        "exitCode": 0,
+        "timedOut": false,
+        "durationMs": 2029,
+        "output": "added 83 packages in 2s"
+      },
+      "npmRunCheck": {
+        "status": "pass",
+        "exitCode": 0,
+        "timedOut": false,
+        "durationMs": 5539,
+        "output": "> weekender-benchmark-starter@1.0.0 check\n> npm run typecheck && npm run build\n\n\n> weekender-benchmark-starter@1.0.0 typecheck\n> tsc --noEmit\n\n\n> weekender-benchmark-starter@1.0.0 build\n> tsc --noEmit && vite build\n\nvite v6.4.3 building for production...\ntransforming...\n✓ 1786 modules transformed.\nrendering chunks...\ncomputing gzip size...\ndist/index.html                   0.48 kB │ gzip:  0.30 kB\ndist/assets/index-Z2gHn6wq.css   65.58 kB │ gzip: 11.94 kB\ndist/assets/index-DsDO4Tuk.js   218.52 kB │ gzip: 67.81 kB\n✓ built in 1.74s"
+      }
+    },
+    "browser": {
+      "browserVersion": "150.0.7871.125",
+      "desktop": {
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "checks": [
+          {
+            "id": "multiple-destinations",
+            "status": "pass",
+            "evidence": "3 destination/article regions and 12 visible headings detected."
+          },
+          {
+            "id": "expected-budget",
+            "status": "pass",
+            "evidence": "4 monetary values detected; budget wording present."
+          },
+          {
+            "id": "travel-time",
+            "status": "pass",
+            "evidence": "4 travel-time signals detected."
+          },
+          {
+            "id": "vote-interaction",
+            "status": "pass",
+            "evidence": "button \"Remove vote from Asheville\" changed visible text or control state."
+          },
+          {
+            "id": "winner-itinerary",
+            "status": "pass",
+            "evidence": "Winner or itinerary content was visible or reachable. 0 visible itinerary regions detected."
+          },
+          {
+            "id": "no-sign-in-or-backend",
+            "status": "pass",
+            "evidence": "0 password fields; 1904 visible text characters."
+          },
+          {
+            "id": "horizontal-overflow",
+            "status": "pass",
+            "evidence": "0px document-level horizontal overflow."
+          },
+          {
+            "id": "accessible-controls-and-keyboard",
+            "status": "pass",
+            "evidence": "0 enabled controls lacked a detectable name; 9 unique controls received focus across 12 Tab presses."
+          },
+          {
+            "id": "uncaught-browser-errors",
+            "status": "pass",
+            "evidence": "0 console errors and 0 page errors."
+          }
+        ],
+        "evidence": {
+          "headings": [
+            "Pick the weekend everyone can get behind.",
+            "Asheville",
+            "Asheville",
+            "Hudson Valley",
+            "Savannah",
+            "Asheville",
+            "Asheville",
+            "South Slope arrival round",
+            "Blue Ridge overlook drive",
+            "Downtown dinner booking",
+            "Brunch and vintage shops",
+            "Group notes"
+          ],
+          "controls": [
+            {
+              "index": 0,
+              "tag": "button",
+              "name": "Popular",
+              "disabled": false
+            },
+            {
+              "index": 1,
+              "tag": "button",
+              "name": "Budget",
+              "disabled": false
+            },
+            {
+              "index": 2,
+              "tag": "button",
+              "name": "Fastest",
+              "disabled": false
+            },
+            {
+              "index": 3,
+              "tag": "button",
+              "name": "Per person",
+              "disabled": false
+            },
+            {
+              "index": 4,
+              "tag": "button",
+              "name": "WinningAshevilleBlue Ridge drives, breweries, live music9Best all-around choice for a group that wants mountain air with",
+              "disabled": false
+            },
+            {
+              "index": 5,
+              "tag": "button",
+              "name": "Remove vote from Asheville",
+              "disabled": false
+            },
+            {
+              "index": 6,
+              "tag": "button",
+              "name": "Vote",
+              "disabled": false
+            },
+            {
+              "index": 7,
+              "tag": "button",
+              "name": "New YorkHudson ValleyDesign inns, river towns, orchard stops7A low-friction rail weekend with great food, gentle hikes, ",
+              "disabled": false
+            },
+            {
+              "index": 8,
+              "tag": "button",
+              "name": "Remove vote from Hudson Valley",
+              "disabled": false
+            },
+            {
+              "index": 9,
+              "tag": "button",
+              "name": "Vote",
+              "disabled": false
+            },
+            {
+              "index": 10,
+              "tag": "button",
+              "name": "GeorgiaSavannahHistoric squares, coastal plates, late walks6A warm, social weekend with strong strolling, photogenic sta",
+              "disabled": false
+            },
+            {
+              "index": 11,
+              "tag": "button",
+              "name": "Remove vote from Savannah",
+              "disabled": false
+            },
+            {
+              "index": 12,
+              "tag": "button",
+              "name": "Vote",
+              "disabled": false
+            }
+          ],
+          "keyboardTargets": [
+            "button:Vote",
+            "button:New YorkHudson ValleyDesign inns, river towns, orchard stops7A low-friction rail",
+            "button:Remove vote from Hudson Valley",
+            "button:GeorgiaSavannahHistoric squares, coastal plates, late walks6A warm, social weeke",
+            "button:Remove vote from Savannah",
+            "button:Popular",
+            "button:Budget",
+            "button:Fastest",
+            "button:Per person"
+          ],
+          "consoleErrors": [],
+          "pageErrors": [],
+          "externalRequests": []
+        }
+      },
+      "mobile": {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "checks": [
+          {
+            "id": "multiple-destinations",
+            "status": "pass",
+            "evidence": "3 destination/article regions and 12 visible headings detected."
+          },
+          {
+            "id": "expected-budget",
+            "status": "pass",
+            "evidence": "4 monetary values detected; budget wording present."
+          },
+          {
+            "id": "travel-time",
+            "status": "pass",
+            "evidence": "4 travel-time signals detected."
+          },
+          {
+            "id": "vote-interaction",
+            "status": "pass",
+            "evidence": "button \"Remove vote from Asheville\" changed visible text or control state."
+          },
+          {
+            "id": "winner-itinerary",
+            "status": "pass",
+            "evidence": "Winner or itinerary content was visible or reachable. 0 visible itinerary regions detected."
+          },
+          {
+            "id": "no-sign-in-or-backend",
+            "status": "pass",
+            "evidence": "0 password fields; 1904 visible text characters."
+          },
+          {
+            "id": "horizontal-overflow",
+            "status": "pass",
+            "evidence": "0px document-level horizontal overflow."
+          },
+          {
+            "id": "accessible-controls-and-keyboard",
+            "status": "pass",
+            "evidence": "0 enabled controls lacked a detectable name; 9 unique controls received focus across 12 Tab presses."
+          },
+          {
+            "id": "uncaught-browser-errors",
+            "status": "pass",
+            "evidence": "0 console errors and 0 page errors."
+          }
+        ],
+        "evidence": {
+          "headings": [
+            "Pick the weekend everyone can get behind.",
+            "Asheville",
+            "Asheville",
+            "Hudson Valley",
+            "Savannah",
+            "Asheville",
+            "Asheville",
+            "South Slope arrival round",
+            "Blue Ridge overlook drive",
+            "Downtown dinner booking",
+            "Brunch and vintage shops",
+            "Group notes"
+          ],
+          "controls": [
+            {
+              "index": 0,
+              "tag": "button",
+              "name": "Popular",
+              "disabled": false
+            },
+            {
+              "index": 1,
+              "tag": "button",
+              "name": "Budget",
+              "disabled": false
+            },
+            {
+              "index": 2,
+              "tag": "button",
+              "name": "Fastest",
+              "disabled": false
+            },
+            {
+              "index": 3,
+              "tag": "button",
+              "name": "Per person",
+              "disabled": false
+            },
+            {
+              "index": 4,
+              "tag": "button",
+              "name": "WinningAshevilleBlue Ridge drives, breweries, live music9Best all-around choice for a group that wants mountain air with",
+              "disabled": false
+            },
+            {
+              "index": 5,
+              "tag": "button",
+              "name": "Remove vote from Asheville",
+              "disabled": false
+            },
+            {
+              "index": 6,
+              "tag": "button",
+              "name": "Vote",
+              "disabled": false
+            },
+            {
+              "index": 7,
+              "tag": "button",
+              "name": "New YorkHudson ValleyDesign inns, river towns, orchard stops7A low-friction rail weekend with great food, gentle hikes, ",
+              "disabled": false
+            },
+            {
+              "index": 8,
+              "tag": "button",
+              "name": "Remove vote from Hudson Valley",
+              "disabled": false
+            },
+            {
+              "index": 9,
+              "tag": "button",
+              "name": "Vote",
+              "disabled": false
+            },
+            {
+              "index": 10,
+              "tag": "button",
+              "name": "GeorgiaSavannahHistoric squares, coastal plates, late walks6A warm, social weekend with strong strolling, photogenic sta",
+              "disabled": false
+            },
+            {
+              "index": 11,
+              "tag": "button",
+              "name": "Remove vote from Savannah",
+              "disabled": false
+            },
+            {
+              "index": 12,
+              "tag": "button",
+              "name": "Vote",
+              "disabled": false
+            }
+          ],
+          "keyboardTargets": [
+            "button:Vote",
+            "button:New YorkHudson ValleyDesign inns, river towns, orchard stops7A low-friction rail",
+            "button:Remove vote from Hudson Valley",
+            "button:GeorgiaSavannahHistoric squares, coastal plates, late walks6A warm, social weeke",
+            "button:Remove vote from Savannah",
+            "button:Popular",
+            "button:Budget",
+            "button:Fastest",
+            "button:Per person"
+          ],
+          "consoleErrors": [],
+          "pageErrors": [],
+          "externalRequests": []
+        }
+      }
+    },
+    "guardrailFacts": {
+      "npmRunCheckFailed": false,
+      "corePathUnusable": false,
+      "corePathDefinition": "npm run check failed, or at least two core acceptance items failed at both viewports."
+    }
+  },
+  "findings": [
+    {
+      "severity": "medium",
+      "category": "correctness",
+      "title": "Budget mode does not update the leader summary",
+      "file": "source/src/App.tsx",
+      "lineStart": 175,
+      "lineEnd": 178,
+      "evidence": "The cost toggle changes `splitCosts` and the destination cards multiply budgets by the six-person group (source/src/App.tsx:204-210 and 243-246), but the leader metric always renders `winner.budget`. With Asheville leading, selecting “Group total” therefore shows $3,390 on its card while the prominent leader summary still shows an unlabeled $565 budget.",
+      "impact": "A core comparison value presents two incompatible amounts under the selected group-total mode, making the winning trip's expected cost ambiguous.",
+      "remediation": "Derive a single display budget and mode label from `splitCosts`, and use them consistently in both the leader summary and destination cards."
+    },
+    {
+      "severity": "medium",
+      "category": "reliability",
+      "title": "Vote state permits repeated or unauthorized tally edits and lets the heart drift",
+      "file": "source/src/App.tsx",
+      "lineStart": 135,
+      "lineEnd": 139,
+      "evidence": "Every plus click increments the total and every minus click decrements it regardless of the existing `liked` state. The update sets `liked` to true on addition but never sets it false on removal. For example, adding and then removing an Asheville vote restores its original count while leaving its heart changed from unfilled to filled; an initially unliked trip can also be decremented immediately.",
+      "impact": "One user can arbitrarily inflate or reduce group totals, and the favorite indicator can contradict the effective vote state, undermining the core voting result.",
+      "remediation": "Model the current user's vote explicitly, allow only valid unvoted-to-voted and voted-to-unvoted transitions, update the tally once per transition, and disable or hide invalid actions."
+    },
+    {
+      "severity": "medium",
+      "category": "reliability",
+      "title": "Tied vote totals are reported as a sole winner by array order",
+      "file": "source/src/App.tsx",
+      "lineStart": 132,
+      "lineEnd": 132,
+      "evidence": "The winner is the first element after sorting solely by `b.votes - a.votes`, with no tie state or secondary criterion. From the supplied 9-to-7 starting totals, removing two Asheville votes creates a 7-to-7 tie with Hudson Valley; because Hudson Valley occurs first in the source array, the UI then labels it the single winner and switches the winning itinerary to it.",
+      "impact": "A reproducible tie is misrepresented as consensus for one destination, so the displayed winner can depend on incidental data order rather than the group's votes.",
+      "remediation": "Compute the maximum vote total and represent all co-leaders, or apply and disclose a deliberate tie-break rule before presenting a single winner."
+    },
+    {
+      "severity": "low",
+      "category": "accessibility",
+      "title": "Repeated vote buttons omit their destination from the accessible name",
+      "file": "source/src/App.tsx",
+      "lineStart": 267,
+      "lineEnd": 272,
+      "evidence": "Each mapped destination renders an enabled button whose complete accessible name is only “Vote”; unlike the adjacent remove control, it has no destination-specific `aria-label`. The deterministic desktop and mobile control inventories each report three distinct buttons named exactly “Vote.”",
+      "impact": "Screen-reader and speech-control users cannot distinguish the repeated voting actions by name without reconstructing their surrounding card context.",
+      "remediation": "Give each button a destination-specific name such as `aria-label={`Vote for ${trip.name}`}`."
+    },
+    {
+      "severity": "low",
+      "category": "accessibility",
+      "title": "The active sort option is conveyed only visually",
+      "file": "source/src/App.tsx",
+      "lineStart": 187,
+      "lineEnd": 202,
+      "evidence": "The three mutually exclusive sort buttons change background, text color, and shadow based on `sortBy`, but expose neither `aria-pressed` nor radio-group selection semantics.",
+      "impact": "Assistive-technology users can operate the sort controls but are not programmatically told which ordering is currently selected.",
+      "remediation": "Expose the selected state with `aria-pressed={sortBy === value}` or implement an appropriately labeled radiogroup."
+    }
+  ],
+  "categories": [
+    {
+      "id": "correctness",
+      "label": "Brief fidelity and functional correctness",
+      "score": 2,
+      "weight": 30,
+      "evidence": [
+        "The sample model defines three distinct destinations with budgets, travel times, lodging, highlights, and four-item itineraries (source/src/App.tsx:40-107), and the UI renders comparison cards plus the current winner's itinerary (source/src/App.tsx:213-332).",
+        "Deterministic desktop and mobile checks passed destination visibility, budget, travel time, voting, winner/itinerary reachability, backend independence, overflow, controls, and browser-error checks; `npm run check` also passed.",
+        "The group-total state is not applied to the leader budget, producing the core budget contradiction described in the finding."
+      ],
+      "findingCounts": {
+        "critical": 0,
+        "high": 0,
+        "medium": 1,
+        "low": 0,
+        "note": 0
+      }
+    },
+    {
+      "id": "reliability",
+      "label": "Reliability and state integrity",
+      "score": 1,
+      "weight": 15,
+      "evidence": [
+        "Sorting copies the state array, selection uses stable destination IDs, and vote updates are immutable (source/src/App.tsx:124-139).",
+        "The vote transition does not enforce one coherent user-vote state, and tied totals are reduced to a sole winner through source-array order. Both contradictions are reproducible from the supplied initial values."
+      ],
+      "findingCounts": {
+        "critical": 0,
+        "high": 0,
+        "medium": 2,
+        "low": 0,
+        "note": 0
+      }
+    },
+    {
+      "id": "accessibility",
+      "label": "Accessibility",
+      "score": 3,
+      "weight": 15,
+      "evidence": [
+        "The app provides a main landmark, a single top-level heading, native buttons, and explicit names for icon-only remove-vote controls (source/src/App.tsx:143-180 and 260-266).",
+        "Deterministic checks found no unnamed enabled controls and focused nine unique controls with Tab at both viewports.",
+        "Repeated generic “Vote” names and visually-only sort selection remain bounded assistive-technology issues."
+      ],
+      "findingCounts": {
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 2,
+        "note": 0
+      }
+    },
+    {
+      "id": "maintainability",
+      "label": "Maintainability and code clarity",
+      "score": 4,
+      "weight": 15,
+      "evidence": [
+        "The implementation uses a strict typed `Destination` model, static data separated from rendering, immutable state updates, and small reusable `Metric`, `Stat`, `Progress`, and `TripArt` helpers (source/src/App.tsx:22-116 and 362-430).",
+        "No material maintainability defect was found beyond behavior already attributed to the correctness and reliability findings."
+      ],
+      "findingCounts": {
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "note": 0
+      }
+    },
+    {
+      "id": "security",
+      "label": "Security, privacy, and dependency compliance",
+      "score": 4,
+      "weight": 10,
+      "evidence": [
+        "The dependency comparison passed with no added, removed, or changed packages, and deterministic inspection found no remote references or external browser requests.",
+        "The reviewed source uses static local data and React text rendering, with no external links, credential collection, unsafe HTML injection, or external service integration; no material security or privacy issue was found."
+      ],
+      "findingCounts": {
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "note": 0
+      }
+    },
+    {
+      "id": "performance",
+      "label": "Performance and responsive robustness",
+      "score": 4,
+      "weight": 10,
+      "evidence": [
+        "The production output totals 284,570 bytes uncompressed, with reported gzip sizes of 11.94 kB CSS and 67.81 kB JavaScript; destination artwork is local CSS rather than remote media (source/src/App.tsx:397-428).",
+        "Deterministic checks measured zero document-level horizontal overflow at both 1440×900 and 390×844, and recorded no console or page errors; no material performance or responsive defect was found."
+      ],
+      "findingCounts": {
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "note": 0
+      }
+    },
+    {
+      "id": "verification",
+      "label": "Verification readiness",
+      "score": 4,
+      "weight": 5,
+      "evidence": [
+        "The manifest provides strict TypeScript checking and a build-backed `check` script (source/package.json:6-10; source/tsconfig.json:2-19).",
+        "The supplied run of `npm run check` completed successfully, including `tsc --noEmit` and the Vite production build, and the source hash remained unchanged by checks.",
+        "Desktop and mobile browser checks exercised the principal comparison and voting path without uncaught errors; no material verification-readiness defect was found."
+      ],
+      "findingCounts": {
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "note": 0
+      }
+    }
+  ],
+  "rawWeightedScore": 70,
+  "capsApplied": [],
+  "totalScore": 70,
+  "strengths": [
+    "Complete self-contained sample data supports destination comparison, dynamic voting, winner presentation, and a four-stop itinerary without sign-in or a backend.",
+    "All deterministic acceptance checks passed at both required viewports, including interaction, keyboard focus, overflow, and browser-error checks.",
+    "Strict TypeScript types, immutable updates, stable IDs, and focused rendering helpers make the main data flow easy to follow.",
+    "The dependency set matches the frozen starter, with no remote assets, network requests, unsafe rendering, or extra services.",
+    "Responsive layouts and lightweight CSS-generated destination art keep the experience usable without media-loading fragility."
+  ],
+  "risks": [
+    "Switching to group-total mode leaves the leader budget in per-person form.",
+    "Repeated vote actions can corrupt group totals and leave the heart indicator inconsistent with the effective vote state.",
+    "Equal vote totals are presented as a single winner according to incidental source-array order.",
+    "Repeated generic vote names and visually-only sort state reduce clarity for assistive-technology users."
+  ],
+  "recommendation": "Correct the budget-mode propagation and replace the tally editor with coherent per-user vote transitions and explicit tie handling before treating the result as production-ready. Then add destination-specific vote names and programmatic sort selection state; the underlying build, responsive layout, dependency compliance, and core product coverage are otherwise strong.",
+  "reviewStatus": "frozen",
+  "reviewedAt": "2026-07-20T09:57:30.536Z"
+}

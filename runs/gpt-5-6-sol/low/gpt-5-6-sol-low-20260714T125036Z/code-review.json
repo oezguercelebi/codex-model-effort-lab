@@ -1,0 +1,567 @@
+{
+  "schemaVersion": 1,
+  "reviewBenchmarkId": "weekender-code-review-v1",
+  "targetRunId": "gpt-5-6-sol-low-20260714T125036Z",
+  "reviewer": {
+    "model": "gpt-5.6-sol",
+    "effort": "xhigh",
+    "codexVersion": "codex-cli 0.145.0-alpha.18",
+    "durationMs": 356886,
+    "usage": {
+      "inputTokens": 228964,
+      "cachedInputTokens": 181504,
+      "outputTokens": 14412,
+      "reasoningOutputTokens": 10859
+    }
+  },
+  "deterministicChecks": {
+    "schemaVersion": 1,
+    "reviewBenchmarkId": "weekender-code-review-v1",
+    "generatedAt": "2026-07-20T10:23:55.228Z",
+    "dependencyDiff": {
+      "status": "pass",
+      "added": [],
+      "removed": [],
+      "changed": []
+    },
+    "source": {
+      "files": 5,
+      "nonEmptyLines": 207,
+      "remoteReferences": [],
+      "hashBefore": "352a598ad3122d4e48025e41e56462c455dcb9b124d1e6eb961136e938cf872d",
+      "hashAfter": "352a598ad3122d4e48025e41e56462c455dcb9b124d1e6eb961136e938cf872d",
+      "unchangedByChecks": true,
+      "productionAssetBytes": 276946
+    },
+    "commands": {
+      "npmCi": {
+        "status": "pass",
+        "exitCode": 0,
+        "timedOut": false,
+        "durationMs": 1766,
+        "output": "added 83 packages in 2s"
+      },
+      "npmRunCheck": {
+        "status": "pass",
+        "exitCode": 0,
+        "timedOut": false,
+        "durationMs": 5095,
+        "output": "> weekender-benchmark-starter@1.0.0 check\n> npm run typecheck && npm run build\n\n\n> weekender-benchmark-starter@1.0.0 typecheck\n> tsc --noEmit\n\n\n> weekender-benchmark-starter@1.0.0 build\n> tsc --noEmit && vite build\n\nvite v6.4.3 building for production...\ntransforming...\n✓ 1786 modules transformed.\nrendering chunks...\ncomputing gzip size...\ndist/index.html                   0.48 kB │ gzip:  0.30 kB\ndist/assets/index-B7uCAnm2.css   58.04 kB │ gzip: 12.33 kB\ndist/assets/index-DxYD9WXx.js   218.43 kB │ gzip: 67.59 kB\n✓ built in 1.61s"
+      }
+    },
+    "browser": {
+      "browserVersion": "150.0.7871.125",
+      "desktop": {
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "checks": [
+          {
+            "id": "multiple-destinations",
+            "status": "pass",
+            "evidence": "5 destination/article regions and 6 visible headings detected."
+          },
+          {
+            "id": "expected-budget",
+            "status": "pass",
+            "evidence": "4 monetary values detected; budget wording present."
+          },
+          {
+            "id": "travel-time",
+            "status": "pass",
+            "evidence": "4 travel-time signals detected."
+          },
+          {
+            "id": "vote-interaction",
+            "status": "pass",
+            "evidence": "button \"Voted\" changed visible text or control state."
+          },
+          {
+            "id": "winner-itinerary",
+            "status": "pass",
+            "evidence": "Winner or itinerary content was visible or reachable. 0 visible itinerary regions detected."
+          },
+          {
+            "id": "no-sign-in-or-backend",
+            "status": "pass",
+            "evidence": "0 password fields; 1363 visible text characters."
+          },
+          {
+            "id": "horizontal-overflow",
+            "status": "pass",
+            "evidence": "0px document-level horizontal overflow."
+          },
+          {
+            "id": "accessible-controls-and-keyboard",
+            "status": "fail",
+            "evidence": "1 enabled controls lacked a detectable name; 10 unique controls received focus across 12 Tab presses."
+          },
+          {
+            "id": "uncaught-browser-errors",
+            "status": "pass",
+            "evidence": "0 console errors and 0 page errors."
+          }
+        ],
+        "evidence": {
+          "headings": [
+            "Where should weweekend?",
+            "The shortlist",
+            "Lake Como",
+            "Bruges",
+            "The Algarve",
+            "Chamonix"
+          ],
+          "controls": [
+            {
+              "index": 0,
+              "tag": "a",
+              "name": "Weekender home",
+              "disabled": false
+            },
+            {
+              "index": 1,
+              "tag": "button",
+              "name": "Destinations",
+              "disabled": false
+            },
+            {
+              "index": 2,
+              "tag": "button",
+              "name": "Itinerary",
+              "disabled": false
+            },
+            {
+              "index": 3,
+              "tag": "button",
+              "name": "Share trip",
+              "disabled": false
+            },
+            {
+              "index": 4,
+              "tag": "input",
+              "name": "",
+              "disabled": false
+            },
+            {
+              "index": 5,
+              "tag": "button",
+              "name": "Budget",
+              "disabled": false
+            },
+            {
+              "index": 6,
+              "tag": "select",
+              "name": "Sort by Best matchLowest priceShortest journey",
+              "disabled": false
+            },
+            {
+              "index": 7,
+              "tag": "button",
+              "name": "Voted",
+              "disabled": false
+            },
+            {
+              "index": 8,
+              "tag": "button",
+              "name": "Vote",
+              "disabled": false
+            },
+            {
+              "index": 9,
+              "tag": "button",
+              "name": "Voted",
+              "disabled": false
+            },
+            {
+              "index": 10,
+              "tag": "button",
+              "name": "Vote",
+              "disabled": false
+            },
+            {
+              "index": 11,
+              "tag": "a",
+              "name": "weekender",
+              "disabled": false
+            }
+          ],
+          "keyboardTargets": [
+            "button:Vote",
+            "button:Voted",
+            "a:weekender",
+            "a:Weekender home",
+            "button:Destinations",
+            "button:Itinerary",
+            "button:Share trip",
+            "input:",
+            "button:Budget",
+            "select:Best matchLowest priceShortest journey"
+          ],
+          "consoleErrors": [],
+          "pageErrors": [],
+          "externalRequests": []
+        }
+      },
+      "mobile": {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "checks": [
+          {
+            "id": "multiple-destinations",
+            "status": "pass",
+            "evidence": "5 destination/article regions and 6 visible headings detected."
+          },
+          {
+            "id": "expected-budget",
+            "status": "pass",
+            "evidence": "4 monetary values detected; budget wording present."
+          },
+          {
+            "id": "travel-time",
+            "status": "pass",
+            "evidence": "4 travel-time signals detected."
+          },
+          {
+            "id": "vote-interaction",
+            "status": "pass",
+            "evidence": "button \"Voted\" changed visible text or control state."
+          },
+          {
+            "id": "winner-itinerary",
+            "status": "pass",
+            "evidence": "Winner or itinerary content was visible or reachable. 0 visible itinerary regions detected. Path: opened navigation menu; activated Itinerary from navigation."
+          },
+          {
+            "id": "no-sign-in-or-backend",
+            "status": "pass",
+            "evidence": "0 password fields; 1305 visible text characters."
+          },
+          {
+            "id": "horizontal-overflow",
+            "status": "pass",
+            "evidence": "0px document-level horizontal overflow."
+          },
+          {
+            "id": "accessible-controls-and-keyboard",
+            "status": "fail",
+            "evidence": "1 enabled controls lacked a detectable name; 4 unique controls received focus across 12 Tab presses."
+          },
+          {
+            "id": "uncaught-browser-errors",
+            "status": "pass",
+            "evidence": "0 console errors and 0 page errors."
+          }
+        ],
+        "evidence": {
+          "headings": [
+            "Where should weweekend?",
+            "The shortlist",
+            "Lake Como",
+            "Bruges",
+            "The Algarve",
+            "Chamonix"
+          ],
+          "controls": [
+            {
+              "index": 0,
+              "tag": "a",
+              "name": "Weekender home",
+              "disabled": false
+            },
+            {
+              "index": 1,
+              "tag": "button",
+              "name": "Open menu",
+              "disabled": false
+            },
+            {
+              "index": 2,
+              "tag": "input",
+              "name": "",
+              "disabled": false
+            },
+            {
+              "index": 3,
+              "tag": "button",
+              "name": "Budget",
+              "disabled": false
+            },
+            {
+              "index": 4,
+              "tag": "select",
+              "name": "Sort by Best matchLowest priceShortest journey",
+              "disabled": false
+            },
+            {
+              "index": 5,
+              "tag": "button",
+              "name": "Voted",
+              "disabled": false
+            },
+            {
+              "index": 6,
+              "tag": "button",
+              "name": "Vote",
+              "disabled": false
+            },
+            {
+              "index": 7,
+              "tag": "button",
+              "name": "Voted",
+              "disabled": false
+            },
+            {
+              "index": 8,
+              "tag": "button",
+              "name": "Vote",
+              "disabled": false
+            },
+            {
+              "index": 9,
+              "tag": "a",
+              "name": "weekender",
+              "disabled": false
+            }
+          ],
+          "keyboardTargets": [
+            "button:Back to destinations",
+            "a:weekender",
+            "a:Weekender home",
+            "button:Open menu"
+          ],
+          "consoleErrors": [],
+          "pageErrors": [],
+          "externalRequests": []
+        }
+      }
+    },
+    "guardrailFacts": {
+      "npmRunCheckFailed": false,
+      "corePathUnusable": false,
+      "corePathDefinition": "npm run check failed, or at least two core acceptance items failed at both viewports."
+    }
+  },
+  "findings": [
+    {
+      "severity": "medium",
+      "category": "correctness",
+      "title": "Berlin travel times are not credible for two destinations",
+      "file": "source/src/App.tsx",
+      "lineStart": 28,
+      "lineEnd": 30,
+      "evidence": "The trip origin is explicitly Berlin at line 93, but Bruges is listed as a 2h 15m train journey and Chamonix as a 3h 10m train journey. These distant cross-border rail trips cannot plausibly be completed from Berlin in the displayed times, and travelMins feeds the shortest-journey sort at line 69.",
+      "impact": "Travel time is a core comparison criterion, so unrealistic values can lead the group to choose or rank destinations using impossible weekend logistics.",
+      "remediation": "Replace the values with plausible end-to-end journey times from Berlin, or clearly identify a different origin or limited journey segment."
+    },
+    {
+      "severity": "medium",
+      "category": "reliability",
+      "title": "Winner state is disconnected from mutable votes",
+      "file": "source/src/App.tsx",
+      "lineStart": 114,
+      "lineEnd": 120,
+      "evidence": "The favorite badge is assigned to rendered index 0 rather than the highest vote total, while vote interactions only update the local Set and per-card count. Selecting “Lowest price” makes €295 Bruges index 0 and labels it the group favorite even though Como initially has more votes. Separately, line 99 always reports Lake Como with 6 votes and line 128 always renders Como as the winner; the Como card initially reports only 5 votes.",
+      "impact": "Sorting, filtering, or changing votes can produce mutually contradictory favorite, tally, summary, and itinerary states in the core voting flow.",
+      "remediation": "Derive vote totals and the winning destination once from shared state, then use that result for the badge, summary, and itinerary; define deterministic tie behavior."
+    },
+    {
+      "severity": "low",
+      "category": "correctness",
+      "title": "Enabled home and sharing actions are not wired",
+      "file": "source/src/App.tsx",
+      "lineStart": 74,
+      "lineEnd": 84,
+      "evidence": "The link named “Weekender home” uses only href=\"#\", so it does not reset the plan tab, and both desktop and mobile “Share trip” buttons have no handler. The “Share itinerary” button at line 129 is likewise enabled without a handler.",
+      "impact": "These prominent secondary actions promise navigation or sharing but either leave the user on the same view or do nothing.",
+      "remediation": "Connect home links to the explore state or a real route and implement sharing with clear success/failure feedback; otherwise render the actions as unavailable."
+    },
+    {
+      "severity": "low",
+      "category": "accessibility",
+      "title": "Search and budget range lack programmatic names",
+      "file": "source/src/App.tsx",
+      "lineStart": 106,
+      "lineEnd": 109,
+      "evidence": "The search label contains only an icon and an input placeholder, and deterministic checks report that input with an empty accessible name at both viewports. The conditionally rendered range input is also not associated with its adjacent “Max budget” text.",
+      "impact": "Screen-reader users cannot reliably identify two comparison-filter controls when navigating the toolbar.",
+      "remediation": "Give the search input a visible or aria-label name and associate “Max budget” with the range using label/for and id or aria-labelledby."
+    },
+    {
+      "severity": "low",
+      "category": "accessibility",
+      "title": "Search and sort suppress visible keyboard focus",
+      "file": "source/src/index.css",
+      "lineStart": 40,
+      "lineEnd": 40,
+      "evidence": "Both `.search input` and `.sort-label select` set `outline:0`, and no replacement `:focus-visible` or `:focus-within` treatment is defined. Deterministic evidence confirms both controls receive keyboard focus.",
+      "impact": "Sighted keyboard users can lose track of focus while searching or sorting destinations.",
+      "remediation": "Add a high-contrast focus-visible outline or focus-within border treatment before removing the browser outline."
+    },
+    {
+      "severity": "medium",
+      "category": "accessibility",
+      "title": "Repeated small informational text has insufficient contrast",
+      "file": "source/src/index.css",
+      "lineStart": 47,
+      "lineEnd": 49,
+      "evidence": "Core labels use low-contrast combinations at very small sizes: fact labels are 8px `#9ba19e` on white (about 2.63:1), itinerary times and notes are 10px `#8b9490` on white (about 3.12:1), and footer text is 11px `#929a96` on `#f2efe7` (about 2.51:1). These are below the 4.5:1 threshold for normal text.",
+      "impact": "Travel/date cues, itinerary details, and status text are repeatedly difficult to read for users with low vision or reduced contrast sensitivity.",
+      "remediation": "Darken these text colors to achieve at least 4.5:1 contrast on their actual backgrounds and recheck every shared muted-text token."
+    },
+    {
+      "severity": "low",
+      "category": "accessibility",
+      "title": "Hero heading concatenates words in its accessible name",
+      "file": "source/src/App.tsx",
+      "lineStart": 91,
+      "lineEnd": 91,
+      "evidence": "There is no whitespace between “we”, the `<br/>`, and `<em>weekend?</em>`. The deterministic heading extraction consequently reports “Where should weweekend?” at both viewports.",
+      "impact": "Assistive technology can announce the primary page heading as a malformed phrase.",
+      "remediation": "Include explicit whitespace around the line break or provide an accurate accessible label for the heading."
+    }
+  ],
+  "categories": [
+    {
+      "id": "correctness",
+      "label": "Brief fidelity and functional correctness",
+      "score": 2,
+      "weight": 30,
+      "evidence": [
+        "Deterministic browser checks passed destination multiplicity, visible budgets and travel times, vote interaction, itinerary reachability, and backend-free operation at both viewports; source/src/App.tsx:26-49 provides four destinations and a three-day itinerary.",
+        "source/src/App.tsx:28-30 contains materially unrealistic Berlin rail times, and source/src/App.tsx:74-84 exposes enabled secondary actions without behavior."
+      ],
+      "findingCounts": {
+        "critical": 0,
+        "high": 0,
+        "medium": 1,
+        "low": 1,
+        "note": 0
+      }
+    },
+    {
+      "id": "reliability",
+      "label": "Reliability and state integrity",
+      "score": 2,
+      "weight": 15,
+      "evidence": [
+        "source/src/App.tsx:62-70 uses stable destination IDs, functional Set updates, and non-mutating filtered arrays for vote and comparison state.",
+        "source/src/App.tsx:99-128 does not derive the summary, favorite badge, or itinerary from that state, producing reproducible contradictions after sorting or voting."
+      ],
+      "findingCounts": {
+        "critical": 0,
+        "high": 0,
+        "medium": 1,
+        "low": 0,
+        "note": 0
+      }
+    },
+    {
+      "id": "accessibility",
+      "label": "Accessibility",
+      "score": 2,
+      "weight": 15,
+      "evidence": [
+        "The app primarily uses native links, buttons, inputs, and selects, and the deterministic path confirmed keyboard focus reaches these controls.",
+        "The deterministic failure’s mobile count of four unique focus targets was collected after navigation to the plan view, whose visible controls match those targets; that count alone is therefore not treated as a barrier. The unnamed search input is independently confirmed by source/src/App.tsx:106.",
+        "source/src/App.tsx:106-109 lacks complete programmatic filter labels, source/src/index.css:40 removes two focus outlines without replacements, and source/src/index.css:47-49 repeatedly uses sub-4.5:1 text colors."
+      ],
+      "findingCounts": {
+        "critical": 0,
+        "high": 0,
+        "medium": 1,
+        "low": 3,
+        "note": 0
+      }
+    },
+    {
+      "id": "maintainability",
+      "label": "Maintainability and code clarity",
+      "score": 4,
+      "weight": 15,
+      "evidence": [
+        "source/src/App.tsx:8-31 defines a useful Destination type and centralized sample data, while source/src/App.tsx:51-58 factors repeated scene and avatar rendering into focused components.",
+        "The successful TypeScript check supports the data and component contracts. Apart from the winner-state duplication already reported under reliability, no separate demonstrated maintainability defect was found."
+      ],
+      "findingCounts": {
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "note": 0
+      }
+    },
+    {
+      "id": "security",
+      "label": "Security, privacy, and dependency compliance",
+      "score": 4,
+      "weight": 10,
+      "evidence": [
+        "The dependency comparison passed with no added, removed, or changed packages; supplied checks found no remote references, external browser requests, or source mutation.",
+        "source/src/App.tsx renders search and data through normal React interpolation and contains no unsafe HTML injection, secret-like values, backend calls, or unnecessary data collection. No actionable security or dependency-compliance issue was found."
+      ],
+      "findingCounts": {
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "note": 0
+      }
+    },
+    {
+      "id": "performance",
+      "label": "Performance and responsive robustness",
+      "score": 4,
+      "weight": 10,
+      "evidence": [
+        "The production output was 276,946 bytes total, with 67.59 kB gzip JavaScript and 12.33 kB gzip CSS; source/src/App.tsx:51-52 uses local CSS scenes instead of remote media.",
+        "Deterministic checks measured zero document-level horizontal overflow at 1440×900 and 390×844, and reported no console or page errors. No material performance or responsive-robustness defect was found."
+      ],
+      "findingCounts": {
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "note": 0
+      }
+    },
+    {
+      "id": "verification",
+      "label": "Verification readiness",
+      "score": 4,
+      "weight": 5,
+      "evidence": [
+        "source/package.json:8-10 provides typecheck, build, and aggregate check scripts. The supplied `npm run check` completed with exit code 0, including TypeScript and Vite production builds.",
+        "Both deterministic browser paths completed without uncaught errors and exercised voting and itinerary reachability. The absence of a test suite is not treated as a defect under the frozen rubric; no separate verification-readiness issue was found."
+      ],
+      "findingCounts": {
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "note": 0
+      }
+    }
+  ],
+  "rawWeightedScore": 70,
+  "capsApplied": [],
+  "totalScore": 70,
+  "strengths": [
+    "The core product is complete and reachable: four comparable destinations, per-person budgets, travel data, interactive voting, filtering/sorting, a declared winner, and a detailed three-day itinerary.",
+    "Voting uses stable IDs and immutable functional state updates, while filtering and sorting are derived with `useMemo`.",
+    "Desktop and mobile checks found no horizontal overflow, backend dependency, external request, console error, or page error.",
+    "Dependencies exactly match the frozen starter, and the production typecheck/build succeeds.",
+    "Local CSS-generated destination scenes avoid remote-asset privacy and availability risks while retaining responsive layouts."
+  ],
+  "risks": [
+    "Users can see different destinations simultaneously presented as the favorite or winner because voting, sorting, summary, and itinerary state are not unified.",
+    "Implausible Berlin travel times undermine the accuracy of a core trip-comparison input.",
+    "Muted low-contrast text and incomplete toolbar labeling/focus styling reduce usability for screen-reader, low-vision, and keyboard users.",
+    "Prominent sharing and home affordances create false expectations because they are not implemented."
+  ],
+  "recommendation": "Prioritize deriving every winner presentation from vote state and correcting the Berlin journey data. Then wire or disable the promised utility actions and address control names, visible focus, heading spacing, and text contrast. The app otherwise builds successfully and has a usable responsive core path; rerun the existing checks plus focused screen-reader, keyboard-focus, contrast, sorting, and vote-to-winner verification after changes.",
+  "reviewStatus": "frozen",
+  "reviewedAt": "2026-07-20T10:29:52.220Z"
+}

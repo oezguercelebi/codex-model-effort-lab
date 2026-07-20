@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "reviewBenchmarkId": "weekender-code-review-v1",
+  "reviewStatus": "failed",
+  "targetRunId": "gpt-5-6-terra-low-20260714T124438Z",
+  "reviewedAt": "2026-07-20T10:29:52.221Z",
+  "reviewer": {
+    "model": "gpt-5.6-sol",
+    "effort": "xhigh",
+    "codexVersion": "codex-cli 0.145.0-alpha.18"
+  },
+  "failure": {
+    "stage": "reviewer",
+    "code": "reviewer_timeout",
+    "message": "The selected reviewer exceeded the frozen 20-minute time limit before producing a review. The frozen one-attempt policy does not allow a retry."
+  }
+}
