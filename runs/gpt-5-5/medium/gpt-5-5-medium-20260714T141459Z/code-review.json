@@ -1,0 +1,725 @@
+{
+  "schemaVersion": 1,
+  "reviewBenchmarkId": "weekender-code-review-v1",
+  "targetRunId": "gpt-5-5-medium-20260714T141459Z",
+  "reviewer": {
+    "model": "gpt-5.6-sol",
+    "effort": "xhigh",
+    "codexVersion": "codex-cli 0.145.0-alpha.18",
+    "durationMs": 333538,
+    "usage": {
+      "inputTokens": 183010,
+      "cachedInputTokens": 130816,
+      "outputTokens": 13550,
+      "reasoningOutputTokens": 9636
+    }
+  },
+  "deterministicChecks": {
+    "schemaVersion": 1,
+    "reviewBenchmarkId": "weekender-code-review-v1",
+    "generatedAt": "2026-07-20T09:20:01.208Z",
+    "dependencyDiff": {
+      "status": "pass",
+      "added": [],
+      "removed": [],
+      "changed": []
+    },
+    "source": {
+      "files": 5,
+      "nonEmptyLines": 678,
+      "remoteReferences": [],
+      "hashBefore": "b864c87f6fd9390736ab781a895abd3f0497f860e4cbf97b4ab9cb35941f40e8",
+      "hashAfter": "b864c87f6fd9390736ab781a895abd3f0497f860e4cbf97b4ab9cb35941f40e8",
+      "unchangedByChecks": true,
+      "productionAssetBytes": 2834741
+    },
+    "commands": {
+      "npmCi": {
+        "status": "pass",
+        "exitCode": 0,
+        "timedOut": false,
+        "durationMs": 1784,
+        "output": "added 83 packages in 2s"
+      },
+      "npmRunCheck": {
+        "status": "pass",
+        "exitCode": 0,
+        "timedOut": false,
+        "durationMs": 5352,
+        "output": "> weekender-benchmark-starter@1.0.0 check\n> npm run typecheck && npm run build\n\n\n> weekender-benchmark-starter@1.0.0 typecheck\n> tsc --noEmit\n\n\n> weekender-benchmark-starter@1.0.0 build\n> tsc --noEmit && vite build\n\nvite v6.4.3 building for production...\ntransforming...\n✓ 1786 modules transformed.\nrendering chunks...\ncomputing gzip size...\ndist/index.html                   0.48 kB │ gzip:  0.30 kB\ndist/assets/index-CchKx9LX.css   62.19 kB │ gzip: 11.40 kB\ndist/assets/index-ByAl36bM.js   220.68 kB │ gzip: 68.27 kB\n✓ built in 1.71s"
+      }
+    },
+    "browser": {
+      "browserVersion": "150.0.7871.125",
+      "desktop": {
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "checks": [
+          {
+            "id": "multiple-destinations",
+            "status": "pass",
+            "evidence": "7 destination/article regions and 13 visible headings detected."
+          },
+          {
+            "id": "expected-budget",
+            "status": "pass",
+            "evidence": "6 monetary values detected; budget wording present."
+          },
+          {
+            "id": "travel-time",
+            "status": "pass",
+            "evidence": "9 travel-time signals detected."
+          },
+          {
+            "id": "vote-interaction",
+            "status": "pass",
+            "evidence": "button \"Vote\" changed visible text or control state."
+          },
+          {
+            "id": "winner-itinerary",
+            "status": "pass",
+            "evidence": "Winner or itinerary content was visible or reachable. 1 visible itinerary regions detected."
+          },
+          {
+            "id": "no-sign-in-or-backend",
+            "status": "pass",
+            "evidence": "0 password fields; 2104 visible text characters."
+          },
+          {
+            "id": "horizontal-overflow",
+            "status": "pass",
+            "evidence": "0px document-level horizontal overflow."
+          },
+          {
+            "id": "accessible-controls-and-keyboard",
+            "status": "pass",
+            "evidence": "0 enabled controls lacked a detectable name; 10 unique controls received focus across 12 Tab presses."
+          },
+          {
+            "id": "uncaught-browser-errors",
+            "status": "pass",
+            "evidence": "0 console errors and 0 page errors."
+          }
+        ],
+        "evidence": {
+          "headings": [
+            "Pick the trip everyone can say yes to.",
+            "Lake Como",
+            "Compare the weekend shortlist",
+            "Lake Como",
+            "Black Forest",
+            "Annecy",
+            "Porto",
+            "Lake Como",
+            "Cast your pick",
+            "Lake Como is ready to book",
+            "Arrive by the water",
+            "Villas and villages",
+            "Slow morning"
+          ],
+          "controls": [
+            {
+              "index": 0,
+              "tag": "a",
+              "name": "Compare trips",
+              "disabled": false
+            },
+            {
+              "index": 1,
+              "tag": "a",
+              "name": "View winner",
+              "disabled": false
+            },
+            {
+              "index": 2,
+              "tag": "button",
+              "name": "Lake Como3 votes",
+              "disabled": false
+            },
+            {
+              "index": 3,
+              "tag": "button",
+              "name": "Black Forest2 votes",
+              "disabled": false
+            },
+            {
+              "index": 4,
+              "tag": "button",
+              "name": "Porto1 votes",
+              "disabled": false
+            },
+            {
+              "index": 5,
+              "tag": "button",
+              "name": "Annecy2 votes",
+              "disabled": false
+            },
+            {
+              "index": 6,
+              "tag": "button",
+              "name": "Votes",
+              "disabled": false
+            },
+            {
+              "index": 7,
+              "tag": "button",
+              "name": "Budget",
+              "disabled": false
+            },
+            {
+              "index": 8,
+              "tag": "button",
+              "name": "Travel time",
+              "disabled": false
+            },
+            {
+              "index": 9,
+              "tag": "button",
+              "name": "ItalyLake ComoScenic rail weekendEasy lake towns, ferry rides, mountain views, and long dinners that still feel doable i",
+              "disabled": false
+            },
+            {
+              "index": 10,
+              "tag": "button",
+              "name": "Your pick",
+              "disabled": false
+            },
+            {
+              "index": 11,
+              "tag": "button",
+              "name": "GermanyBlack ForestCabin resetForest trails, thermal baths, bakeries, and a quiet cabin base with the lowest total spend",
+              "disabled": false
+            },
+            {
+              "index": 12,
+              "tag": "button",
+              "name": "Vote",
+              "disabled": false
+            },
+            {
+              "index": 13,
+              "tag": "button",
+              "name": "FranceAnnecyAlpine lake townClear water, bike paths, old-town markets, and mountain views without needing a big itinerar",
+              "disabled": false
+            },
+            {
+              "index": 14,
+              "tag": "button",
+              "name": "Vote",
+              "disabled": false
+            },
+            {
+              "index": 15,
+              "tag": "button",
+              "name": "PortugalPortoFood and river cityA lively flight weekend with tiled streets, river views, seafood, wine cellars, and late",
+              "disabled": false
+            },
+            {
+              "index": 16,
+              "tag": "button",
+              "name": "Vote",
+              "disabled": false
+            },
+            {
+              "index": 17,
+              "tag": "button",
+              "name": "Lake Como3 group votes",
+              "disabled": false
+            },
+            {
+              "index": 18,
+              "tag": "button",
+              "name": "Black Forest2 group votes",
+              "disabled": false
+            },
+            {
+              "index": 19,
+              "tag": "button",
+              "name": "Porto1 group votes",
+              "disabled": false
+            },
+            {
+              "index": 20,
+              "tag": "button",
+              "name": "Annecy2 group votes",
+              "disabled": false
+            },
+            {
+              "index": 21,
+              "tag": "button",
+              "name": "Hold the guesthouseRefundable room for five",
+              "disabled": false
+            },
+            {
+              "index": 22,
+              "tag": "button",
+              "name": "Book Saturday dinnerTable at 20:00 near the water",
+              "disabled": false
+            },
+            {
+              "index": 23,
+              "tag": "button",
+              "name": "Buy travel ticketsTrain option, 4h 45m",
+              "disabled": false
+            }
+          ],
+          "keyboardTargets": [
+            "button:FranceAnnecyAlpine lake townClear water, bike paths, old-town markets, and mount",
+            "button:Vote",
+            "button:ItalyLake ComoScenic rail weekendEasy lake towns, ferry rides, mountain views, a",
+            "button:PortugalPortoFood and river cityA lively flight weekend with tiled streets, rive",
+            "button:Lake Como2 group votes",
+            "button:Black Forest3 group votes",
+            "button:Porto1 group votes",
+            "button:Annecy2 group votes",
+            "button:Hold the guesthouseRefundable room for five",
+            "button:Book Saturday dinnerTable at 20:00 near the water"
+          ],
+          "consoleErrors": [],
+          "pageErrors": [],
+          "externalRequests": []
+        }
+      },
+      "mobile": {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "checks": [
+          {
+            "id": "multiple-destinations",
+            "status": "pass",
+            "evidence": "7 destination/article regions and 13 visible headings detected."
+          },
+          {
+            "id": "expected-budget",
+            "status": "pass",
+            "evidence": "6 monetary values detected; budget wording present."
+          },
+          {
+            "id": "travel-time",
+            "status": "pass",
+            "evidence": "9 travel-time signals detected."
+          },
+          {
+            "id": "vote-interaction",
+            "status": "pass",
+            "evidence": "button \"Vote\" changed visible text or control state."
+          },
+          {
+            "id": "winner-itinerary",
+            "status": "pass",
+            "evidence": "Winner or itinerary content was visible or reachable. 1 visible itinerary regions detected."
+          },
+          {
+            "id": "no-sign-in-or-backend",
+            "status": "pass",
+            "evidence": "0 password fields; 2085 visible text characters."
+          },
+          {
+            "id": "horizontal-overflow",
+            "status": "pass",
+            "evidence": "0px document-level horizontal overflow."
+          },
+          {
+            "id": "accessible-controls-and-keyboard",
+            "status": "pass",
+            "evidence": "0 enabled controls lacked a detectable name; 10 unique controls received focus across 12 Tab presses."
+          },
+          {
+            "id": "uncaught-browser-errors",
+            "status": "pass",
+            "evidence": "0 console errors and 0 page errors."
+          }
+        ],
+        "evidence": {
+          "headings": [
+            "Pick the trip everyone can say yes to.",
+            "Lake Como",
+            "Compare the weekend shortlist",
+            "Lake Como",
+            "Black Forest",
+            "Annecy",
+            "Porto",
+            "Lake Como",
+            "Cast your pick",
+            "Lake Como is ready to book",
+            "Arrive by the water",
+            "Villas and villages",
+            "Slow morning"
+          ],
+          "controls": [
+            {
+              "index": 0,
+              "tag": "a",
+              "name": "Compare trips",
+              "disabled": false
+            },
+            {
+              "index": 1,
+              "tag": "a",
+              "name": "View winner",
+              "disabled": false
+            },
+            {
+              "index": 2,
+              "tag": "button",
+              "name": "Lake Como3 votes",
+              "disabled": false
+            },
+            {
+              "index": 3,
+              "tag": "button",
+              "name": "Black Forest2 votes",
+              "disabled": false
+            },
+            {
+              "index": 4,
+              "tag": "button",
+              "name": "Porto1 votes",
+              "disabled": false
+            },
+            {
+              "index": 5,
+              "tag": "button",
+              "name": "Annecy2 votes",
+              "disabled": false
+            },
+            {
+              "index": 6,
+              "tag": "button",
+              "name": "Votes",
+              "disabled": false
+            },
+            {
+              "index": 7,
+              "tag": "button",
+              "name": "Budget",
+              "disabled": false
+            },
+            {
+              "index": 8,
+              "tag": "button",
+              "name": "Travel time",
+              "disabled": false
+            },
+            {
+              "index": 9,
+              "tag": "button",
+              "name": "ItalyLake ComoScenic rail weekendEasy lake towns, ferry rides, mountain views, and long dinners that still feel doable i",
+              "disabled": false
+            },
+            {
+              "index": 10,
+              "tag": "button",
+              "name": "Your pick",
+              "disabled": false
+            },
+            {
+              "index": 11,
+              "tag": "button",
+              "name": "GermanyBlack ForestCabin resetForest trails, thermal baths, bakeries, and a quiet cabin base with the lowest total spend",
+              "disabled": false
+            },
+            {
+              "index": 12,
+              "tag": "button",
+              "name": "Vote",
+              "disabled": false
+            },
+            {
+              "index": 13,
+              "tag": "button",
+              "name": "FranceAnnecyAlpine lake townClear water, bike paths, old-town markets, and mountain views without needing a big itinerar",
+              "disabled": false
+            },
+            {
+              "index": 14,
+              "tag": "button",
+              "name": "Vote",
+              "disabled": false
+            },
+            {
+              "index": 15,
+              "tag": "button",
+              "name": "PortugalPortoFood and river cityA lively flight weekend with tiled streets, river views, seafood, wine cellars, and late",
+              "disabled": false
+            },
+            {
+              "index": 16,
+              "tag": "button",
+              "name": "Vote",
+              "disabled": false
+            },
+            {
+              "index": 17,
+              "tag": "button",
+              "name": "Lake Como3 group votes",
+              "disabled": false
+            },
+            {
+              "index": 18,
+              "tag": "button",
+              "name": "Black Forest2 group votes",
+              "disabled": false
+            },
+            {
+              "index": 19,
+              "tag": "button",
+              "name": "Porto1 group votes",
+              "disabled": false
+            },
+            {
+              "index": 20,
+              "tag": "button",
+              "name": "Annecy2 group votes",
+              "disabled": false
+            },
+            {
+              "index": 21,
+              "tag": "button",
+              "name": "Hold the guesthouseRefundable room for five",
+              "disabled": false
+            },
+            {
+              "index": 22,
+              "tag": "button",
+              "name": "Book Saturday dinnerTable at 20:00 near the water",
+              "disabled": false
+            },
+            {
+              "index": 23,
+              "tag": "button",
+              "name": "Buy travel ticketsTrain option, 4h 45m",
+              "disabled": false
+            }
+          ],
+          "keyboardTargets": [
+            "button:FranceAnnecyAlpine lake townClear water, bike paths, old-town markets, and mount",
+            "button:Vote",
+            "button:ItalyLake ComoScenic rail weekendEasy lake towns, ferry rides, mountain views, a",
+            "button:PortugalPortoFood and river cityA lively flight weekend with tiled streets, rive",
+            "button:Lake Como2 group votes",
+            "button:Black Forest3 group votes",
+            "button:Porto1 group votes",
+            "button:Annecy2 group votes",
+            "button:Hold the guesthouseRefundable room for five",
+            "button:Book Saturday dinnerTable at 20:00 near the water"
+          ],
+          "consoleErrors": [],
+          "pageErrors": [],
+          "externalRequests": []
+        }
+      }
+    },
+    "guardrailFacts": {
+      "npmRunCheckFailed": false,
+      "corePathUnusable": false,
+      "corePathDefinition": "npm run check failed, or at least two core acceptance items failed at both viewports."
+    }
+  },
+  "findings": [
+    {
+      "severity": "medium",
+      "category": "reliability",
+      "title": "Re-selecting the current pick fabricates an additional vote",
+      "file": "source/src/App.tsx",
+      "lineStart": 249,
+      "lineEnd": 254,
+      "evidence": "When destinationId equals myPick, both computed properties target the same key. The decrement is overwritten by the following increment, so clicking the enabled \"Your pick\" or selected group-vote button repeatedly increases that destination's count instead of preserving one vote per user.",
+      "impact": "A user can inflate totals and potentially determine the winner through repeated clicks, undermining the core group-voting result.",
+      "remediation": "Return without changing votes when destinationId equals myPick, or explicitly model each participant's single selection and derive totals from those selections."
+    },
+    {
+      "severity": "low",
+      "category": "correctness",
+      "title": "Winner checklist retains Lake Como-specific accommodation copy",
+      "file": "source/src/App.tsx",
+      "lineStart": 499,
+      "lineEnd": 503,
+      "evidence": "The stay task is always \"Hold the guesthouse\" even though the winner can change and the destination data describes alternatives such as Black Forest's \"Two-bedroom cabin.\" Moving the initial Lake Como vote to Black Forest makes Black Forest win in one click, while this task remains unchanged; only the ticket description uses winner data.",
+      "impact": "The winning plan can present booking guidance for the wrong type of accommodation after a vote changes the winner.",
+      "remediation": "Derive accommodation and other destination-specific task copy from winner data instead of embedding Lake Como-specific strings."
+    },
+    {
+      "severity": "low",
+      "category": "accessibility",
+      "title": "Destination-card vote buttons have indistinguishable accessible names",
+      "file": "source/src/App.tsx",
+      "lineStart": 635,
+      "lineEnd": 645,
+      "evidence": "Every unselected card renders a button whose accessible name is only \"Vote.\" The deterministic desktop and mobile control inventories consequently contain three separate controls all named \"Vote,\" without the destination name.",
+      "impact": "Screen-reader users navigating by controls cannot tell which destination each vote button affects.",
+      "remediation": "Include the destination in each accessible name, such as aria-label={`Vote for ${destination.name}`}, and similarly identify the current pick."
+    },
+    {
+      "severity": "low",
+      "category": "accessibility",
+      "title": "Group-vote selection state is visual-only",
+      "file": "source/src/App.tsx",
+      "lineStart": 459,
+      "lineEnd": 479,
+      "evidence": "The current myPick changes background color and swaps aria-hidden Check/Plus icons, but the buttons expose neither aria-pressed nor selected-state text. Their recorded accessible names contain only destination names and vote totals.",
+      "impact": "A screen-reader user can operate the voting controls but cannot reliably identify or confirm the currently selected destination from this control group.",
+      "remediation": "Set aria-pressed={myPick === destination.id} on each group-vote button and provide a programmatic label for the group."
+    },
+    {
+      "severity": "low",
+      "category": "performance",
+      "title": "All viewports download a multi-megabyte PNG hero",
+      "file": "source/src/App.tsx",
+      "lineStart": 268,
+      "lineEnd": 272,
+      "evidence": "The hero uses a single 1536×1024 PNG with no responsive source variants. The file is approximately 2.43 MiB and the deterministic check records 2,834,741 production asset bytes overall, so this image dominates the payload even at the 390px mobile viewport.",
+      "impact": "First-time mobile users incur unnecessary transfer and decode work for the primary visual, increasing the risk of a delayed hero render on constrained connections or devices.",
+      "remediation": "Re-encode the collage as WebP or AVIF and supply appropriately sized variants through picture/srcset."
+    }
+  ],
+  "categories": [
+    {
+      "id": "correctness",
+      "label": "Brief fidelity and functional correctness",
+      "score": 3,
+      "weight": 30,
+      "evidence": [
+        "source/src/App.tsx:49-198 supplies four realistic destinations with budgets, travel times, highlights, and three-day itineraries; source/src/App.tsx:391-483 exposes comparison and voting flows.",
+        "Deterministic desktop and mobile checks passed multiple destinations, expected budget, travel time, interactive voting, winner/itinerary reachability, and backend-free operation.",
+        "source/src/App.tsx:487-554 correctly derives the itinerary heading, ticket details, and daily schedule from winner, but source/src/App.tsx:499-503 leaves the accommodation task destination-independent."
+      ],
+      "findingCounts": {
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 1,
+        "note": 0
+      }
+    },
+    {
+      "id": "reliability",
+      "label": "Reliability and state integrity",
+      "score": 2,
+      "weight": 15,
+      "evidence": [
+        "source/src/App.tsx:221-242 derives sorted cards and the winner from stable destination IDs and current vote state rather than array display order.",
+        "source/src/App.tsx:249-254 violates the single-pick invariant when the current choice is clicked again, allowing totals to grow without a changed selection.",
+        "Both deterministic browser paths recorded zero console errors and zero page errors."
+      ],
+      "findingCounts": {
+        "critical": 0,
+        "high": 0,
+        "medium": 1,
+        "low": 0,
+        "note": 0
+      }
+    },
+    {
+      "id": "accessibility",
+      "label": "Accessibility",
+      "score": 3,
+      "weight": 15,
+      "evidence": [
+        "The deterministic checks found no enabled control without a detectable name and successfully focused 10 unique controls during each viewport's defined keyboard path.",
+        "source/src/App.tsx:265-558 uses native links, buttons, headings, articles, and sections, while decorative icons and the background image are hidden from assistive technology.",
+        "source/src/App.tsx:459-479 does not expose the selected group-vote state, and source/src/App.tsx:635-645 produces repeated destination-card buttons named only \"Vote.\""
+      ],
+      "findingCounts": {
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 2,
+        "note": 0
+      }
+    },
+    {
+      "id": "maintainability",
+      "label": "Maintainability and code clarity",
+      "score": 4,
+      "weight": 15,
+      "evidence": [
+        "source/src/App.tsx:22-45 defines a useful Destination type, and source/src/App.tsx:49-198 keeps each destination's comparison and itinerary data in one structured record.",
+        "source/src/App.tsx:221-247 centralizes derived sorting, winner, totals, and budget calculations, while source/src/App.tsx:562-650 extracts repeated metric, detail, and card rendering into typed components.",
+        "Stable destination IDs are used for state lookup and React keys throughout the interactive lists."
+      ],
+      "findingCounts": {
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "note": 0
+      }
+    },
+    {
+      "id": "security",
+      "label": "Security, privacy, and dependency compliance",
+      "score": 4,
+      "weight": 10,
+      "evidence": [
+        "The deterministic dependency comparison passed with no added, removed, or changed packages; source/package.json:12-24 contains only the frozen starter dependencies.",
+        "The deterministic source scan found no remote references, both browser paths made no external requests, and source/src/App.tsx uses no HTML injection, user-entered URLs, credential fields, or data collection."
+      ],
+      "findingCounts": {
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "note": 0
+      }
+    },
+    {
+      "id": "performance",
+      "label": "Performance and responsive robustness",
+      "score": 3,
+      "weight": 10,
+      "evidence": [
+        "The deterministic browser checks found zero document-level horizontal overflow at 1440×900 and 390×844; source/src/App.tsx uses breakpoint-based grids and min-width guards for responsive layout.",
+        "The production build emitted 220.68 kB of JavaScript and 62.19 kB of CSS before gzip, but the single hero PNG referenced at source/src/App.tsx:268-272 raises total production assets to 2,834,741 bytes."
+      ],
+      "findingCounts": {
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 1,
+        "note": 0
+      }
+    },
+    {
+      "id": "verification",
+      "label": "Verification readiness",
+      "score": 4,
+      "weight": 5,
+      "evidence": [
+        "source/package.json:6-10 provides typecheck, build, and aggregate check scripts, and source/tsconfig.json:2-17 enables strict TypeScript with no emit.",
+        "The recorded npm run check completed successfully, including TypeScript validation and a Vite production build; source hashes were unchanged by the checks.",
+        "All defined desktop and mobile acceptance checks passed with no browser errors. The voting check exercised a change to a different destination but did not cover re-clicking the current pick, which is where source/src/App.tsx:249-254 fails."
+      ],
+      "findingCounts": {
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "note": 0
+      }
+    }
+  ],
+  "rawWeightedScore": 78.75,
+  "capsApplied": [],
+  "totalScore": 78.75,
+  "strengths": [
+    "The complete core experience—comparison, budget, travel time, voting, winner, and three-day itinerary—is available without sign-in or network services at both tested viewports.",
+    "Winner, sorting, vote shares, and displayed itinerary are mostly derived from centralized typed data and stable identifiers.",
+    "Native interactive elements and a coherent heading hierarchy provide a solid accessibility baseline; deterministic keyboard and naming checks passed.",
+    "Dependency compliance, strict type checking, production build, responsive overflow, and browser-error checks all passed.",
+    "The implementation uses only a local decorative image and makes no external requests or unsafe HTML injections."
+  ],
+  "risks": [
+    "Repeated interaction with the selected destination can inflate vote totals and compromise the winning result.",
+    "Winner changes can leave destination-specific planning copy inconsistent with the selected trip.",
+    "Assistive-technology users receive ambiguous card vote labels and no programmatic selected state in the group vote controls.",
+    "The 2.43 MiB PNG dominates the initial payload, especially at the mobile viewport."
+  ],
+  "recommendation": "Fix the single-vote invariant before release, then bind all planning tasks to the current winner. Add destination-specific accessible labels and pressed states to voting controls, and optimize the hero image for responsive delivery.",
+  "reviewStatus": "frozen",
+  "reviewedAt": "2026-07-20T09:25:34.939Z"
+}

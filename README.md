@@ -16,7 +16,7 @@ The engineering review companion in [`benchmark/code-review-v1.md`](benchmark/co
 - The static comparison site includes one permanent hand-built Default plus captured GPT-5.5, Luna, Terra, and Sol results.
 - The local runner has passed an end-to-end no-model dry run, including desktop and mobile screenshot capture.
 - Light-, Medium-, High-, and Extra-High-effort runs for GPT-5.5, Luna, Terra, and Sol have been published.
-- Frozen engineering reviews are published for all four High runs and for Luna, Terra, and Sol at Extra High. The GPT-5.5 Extra High review attempt is preserved as unavailable because the fixed reviewer was at capacity.
+- Frozen engineering reviews are published for all four Medium and High runs, plus Luna, Terra, and Sol at Extra High. The GPT-5.5 Extra High review attempt is preserved as unavailable because the fixed reviewer was at capacity.
 
 ## The experience
 
@@ -283,6 +283,7 @@ python3 -m http.server 4173 --directory _site
 Run a frozen engineering-review batch once:
 
 ```bash
+npm run review:medium
 npm run review:high
 npm run review:xhigh
 ```

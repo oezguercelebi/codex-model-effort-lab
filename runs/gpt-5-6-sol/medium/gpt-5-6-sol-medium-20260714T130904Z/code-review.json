@@ -1,0 +1,623 @@
+{
+  "schemaVersion": 1,
+  "reviewBenchmarkId": "weekender-code-review-v1",
+  "targetRunId": "gpt-5-6-sol-medium-20260714T130904Z",
+  "reviewer": {
+    "model": "gpt-5.6-sol",
+    "effort": "xhigh",
+    "codexVersion": "codex-cli 0.145.0-alpha.18",
+    "durationMs": 637132,
+    "usage": {
+      "inputTokens": 297866,
+      "cachedInputTokens": 247040,
+      "outputTokens": 12143,
+      "reasoningOutputTokens": 8320
+    }
+  },
+  "deterministicChecks": {
+    "schemaVersion": 1,
+    "reviewBenchmarkId": "weekender-code-review-v1",
+    "generatedAt": "2026-07-20T09:33:33.673Z",
+    "dependencyDiff": {
+      "status": "pass",
+      "added": [],
+      "removed": [],
+      "changed": []
+    },
+    "source": {
+      "files": 5,
+      "nonEmptyLines": 644,
+      "remoteReferences": [],
+      "hashBefore": "c1c28686a07b1c6a3e0463f004f0626a7068a531617c7c59b31db42a4fa93c41",
+      "hashAfter": "c1c28686a07b1c6a3e0463f004f0626a7068a531617c7c59b31db42a4fa93c41",
+      "unchangedByChecks": true,
+      "productionAssetBytes": 894474
+    },
+    "commands": {
+      "npmCi": {
+        "status": "pass",
+        "exitCode": 0,
+        "timedOut": false,
+        "durationMs": 1887,
+        "output": "added 83 packages in 2s"
+      },
+      "npmRunCheck": {
+        "status": "pass",
+        "exitCode": 0,
+        "timedOut": false,
+        "durationMs": 6026,
+        "output": "> weekender-benchmark-starter@1.0.0 check\n> npm run typecheck && npm run build\n\n\n> weekender-benchmark-starter@1.0.0 typecheck\n> tsc --noEmit\n\n\n> weekender-benchmark-starter@1.0.0 build\n> tsc --noEmit && vite build\n\nvite v6.4.3 building for production...\ntransforming...\n✓ 1786 modules transformed.\nrendering chunks...\ncomputing gzip size...\ndist/index.html                   0.51 kB │ gzip:  0.32 kB\ndist/assets/index-DTSCFQ6R.css   62.97 kB │ gzip: 13.03 kB\ndist/assets/index-BDi7MYKW.js   220.95 kB │ gzip: 68.25 kB\n✓ built in 1.88s"
+      }
+    },
+    "browser": {
+      "browserVersion": "150.0.7871.125",
+      "desktop": {
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "checks": [
+          {
+            "id": "multiple-destinations",
+            "status": "pass",
+            "evidence": "14 destination/article regions and 5 visible headings detected."
+          },
+          {
+            "id": "expected-budget",
+            "status": "pass",
+            "evidence": "4 monetary values detected; budget wording present."
+          },
+          {
+            "id": "travel-time",
+            "status": "pass",
+            "evidence": "3 travel-time signals detected."
+          },
+          {
+            "id": "vote-interaction",
+            "status": "pass",
+            "evidence": "button \"Voted\" changed visible text or control state."
+          },
+          {
+            "id": "winner-itinerary",
+            "status": "pass",
+            "evidence": "Winner or itinerary content was visible or reachable. 0 visible itinerary regions detected."
+          },
+          {
+            "id": "no-sign-in-or-backend",
+            "status": "pass",
+            "evidence": "0 password fields; 1402 visible text characters."
+          },
+          {
+            "id": "horizontal-overflow",
+            "status": "pass",
+            "evidence": "0px document-level horizontal overflow."
+          },
+          {
+            "id": "accessible-controls-and-keyboard",
+            "status": "pass",
+            "evidence": "0 enabled controls lacked a detectable name; 10 unique controls received focus across 12 Tab presses."
+          },
+          {
+            "id": "uncaught-browser-errors",
+            "status": "pass",
+            "evidence": "0 console errors and 0 page errors."
+          }
+        ],
+        "evidence": {
+          "headings": [
+            "One last summer weekend.",
+            "Where should we go?",
+            "Lake Como",
+            "Copenhagen",
+            "Saxon Switzerland"
+          ],
+          "controls": [
+            {
+              "index": 0,
+              "tag": "a",
+              "name": "Weekender home",
+              "disabled": false
+            },
+            {
+              "index": 1,
+              "tag": "a",
+              "name": "My trips",
+              "disabled": false
+            },
+            {
+              "index": 2,
+              "tag": "a",
+              "name": "Inspiration",
+              "disabled": false
+            },
+            {
+              "index": 3,
+              "tag": "button",
+              "name": "Share trip",
+              "disabled": false
+            },
+            {
+              "index": 4,
+              "tag": "button",
+              "name": "Invite",
+              "disabled": false
+            },
+            {
+              "index": 5,
+              "tag": "button",
+              "name": "Change dates",
+              "disabled": false
+            },
+            {
+              "index": 6,
+              "tag": "button",
+              "name": "Destinations",
+              "disabled": false
+            },
+            {
+              "index": 7,
+              "tag": "button",
+              "name": "Itinerary",
+              "disabled": false
+            },
+            {
+              "index": 8,
+              "tag": "button",
+              "name": "The group5",
+              "disabled": false
+            },
+            {
+              "index": 9,
+              "tag": "button",
+              "name": "Compare Lake Como",
+              "disabled": false
+            },
+            {
+              "index": 10,
+              "tag": "button",
+              "name": "Voted",
+              "disabled": false
+            },
+            {
+              "index": 11,
+              "tag": "button",
+              "name": "Compare Copenhagen",
+              "disabled": false
+            },
+            {
+              "index": 12,
+              "tag": "button",
+              "name": "Vote for this",
+              "disabled": false
+            },
+            {
+              "index": 13,
+              "tag": "button",
+              "name": "Compare Saxon Switzerland",
+              "disabled": false
+            },
+            {
+              "index": 14,
+              "tag": "button",
+              "name": "Vote for this",
+              "disabled": false
+            },
+            {
+              "index": 15,
+              "tag": "button",
+              "name": "See the plan",
+              "disabled": false
+            }
+          ],
+          "keyboardTargets": [
+            "button:Compare Copenhagen",
+            "button:Vote for this",
+            "button:Compare Saxon Switzerland",
+            "button:See the plan",
+            "a:Weekender home",
+            "a:My trips",
+            "a:Inspiration",
+            "button:Share trip",
+            "button:Invite",
+            "button:Change dates"
+          ],
+          "consoleErrors": [],
+          "pageErrors": [],
+          "externalRequests": []
+        }
+      },
+      "mobile": {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "checks": [
+          {
+            "id": "multiple-destinations",
+            "status": "pass",
+            "evidence": "14 destination/article regions and 5 visible headings detected."
+          },
+          {
+            "id": "expected-budget",
+            "status": "pass",
+            "evidence": "3 monetary values detected; budget wording absent."
+          },
+          {
+            "id": "travel-time",
+            "status": "pass",
+            "evidence": "3 travel-time signals detected."
+          },
+          {
+            "id": "vote-interaction",
+            "status": "pass",
+            "evidence": "button \"Voted\" changed visible text or control state."
+          },
+          {
+            "id": "winner-itinerary",
+            "status": "pass",
+            "evidence": "Winner or itinerary content was visible or reachable. 0 visible itinerary regions detected."
+          },
+          {
+            "id": "no-sign-in-or-backend",
+            "status": "pass",
+            "evidence": "0 password fields; 1256 visible text characters."
+          },
+          {
+            "id": "horizontal-overflow",
+            "status": "pass",
+            "evidence": "0px document-level horizontal overflow."
+          },
+          {
+            "id": "accessible-controls-and-keyboard",
+            "status": "pass",
+            "evidence": "0 enabled controls lacked a detectable name; 10 unique controls received focus across 12 Tab presses."
+          },
+          {
+            "id": "uncaught-browser-errors",
+            "status": "pass",
+            "evidence": "0 console errors and 0 page errors."
+          }
+        ],
+        "evidence": {
+          "headings": [
+            "One last summer weekend.",
+            "Where should we go?",
+            "Lake Como",
+            "Copenhagen",
+            "Saxon Switzerland"
+          ],
+          "controls": [
+            {
+              "index": 0,
+              "tag": "a",
+              "name": "Weekender home",
+              "disabled": false
+            },
+            {
+              "index": 1,
+              "tag": "button",
+              "name": "Open menu",
+              "disabled": false
+            },
+            {
+              "index": 2,
+              "tag": "button",
+              "name": "Change dates",
+              "disabled": false
+            },
+            {
+              "index": 3,
+              "tag": "button",
+              "name": "Destinations",
+              "disabled": false
+            },
+            {
+              "index": 4,
+              "tag": "button",
+              "name": "Itinerary",
+              "disabled": false
+            },
+            {
+              "index": 5,
+              "tag": "button",
+              "name": "The group5",
+              "disabled": false
+            },
+            {
+              "index": 6,
+              "tag": "button",
+              "name": "Compare Lake Como",
+              "disabled": false
+            },
+            {
+              "index": 7,
+              "tag": "button",
+              "name": "Voted",
+              "disabled": false
+            },
+            {
+              "index": 8,
+              "tag": "button",
+              "name": "Compare Copenhagen",
+              "disabled": false
+            },
+            {
+              "index": 9,
+              "tag": "button",
+              "name": "Vote for this",
+              "disabled": false
+            },
+            {
+              "index": 10,
+              "tag": "button",
+              "name": "Compare Saxon Switzerland",
+              "disabled": false
+            },
+            {
+              "index": 11,
+              "tag": "button",
+              "name": "Vote for this",
+              "disabled": false
+            },
+            {
+              "index": 12,
+              "tag": "button",
+              "name": "See the plan",
+              "disabled": false
+            }
+          ],
+          "keyboardTargets": [
+            "button:Compare Copenhagen",
+            "button:Vote for this",
+            "button:Compare Saxon Switzerland",
+            "button:See the plan",
+            "a:Weekender home",
+            "button:Open menu",
+            "button:Change dates",
+            "button:Destinations",
+            "button:Itinerary",
+            "button:The group5"
+          ],
+          "consoleErrors": [],
+          "pageErrors": [],
+          "externalRequests": []
+        }
+      }
+    },
+    "guardrailFacts": {
+      "npmRunCheckFailed": false,
+      "corePathUnusable": false,
+      "corePathDefinition": "npm run check failed, or at least two core acceptance items failed at both viewports."
+    }
+  },
+  "findings": [
+    {
+      "severity": "medium",
+      "category": "correctness",
+      "title": "Compare action ignores the selected destinations",
+      "file": "source/src/App.tsx",
+      "lineStart": 385,
+      "lineEnd": 389,
+      "evidence": "After two destinations are selected, the enabled “Compare now” button only calls `notify` with the constant result “Lake Como wins on travel mood.” It neither uses `compareItems` to present a comparison nor varies the result; selecting Copenhagen and Saxon still reports Lake Como, which was not selected.",
+      "impact": "A prominent control for the brief’s core comparison task produces an irrelevant canned result, so users cannot meaningfully compare their chosen pair.",
+      "remediation": "Render the selected destinations’ budget, travel, and other attributes in a comparison view, or remove the action until it can produce a result derived from `compareItems`."
+    },
+    {
+      "severity": "medium",
+      "category": "reliability",
+      "title": "Vote-dependent winner state is hard-coded",
+      "file": "source/src/App.tsx",
+      "lineStart": 315,
+      "lineEnd": 325,
+      "evidence": "The vote handler changes `vote`, but the adjacent decision summary remains literal Lake Como text and “4 of 5 friends voted” after every transition. The card count is separately calculated as base votes plus selection at line 199 and the initial selection is Como at line 229, so the initial card shows five votes while this summary says four; voting for Copenhagen produces a 4–4 visible tie while the banner still presents Lake Como as the sole frontrunner.",
+      "impact": "The displayed totals, participation summary, and winner can contradict each other after a core voting interaction, undermining confidence in the group decision.",
+      "remediation": "Derive all counts, participation text, leader/tie state, and the itinerary destination from one authoritative vote state."
+    },
+    {
+      "severity": "low",
+      "category": "correctness",
+      "title": "Success messages stand in for promised side effects",
+      "file": "source/src/App.tsx",
+      "lineStart": 236,
+      "lineEnd": 239,
+      "evidence": "`notify` only sets and clears transient toast text. It is nevertheless used to claim that a link was copied (line 264), an itinerary was saved offline (line 334), a reminder was sent (line 369), and similar actions completed; the source contains no Clipboard, storage, or network implementation.",
+      "impact": "Secondary enabled actions tell users work succeeded when nothing was copied, persisted, or sent.",
+      "remediation": "Perform each promised operation and show success only after it completes, or disable/remove unsupported actions and avoid completion language."
+    },
+    {
+      "severity": "medium",
+      "category": "accessibility",
+      "title": "Core metadata uses systematically undersized, low-contrast text",
+      "file": "source/src/index.css",
+      "lineStart": 95,
+      "lineEnd": 109,
+      "evidence": "Several labels are only 8px and use low-contrast colors on `--paper` (#fbfaf6): orange #df684a is approximately 3.23:1, #858c87 is approximately 3.30:1, and the destination-stat labels inherit #87908a at approximately 3.15:1. These styles repeat across every destination, including the context labels for per-person cost and door-to-door travel time.",
+      "impact": "Users with low vision may be unable to read the labels needed to interpret the app’s core budget and travel-time values.",
+      "remediation": "Increase the metadata font sizes and adjust foreground colors to provide at least 4.5:1 contrast for normal-sized text."
+    },
+    {
+      "severity": "low",
+      "category": "accessibility",
+      "title": "Tab navigation declares an incomplete ARIA tab pattern",
+      "file": "source/src/App.tsx",
+      "lineStart": 291,
+      "lineEnd": 298,
+      "evidence": "The container has `role=\"tablist\"`, but its controls remain ordinary buttons without `role=\"tab\"`, `aria-selected`, or `aria-controls`; the conditional content sections likewise have no corresponding `tabpanel` semantics. The deterministic check confirms the controls are focusable, but does not validate this relationship or tab-pattern keyboard behavior.",
+      "impact": "Screen-reader users do not receive the selected state or programmatic relationship between each navigation tab and its content.",
+      "remediation": "Implement the complete tab/tablist/tabpanel pattern, including selected state, controlled panel IDs, and expected keyboard navigation, or remove `tablist` and expose the controls as ordinary view-switching buttons."
+    },
+    {
+      "severity": "low",
+      "category": "accessibility",
+      "title": "Transient action feedback is not announced",
+      "file": "source/src/App.tsx",
+      "lineStart": 392,
+      "lineEnd": 392,
+      "evidence": "Toast feedback is inserted as a plain `div` without `role=\"status\"`, `aria-live`, or an equivalent live-region mechanism. Several actions, including comparison limits and secondary controls, communicate their result only through this toast.",
+      "impact": "Screen-reader users can activate controls without learning whether an action succeeded, failed, or was rejected.",
+      "remediation": "Expose the toast through a suitable polite live region such as `role=\"status\"`, while keeping critical errors persistent when necessary."
+    },
+    {
+      "severity": "low",
+      "category": "maintainability",
+      "title": "Member identity and vote state depend on parallel array positions",
+      "file": "source/src/App.tsx",
+      "lineStart": 372,
+      "lineEnd": 376,
+      "evidence": "The renderer maps `members` by index, looks up names from a separate inline string array, and derives each person’s destination and pending status from numeric-index conditions. These related fields have no shared record or stable identity beyond the current ordering.",
+      "impact": "Reordering, inserting, or removing a member can silently associate the wrong name, color, vote, or status, making routine sample-data changes error-prone.",
+      "remediation": "Store name, initials, color, vote, and status together in each typed member record and render those fields directly."
+    },
+    {
+      "severity": "low",
+      "category": "performance",
+      "title": "The initial destination photo is substantially oversized for its rendered slot",
+      "file": "source/src/App.tsx",
+      "lineStart": 179,
+      "lineEnd": 182,
+      "evidence": "The card loads `/assets/lake-como.jpg` as a CSS background. The local JPEG is 1536×1024 and 610,043 bytes, while the responsive card displays it at roughly 350×188px or less (`source/src/index.css` lines 221–224); the deterministic evidence reports 894,474 production asset bytes overall.",
+      "impact": "Mobile users download and decode far more image data than the visible card requires, increasing first-load time and memory use on constrained devices.",
+      "remediation": "Provide an appropriately compressed card-sized asset and responsive variants, preferably through an image element with `srcset`/`sizes` when the image is content-bearing."
+    }
+  ],
+  "categories": [
+    {
+      "id": "correctness",
+      "label": "Brief fidelity and functional correctness",
+      "score": 2,
+      "weight": 30,
+      "evidence": [
+        "The deterministic checks passed destination visibility, budget, travel-time, vote interaction, and itinerary reachability at both 1440×900 and 390×844; `source/src/App.tsx` lines 49–144 provide realistic destination and itinerary data.",
+        "The explicit comparison workflow is not functional for the chosen pair (`source/src/App.tsx` lines 385–389), and several secondary actions report unperformed work through the toast helper (`source/src/App.tsx` lines 236–239)."
+      ],
+      "findingCounts": {
+        "critical": 0,
+        "high": 0,
+        "medium": 1,
+        "low": 1,
+        "note": 0
+      }
+    },
+    {
+      "id": "reliability",
+      "label": "Reliability and state integrity",
+      "score": 2,
+      "weight": 15,
+      "evidence": [
+        "Destination and comparison rendering use stable string IDs and immutable updates (`source/src/App.tsx` lines 234–249), and the deterministic path recorded zero console or page errors at both viewports.",
+        "Vote state updates independently of hard-coded leader and participation text (`source/src/App.tsx` lines 315–325), creating reproducible state contradictions."
+      ],
+      "findingCounts": {
+        "critical": 0,
+        "high": 0,
+        "medium": 1,
+        "low": 0,
+        "note": 0
+      }
+    },
+    {
+      "id": "accessibility",
+      "label": "Accessibility",
+      "score": 2,
+      "weight": 15,
+      "evidence": [
+        "The document declares English and uses native landmarks, articles, headings, links, and buttons (`source/index.html` line 2; `source/src/App.tsx` lines 252–383). The deterministic checks found no enabled unnamed controls and focused 10 unique controls at each viewport.",
+        "The custom tablist lacks tab-state relationships (`source/src/App.tsx` lines 291–298), toast-only feedback has no live-region semantics (`source/src/App.tsx` line 392), and repeated 8px metadata colors fall below 4.5:1 contrast (`source/src/index.css` lines 95–109)."
+      ],
+      "findingCounts": {
+        "critical": 0,
+        "high": 0,
+        "medium": 1,
+        "low": 2,
+        "note": 0
+      }
+    },
+    {
+      "id": "maintainability",
+      "label": "Maintainability and code clarity",
+      "score": 3,
+      "weight": 15,
+      "evidence": [
+        "The app uses strict TypeScript, a typed `Destination` model, stable destination IDs, and an extracted destination-card component (`source/tsconfig.json` line 10; `source/src/App.tsx` lines 31–47 and 164–225).",
+        "Member rendering couples separate data through array indexes and numeric conditions (`source/src/App.tsx` lines 372–376), while winner duplication also makes related UI states easier to desynchronize."
+      ],
+      "findingCounts": {
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 1,
+        "note": 0
+      }
+    },
+    {
+      "id": "security",
+      "label": "Security, privacy, and dependency compliance",
+      "score": 4,
+      "weight": 10,
+      "evidence": [
+        "The deterministic dependency diff passed with no added, removed, or changed packages; remote references and observed external requests were both empty.",
+        "The UI renders local typed data and a bundled local asset through React, with no `dangerouslySetInnerHTML`, secret-like values, credential collection, or external service calls in `source/src/App.tsx`."
+      ],
+      "findingCounts": {
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "note": 0
+      }
+    },
+    {
+      "id": "performance",
+      "label": "Performance and responsive robustness",
+      "score": 3,
+      "weight": 10,
+      "evidence": [
+        "The deterministic browser checks found zero document-level horizontal overflow at both required viewports, and the responsive rules collapse itinerary and group layouts while using a contained horizontal destination carousel (`source/src/index.css` lines 202–249).",
+        "The bundled 1536×1024, 610,043-byte Lake Como JPEG is used in much smaller card and booking backgrounds (`source/src/App.tsx` lines 179–182; `source/src/index.css` line 151), leaving a bounded mobile payload inefficiency."
+      ],
+      "findingCounts": {
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 1,
+        "note": 0
+      }
+    },
+    {
+      "id": "verification",
+      "label": "Verification readiness",
+      "score": 4,
+      "weight": 5,
+      "evidence": [
+        "The supplied `npm run check` completed successfully, including strict TypeScript checking and a production Vite build; the scripts are explicit in `source/package.json` lines 6–10.",
+        "Deterministic desktop and mobile paths exercised voting, itinerary reachability, keyboard focus, overflow, and error capture, with all recorded checks passing. The frozen starter does not require an automated test suite."
+      ],
+      "findingCounts": {
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "note": 0
+      }
+    }
+  ],
+  "rawWeightedScore": 63.75,
+  "capsApplied": [],
+  "totalScore": 63.75,
+  "strengths": [
+    "All supplied type-check, production-build, dependency, desktop, and mobile checks passed, with no browser errors or external requests.",
+    "Three destinations expose comparable prices, travel times, transport details, descriptions, and stable IDs in a consistent typed model.",
+    "The itinerary contains realistic day-by-day activities and an internally consistent €428 per-person breakdown totaling €2,140 for five people.",
+    "Responsive rules preserve the core content without document-level overflow at both tested viewports.",
+    "The implementation uses native interactive elements with detectable accessible names, and the deterministic keyboard path reached 10 unique controls on desktop and mobile."
+  ],
+  "risks": [
+    "Comparison and winner messaging are not derived from the selected data, so future sample-data or voting changes can deepen existing contradictions.",
+    "Several enabled secondary controls claim persistence, copying, or communication that never occurs.",
+    "Small low-contrast metadata and incomplete tab/live-region semantics limit accessibility despite basic keyboard operability.",
+    "The oversized photo makes the otherwise modest static application less efficient on mobile connections."
+  ],
+  "recommendation": "Prioritize a single authoritative vote/winner model and a real selected-pair comparison, then replace simulated success actions with truthful behavior. Before release, raise metadata contrast and size, complete the tab and live-region semantics, and optimize the bundled destination image.",
+  "reviewStatus": "frozen",
+  "reviewedAt": "2026-07-20T09:44:10.961Z"
+}

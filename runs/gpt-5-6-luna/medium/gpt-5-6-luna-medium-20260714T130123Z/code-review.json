@@ -1,0 +1,649 @@
+{
+  "schemaVersion": 1,
+  "reviewBenchmarkId": "weekender-code-review-v1",
+  "targetRunId": "gpt-5-6-luna-medium-20260714T130123Z",
+  "reviewer": {
+    "model": "gpt-5.6-sol",
+    "effort": "xhigh",
+    "codexVersion": "codex-cli 0.145.0-alpha.18",
+    "durationMs": 332176,
+    "usage": {
+      "inputTokens": 230874,
+      "cachedInputTokens": 186624,
+      "outputTokens": 12054,
+      "reasoningOutputTokens": 8250
+    }
+  },
+  "deterministicChecks": {
+    "schemaVersion": 1,
+    "reviewBenchmarkId": "weekender-code-review-v1",
+    "generatedAt": "2026-07-20T09:44:23.103Z",
+    "dependencyDiff": {
+      "status": "pass",
+      "added": [],
+      "removed": [],
+      "changed": []
+    },
+    "source": {
+      "files": 5,
+      "nonEmptyLines": 139,
+      "remoteReferences": [],
+      "hashBefore": "b626adc53861d9493b41052c8e89d8aecd0af7118b032e84a8b9204c79f29b98",
+      "hashAfter": "b626adc53861d9493b41052c8e89d8aecd0af7118b032e84a8b9204c79f29b98",
+      "unchangedByChecks": true,
+      "productionAssetBytes": 275119
+    },
+    "commands": {
+      "npmCi": {
+        "status": "pass",
+        "exitCode": 0,
+        "timedOut": false,
+        "durationMs": 2163,
+        "output": "added 83 packages in 2s"
+      },
+      "npmRunCheck": {
+        "status": "pass",
+        "exitCode": 0,
+        "timedOut": false,
+        "durationMs": 5678,
+        "output": "> weekender-benchmark-starter@1.0.0 check\n> npm run typecheck && npm run build\n\n\n> weekender-benchmark-starter@1.0.0 typecheck\n> tsc --noEmit\n\n\n> weekender-benchmark-starter@1.0.0 build\n> tsc --noEmit && vite build\n\nvite v6.4.3 building for production...\ntransforming...\n✓ 1786 modules transformed.\nrendering chunks...\ncomputing gzip size...\ndist/index.html                   0.48 kB │ gzip:  0.30 kB\ndist/assets/index-CF27N1Xl.css   59.37 kB │ gzip: 12.68 kB\ndist/assets/index-Dh9HFjBx.js   215.27 kB │ gzip: 66.82 kB\n✓ built in 1.80s"
+      }
+    },
+    "browser": {
+      "browserVersion": "150.0.7871.125",
+      "desktop": {
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "checks": [
+          {
+            "id": "multiple-destinations",
+            "status": "pass",
+            "evidence": "4 destination/article regions and 7 visible headings detected."
+          },
+          {
+            "id": "expected-budget",
+            "status": "pass",
+            "evidence": "3 monetary values detected; budget wording absent."
+          },
+          {
+            "id": "travel-time",
+            "status": "pass",
+            "evidence": "3 travel-time signals detected."
+          },
+          {
+            "id": "vote-interaction",
+            "status": "pass",
+            "evidence": "button \"Vote\" changed visible text or control state."
+          },
+          {
+            "id": "winner-itinerary",
+            "status": "pass",
+            "evidence": "Winner or itinerary content was visible or reachable. 0 visible itinerary regions detected. Path: activated direct itinerary action; activated The plan."
+          },
+          {
+            "id": "no-sign-in-or-backend",
+            "status": "pass",
+            "evidence": "0 password fields; 1300 visible text characters."
+          },
+          {
+            "id": "horizontal-overflow",
+            "status": "pass",
+            "evidence": "0px document-level horizontal overflow."
+          },
+          {
+            "id": "accessible-controls-and-keyboard",
+            "status": "pass",
+            "evidence": "0 enabled controls lacked a detectable name; 8 unique controls received focus across 12 Tab presses."
+          },
+          {
+            "id": "uncaught-browser-errors",
+            "status": "pass",
+            "evidence": "0 console errors and 0 page errors."
+          }
+        ],
+        "evidence": {
+          "headings": [
+            "Make a weekendworth remembering.",
+            "Where should we go?",
+            "Lisbon",
+            "Copenhagen",
+            "Ljubljana",
+            "What’s the vibe?",
+            "Your travel crew"
+          ],
+          "controls": [
+            {
+              "index": 0,
+              "tag": "a",
+              "name": "Weekender home",
+              "disabled": false
+            },
+            {
+              "index": 1,
+              "tag": "button",
+              "name": "View friends",
+              "disabled": false
+            },
+            {
+              "index": 2,
+              "tag": "button",
+              "name": "AL",
+              "disabled": false
+            },
+            {
+              "index": 3,
+              "tag": "button",
+              "name": "Destinations",
+              "disabled": false
+            },
+            {
+              "index": 4,
+              "tag": "button",
+              "name": "The plan",
+              "disabled": false
+            },
+            {
+              "index": 5,
+              "tag": "button",
+              "name": "Packing list",
+              "disabled": false
+            },
+            {
+              "index": 6,
+              "tag": "button",
+              "name": "Share trip",
+              "disabled": false
+            },
+            {
+              "index": 7,
+              "tag": "button",
+              "name": "Add a place",
+              "disabled": false
+            },
+            {
+              "index": 8,
+              "tag": "button",
+              "name": "Save Lisbon",
+              "disabled": false
+            },
+            {
+              "index": 9,
+              "tag": "button",
+              "name": "Vote",
+              "disabled": false
+            },
+            {
+              "index": 10,
+              "tag": "button",
+              "name": "Save Copenhagen",
+              "disabled": false
+            },
+            {
+              "index": 11,
+              "tag": "button",
+              "name": "Vote",
+              "disabled": false
+            },
+            {
+              "index": 12,
+              "tag": "button",
+              "name": "Save Ljubljana",
+              "disabled": false
+            },
+            {
+              "index": 13,
+              "tag": "button",
+              "name": "Vote",
+              "disabled": false
+            },
+            {
+              "index": 14,
+              "tag": "button",
+              "name": "Vote for Lisbon",
+              "disabled": false
+            },
+            {
+              "index": 15,
+              "tag": "button",
+              "name": "Nudge the group",
+              "disabled": false
+            }
+          ],
+          "keyboardTargets": [
+            "button:Packing list",
+            "button:Share trip",
+            "button:Open shared plan",
+            "a:Weekender home",
+            "button:View friends",
+            "button:AL",
+            "button:Destinations",
+            "button:The plan"
+          ],
+          "consoleErrors": [],
+          "pageErrors": [],
+          "externalRequests": []
+        }
+      },
+      "mobile": {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "checks": [
+          {
+            "id": "multiple-destinations",
+            "status": "pass",
+            "evidence": "4 destination/article regions and 7 visible headings detected."
+          },
+          {
+            "id": "expected-budget",
+            "status": "pass",
+            "evidence": "3 monetary values detected; budget wording absent."
+          },
+          {
+            "id": "travel-time",
+            "status": "pass",
+            "evidence": "3 travel-time signals detected."
+          },
+          {
+            "id": "vote-interaction",
+            "status": "pass",
+            "evidence": "button \"Vote\" changed visible text or control state."
+          },
+          {
+            "id": "winner-itinerary",
+            "status": "pass",
+            "evidence": "Winner or itinerary content was visible or reachable. 0 visible itinerary regions detected. Path: activated The plan."
+          },
+          {
+            "id": "no-sign-in-or-backend",
+            "status": "pass",
+            "evidence": "0 password fields; 1224 visible text characters."
+          },
+          {
+            "id": "horizontal-overflow",
+            "status": "pass",
+            "evidence": "0px document-level horizontal overflow."
+          },
+          {
+            "id": "accessible-controls-and-keyboard",
+            "status": "pass",
+            "evidence": "0 enabled controls lacked a detectable name; 7 unique controls received focus across 12 Tab presses."
+          },
+          {
+            "id": "uncaught-browser-errors",
+            "status": "pass",
+            "evidence": "0 console errors and 0 page errors."
+          }
+        ],
+        "evidence": {
+          "headings": [
+            "Make a weekendworth remembering.",
+            "Where should we go?",
+            "Lisbon",
+            "Copenhagen",
+            "Ljubljana",
+            "What’s the vibe?",
+            "Your travel crew"
+          ],
+          "controls": [
+            {
+              "index": 0,
+              "tag": "a",
+              "name": "Weekender home",
+              "disabled": false
+            },
+            {
+              "index": 1,
+              "tag": "button",
+              "name": "AL",
+              "disabled": false
+            },
+            {
+              "index": 2,
+              "tag": "button",
+              "name": "Destinations",
+              "disabled": false
+            },
+            {
+              "index": 3,
+              "tag": "button",
+              "name": "The plan",
+              "disabled": false
+            },
+            {
+              "index": 4,
+              "tag": "button",
+              "name": "Packing list",
+              "disabled": false
+            },
+            {
+              "index": 5,
+              "tag": "button",
+              "name": "Share trip",
+              "disabled": false
+            },
+            {
+              "index": 6,
+              "tag": "button",
+              "name": "Add a place",
+              "disabled": false
+            },
+            {
+              "index": 7,
+              "tag": "button",
+              "name": "Save Lisbon",
+              "disabled": false
+            },
+            {
+              "index": 8,
+              "tag": "button",
+              "name": "Vote",
+              "disabled": false
+            },
+            {
+              "index": 9,
+              "tag": "button",
+              "name": "Save Copenhagen",
+              "disabled": false
+            },
+            {
+              "index": 10,
+              "tag": "button",
+              "name": "Vote",
+              "disabled": false
+            },
+            {
+              "index": 11,
+              "tag": "button",
+              "name": "Save Ljubljana",
+              "disabled": false
+            },
+            {
+              "index": 12,
+              "tag": "button",
+              "name": "Vote",
+              "disabled": false
+            },
+            {
+              "index": 13,
+              "tag": "button",
+              "name": "Vote for Lisbon",
+              "disabled": false
+            },
+            {
+              "index": 14,
+              "tag": "button",
+              "name": "Nudge the group",
+              "disabled": false
+            }
+          ],
+          "keyboardTargets": [
+            "button:Packing list",
+            "button:Share trip",
+            "button:Open shared plan",
+            "a:Weekender home",
+            "button:AL",
+            "button:Destinations",
+            "button:The plan"
+          ],
+          "consoleErrors": [],
+          "pageErrors": [],
+          "externalRequests": []
+        }
+      }
+    },
+    "guardrailFacts": {
+      "npmRunCheckFailed": false,
+      "corePathUnusable": false,
+      "corePathDefinition": "npm run check failed, or at least two core acceptance items failed at both viewports."
+    }
+  },
+  "findings": [
+    {
+      "severity": "medium",
+      "category": "reliability",
+      "title": "Vote state is append-only and global instead of representing one changeable choice",
+      "file": "source/src/App.tsx",
+      "lineStart": 65,
+      "lineEnd": 69,
+      "evidence": "Every invocation of castVote increments a destination, never removes a previous vote, and sets one global `voted` boolean. The still-enabled controls can invoke it repeatedly, despite the UI promising that users can change their favourite; line 117 also uses the global boolean for every destination card.",
+      "impact": "Repeated clicks inflate totals, changing destinations adds rather than moves a vote, and all cards appear submitted after voting once. The displayed result no longer represents the user's current choice.",
+      "remediation": "Track the selected destination ID per user and atomically decrement the previous choice and increment the new one, or enforce and visibly disable a one-shot vote."
+    },
+    {
+      "severity": "medium",
+      "category": "reliability",
+      "title": "A tied vote is announced as a sole leader",
+      "file": "source/src/App.tsx",
+      "lineStart": 58,
+      "lineEnd": 58,
+      "evidence": "The winner is always the first item after sorting by vote count, with no tie state. From the initial values on lines 37-39, one vote for Copenhagen produces a 4-4 tie, but line 103 still renders the selected item as \"is leading the way.\"",
+      "impact": "A normal voting action immediately produces a false winner claim, potentially steering the group toward a destination that is only tied.",
+      "remediation": "Derive all destinations sharing the maximum count and render an explicit tie until one destination has a unique lead."
+    },
+    {
+      "severity": "medium",
+      "category": "correctness",
+      "title": "The itinerary remains Lisbon-specific when another destination wins",
+      "file": "source/src/App.tsx",
+      "lineStart": 106,
+      "lineEnd": 106,
+      "evidence": "The plan heading and summary use the dynamic `winner`, while the rendered `itinerary` is the single global array whose entries on lines 42-47 reference Alfama, Belém, LX Factory, and a Lisbon restaurant. Repeated enabled votes can make Copenhagen, Ljubljana, or an added city the winner without changing those entries.",
+      "impact": "The core requirement to show an itinerary for the winning destination becomes misleading as soon as the leader changes.",
+      "remediation": "Store itinerary data by destination and select it with `winner.id`, or keep the plan unavailable until a destination-specific itinerary exists."
+    },
+    {
+      "severity": "low",
+      "category": "correctness",
+      "title": "The primary shared-plan action is inert",
+      "file": "source/src/App.tsx",
+      "lineStart": 106,
+      "lineEnd": 106,
+      "evidence": "The prominent `Open shared plan` button has neither an `onClick` handler nor link destination.",
+      "impact": "Users who follow the plan's primary call to action receive no response, although the visible itinerary remains usable.",
+      "remediation": "Connect the control to a real plan view or remove/disable it with an unavailable explanation."
+    },
+    {
+      "severity": "low",
+      "category": "reliability",
+      "title": "Share reports success without confirming or copying a link",
+      "file": "source/src/App.tsx",
+      "lineStart": 96,
+      "lineEnd": 96,
+      "evidence": "The handler optionally calls `navigator.clipboard.writeText` with the plain text `Weekender trip · 14–16 June`, ignores the returned promise, and immediately displays `Trip link copied`. It also reports success when the Clipboard API is absent.",
+      "impact": "Users can be told a link was copied when nothing was written or when the clipboard contains no usable link.",
+      "remediation": "Copy an actual share URL, await the clipboard operation, and show distinct success and failure feedback."
+    },
+    {
+      "severity": "low",
+      "category": "reliability",
+      "title": "User-generated destination identifiers can collide",
+      "file": "source/src/App.tsx",
+      "lineStart": 72,
+      "lineEnd": 75,
+      "evidence": "The ID is derived only by lowercasing the entered name and replacing whitespace, and the new item is appended without checking existing IDs. Adding the same city twice creates duplicate React keys; vote and like handlers also update every item with that ID.",
+      "impact": "A repeated or equivalent city name can produce unstable rendering and make multiple cards vote or toggle together.",
+      "remediation": "Reject/coalesce duplicates or generate a guaranteed unique ID independently of the display name."
+    },
+    {
+      "severity": "medium",
+      "category": "accessibility",
+      "title": "Submitted destination vote buttons lose their accessible names",
+      "file": "source/src/App.tsx",
+      "lineStart": 116,
+      "lineEnd": 117,
+      "evidence": "When `voted` is true, each card button replaces the text `Vote` with only a `Check` SVG and supplies no `aria-label`. The deterministic name audit covered the initial controls, not this post-vote state.",
+      "impact": "After the first core voting action, screen-reader users cannot identify the enabled destination vote controls or understand which destination each check represents.",
+      "remediation": "Keep descriptive text or add a state-aware label such as `Change vote to Copenhagen`, and expose selection with `aria-pressed` where appropriate."
+    },
+    {
+      "severity": "medium",
+      "category": "accessibility",
+      "title": "Repeated small text and primary controls have insufficient contrast",
+      "file": "source/src/index.css",
+      "lineStart": 2,
+      "lineEnd": 2,
+      "evidence": "`.primary-btn` renders 12px white text on `#f17b63`, a contrast ratio of approximately 2.71:1; its hover color is about 3.07:1. The same stylesheet also uses `#8a928d` inactive tab text on `#f6f5ef` at about 2.92:1 and several 10-11px card labels near 3:1.",
+      "impact": "Low-vision users may be unable to read repeated navigation, voting, and plan actions or important comparison details.",
+      "remediation": "Darken foreground/background color tokens so normal-size text reaches at least 4.5:1 in default and interactive states."
+    },
+    {
+      "severity": "low",
+      "category": "accessibility",
+      "title": "The add-destination overlay lacks dialog semantics and an accessible close action",
+      "file": "source/src/App.tsx",
+      "lineStart": 111,
+      "lineEnd": 111,
+      "evidence": "The overlay is composed of generic divs without `role=\"dialog\"`, `aria-modal`, or a programmatic title; its X-only close button has no accessible name. Focus is moved to the input but is not trapped or restored, and Escape is not handled.",
+      "impact": "Screen-reader and keyboard users may not recognize the modal context, may tab into obscured page controls, and cannot identify the close button.",
+      "remediation": "Implement dialog semantics and labeling, name the close button, contain and restore focus, and support Escape dismissal."
+    }
+  ],
+  "categories": [
+    {
+      "id": "correctness",
+      "label": "Brief fidelity and functional correctness",
+      "score": 2,
+      "weight": 30,
+      "evidence": [
+        "Deterministic desktop and mobile checks passed destination comparison, visible budgets and travel times, vote interaction, itinerary reachability, backend-free operation, and browser-error checks.",
+        "`source/src/App.tsx:36`-`source/src/App.tsx:47` provides three realistic destinations and a four-item itinerary, but the itinerary is not keyed to the dynamic winner.",
+        "`source/src/App.tsx:106` exposes the itinerary while also containing an inert shared-plan action."
+      ],
+      "findingCounts": {
+        "critical": 0,
+        "high": 0,
+        "medium": 1,
+        "low": 1,
+        "note": 0
+      }
+    },
+    {
+      "id": "reliability",
+      "label": "Reliability and state integrity",
+      "score": 1,
+      "weight": 15,
+      "evidence": [
+        "`source/src/App.tsx:58` derives exactly one winner even when maximum vote counts tie.",
+        "`source/src/App.tsx:65`-`source/src/App.tsx:69` increments votes without tracking or replacing a user's prior selection.",
+        "`source/src/App.tsx:72`-`source/src/App.tsx:75` derives list identity from unvalidated user-visible names, allowing collisions."
+      ],
+      "findingCounts": {
+        "critical": 0,
+        "high": 0,
+        "medium": 2,
+        "low": 2,
+        "note": 0
+      }
+    },
+    {
+      "id": "accessibility",
+      "label": "Accessibility",
+      "score": 1,
+      "weight": 15,
+      "evidence": [
+        "The deterministic initial-state audit found named controls and keyboard focus targets at both viewports, and the source uses native buttons, headings, main, nav, aside, and footer elements.",
+        "`source/src/App.tsx:117` removes vote-button text after interaction without supplying an accessible replacement name.",
+        "`source/src/index.css:2` defines repeated normal-size color combinations below 4.5:1, while `source/src/App.tsx:111` lacks complete accessible-dialog behavior."
+      ],
+      "findingCounts": {
+        "critical": 0,
+        "high": 0,
+        "medium": 2,
+        "low": 1,
+        "note": 0
+      }
+    },
+    {
+      "id": "maintainability",
+      "label": "Maintainability and code clarity",
+      "score": 4,
+      "weight": 15,
+      "evidence": [
+        "`source/src/App.tsx:19`-`source/src/App.tsx:34` defines a useful destination type, sample data is centralized, and `DestinationCard` isolates repeated card rendering at lines 116-118.",
+        "State transitions are grouped into small named handlers on `source/src/App.tsx:61`-`source/src/App.tsx:80`; the concrete coupling defects affecting votes and itineraries are reported under their user-impacting primary categories."
+      ],
+      "findingCounts": {
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "note": 0
+      }
+    },
+    {
+      "id": "security",
+      "label": "Security, privacy, and dependency compliance",
+      "score": 4,
+      "weight": 10,
+      "evidence": [
+        "The dependency diff passed with no added, removed, or changed packages, and deterministic checks found no remote references or external requests.",
+        "User-entered destination text is rendered through React interpolation in `source/src/App.tsx:75` rather than unsafe HTML, and the source contains no backend, credentials, or data-collection path."
+      ],
+      "findingCounts": {
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "note": 0
+      }
+    },
+    {
+      "id": "performance",
+      "label": "Performance and responsive robustness",
+      "score": 4,
+      "weight": 10,
+      "evidence": [
+        "Deterministic checks measured a 275,119-byte production asset total, with JavaScript at 66.82 kB gzip and CSS at 12.68 kB gzip.",
+        "Both 1440x900 and 390x844 checks reported zero document-level horizontal overflow, no browser errors, and no external asset requests.",
+        "`source/src/index.css:3`-`source/src/index.css:5` supplies responsive grid, stacked-card, itinerary, and compact-stat layouts for the tested widths."
+      ],
+      "findingCounts": {
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "note": 0
+      }
+    },
+    {
+      "id": "verification",
+      "label": "Verification readiness",
+      "score": 4,
+      "weight": 5,
+      "evidence": [
+        "The supplied `npm run check` completed successfully, including strict TypeScript checking and a Vite production build.",
+        "`source/package.json:8`-`source/package.json:10` exposes deterministic `typecheck`, `build`, and combined `check` scripts; the harness recorded exit code 0 and no timeout.",
+        "Desktop and mobile browser paths exercised voting and itinerary navigation without uncaught console or page errors, although the frozen path did not cover repeated votes, ties, duplicate additions, or post-vote accessible names."
+      ],
+      "findingCounts": {
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "note": 0
+      }
+    }
+  ],
+  "rawWeightedScore": 62.5,
+  "capsApplied": [],
+  "totalScore": 62.5,
+  "strengths": [
+    "The core comparison experience is fully present with realistic destination, budget, travel-time, weather, vote, winner, and itinerary content.",
+    "The app builds cleanly and remained usable without horizontal page overflow or uncaught errors at both deterministic viewports.",
+    "Native semantic controls and landmarks provide a solid initial keyboard-accessible foundation.",
+    "The implementation stays local, escapes user content through React, adds no dependencies, and makes no external requests."
+  ],
+  "risks": [
+    "Voting totals and the declared leader can become untrustworthy through ordinary change, repeat, and tie interactions.",
+    "A changed winner can be paired with Lisbon-specific itinerary details and hard-coded destination presentation.",
+    "Low contrast and post-vote unnamed controls create repeated barriers for low-vision and screen-reader users.",
+    "Secondary add, share, and shared-plan actions contain collision, false-success, or inert-control behavior that weakens product trust."
+  ],
+  "recommendation": "Revise before production: model a replaceable per-user vote with explicit tie handling, bind itinerary content to the actual winner, and correct the repeated contrast and accessible-name failures; then harden the add and share actions.",
+  "reviewStatus": "frozen",
+  "reviewedAt": "2026-07-20T09:49:55.417Z"
+}
