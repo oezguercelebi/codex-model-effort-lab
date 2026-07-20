@@ -33,11 +33,11 @@
         <div class="eyebrow"><span></span> One prompt. Different decisions.</div>
         <h1 id="hero-title">See what more<br /><em>thinking</em> buys you.</h1>
         <p>
-          The same brief. The same starter. No follow-ups. Compare the finished apps—not a
-          leaderboard—and decide which model and effort earned its usage.
+          The same brief. The same starter. No follow-ups. Compare finished apps, not a
+          leaderboard, and decide which model and effort earned its usage.
         </p>
         <div class="hero-actions">
-          <a class="button button-primary" href="#compare">Open the comparison</a>
+          <a class="button button-primary" href="#compare">Explore the builds</a>
           <button class="button button-quiet" id="prompt-open" type="button">
             Read the exact prompt <span aria-hidden="true">→</span>
           </button>
@@ -45,19 +45,27 @@
       </section>
 
       <section class="principles" aria-label="Benchmark guarantees">
-        <article><span>01</span><strong>One frozen prompt</strong><p>Every run receives identical words.</p></article>
-        <article><span>02</span><strong>Zero steering</strong><p>No repairs, hints, or second chances.</p></article>
-        <article><span>03</span><strong>Complete builds</strong><p>Use the actual result in your browser.</p></article>
-        <article><span>04</span><strong>Usage attached</strong><p>Tokens and time sit beside the outcome.</p></article>
+        <span>Benchmark rules</span>
+        <p><strong>One frozen prompt.</strong> Same starter, zero steering, complete builds, and usage attached to every result.</p>
+        <a href="#method">How it works <span aria-hidden="true">↓</span></a>
       </section>
 
       <section class="arena-section" id="compare" aria-labelledby="compare-title">
+        <div class="arena-mode-switch" role="tablist" aria-label="Benchmark mode">
+          <button id="explore-mode" type="button" role="tab" aria-selected="true" aria-controls="explore-panel" data-arena-mode="explore" class="active">
+            <span>01</span> Explore builds
+          </button>
+          <button id="analyze-mode" type="button" role="tab" aria-selected="false" aria-controls="analyze-panel" data-arena-mode="analyze">
+            <span>02</span> Analyze results
+          </button>
+        </div>
         <div class="section-heading">
           <div>
             <div class="eyebrow"><span></span> The arena</div>
             <h2 id="compare-title">Choose. Then use it.</h2>
+            <p id="mode-description">Select one captured run and use the finished app.</p>
           </div>
-          <div class="viewer-controls">
+          <div class="viewer-controls" id="viewer-controls">
             <button class="plan-cycle" id="plan-cycle" type="button">
               <span>Plan</span><strong id="plan-multiplier">5×</strong>
             </button>
@@ -69,11 +77,14 @@
           </div>
         </div>
 
+        <div class="mode-panel" id="explore-panel" role="tabpanel" aria-labelledby="explore-mode">
         <div class="demo-notice" id="demo-notice" hidden>
           <strong id="notice-title">Interface preview</strong>
           <span id="notice-copy">This hand-built sample is not a Codex benchmark result.</span>
         </div>
 
+        <details class="selection-drawer" id="selection-drawer" open>
+          <summary><span>Change build</span><strong id="selection-summary"></strong><i aria-hidden="true">+</i></summary>
         <div class="selection-console">
           <div class="slider-control">
             <div class="slider-heading">
@@ -93,6 +104,7 @@
           </div>
           <button class="share-button" id="copy-link" type="button">Copy this selection</button>
         </div>
+        </details>
 
         <article class="result-viewer" id="result-viewer">
           <header class="result-heading">
@@ -129,8 +141,16 @@
             <div class="run-links" id="run-links"></div>
           </details>
         </article>
+        </div>
 
-        <section class="value-section" id="value-map" aria-labelledby="value-map-title">
+        <div class="mode-panel analyze-panel" id="analyze-panel" role="tabpanel" aria-labelledby="analyze-mode" hidden>
+          <nav class="analysis-tabs" aria-label="Analysis view" role="tablist">
+            <button id="value-tab" type="button" role="tab" aria-controls="value-map" data-analysis-view="value" aria-selected="true" class="active">Value map</button>
+            <button id="matrix-tab" type="button" role="tab" aria-controls="matrix-panel" data-analysis-view="matrix" aria-selected="false">Run matrix</button>
+            <button id="recommendations-tab" type="button" role="tab" aria-controls="recommendations-panel" data-analysis-view="recommendations" aria-selected="false">Recommendations</button>
+          </nav>
+
+        <section class="value-section analysis-view" id="value-map" role="tabpanel" aria-labelledby="value-tab" data-analysis-panel="value">
           <div class="value-heading">
             <div>
               <span>Quality against usage</span>
@@ -147,7 +167,7 @@
           <div class="value-detail" id="value-detail"></div>
         </section>
 
-        <section class="matrix-section" aria-labelledby="matrix-title">
+        <section class="matrix-section analysis-view" id="matrix-panel" role="tabpanel" aria-labelledby="matrix-tab" data-analysis-panel="matrix" hidden>
           <div class="matrix-heading">
             <div><span>All captured configurations</span><h3 id="matrix-title">The run matrix</h3></div>
             <p>Scores review engineering, not visual design. Select a run, then open its evidence.</p>
@@ -156,7 +176,7 @@
           <div class="matrix-tooltip" id="matrix-tooltip" role="tooltip" hidden></div>
         </section>
 
-        <section class="summary-section" aria-labelledby="summary-title">
+        <section class="summary-section analysis-view" id="recommendations-panel" role="tabpanel" aria-labelledby="recommendations-tab" data-analysis-panel="recommendations" hidden>
           <div class="summary-heading">
             <div>
               <span>What the matrix says</span>
@@ -183,15 +203,24 @@
             </article>
           </div>
         </section>
+        </div>
+      </section>
 
-        <section class="usage-guide" aria-labelledby="usage-guide-title">
-          <div class="usage-guide-heading">
+      <section class="secondary-info" id="method" aria-labelledby="secondary-info-title">
+        <div class="secondary-info-heading">
+          <div class="eyebrow"><span></span> Reference</div>
+          <h2 id="secondary-info-title">Details when you need them.</h2>
+        </div>
+        <details class="info-disclosure" id="plan-context">
+          <summary>
             <div>
               <span>Plan context</span>
-              <h3 id="usage-guide-title">Messages are not tokens.</h3>
+              <strong>Messages, tokens, and credits</strong>
             </div>
-            <p>A quick translation for reading the Plan Usage card.</p>
-          </div>
+            <p>Understand the usage estimates.</p>
+            <i aria-hidden="true">+</i>
+          </summary>
+          <div class="info-disclosure-body usage-guide">
           <div class="usage-language">
             <article><span>01</span><strong>Message</strong><p>One request or task you send to Codex.</p></article>
             <article><span>02</span><strong>Tokens</strong><p>Pieces of code and text Codex reads or generates.</p></article>
@@ -205,20 +234,23 @@
           <div class="usage-guide-note">
             <p>
               Credit estimates use the token-based rate card checked July 14, 2026. Allowances and message ranges
-              are a measured planning snapshot—not fixed quotas. Consumption varies with the model, token mix,
+              are a measured planning snapshot, not fixed quotas. Consumption varies with the model, token mix,
               task complexity, codebase size, and conversation length.
             </p>
             <a href="https://help.openai.com/en/articles/20001106-codex-rate-card" target="_blank" rel="noreferrer">Current Codex rate card ↗</a>
           </div>
-        </section>
-      </section>
-
-      <section class="method-section" id="method" aria-labelledby="method-title">
-        <div>
-          <div class="eyebrow eyebrow-light"><span></span> How to read this</div>
-          <h2 id="method-title">Your eyes are the evaluator.</h2>
-        </div>
-        <div class="method-copy">
+          </div>
+        </details>
+        <details class="info-disclosure method-disclosure" id="reading-method">
+          <summary>
+            <div>
+              <span>How to read this</span>
+              <strong>Your eyes are the evaluator</strong>
+            </div>
+            <p>Separate visible quality from engineering evidence.</p>
+            <i aria-hidden="true">+</i>
+          </summary>
+        <div class="info-disclosure-body method-copy">
           <p>
             Visual quality is not reduced to a synthetic score. Engineering reviews inspect source
             and behavior; your eyes still judge design, product decisions, and whether the result feels finished.
@@ -229,6 +261,7 @@
             <li><span>Remember</span> one run is evidence, not a universal model ranking.</li>
           </ul>
         </div>
+        </details>
       </section>
     </main>
 

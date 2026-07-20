@@ -22,18 +22,16 @@ The engineering review companion in [`benchmark/code-review-v1.md`](benchmark/co
 
 The public site has one page:
 
-1. Read the shared benchmark prompt.
-2. Move the model and reasoning-effort sliders.
-3. Use the finished app for the current selection in one large live preview.
+1. Start in Explore builds and move the model and reasoning-effort sliders.
+2. Use the finished app for the current selection in one large live preview.
+3. Keep the active model, effort, viewport, plan, engineering score, tokens, duration, estimated credits, and source lines together in one compact Current build bar.
 4. Open a full-screen A/B workspace to use two live builds side by side, with a compact A/B switch on mobile.
-5. Share the exact comparison through its URL.
-6. Explore the value map to compare engineering score with estimated credits, duration, or tokens.
-7. Open the evidence sheet for category scores, findings, strengths, risks, and remediation details.
-8. Cycle the 1x / 5x / 20x plan control to recalculate estimated plan usage for the selected run.
-9. Keep the active model, effort, viewport, plan, engineering score, tokens, duration, estimated credits, and source lines together in one compact Current build bar.
-10. Use the matrix below to scan every captured configuration, with token and engineering-review breakdowns on hover or keyboard focus.
-11. Read the data-driven summary and qualified recommendations beneath the matrix.
-12. Expand the run details for the exact token breakdown, Codex version, final response, and source code.
+5. Share the exact selection or comparison through its URL.
+6. Switch to Analyze results when you want evidence instead of another visible control.
+7. Move between the value map, run matrix, and recommendations as three focused analysis views.
+8. Open the evidence sheet for category scores, findings, strengths, risks, and remediation details.
+9. Expand the run details for the exact token breakdown, Codex version, final response, and source code.
+10. Open the reference disclosures only when plan terminology or benchmark methodology is needed.
 
 No Codex account, subscription, API key, or local setup is required to view the results. The public page never starts a model run and has no prompt-submission form in the first version.
 

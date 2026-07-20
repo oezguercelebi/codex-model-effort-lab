@@ -10,6 +10,8 @@ const state = {
   compareSide: "a",
   valueMetric: "credits",
   valueRunId: null,
+  arenaMode: "explore",
+  analysisView: "value",
 }
 
 const elements = {
@@ -66,6 +68,13 @@ const elements = {
   evidenceBody: document.querySelector("#evidence-body"),
   valueChart: document.querySelector("#value-chart"),
   valueDetail: document.querySelector("#value-detail"),
+  explorePanel: document.querySelector("#explore-panel"),
+  analyzePanel: document.querySelector("#analyze-panel"),
+  viewerControls: document.querySelector("#viewer-controls"),
+  modeTitle: document.querySelector("#compare-title"),
+  modeDescription: document.querySelector("#mode-description"),
+  selectionDrawer: document.querySelector("#selection-drawer"),
+  selectionSummary: document.querySelector("#selection-summary"),
 }
 
 const formatNumber = new Intl.NumberFormat("en", { notation: "compact", maximumFractionDigits: 1 })
@@ -522,6 +531,7 @@ function renderResult() {
   const viewportLabel = state.viewport.charAt(0).toUpperCase() + state.viewport.slice(1)
   elements.currentBuildName.textContent = `${result.modelLabel} · ${result.effortLabel}`
   elements.currentBuildContext.textContent = `${viewportLabel} · ${plan.label}`
+  elements.selectionSummary.textContent = `${result.modelLabel} · ${result.effortLabel}`
   elements.currentBuildMetrics.replaceChildren(
     currentBuildMetric("Engineering", reviewScore),
     currentBuildMetric("Tokens", valueLabel(totalTokens(result.usage))),
@@ -731,6 +741,7 @@ function renderValueDetail() {
   load.type = "button"
   load.addEventListener("click", () => {
     state.result = result
+    state.arenaMode = "explore"
     render()
     elements.viewer.scrollIntoView({ behavior: "smooth", block: "start" })
   })
@@ -1025,6 +1036,13 @@ function setQuery() {
   url.searchParams.set("result", state.result?.runId ?? "")
   url.searchParams.set("viewport", state.viewport)
   url.searchParams.set("plan", state.planId)
+  if (state.arenaMode === "analyze") {
+    url.searchParams.set("mode", "analyze")
+    url.searchParams.set("analysis", state.analysisView)
+  } else {
+    url.searchParams.delete("mode")
+    url.searchParams.delete("analysis")
+  }
   if (state.compareOpen && state.compareAId && state.compareBId) {
     url.searchParams.set("compare", `${state.compareAId},${state.compareBId}`)
   } else {
@@ -1033,7 +1051,33 @@ function setQuery() {
   history.replaceState(null, "", url)
 }
 
+function renderMode() {
+  const analyzing = state.arenaMode === "analyze"
+  elements.explorePanel.hidden = analyzing
+  elements.analyzePanel.hidden = !analyzing
+  elements.viewerControls.hidden = analyzing
+  elements.modeTitle.textContent = analyzing ? "Compare the evidence." : "Choose. Then use it."
+  elements.modeDescription.textContent = analyzing
+    ? "Inspect quality, usage, and engineering results without losing the selected build."
+    : "Select one captured run and use the finished app."
+
+  document.querySelectorAll("[data-arena-mode]").forEach((button) => {
+    const active = button.dataset.arenaMode === state.arenaMode
+    button.classList.toggle("active", active)
+    button.setAttribute("aria-selected", String(active))
+  })
+  document.querySelectorAll("[data-analysis-view]").forEach((button) => {
+    const active = button.dataset.analysisView === state.analysisView
+    button.classList.toggle("active", active)
+    button.setAttribute("aria-selected", String(active))
+  })
+  document.querySelectorAll("[data-analysis-panel]").forEach((panel) => {
+    panel.hidden = panel.dataset.analysisPanel !== state.analysisView
+  })
+}
+
 function render() {
+  renderMode()
   syncSliders()
   renderResult()
   renderValueMap()
@@ -1097,6 +1141,11 @@ async function initialize() {
   state.planId = plans.some((plan) => plan.id === query.get("plan"))
     ? query.get("plan")
     : plans.find((plan) => plan.label === state.result.subscription?.planLabel)?.id ?? "5x"
+  state.arenaMode = query.get("mode") === "analyze" ? "analyze" : "explore"
+  state.analysisView = ["value", "matrix", "recommendations"].includes(query.get("analysis"))
+    ? query.get("analysis")
+    : "value"
+  if (window.matchMedia("(max-width: 600px)").matches) elements.selectionDrawer.open = false
   const comparison = query.get("compare")?.split(",").map(resultById).filter(Boolean) ?? []
   if (comparison.length === 2 && comparison[0].runId !== comparison[1].runId) {
     state.compareAId = comparison[0].runId
@@ -1109,6 +1158,23 @@ async function initialize() {
     elements.compareDialog.showModal()
   }
 }
+
+document.querySelectorAll("[data-arena-mode]").forEach((button) => {
+  button.addEventListener("click", () => {
+    state.arenaMode = button.dataset.arenaMode
+    renderMode()
+    setQuery()
+  })
+})
+
+document.querySelectorAll("[data-analysis-view]").forEach((button) => {
+  button.addEventListener("click", () => {
+    state.analysisView = button.dataset.analysisView
+    hideMatrixTooltip()
+    renderMode()
+    setQuery()
+  })
+})
 
 elements.modelSlider.addEventListener("input", () => {
   const model = state.models[Number(elements.modelSlider.value)]
@@ -1229,5 +1295,8 @@ elements.promptDialog.addEventListener("click", (event) => {
 
 window.addEventListener("scroll", hideMatrixTooltip, true)
 window.addEventListener("resize", hideMatrixTooltip)
+window.matchMedia("(max-width: 600px)").addEventListener("change", (event) => {
+  elements.selectionDrawer.open = !event.matches
+})
 
 await Promise.all([initialize(), loadPrompt()])
