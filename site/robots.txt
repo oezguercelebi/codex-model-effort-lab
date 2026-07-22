@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://oezguercelebi.github.io/codex-model-effort-lab/sitemap.xml
