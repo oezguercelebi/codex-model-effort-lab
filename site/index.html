@@ -2,16 +2,16 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#d8ff52" />
-    <meta name="color-scheme" content="light" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#222120" />
+    <meta name="color-scheme" content="dark" />
     <meta name="application-name" content="Codex Build Arena" />
     <meta name="apple-mobile-web-app-title" content="Build Arena" />
     <meta name="author" content="Özgür Celebi" />
     <meta name="robots" content="index, follow, max-image-preview:large" />
     <meta
       name="description"
-      content="Compare complete one-prompt Codex builds across GPT-5.6 Luna, Terra, Sol, and GPT-5.5. Inspect live apps, engineering scores, tokens, credits, and speed."
+      content="One prompt, seventeen finished apps. Compare complete one-prompt Codex builds across GPT-5.6 Luna, Terra, Sol, and GPT-5.5 — live previews, engineering scores, tokens, credits, and speed on a single contact sheet."
     />
     <link rel="canonical" href="https://oezguercelebi.github.io/codex-model-effort-lab/" />
 
@@ -19,27 +19,27 @@
     <meta property="og:locale" content="en_US" />
     <meta property="og:site_name" content="Codex Build Arena" />
     <meta property="og:url" content="https://oezguercelebi.github.io/codex-model-effort-lab/" />
-    <meta property="og:title" content="Codex Build Arena | Compare Models and Reasoning Effort" />
+    <meta property="og:title" content="Codex Build Arena | One prompt, seventeen builds" />
     <meta
       property="og:description"
-      content="The same one-shot prompt across Codex models and effort levels. Compare the finished apps, engineering quality, usage, and speed."
+      content="The same one-shot prompt across Codex models and effort levels. Every finished app on one contact sheet."
     />
     <meta property="og:image" content="https://oezguercelebi.github.io/codex-model-effort-lab/og-image.png" />
     <meta property="og:image:secure_url" content="https://oezguercelebi.github.io/codex-model-effort-lab/og-image.png" />
     <meta property="og:image:type" content="image/png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="Codex Build Arena, see what more thinking buys you" />
+    <meta property="og:image:alt" content="Codex Build Arena, seventeen builds from one prompt" />
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:creator" content="@oezguercelebi" />
-    <meta name="twitter:title" content="Codex Build Arena | Compare Models and Reasoning Effort" />
+    <meta name="twitter:title" content="Codex Build Arena | One prompt, seventeen builds" />
     <meta
       name="twitter:description"
-      content="The same one-shot prompt across Codex models and effort levels. Compare finished apps, engineering quality, usage, and speed."
+      content="The same one-shot prompt across Codex models and effort levels. Every finished app on one contact sheet."
     />
     <meta name="twitter:image" content="https://oezguercelebi.github.io/codex-model-effort-lab/og-image.png" />
-    <meta name="twitter:image:alt" content="Codex Build Arena, see what more thinking buys you" />
+    <meta name="twitter:image:alt" content="Codex Build Arena, seventeen builds from one prompt" />
 
     <link rel="icon" href="./favicon.ico" sizes="any" />
     <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png" />
@@ -47,340 +47,216 @@
     <link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png" />
     <link rel="manifest" href="./site.webmanifest" />
 
-    <title>Codex Build Arena | Compare Models and Reasoning Effort</title>
+    <title>Codex Build Arena | One prompt, seventeen builds</title>
     <link rel="stylesheet" href="./styles.css" />
     <script type="module" src="./app.js"></script>
   </head>
   <body>
-    <header class="site-header">
-      <a class="brand" href="./" aria-label="Codex Build Arena home">
-        <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span>
-        <span>Build Arena</span>
-      </a>
-      <nav aria-label="Primary navigation">
-        <a href="#compare">Compare</a>
-        <a href="#method">Method</a>
-        <a
-          class="github-link"
-          href="https://github.com/oezguercelebi/codex-model-effort-lab"
-          >GitHub <span aria-hidden="true">↗</span></a
-        >
-      </nav>
-    </header>
-
-    <main>
-      <section class="hero" aria-labelledby="hero-title">
-        <div class="eyebrow"><span></span> One prompt. Different decisions.</div>
-        <h1 id="hero-title">See what more<br /><em>thinking</em> buys you.</h1>
-        <p>
-          The same brief. The same starter. No follow-ups. Compare finished apps, not a
-          leaderboard, and decide which model and effort earned its usage.
+    <!--
+      The surface is the whole product. One fixed plane, no page scroll, no navigation.
+      Everything is either on the sheet or lifted off it.
+    -->
+    <div class="surface">
+      <!-- The leader strip: a film roll's own label, carrying the roll id and the sheet's arrangement. -->
+      <header class="leader">
+        <h1 class="roll">
+          <span class="roll-id">Weekender</span><span class="roll-version">v1</span>
+        </h1>
+        <p class="roll-note">
+          One prompt. One starter. No steering. <strong id="frame-count">17</strong> finished apps.
         </p>
-        <div class="hero-actions">
-          <a class="button button-primary" href="#compare">Explore the builds</a>
-          <button class="button button-quiet" id="prompt-open" type="button">
-            Read the exact prompt <span aria-hidden="true">→</span>
+
+        <div class="arrange" role="group" aria-label="Sheet arrangement">
+          <button type="button" data-arrangement="grid" class="on" aria-pressed="true">
+            By setting
+          </button>
+          <button type="button" data-arrangement="plot" aria-pressed="false">
+            By cost
           </button>
         </div>
-      </section>
 
-      <section class="principles" aria-label="Benchmark guarantees">
-        <span>Benchmark rules</span>
-        <p><strong>One frozen prompt.</strong> Same starter, zero steering, complete builds, and usage attached to every result.</p>
-        <a href="#method">How it works <span aria-hidden="true">↓</span></a>
-      </section>
+        <button class="leader-action" id="brief-open" type="button" aria-expanded="false" aria-controls="brief">
+          The brief
+        </button>
+      </header>
 
-      <section class="arena-section" id="compare" aria-labelledby="compare-title">
-        <div class="arena-mode-switch" role="tablist" aria-label="Benchmark mode">
-          <button id="explore-mode" type="button" role="tab" aria-selected="true" aria-controls="explore-panel" data-arena-mode="explore" class="active">
-            <span>01</span> Explore builds
-          </button>
-          <button id="analyze-mode" type="button" role="tab" aria-selected="false" aria-controls="analyze-panel" data-arena-mode="analyze">
-            <span>02</span> Analyze results
-          </button>
-        </div>
-        <div class="section-heading">
-          <div>
-            <div class="eyebrow"><span></span> The arena</div>
-            <h2 id="compare-title">Choose. Then use it.</h2>
-            <p id="mode-description">Select one captured run and use the finished app.</p>
+      <!-- The sheet: every frame, always present, only ever rearranged. -->
+      <main class="sheet" id="sheet" data-arrangement="grid" aria-label="Contact sheet of finished builds">
+        <!-- Effort axis. Bar length encodes reasoning tokens spent at that setting. -->
+        <div class="axis axis-effort" id="axis-effort" aria-hidden="true"></div>
+        <!-- Model axis. -->
+        <div class="axis axis-model" id="axis-model" aria-hidden="true"></div>
+
+        <!-- Plot guides: axes, ticks and the efficient frontier. Drawn only in the cost arrangement. -->
+        <svg class="plot-guides" id="plot-guides" aria-hidden="true"></svg>
+
+        <!-- Every frame lives here, absolutely positioned, for the whole session. -->
+        <div class="frames" id="frames" role="list"></div>
+
+        <div class="plot-legend" id="plot-legend" hidden>
+          <div class="plot-metric" role="group" aria-label="Cost measure">
+            <button type="button" data-metric="credits" class="on" aria-pressed="true">Credits</button>
+            <button type="button" data-metric="duration" aria-pressed="false">Time</button>
+            <button type="button" data-metric="tokens" aria-pressed="false">Tokens</button>
           </div>
-          <div class="viewer-controls" id="viewer-controls">
-            <button class="plan-cycle" id="plan-cycle" type="button">
-              <span>Plan</span><strong id="plan-multiplier">5×</strong>
+          <p class="plot-read" id="plot-read"></p>
+        </div>
+
+        <p class="sheet-hint" id="sheet-hint">
+          Pick a frame to use the app. Arrow keys move across the sheet.
+        </p>
+      </main>
+
+      <!-- The loupe: one frame lifted off the sheet and running for real. -->
+      <section class="loupe" id="loupe" hidden aria-label="Selected build">
+        <header class="loupe-head">
+          <div class="loupe-title">
+            <span class="loupe-setting" id="loupe-setting"></span>
+            <h2 id="loupe-name"></h2>
+          </div>
+
+          <dl class="readout" id="loupe-readout"></dl>
+
+          <div class="loupe-tools">
+            <div class="scope" role="group" aria-label="Preview width">
+              <button type="button" data-viewport="desktop" class="on" aria-pressed="true">Desktop</button>
+              <button type="button" data-viewport="tablet" aria-pressed="false">Tablet</button>
+              <button type="button" data-viewport="mobile" aria-pressed="false">Mobile</button>
+            </div>
+            <button class="tool" id="hold-against" type="button">Hold against…</button>
+            <button class="tool" id="review-open" type="button" hidden>The review</button>
+            <button class="tool tool-close" id="loupe-close" type="button" aria-label="Back to the sheet">
+              Back to the sheet
             </button>
-            <div class="viewport-control" aria-label="Preview viewport">
-              <button type="button" data-viewport="desktop" class="active">Desktop</button>
-              <button type="button" data-viewport="tablet">Tablet</button>
-              <button type="button" data-viewport="mobile">Mobile</button>
-            </div>
+          </div>
+        </header>
+
+        <!--
+          allow-same-origin is required, not optional: the generated apps load
+          their bundle as a module script, and module scripts are fetched with
+          CORS. Without it the iframe has an opaque origin, every asset request
+          becomes cross-origin, and the preview renders blank. The previews are
+          first-party artifacts committed to this repository and served from
+          this origin, so the remaining sandbox flags are what matter.
+        -->
+        <div class="stage" id="stage">
+          <div class="pane" data-pane="a">
+            <div class="pane-label" id="pane-a-label" hidden></div>
+            <iframe id="frame-a" title="Selected build, running" sandbox="allow-scripts allow-forms allow-same-origin"></iframe>
+          </div>
+          <div class="pane" data-pane="b" hidden>
+            <div class="pane-label" id="pane-b-label"></div>
+            <iframe id="frame-b" title="Comparison build, running" sandbox="allow-scripts allow-forms allow-same-origin"></iframe>
           </div>
         </div>
 
-        <div class="mode-panel" id="explore-panel" role="tabpanel" aria-labelledby="explore-mode">
-        <div class="demo-notice" id="demo-notice" hidden>
-          <strong id="notice-title">Interface preview</strong>
-          <span id="notice-copy">This hand-built sample is not a Codex benchmark result.</span>
-        </div>
-
-        <details class="selection-drawer" id="selection-drawer" open>
-          <summary><span>Change build</span><strong id="selection-summary"></strong><i aria-hidden="true">+</i></summary>
-        <div class="selection-console">
-          <div class="slider-control">
-            <div class="slider-heading">
-              <label for="model-slider">Model</label>
-              <output id="model-value" for="model-slider"></output>
-            </div>
-            <input id="model-slider" type="range" min="0" max="0" value="0" step="1" />
-            <div class="slider-ticks" id="model-ticks" aria-hidden="true"></div>
-          </div>
-          <div class="slider-control">
-            <div class="slider-heading">
-              <label for="effort-slider">Reasoning effort</label>
-              <output id="effort-value" for="effort-slider"></output>
-            </div>
-            <input id="effort-slider" type="range" min="0" max="0" value="0" step="1" />
-            <div class="slider-ticks" id="effort-ticks" aria-hidden="true"></div>
-          </div>
-          <button class="share-button" id="copy-link" type="button">Copy this selection</button>
-        </div>
-        </details>
-
-        <article class="result-viewer" id="result-viewer">
-          <header class="result-heading">
-            <div>
-              <div class="result-kicker" id="result-kicker"></div>
-              <h3 id="result-title"></h3>
-            </div>
-            <div class="result-actions">
-              <button class="result-action" id="evidence-open" type="button" hidden>Review evidence</button>
-              <button class="result-action primary" id="compare-open" type="button">Compare full screen</button>
-              <span class="status-pill" id="result-status"></span>
-            </div>
-          </header>
-          <aside class="current-build-bar" id="current-build-bar" aria-label="Current build and metrics">
-            <div class="current-build-identity">
-              <div>
-                <span>Current build</span>
-                <strong id="current-build-name"></strong>
-                <small id="current-build-context"></small>
-              </div>
-              <button class="current-build-toggle" id="current-build-toggle" type="button" aria-expanded="false" aria-controls="current-build-metrics">
-                <span>Metrics</span><i aria-hidden="true">+</i>
-              </button>
-            </div>
-            <dl class="current-build-metrics" id="current-build-metrics"></dl>
-          </aside>
-          <div class="preview-shell" id="preview-shell">
-            <iframe id="result-frame" title="Generated app preview" sandbox="allow-scripts allow-forms"></iframe>
-          </div>
-          <details class="run-detail-panel">
-            <summary>Inspect this run <span aria-hidden="true">+</span></summary>
-            <p class="run-notes" id="run-notes"></p>
+        <footer class="loupe-foot" id="loupe-foot">
+          <div class="delta" id="delta" hidden></div>
+          <details class="run-record">
+            <summary>Everything recorded for this run</summary>
+            <p class="run-note" id="run-note"></p>
             <dl class="run-facts" id="run-facts"></dl>
             <div class="run-links" id="run-links"></div>
           </details>
-        </article>
-        </div>
+        </footer>
+      </section>
 
-        <div class="mode-panel analyze-panel" id="analyze-panel" role="tabpanel" aria-labelledby="analyze-mode" hidden>
-          <nav class="analysis-tabs" aria-label="Analysis view" role="tablist">
-            <button id="value-tab" type="button" role="tab" aria-controls="value-map" data-analysis-view="value" aria-selected="true" class="active">Value map</button>
-            <button id="matrix-tab" type="button" role="tab" aria-controls="matrix-panel" data-analysis-view="matrix" aria-selected="false">Run matrix</button>
-            <button id="recommendations-tab" type="button" role="tab" aria-controls="recommendations-panel" data-analysis-view="recommendations" aria-selected="false">Recommendations</button>
-          </nav>
+      <!-- The brief: the roll's own paperwork. Pulled down over the sheet, never a separate page. -->
+      <section class="brief" id="brief" hidden aria-label="The brief and method">
+        <div class="brief-inner">
+          <header class="brief-head">
+            <h2>The paperwork</h2>
+            <button class="tool tool-close" id="brief-close" type="button">Close</button>
+          </header>
 
-        <section class="value-section analysis-view" id="value-map" role="tabpanel" aria-labelledby="value-tab" data-analysis-panel="value">
-          <div class="value-heading">
-            <div>
-              <span>Quality against usage</span>
-              <h3 id="value-map-title">Find the efficient frontier.</h3>
-            </div>
-            <div class="value-controls" aria-label="Value map horizontal metric">
-              <button type="button" data-value-metric="credits" class="active">Credits</button>
-              <button type="button" data-value-metric="duration">Duration</button>
-              <button type="button" data-value-metric="tokens">Tokens</button>
-            </div>
-          </div>
-          <p class="value-intro">Higher is better. Further left uses less. The connecting line marks configurations that improve the best score available as usage increases.</p>
-          <div class="value-chart" id="value-chart"></div>
-          <div class="value-detail" id="value-detail"></div>
-        </section>
-
-        <section class="matrix-section analysis-view" id="matrix-panel" role="tabpanel" aria-labelledby="matrix-tab" data-analysis-panel="matrix" hidden>
-          <div class="matrix-heading">
-            <div><span>All captured configurations</span><h3 id="matrix-title">The run matrix</h3></div>
-            <p>Scores review engineering, not visual design. Select a run, then open its evidence.</p>
-          </div>
-          <div class="matrix-scroll"><table class="result-matrix" id="result-matrix"></table></div>
-          <div class="matrix-tooltip" id="matrix-tooltip" role="tooltip" hidden></div>
-        </section>
-
-        <section class="summary-section analysis-view" id="recommendations-panel" role="tabpanel" aria-labelledby="recommendations-tab" data-analysis-panel="recommendations" hidden>
-          <div class="summary-heading">
-            <div>
-              <span>What the matrix says</span>
-              <h3 id="summary-title">A first read, not a verdict.</h3>
-            </div>
-            <p>Measured highlights from one captured run per configuration.</p>
-          </div>
-          <div class="summary-insights" id="summary-insights"></div>
-          <div class="summary-recommendations">
-            <article>
-              <span>Explore</span>
-              <strong>Start lighter.</strong>
-              <p>Use Luna or Terra at Light or Medium for fast, lower-cost iteration. Increase effort when the preview gives you a reason.</p>
+          <div class="brief-grid">
+            <article class="brief-block brief-prompt">
+              <h3>The frozen prompt</h3>
+              <p class="brief-lede">
+                Every run received this text and nothing else. No follow-ups, no corrections.
+              </p>
+              <div class="prompt-body" id="prompt-body"></div>
             </article>
-            <article>
-              <span>Build</span>
-              <strong>Inspect Sol Extra High.</strong>
-              <p>For this prompt, it produced the most source lines at nearly the same time and estimated credits as Sol High.</p>
+
+            <article class="brief-block">
+              <h3>What stays identical</h3>
+              <p class="brief-lede">So the only variables left are the model and how long it thinks.</p>
+              <ul class="ledger">
+                <li><span>Prompt</span> The same one-shot brief, frozen before the first run.</li>
+                <li><span>Starter</span> The same clean starter repository.</li>
+                <li><span>Environment</span> The same tools, permissions, time and network policy.</li>
+                <li><span>Steering</span> No follow-up messages, corrections, or human repair.</li>
+                <li><span>Session</span> A new session each time, finishing with a runnable build.</li>
+                <li><span>Review</span> One frozen review instrument, fixed after three blind calibration passes.</li>
+              </ul>
             </article>
-            <article>
-              <span>Validate</span>
-              <strong>Judge the result, then repeat.</strong>
-              <p>Engineering scores are one frozen review snapshot. Compare the working previews and add repeated runs before treating a pattern as stable.</p>
+
+            <article class="brief-block">
+              <h3>Reading a frame</h3>
+              <p class="brief-lede">The score reviews engineering. It does not score how the app looks.</p>
+              <ul class="ledger">
+                <li><span>Look first</span> Hierarchy, polish, useful states, coherent decisions.</li>
+                <li><span>Then ask</span> Whether the extra time and tokens showed up on screen.</li>
+                <li><span>Remember</span> One run is evidence, not a ranking.</li>
+              </ul>
+            </article>
+
+            <article class="brief-block">
+              <h3>What a credit is</h3>
+              <p class="brief-lede">
+                Credits are the billing unit applied to token usage. Plan allowances are a measured
+                snapshot, not a fixed quota.
+              </p>
+              <div class="plans" id="plans" role="group" aria-label="Plan allowance used for estimates"></div>
+              <p class="brief-fine">
+                Estimates use the token rate card checked 14 July 2026. Consumption varies with model,
+                token mix, task complexity, and codebase size.
+                <a href="https://help.openai.com/en/articles/20001106-codex-rate-card" target="_blank" rel="noreferrer">
+                  Rate card
+                </a>
+              </p>
+            </article>
+
+            <article class="brief-block brief-colophon">
+              <h3>Colophon</h3>
+              <p class="brief-lede">
+                Runs are captured locally and published as static previews. The public page never starts
+                a model run.
+              </p>
+              <div class="colophon-links">
+                <a href="https://github.com/oezguercelebi/codex-model-effort-lab" target="_blank" rel="noreferrer">
+                  Repository
+                </a>
+                <a href="https://x.com/oezguercelebi" target="_blank" rel="noreferrer">Özgür Çelebi on X</a>
+                <a href="https://www.linkedin.com/in/oezguercelebi" target="_blank" rel="noreferrer">LinkedIn</a>
+              </div>
             </article>
           </div>
-        </section>
         </div>
       </section>
 
-      <section class="secondary-info" id="method" aria-labelledby="secondary-info-title">
-        <div class="secondary-info-heading">
-          <div class="eyebrow"><span></span> Reference</div>
-          <h2 id="secondary-info-title">Details when you need them.</h2>
-        </div>
-        <details class="info-disclosure" id="plan-context">
-          <summary>
-            <div>
-              <span>Plan context</span>
-              <strong>Messages, tokens, and credits</strong>
-            </div>
-            <p>Understand the usage estimates.</p>
-            <i aria-hidden="true">+</i>
-          </summary>
-          <div class="info-disclosure-body usage-guide">
-          <div class="usage-language">
-            <article><span>01</span><strong>Message</strong><p>One request or task you send to Codex.</p></article>
-            <article><span>02</span><strong>Tokens</strong><p>Pieces of code and text Codex reads or generates.</p></article>
-            <article><span>03</span><strong>Credits</strong><p>The billing unit applied to that token usage.</p></article>
+      <!-- The review: findings for the frame under the loupe. -->
+      <section class="review" id="review" hidden aria-label="Engineering review">
+        <header class="review-head">
+          <div>
+            <span class="review-kicker" id="review-kicker"></span>
+            <h2 id="review-title">The review</h2>
           </div>
-          <div class="allowance-guide" aria-label="Measured Codex plan allowance reference">
-            <article data-plan="plus"><span>Plus</span><strong>3k credits</strong><p>≈ 15–90 messages</p></article>
-            <article data-plan="5x" class="current"><span>Pro 5x</span><strong>15k credits</strong><p>≈ 75–450 messages</p></article>
-            <article data-plan="20x"><span>Pro 20x</span><strong>60k credits</strong><p>≈ 300–1,800 messages</p></article>
-          </div>
-          <div class="usage-guide-note">
-            <p>
-              Credit estimates use the token-based rate card checked July 14, 2026. Allowances and message ranges
-              are a measured planning snapshot, not fixed quotas. Consumption varies with the model, token mix,
-              task complexity, codebase size, and conversation length.
-            </p>
-            <a href="https://help.openai.com/en/articles/20001106-codex-rate-card" target="_blank" rel="noreferrer">Current Codex rate card ↗</a>
-          </div>
-          </div>
-        </details>
-        <details class="info-disclosure method-disclosure" id="reading-method">
-          <summary>
-            <div>
-              <span>How to read this</span>
-              <strong>Your eyes are the evaluator</strong>
-            </div>
-            <p>Separate visible quality from engineering evidence.</p>
-            <i aria-hidden="true">+</i>
-          </summary>
-        <div class="info-disclosure-body method-copy">
-          <p>
-            Visual quality is not reduced to a synthetic score. Engineering reviews inspect source
-            and behavior; your eyes still judge design, product decisions, and whether the result feels finished.
-          </p>
-          <ul>
-            <li><span>Look for</span> hierarchy, polish, useful states, and coherent decisions.</li>
-            <li><span>Then check</span> whether extra time and tokens created visible value.</li>
-            <li><span>Remember</span> one run is evidence, not a universal model ranking.</li>
-          </ul>
-        </div>
-        </details>
+          <button class="tool tool-close" id="review-close" type="button">Close</button>
+        </header>
+        <div class="review-body" id="review-body"></div>
       </section>
-    </main>
 
-    <footer class="site-footer">
-      <div class="footer-project">
-        <strong>Codex Build Arena</strong>
-        <span>Open runs. Visible tradeoffs.</span>
-      </div>
-      <div class="footer-signature">
-        <span class="footer-made-by">Made in public by</span>
-        <a class="footer-name" href="https://x.com/oezguercelebi" target="_blank" rel="noreferrer">
-          Özgür Çelebi
-        </a>
-        <div class="footer-socials" aria-label="Özgür Çelebi on social media">
-          <a href="https://x.com/oezguercelebi" target="_blank" rel="noreferrer" aria-label="Özgür Çelebi on X">
-            X <span aria-hidden="true">↗</span>
-          </a>
-          <a href="https://www.linkedin.com/in/oezguercelebi" target="_blank" rel="noreferrer" aria-label="Özgür Çelebi on LinkedIn">
-            in <span aria-hidden="true">↗</span>
-          </a>
+      <!-- Picker for the second frame in a comparison. -->
+      <div class="picker" id="picker" hidden role="dialog" aria-label="Choose a build to hold against">
+        <div class="picker-inner">
+          <header class="picker-head">
+            <h2>Hold against</h2>
+            <button class="tool tool-close" id="picker-close" type="button">Cancel</button>
+          </header>
+          <div class="picker-grid" id="picker-grid"></div>
         </div>
       </div>
-    </footer>
-
-    <dialog id="prompt-dialog">
-      <div class="dialog-heading">
-        <div><span>Frozen brief</span><h2>Weekender v1</h2></div>
-        <button id="prompt-close" type="button" aria-label="Close prompt">×</button>
-      </div>
-      <div id="prompt-content" class="prompt-content"></div>
-    </dialog>
-
-    <dialog class="compare-dialog" id="compare-dialog" aria-labelledby="compare-dialog-title">
-      <header class="compare-dialog-header">
-        <div>
-          <span>Focused comparison</span>
-          <h2 id="compare-dialog-title">Two builds. One decision.</h2>
-        </div>
-        <div class="compare-dialog-actions">
-          <button class="compare-copy" id="compare-copy" type="button">Copy comparison</button>
-          <button class="compare-close" id="compare-close" type="button" aria-label="Close comparison">×</button>
-        </div>
-      </header>
-      <div class="compare-toolbar">
-        <label>Build A<select id="compare-a-select"></select></label>
-        <button class="compare-swap" id="compare-swap" type="button" aria-label="Swap build A and build B">⇄</button>
-        <label>Build B<select id="compare-b-select"></select></label>
-        <div class="compare-viewport" aria-label="Comparison viewport">
-          <button type="button" data-compare-viewport="desktop" class="active">Desktop</button>
-          <button type="button" data-compare-viewport="tablet">Tablet</button>
-          <button type="button" data-compare-viewport="mobile">Mobile</button>
-        </div>
-      </div>
-      <div class="compare-delta" id="compare-delta"></div>
-      <div class="compare-mobile-tabs" aria-label="Visible comparison build">
-        <button type="button" data-compare-side="a" class="active">Build A</button>
-        <button type="button" data-compare-side="b">Build B</button>
-      </div>
-      <div class="compare-stage" id="compare-stage" data-active-side="a" data-viewport="desktop">
-        <article class="compare-pane" data-side="a">
-          <header><div><span>Build A</span><strong id="compare-a-title"></strong></div><button type="button" id="compare-a-evidence">Evidence</button></header>
-          <dl class="compare-metrics" id="compare-a-metrics"></dl>
-          <div class="compare-frame-shell"><iframe id="compare-a-frame" title="Build A generated app preview" sandbox="allow-scripts allow-forms"></iframe></div>
-        </article>
-        <article class="compare-pane" data-side="b">
-          <header><div><span>Build B</span><strong id="compare-b-title"></strong></div><button type="button" id="compare-b-evidence">Evidence</button></header>
-          <dl class="compare-metrics" id="compare-b-metrics"></dl>
-          <div class="compare-frame-shell"><iframe id="compare-b-frame" title="Build B generated app preview" sandbox="allow-scripts allow-forms"></iframe></div>
-        </article>
-      </div>
-    </dialog>
-
-    <dialog class="evidence-dialog" id="evidence-dialog" aria-labelledby="evidence-title">
-      <header class="evidence-header">
-        <div><span>Engineering review</span><h2 id="evidence-title">Review evidence</h2></div>
-        <button id="evidence-close" type="button" aria-label="Close review evidence">×</button>
-      </header>
-      <div class="evidence-body" id="evidence-body"></div>
-    </dialog>
-
+    </div>
   </body>
 </html>

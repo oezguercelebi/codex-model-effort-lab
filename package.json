@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "build:site": "node scripts/build-site.mjs",
+    "build:thumbnails": "node scripts/build-thumbnails.mjs",
     "check:site": "node --check site/app.js && node --check scripts/build-site.mjs && node scripts/build-site.mjs",
     "review:calibrate": "node scripts/run-code-review.mjs --calibration",
     "review:checks": "node scripts/run-code-review.mjs --calibration --checks-only",

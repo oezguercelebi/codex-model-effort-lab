@@ -70,6 +70,16 @@ for (const metadataFile of metadataFiles) {
   await mkdir(path.dirname(previewTarget), { recursive: true })
   await cp(previewSource, previewTarget, { recursive: true })
 
+  // Thumbnails are generated locally by scripts/build-thumbnails.mjs and
+  // committed, because CI has no browser to render them with.
+  const thumbnailSource = path.join(runDirectory, "thumbnail.jpg")
+  const hasThumbnail = await exists(thumbnailSource)
+  if (hasThumbnail) {
+    const thumbnailTarget = path.join(output, "thumbnails", `${runId}.jpg`)
+    await mkdir(path.dirname(thumbnailTarget), { recursive: true })
+    await cp(thumbnailSource, thumbnailTarget)
+  }
+
   const repositoryPath = path.relative(root, runDirectory).split(path.sep).join("/")
   const repositoryUrl = "https://github.com/oezguercelebi/codex-model-effort-lab"
   const reviewFile = path.join(runDirectory, "code-review.json")
@@ -100,6 +110,7 @@ for (const metadataFile of metadataFiles) {
     ...metadata,
     engineeringReview,
     previewPath: `./previews/${encodeURIComponent(runId)}/index.html`,
+    thumbnailPath: hasThumbnail ? `./thumbnails/${encodeURIComponent(runId)}.jpg` : null,
     sourceUrl: (await exists(path.join(runDirectory, "source")))
       ? `${repositoryUrl}/tree/main/${repositoryPath}/source`
       : null,
