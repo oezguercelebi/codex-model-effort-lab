@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&family=Newsreader:ital,opsz,wght@1,6..72,400&display=swap"
+    />
+    <style>
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+
+      body {
+        width: 1200px;
+        height: 630px;
+        display: flex;
+        overflow: hidden;
+        background: #f1efe9;
+        font-family: "Archivo", sans-serif;
+        color: #131313;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      .copy {
+        flex: 1 1 auto;
+        padding: 44px 0 48px 52px;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .lockup { display: flex; align-items: center; gap: 20px; }
+
+      .badge {
+        width: 84px;
+        height: 84px;
+        display: grid;
+        place-items: center;
+        border-radius: 22px;
+        background: #d8ff52;
+      }
+
+      .mark {
+        width: 42px;
+        height: 42px;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 4px;
+        transform: rotate(-12deg);
+      }
+
+      .mark i { background: #131313; border-radius: 20px; }
+      .mark i:nth-child(2) { transform: translateY(7px); }
+
+      .wordmark {
+        font-size: 44px;
+        font-variation-settings: "wdth" 112, "wght" 800;
+        letter-spacing: -0.01em;
+        text-transform: uppercase;
+      }
+
+      h1 {
+        margin-top: 40px;
+        font-size: 88px;
+        line-height: 0.9;
+        letter-spacing: -0.055em;
+        font-variation-settings: "wdth" 100, "wght" 700;
+        font-weight: 400;
+      }
+
+      h1 em { font-family: "Newsreader", serif; font-style: italic; font-weight: 400; }
+
+      .rule { width: 124px; height: 5px; margin-top: auto; background: #d8ff52; }
+
+      .sub {
+        margin-top: 18px;
+        max-width: 600px;
+        font-size: 25px;
+        line-height: 1.3;
+        font-variation-settings: "wght" 600;
+        color: #33322f;
+      }
+
+      /* The slab on the right is the contact sheet itself, abstracted. */
+      .slab {
+        flex: 0 0 auto;
+        width: 452px;
+        margin: 26px -54px 26px 0;
+        padding: 44px 46px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        border-radius: 40px;
+        background: #131313;
+      }
+
+      .slab .badge { margin-bottom: 44px; width: 108px; height: 108px; border-radius: 28px; }
+      .slab .mark { width: 54px; height: 54px; }
+
+      .sheet { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+
+      .cell {
+        width: 82px;
+        height: 62px;
+        padding: 8px;
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        border: 1px solid #3a3a3a;
+        border-radius: 7px;
+      }
+
+      .cell u { height: 4px; width: 60%; background: #d8ff52; border-radius: 4px; }
+      .cell b { height: 5px; background: #3f3f3f; border-radius: 4px; }
+      .cell b.short { width: 70%; }
+    </style>
+  </head>
+  <body>
+    <div class="copy">
+      <div class="lockup">
+        <div class="badge"><div class="mark"><i></i><i></i><i></i></div></div>
+        <div class="wordmark">Build Arena</div>
+      </div>
+
+      <h1>See what<br />more <em>thinking</em><br />buys you.</h1>
+
+      <div class="rule"></div>
+      <p class="sub" id="sub">Same prompt. 32 model and effort combinations, across Codex and Claude Code.</p>
+    </div>
+
+    <div class="slab">
+      <div class="badge"><div class="mark"><i></i><i></i><i></i></div></div>
+      <div class="sheet" id="sheet"></div>
+    </div>
+
+    <script>
+      const sheet = document.getElementById("sheet")
+      for (let index = 0; index < 12; index += 1) {
+        const cell = document.createElement("div")
+        cell.className = "cell"
+        cell.innerHTML = '<u></u><b></b><b class="short"></b>'
+        sheet.append(cell)
+      }
+    </script>
+  </body>
+</html>

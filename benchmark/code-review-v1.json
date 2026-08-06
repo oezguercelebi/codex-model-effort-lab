@@ -3,7 +3,6 @@
   "id": "weekender-code-review-v1",
   "status": "frozen",
   "frozenAt": "2026-07-14T21:15:00.000Z",
-  "targetBenchmarkId": "weekender-v1",
   "reviewer": {
     "model": "gpt-5.6-sol",
     "effort": "xhigh",
@@ -35,13 +34,41 @@
     "browser-console-errors"
   ],
   "rubric": [
-    { "id": "correctness", "label": "Brief fidelity and functional correctness", "weight": 30 },
-    { "id": "reliability", "label": "Reliability and state integrity", "weight": 15 },
-    { "id": "accessibility", "label": "Accessibility", "weight": 15 },
-    { "id": "maintainability", "label": "Maintainability and code clarity", "weight": 15 },
-    { "id": "security", "label": "Security, privacy, and dependency compliance", "weight": 10 },
-    { "id": "performance", "label": "Performance and responsive robustness", "weight": 10 },
-    { "id": "verification", "label": "Verification readiness", "weight": 5 }
+    {
+      "id": "correctness",
+      "label": "Brief fidelity and functional correctness",
+      "weight": 30
+    },
+    {
+      "id": "reliability",
+      "label": "Reliability and state integrity",
+      "weight": 15
+    },
+    {
+      "id": "accessibility",
+      "label": "Accessibility",
+      "weight": 15
+    },
+    {
+      "id": "maintainability",
+      "label": "Maintainability and code clarity",
+      "weight": 15
+    },
+    {
+      "id": "security",
+      "label": "Security, privacy, and dependency compliance",
+      "weight": 10
+    },
+    {
+      "id": "performance",
+      "label": "Performance and responsive robustness",
+      "weight": 10
+    },
+    {
+      "id": "verification",
+      "label": "Verification readiness",
+      "weight": 5
+    }
   ],
   "scoreScale": {
     "minimum": 0,
@@ -49,7 +76,13 @@
     "weightedTotalMaximum": 100,
     "derivedFromFindings": true
   },
-  "severityLevels": ["critical", "high", "medium", "low", "note"],
+  "severityLevels": [
+    "critical",
+    "high",
+    "medium",
+    "low",
+    "note"
+  ],
   "calibration": {
     "requiredBeforeFreeze": true,
     "blindRuns": 4,
@@ -62,5 +95,10 @@
   "outputSchema": "benchmark/code-review-output-v1.schema.json",
   "calibrationManifest": "benchmark/code-review-calibration-v1.json",
   "harness": "scripts/run-code-review.mjs",
-  "specification": "benchmark/code-review-v1.md"
+  "specification": "benchmark/code-review-v1.md",
+  "targetBenchmarkIds": [
+    "weekender-v1",
+    "weekender-claude-v1"
+  ],
+  "scopeNote": "The instrument is frozen: rubric, reviewer model, effort, blinding and inputs are unchanged. Extending it to a second corpus that shares the same prompt and starter is a scope change, not an instrument change."
 }

@@ -8,7 +8,14 @@ import { chromium } from "playwright-core"
 
 const root = path.resolve(import.meta.dirname, "..")
 const reviewBenchmark = await readJson(path.join(root, "benchmark", "code-review-v1.json"))
-const targetBenchmark = await readJson(path.join(root, "benchmark", "v1.json"))
+// Which corpus the instrument is pointed at is a CLI choice, not part of the
+// instrument. The rubric, reviewer model, effort and blinding are frozen and
+// unchanged, so scores stay comparable across the rolls it reviews.
+const targetBenchmarkFile = (() => {
+  const index = process.argv.indexOf("--benchmark")
+  return index === -1 ? "v1.json" : process.argv[index + 1]
+})()
+const targetBenchmark = await readJson(path.join(root, "benchmark", targetBenchmarkFile))
 const calibration = await readJson(path.join(root, reviewBenchmark.calibrationManifest))
 const categoryIds = reviewBenchmark.rubric.map((category) => category.id)
 const categoryIdSet = new Set(categoryIds)
