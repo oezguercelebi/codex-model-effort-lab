@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta
+      name="description"
+      content="Weekender — compare weekend trips, split the budget, vote as a group and get the itinerary for the winner."
+    />
+    <meta name="theme-color" content="#f6f3ef" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#131110" media="(prefers-color-scheme: dark)" />
+    <title>Weekender — plan the trip together</title>
+    <script>
+      // Apply the saved theme before first paint so dark mode never flashes white.
+      try {
+        var stored = JSON.parse(localStorage.getItem("weekender.theme"))
+        var dark =
+          stored === "dark" ||
+          (stored !== "light" && matchMedia("(prefers-color-scheme: dark)").matches)
+        if (dark) document.documentElement.classList.add("dark")
+      } catch (error) {
+        /* first visit, or storage is blocked */
+      }
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

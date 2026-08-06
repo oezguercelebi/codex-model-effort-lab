@@ -66,6 +66,13 @@
           One prompt. One starter. No steering. <strong id="frame-count">17</strong> finished apps.
         </p>
 
+        <!--
+          Each roll is a separate experiment — same prompt and starter, different
+          agent. They are never merged onto one sheet, because the harness, tool
+          surface and system prompt all differ; you switch between them.
+        -->
+        <div class="arrange roll-switch" id="roll-switch" role="group" aria-label="Benchmark roll" hidden></div>
+
         <div class="arrange" role="group" aria-label="Sheet arrangement">
           <button type="button" data-arrangement="grid" class="on" aria-pressed="true">
             By setting
@@ -176,6 +183,12 @@
                 Every run received this text and nothing else. No follow-ups, no corrections.
               </p>
               <div class="prompt-body" id="prompt-body"></div>
+            </article>
+
+            <article class="brief-block brief-roll" id="roll-notes-block" hidden>
+              <h3 id="roll-notes-title">About this roll</h3>
+              <p class="brief-lede">What this set of runs supports, and what it does not.</p>
+              <ul class="ledger" id="roll-notes"></ul>
             </article>
 
             <article class="brief-block">

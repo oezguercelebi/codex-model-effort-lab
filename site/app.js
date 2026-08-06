@@ -5,6 +5,10 @@
 */
 
 const state = {
+  all: [],
+  rolls: [],
+  rollNotes: new Map(),
+  roll: null,
   results: [],
   models: [],
   efforts: [],
@@ -58,8 +62,22 @@ const elements = {
 
 const compact = new Intl.NumberFormat("en", { notation: "compact", maximumFractionDigits: 1 })
 const assetVersion = new URL(import.meta.url).searchParams.get("v")
-const effortOrder = ["default", "low", "medium", "high", "xhigh", "max"]
-const modelOrder = ["default", "gpt-5.5", "gpt-5.6-luna", "gpt-5.6-terra", "gpt-5.6-sol"]
+// "default" and "none" both mean "this run sits off the effort axis" — a
+// hand-built reference in the Codex roll, a model with no effort parameter in
+// the Claude roll. Neither gets a column.
+const offAxisEfforts = new Set(["default", "none"])
+const effortOrder = ["default", "none", "low", "medium", "high", "xhigh", "max"]
+const modelOrder = [
+  "default",
+  "gpt-5.5",
+  "gpt-5.6-luna",
+  "gpt-5.6-terra",
+  "gpt-5.6-sol",
+  "claude-haiku-4-5",
+  "claude-sonnet-5",
+  "claude-opus-5",
+  "claude-fable-5",
+]
 
 const creditRates = {
   "gpt-5.5": { input: 125, cachedInput: 12.5, output: 750 },
@@ -159,14 +177,24 @@ function svgNode(tag, attributes = {}, text = null) {
   return element
 }
 
+// Claude Code reports what a run actually cost; Codex does not, so that roll
+// is estimated from a rate card. The axis is labelled for whichever roll is on
+// screen rather than mixing the two units.
+const usesRealCost = () => state.results.some((result) => result.costUsd != null)
+
+const runCost = (result) => (result.costUsd != null ? result.costUsd : estimatedCredits(result))
+
 const metrics = {
   credits: {
-    name: "Estimated credits",
-    of: (result) => estimatedCredits(result) ?? 0,
-    format: (value) => value.toFixed(1),
+    get name() {
+      return usesRealCost() ? "Cost in dollars" : "Estimated credits"
+    },
+    of: (result) => runCost(result) ?? 0,
+    format: (value) => (usesRealCost() ? `$${value.toFixed(2)}` : value.toFixed(1)),
     short: (result) => {
-      const credits = estimatedCredits(result)
-      return credits == null ? "—" : `${credits.toFixed(1)}c`
+      const cost = runCost(result)
+      if (cost == null) return "—"
+      return result.costUsd != null ? `$${cost.toFixed(2)}` : `${cost.toFixed(1)}c`
     },
   },
   duration: {
@@ -480,11 +508,13 @@ function renderAxes(grid) {
     span.style.left = `${grid.originX}px`
     span.style.top = `${grid.rowY(index) + grid.frameHeight / 2 - 26}px`
     span.style.width = `${grid.gutter - 14}px`
-    span.append(
-      node("b", "", item.effortLabel),
-      node("i"),
-      node("u", "", `${compact.format(Math.round(reasoning))} reasoning`),
-    )
+    // Some runners bill thinking inside output tokens and never break it out.
+    // Where there is no reasoning figure the rule is dropped rather than drawn
+    // at zero, which would read as "this setting did no thinking".
+    span.append(node("b", "", item.effortLabel))
+    if (reasoning > 0) {
+      span.append(node("i"), node("u", "", `${compact.format(Math.round(reasoning))} reasoning`))
+    }
     efforts.append(span)
   }
 
@@ -500,7 +530,10 @@ function renderAxes(grid) {
     span.style.left = `${grid.originX}px`
     span.style.top = `${grid.originY + grid.header + grid.rowHeight * grid.rows - grid.gap + 22}px`
     span.style.width = `${grid.gutter - 14}px`
-    span.append(node("b", "", "Control"), node("u", "", "hand-built"))
+    span.append(
+      node("b", "", control.status === "default" ? "Control" : control.modelLabel),
+      node("u", "", control.status === "default" ? "hand-built" : "no effort axis"),
+    )
     efforts.append(span)
   }
 
@@ -813,10 +846,17 @@ function renderLoupe() {
     pair("Input tokens", countLabel(result.usage?.inputTokens)),
     pair("Cached input", countLabel(result.usage?.cachedInputTokens)),
     pair("Output tokens", countLabel(result.usage?.outputTokens)),
-    pair("Reasoning tokens", countLabel(result.usage?.reasoningOutputTokens)),
+    pair(
+      "Reasoning tokens",
+      result.usage?.reasoningOutputTokens == null
+        ? "Not reported separately"
+        : countLabel(result.usage.reasoningOutputTokens),
+    ),
     pair("Source files", countLabel(result.codeStats?.sourceFiles)),
     pair("Source lines", countLabel(result.codeStats?.sourceLines)),
-    pair("Codex", result.codexVersion),
+    pair("Agent", result.runner?.version ?? result.codexVersion),
+    pair("Turns", result.runner?.turns == null ? "—" : String(result.runner.turns)),
+    pair("Cost", result.costUsd == null ? "Estimated from rate card" : `$${result.costUsd.toFixed(2)}`),
     pair("Captured", dateLabel(result.recordedAt)),
     pair("Capture plan", result.subscription?.planLabel),
     pair("Estimated credits", credits == null ? "—" : `≈ ${credits.toFixed(2)}`),
@@ -1072,6 +1112,7 @@ function syncUrl() {
   const set = (key, value) => (value ? url.searchParams.set(key, value) : url.searchParams.delete(key))
   set("f", state.loupe)
   set("vs", state.against)
+  set("roll", state.rolls.length > 1 && state.roll !== state.rolls[0].id ? state.roll : null)
   set("a", state.arrangement === "plot" ? "plot" : null)
   set("m", state.metric === "credits" ? null : state.metric)
   set("plan", state.planId === "5x" ? null : state.planId)
@@ -1185,19 +1226,26 @@ async function loadPrompt() {
   )
 }
 
-async function initialize() {
-  const response = await fetch(assetPath("./results-manifest.json"))
-  if (!response.ok) throw new Error(`Could not load the sheet (${response.status})`)
-  const manifest = await response.json()
+// Declaration order is display order: the original roll leads, and anything
+// added later that is not listed here falls in behind them.
+const rollLabels = {
+  "weekender-v1": "Codex",
+  "weekender-claude-v1": "Claude Code",
+}
 
-  state.results = manifest.results.sort((a, b) => {
-    const byModel = modelOrder.indexOf(a.model) - modelOrder.indexOf(b.model)
-    return byModel || effortOrder.indexOf(a.effort) - effortOrder.indexOf(b.effort)
-  })
+function rollOrder(id) {
+  const index = Object.keys(rollLabels).indexOf(id)
+  return index === -1 ? Number.MAX_SAFE_INTEGER : index
+}
 
-  // The control print is a hand-built reference, not a model run, so it is kept
-  // off both axes and printed in the gutter.
-  const runs = state.results.filter((result) => result.model !== "default" && result.effort !== "default")
+const onAxisRuns = () =>
+  state.results.filter((result) => result.model !== "default" && !offAxisEfforts.has(result.effort))
+
+function selectRoll(id, { rebuild = true } = {}) {
+  state.roll = id
+  state.results = state.all.filter((result) => result.benchmarkId === id)
+
+  const runs = onAxisRuns()
   state.models = uniqueBy(
     runs.map(({ model, modelLabel }) => ({ model, modelLabel })),
     (item) => item.model,
@@ -1207,23 +1255,101 @@ async function initialize() {
     (item) => item.effort,
   ).sort((a, b) => effortOrder.indexOf(a.effort) - effortOrder.indexOf(b.effort))
 
-  if (!state.results.length) {
+  elements.frameCount.textContent = String(runs.length)
+  renderRollNotes()
+  for (const button of document.querySelectorAll("[data-roll]")) {
+    const on = button.dataset.roll === id
+    button.classList.toggle("on", on)
+    button.setAttribute("aria-pressed", String(on))
+  }
+
+  if (!rebuild) return
+  state.loupe = null
+  state.against = null
+  elements.loupe.hidden = true
+  updateInert()
+  buildFrames()
+  layout()
+  mark(runs[0]?.runId ?? state.results[0]?.runId, false)
+  syncUrl()
+}
+
+function renderRollNotes() {
+  const block = document.querySelector("#roll-notes-block")
+  const list = document.querySelector("#roll-notes")
+  const title = document.querySelector("#roll-notes-title")
+  if (!block || !list) return
+
+  const notes = state.rollNotes.get(state.roll) ?? []
+  block.hidden = notes.length === 0
+  title.textContent = `About the ${rollLabels[state.roll] ?? state.roll} roll`
+  list.replaceChildren(
+    ...notes.map((note, index) => {
+      const item = node("li")
+      item.append(node("span", "", String(index + 1).padStart(2, "0")), document.createTextNode(` ${note}`))
+      return item
+    }),
+  )
+}
+
+function renderRollSwitch() {
+  const host = document.querySelector("#roll-switch")
+  if (!host || state.rolls.length < 2) return
+  host.hidden = false
+  host.replaceChildren(
+    ...state.rolls.map((roll) => {
+      const button = node("button", roll.id === state.roll ? "on" : "")
+      button.type = "button"
+      button.dataset.roll = roll.id
+      button.textContent = roll.label
+      button.setAttribute("aria-pressed", String(roll.id === state.roll))
+      button.addEventListener("click", () => selectRoll(roll.id))
+      return button
+    }),
+  )
+}
+
+async function initialize() {
+  const response = await fetch(assetPath("./results-manifest.json"))
+  if (!response.ok) throw new Error(`Could not load the sheet (${response.status})`)
+  const manifest = await response.json()
+
+  state.all = manifest.results.sort((a, b) => {
+    const byModel = modelOrder.indexOf(a.model) - modelOrder.indexOf(b.model)
+    return byModel || effortOrder.indexOf(a.effort) - effortOrder.indexOf(b.effort)
+  })
+
+  if (!state.all.length) {
     elements.sheetHint.textContent = "No runs have been published yet."
     return
   }
 
-  elements.frameCount.textContent = String(runs.length)
+  // Each roll is its own experiment. They share a prompt and a starter but not
+  // a harness, so they are never mixed on one sheet — you switch between them.
+  state.rollNotes = new Map((manifest.rolls ?? []).map((roll) => [roll.id, roll.notes ?? []]))
+  state.rolls = uniqueBy(
+    state.all.map((result) => ({
+      id: result.benchmarkId,
+      label: rollLabels[result.benchmarkId] ?? result.benchmarkId,
+    })),
+    (item) => item.id,
+  ).sort((a, b) => rollOrder(a.id) - rollOrder(b.id))
 
   const query = new URLSearchParams(window.location.search)
   state.metric = ["credits", "duration", "tokens"].includes(query.get("m")) ? query.get("m") : "credits"
   state.planId = plans.some((plan) => plan.id === query.get("plan")) ? query.get("plan") : "5x"
 
+  const requested = state.rolls.find((roll) => roll.id === query.get("roll"))
+  const opening = state.all.find((result) => result.runId === query.get("f"))
+  selectRoll(requested?.id ?? opening?.benchmarkId ?? state.rolls[0].id, { rebuild: false })
+
+  renderRollSwitch()
   buildFrames()
   renderPlans()
   layout()
 
-  const opening = resultById(query.get("f"))
-  mark(opening?.runId ?? runs[0]?.runId ?? state.results[0].runId, false)
+  const openingInRoll = resultById(query.get("f"))
+  mark(openingInRoll?.runId ?? onAxisRuns()[0]?.runId ?? state.results[0].runId, false)
   if (query.get("a") === "plot") setArrangement("plot")
   else setArrangement("grid")
 
@@ -1233,9 +1359,9 @@ async function initialize() {
     item.setAttribute("aria-pressed", String(on))
   }
 
-  if (opening) {
+  if (openingInRoll) {
     state.against = resultById(query.get("vs"))?.runId ?? null
-    openLoupe(opening.runId)
+    openLoupe(openingInRoll.runId)
   }
 
   // Fonts change the gutter measurements, so lay out once more when they land.

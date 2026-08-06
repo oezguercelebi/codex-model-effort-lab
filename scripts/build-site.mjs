@@ -123,9 +123,26 @@ for (const metadataFile of metadataFiles) {
   })
 }
 
+// Publish each roll's own caveats alongside its runs, so the sheet can state
+// what a roll does and does not support rather than leaving the reader to
+// assume the two are interchangeable.
+const rolls = []
+for (const file of (await readdir(path.join(root, "benchmark"))).sort()) {
+  if (!file.endsWith(".json")) continue
+  const config = JSON.parse(await readFile(path.join(root, "benchmark", file), "utf8"))
+  if (!config.id || !Array.isArray(config.configurations)) continue
+  rolls.push({
+    id: config.id,
+    runner: config.runner ?? "codex",
+    notes: config.notes ?? [],
+    configurationCount: config.configurations.length,
+  })
+}
+
 const manifest = {
   generatedAt: new Date().toISOString(),
   resultCount: results.length,
+  rolls,
   results: results.sort((a, b) => a.runId.localeCompare(b.runId)),
 }
 

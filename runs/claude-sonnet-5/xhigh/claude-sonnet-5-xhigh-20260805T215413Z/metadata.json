@@ -1,0 +1,50 @@
+{
+  "schemaVersion": 2,
+  "benchmarkId": "weekender-claude-v1",
+  "runId": "claude-sonnet-5-xhigh-20260805T215413Z",
+  "status": "published",
+  "title": "Weekender",
+  "runner": {
+    "id": "claude",
+    "label": "Claude Code",
+    "version": "claude-code 2.1.222",
+    "exitCode": 0,
+    "effortApplied": true,
+    "turns": 90,
+    "failure": null
+  },
+  "model": "claude-sonnet-5",
+  "modelLabel": "Sonnet 5",
+  "effort": "xhigh",
+  "effortLabel": "Extra High",
+  "recordedAt": "2026-08-05T22:11:17.931Z",
+  "durationMs": 1017287,
+  "codexVersion": null,
+  "codexExitCode": null,
+  "previewDirectory": "preview",
+  "promptSha256": "e520b27a68f9f6bb40970d3d86ad7e02b65c33c3e956f43cd5b313847d94ea5f",
+  "starterSha256": "eb37b56a2b1f81ac888d39edbfdc4b684b79882d3db94c0d9ddb4b0538f9457e",
+  "usage": {
+    "inputTokens": 6837986,
+    "cachedInputTokens": 6713189,
+    "outputTokens": 71883,
+    "reasoningOutputTokens": null
+  },
+  "costUsd": 3.8413736999999992,
+  "codeStats": {
+    "sourceFiles": 22,
+    "sourceLines": 1836
+  },
+  "subscription": {
+    "planLabel": null,
+    "windowLabel": null,
+    "remainingBeforePercent": null,
+    "remainingAfterPercent": null,
+    "observedChangePercent": null
+  },
+  "verification": {
+    "buildSucceeded": true,
+    "screenshotsCaptured": true
+  },
+  "notes": "Captured without follow-up messages or manual repair."
+}

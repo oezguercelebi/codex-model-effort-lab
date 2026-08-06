@@ -1,14 +1,13 @@
 import { createHash } from "node:crypto"
-import { spawn } from "node:child_process"
 import { cp, mkdir, readFile, readdir, rm, writeFile } from "node:fs/promises"
 import path from "node:path"
 import process from "node:process"
 import { createInterface } from "node:readline/promises"
 import { captureScreenshots } from "./capture-screenshots.mjs"
+import { run, requireSuccess } from "./lib/process.mjs"
+import { getRunner } from "./runners/index.mjs"
 
 const root = path.resolve(import.meta.dirname, "..")
-const benchmark = JSON.parse(await readFile(path.join(root, "benchmark", "v1.json"), "utf8"))
-const validEfforts = new Set(["low", "medium", "high", "xhigh"])
 
 function parseArgs(argv) {
   const options = { dryRun: false, recordSubscription: false }
@@ -36,15 +35,10 @@ function timestamp() {
   return new Date().toISOString().replace(/[-:]/g, "").replace(/\.\d{3}Z$/, "Z")
 }
 
-function modelLabel(model) {
-  if (/^gpt-[\d.]+$/.test(model)) return model.toUpperCase()
-  const name = model.replace(/^gpt-[\d.]+-/, "")
-  return name.charAt(0).toUpperCase() + name.slice(1)
-}
-
 function effortLabel(effort) {
   if (effort === "low") return "Light"
   if (effort === "xhigh") return "Extra High"
+  if (effort === "none") return "No effort axis"
   return effort.charAt(0).toUpperCase() + effort.slice(1)
 }
 
@@ -55,70 +49,6 @@ function asPercent(value, label) {
     throw new Error(`${label} must be between 0 and 100`)
   }
   return number
-}
-
-async function run(command, args, options = {}) {
-  return new Promise((resolve, reject) => {
-    const child = spawn(command, args, {
-      cwd: options.cwd,
-      env: options.env ?? process.env,
-      stdio: ["pipe", "pipe", "pipe"],
-    })
-    let stdout = ""
-    let stderr = ""
-    let timedOut = false
-
-    child.stdout.on("data", (chunk) => {
-      stdout += chunk
-      if (options.echoStdout) process.stdout.write(chunk)
-    })
-    child.stderr.on("data", (chunk) => {
-      stderr += chunk
-      if (options.echoStderr) process.stderr.write(chunk)
-    })
-    child.once("error", reject)
-
-    let timer
-    if (options.timeoutMs) {
-      timer = setTimeout(() => {
-        timedOut = true
-        child.kill("SIGTERM")
-      }, options.timeoutMs)
-    }
-
-    child.once("close", (code, signal) => {
-      if (timer) clearTimeout(timer)
-      resolve({ code: code ?? 1, signal, stdout, stderr, timedOut })
-    })
-
-    if (options.input != null) child.stdin.end(options.input)
-    else child.stdin.end()
-  })
-}
-
-async function requireSuccess(command, args, options = {}) {
-  const result = await run(command, args, { ...options, echoStdout: true, echoStderr: true })
-  if (result.code !== 0) throw new Error(`${command} ${args.join(" ")} failed with exit code ${result.code}`)
-  return result
-}
-
-async function findCodex() {
-  const candidates = [
-    process.env.CODEX_BIN,
-    "codex",
-    "/Applications/ChatGPT.app/Contents/Resources/codex",
-  ].filter(Boolean)
-
-  for (const candidate of [...new Set(candidates)]) {
-    try {
-      const result = await run(candidate, ["--version"])
-      if (result.code === 0) return { binary: candidate, version: result.stdout.trim() }
-    } catch {
-      // Try the next known installation.
-    }
-  }
-
-  throw new Error("No working Codex CLI found. Set CODEX_BIN to a working Codex executable.")
 }
 
 async function hashDirectory(directory) {
@@ -164,34 +94,6 @@ async function collectCodeStats(directory) {
   return { sourceFiles, sourceLines }
 }
 
-function parseEvents(jsonl) {
-  const events = []
-  for (const line of jsonl.split("\n")) {
-    if (!line.trim()) continue
-    try {
-      events.push(JSON.parse(line))
-    } catch {
-      // Preserve malformed output privately, but never publish it as structured data.
-    }
-  }
-
-  const completed = [...events].reverse().find((event) => event.type === "turn.completed")
-  const messages = events.filter(
-    (event) => event.type === "item.completed" && event.item?.type === "agent_message",
-  )
-  const usage = completed?.usage ?? {}
-
-  return {
-    finalMessage: messages.at(-1)?.item?.text ?? "",
-    usage: {
-      inputTokens: usage.input_tokens ?? 0,
-      cachedInputTokens: usage.cached_input_tokens ?? 0,
-      outputTokens: usage.output_tokens ?? 0,
-      reasoningOutputTokens: usage.reasoning_output_tokens ?? 0,
-    },
-  }
-}
-
 async function askPercent(question) {
   if (!process.stdin.isTTY || !process.stdout.isTTY) return null
   const reader = createInterface({ input: process.stdin, output: process.stdout })
@@ -212,15 +114,22 @@ async function writeFailurePreview(directory, title, detail) {
 }
 
 const options = parseArgs(process.argv.slice(2))
-if (!options.model) throw new Error("Missing --model")
-if (!options.effort || !validEfforts.has(options.effort)) {
-  throw new Error("Use --effort low, medium, high, or xhigh")
-}
+const benchmarkFile = options.benchmark ?? "v1.json"
+const benchmark = JSON.parse(await readFile(path.join(root, "benchmark", benchmarkFile), "utf8"))
+const runner = getRunner(benchmark.runner ?? "codex")
 
-const listedConfiguration = benchmark.configurations.some(
-  (configuration) => configuration.model === options.model && configuration.effort === options.effort,
+if (!options.model) throw new Error("Missing --model")
+if (!options.effort) throw new Error(`Missing --effort. This runner accepts: ${runner.efforts.join(", ")}`)
+
+const configuration = benchmark.configurations.find(
+  (entry) => entry.model === options.model && entry.effort === options.effort,
 )
-if (!listedConfiguration) throw new Error("The requested model/effort pair is not in benchmark/v1.json")
+if (!configuration) {
+  throw new Error(`The requested model/effort pair is not in benchmark/${benchmarkFile}`)
+}
+if (runner.supportsEffort(options.model) && !runner.efforts.includes(options.effort)) {
+  throw new Error(`${runner.label} accepts --effort ${runner.efforts.join(", ")}`)
+}
 
 const runId = `${safeSlug(options.model)}-${options.effort}-${timestamp()}${options.dryRun ? "-dry" : ""}`
 const privateDirectory = path.join(root, options.dryRun ? ".benchmark-work" : ".benchmark-private", runId)
@@ -229,7 +138,7 @@ const resultDirectory = options.dryRun
   ? path.join(root, ".benchmark-work", "dry-runs", runId)
   : path.join(root, "runs", safeSlug(options.model), options.effort, runId)
 const eventsFile = path.join(privateDirectory, "events.jsonl")
-const stderrFile = path.join(privateDirectory, "codex-stderr.log")
+const stderrFile = path.join(privateDirectory, "runner-stderr.log")
 const capturedFinalFile = path.join(privateDirectory, "final-response.md")
 const prompt = await readFile(path.join(root, benchmark.prompt), "utf8")
 const promptSha256 = createHash("sha256").update(prompt).digest("hex")
@@ -254,61 +163,47 @@ if (options.recordSubscription && remainingBefore == null && !options.dryRun) {
   remainingBefore = await askPercent("Subscription remaining before the run")
 }
 
-let codexExitCode = 0
-let codexVersion = "dry-run"
+let runnerExitCode = 0
+let runnerVersion = "dry-run"
 let rawEvents = ""
-let codexError = ""
+let runnerError = ""
 const startedAt = Date.now()
 
 if (options.dryRun) {
-  rawEvents = [
-    JSON.stringify({ type: "thread.started", thread_id: "dry-run" }),
-    JSON.stringify({ type: "item.completed", item: { type: "agent_message", text: "Dry run completed without calling a model." } }),
-    JSON.stringify({ type: "turn.completed", usage: { input_tokens: 1200, cached_input_tokens: 0, output_tokens: 180, reasoning_output_tokens: 90 } }),
-  ].join("\n")
+  rawEvents = runner.dryRunOutput()
   await writeFile(capturedFinalFile, "Dry run completed without calling a model.\n")
 } else {
-  const codex = await findCodex()
-  codexVersion = codex.version
-  process.stdout.write(`Running ${options.model} with ${options.effort} effort using ${codexVersion}\n`)
-  const codexResult = await run(
-    codex.binary,
-    [
-      "exec",
-      "--json",
-      "--ephemeral",
-      "--ignore-user-config",
-      "--ignore-rules",
-      "--color",
-      "never",
-      "--model",
-      options.model,
-      "--config",
-      `model_reasoning_effort=\"${options.effort}\"`,
-      "--sandbox",
-      benchmark.policy.sandbox,
-      "--cd",
-      workspace,
-      "--output-last-message",
-      capturedFinalFile,
-      "-",
-    ],
-    {
-      cwd: workspace,
-      input: prompt,
-      echoStderr: true,
-      timeoutMs: benchmark.policy.maxDurationMinutes * 60_000,
-    },
-  )
-  codexExitCode = codexResult.code
-  rawEvents = codexResult.stdout
-  codexError = codexResult.stderr
-  if (codexResult.timedOut) codexError += "\nRun exceeded the configured time limit."
+  const tool = await runner.detect()
+  runnerVersion = tool.version
+  const effortNote = runner.supportsEffort(options.model)
+    ? `${options.effort} effort`
+    : "no effort setting (unsupported on this model)"
+  process.stdout.write(`Running ${options.model} with ${effortNote} using ${runnerVersion}\n`)
+
+  const invocation = runner.invocation({
+    model: options.model,
+    effort: options.effort,
+    workspace,
+    finalFile: capturedFinalFile,
+    benchmark,
+  })
+
+  const result = await run(tool.binary, invocation.args, {
+    cwd: workspace,
+    input: invocation.usesStdinPrompt ? prompt : undefined,
+    echoStderr: true,
+    timeoutMs: benchmark.policy.maxDurationMinutes * 60_000,
+  })
+
+  runnerExitCode = result.code
+  rawEvents = result.stdout
+  runnerError = result.stderr
+  if (result.timedOut) runnerError += "\nRun exceeded the configured time limit."
 }
 
 const durationMs = Date.now() - startedAt
 await writeFile(eventsFile, `${rawEvents.trim()}\n`)
-await writeFile(stderrFile, codexError)
+await writeFile(stderrFile, runnerError)
 
 if (options.recordSubscription && remainingAfter == null && !options.dryRun) {
   remainingAfter = await askPercent("Subscription remaining after the run")
@@ -321,16 +216,16 @@ const buildResult = await run("npm", ["run", "build"], {
   timeoutMs: 5 * 60_000,
 })
 const buildSucceeded = buildResult.code === 0
-const parsed = parseEvents(rawEvents)
+const parsed = runner.parse({ stdout: rawEvents, stderr: runnerError })
 const codeStats = await collectCodeStats(workspace)
 
 let finalMessage = parsed.finalMessage
 try {
   finalMessage = (await readFile(capturedFinalFile, "utf8")).trim() || finalMessage
 } catch {
-  // The parsed public agent message remains the fallback.
+  // The runner's own final message remains the fallback.
 }
-if (!finalMessage) finalMessage = codexError || "The run ended without a final response."
+if (!finalMessage) finalMessage = runnerError || "The run ended without a final response."
 
 await rm(resultDirectory, { recursive: true, force: true })
 await mkdir(resultDirectory, { recursive: true })
@@ -354,25 +249,44 @@ try {
 
 const observedChangePercent =
   remainingBefore != null && remainingAfter != null ? Math.max(0, remainingBefore - remainingAfter) : null
-const status = options.dryRun ? "dry-run" : codexExitCode === 0 && buildSucceeded ? "published" : "failed"
+const runnerFailed = Boolean(parsed.failure)
+const status = options.dryRun
+  ? "dry-run"
+  : runnerExitCode === 0 && !runnerFailed && buildSucceeded
+    ? "published"
+    : "failed"
 const metadata = {
-  schemaVersion: 1,
+  schemaVersion: 2,
   benchmarkId: benchmark.id,
   runId,
   status,
   title: "Weekender",
+  runner: {
+    id: runner.id,
+    label: runner.label,
+    version: runnerVersion,
+    exitCode: runnerExitCode,
+    // Recorded so the sheet never implies an effort setting a model cannot take.
+    effortApplied: runner.supportsEffort(options.model),
+    turns: parsed.turns,
+    failure: parsed.failure ?? null,
+  },
   model: options.model,
-  modelLabel: modelLabel(options.model),
+  modelLabel: configuration.modelLabel ?? runner.modelLabel(options.model),
   effort: options.effort,
-  effortLabel: effortLabel(options.effort),
+  effortLabel: configuration.effortLabel ?? effortLabel(options.effort),
   recordedAt: new Date().toISOString(),
   durationMs,
-  codexVersion,
-  codexExitCode,
+  // Kept for the runs published before the runner adapter existed.
+  codexVersion: runner.id === "codex" ? runnerVersion : null,
+  codexExitCode: runner.id === "codex" ? runnerExitCode : null,
   previewDirectory: "preview",
   promptSha256,
   starterSha256,
   usage: parsed.usage,
+  // Claude Code reports the real dollar cost of a run; Codex does not, and the
+  // site estimates it from a rate card instead.
+  costUsd: parsed.costUsd,
   codeStats,
   subscription: {
     planLabel: options.planLabel ?? null,

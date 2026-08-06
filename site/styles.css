@@ -158,6 +158,12 @@ ul { padding: 0; list-style: none; }
   background: var(--print);
 }
 
+/* The roll switch changes which experiment you are looking at, not how it is
+   laid out, so it reads as a heavier choice than the arrangement beside it. */
+.roll-switch[hidden] { display: none; }
+.roll-switch { border-color: var(--rebate-lit); }
+.roll-switch button.on { color: var(--deep); background: var(--pencil); }
+
 .leader-action,
 .tool {
   flex: 0 0 auto;

@@ -1,0 +1,50 @@
+{
+  "schemaVersion": 2,
+  "benchmarkId": "weekender-claude-v1",
+  "runId": "claude-opus-5-max-20260805T212919Z",
+  "status": "published",
+  "title": "Weekender",
+  "runner": {
+    "id": "claude",
+    "label": "Claude Code",
+    "version": "claude-code 2.1.222",
+    "exitCode": 0,
+    "effortApplied": true,
+    "turns": 83,
+    "failure": null
+  },
+  "model": "claude-opus-5",
+  "modelLabel": "Opus 5",
+  "effort": "max",
+  "effortLabel": "Max",
+  "recordedAt": "2026-08-05T22:03:48.669Z",
+  "durationMs": 2061385,
+  "codexVersion": null,
+  "codexExitCode": null,
+  "previewDirectory": "preview",
+  "promptSha256": "e520b27a68f9f6bb40970d3d86ad7e02b65c33c3e956f43cd5b313847d94ea5f",
+  "starterSha256": "eb37b56a2b1f81ac888d39edbfdc4b684b79882d3db94c0d9ddb4b0538f9457e",
+  "usage": {
+    "inputTokens": 11271622,
+    "cachedInputTokens": 11078658,
+    "outputTokens": 173732,
+    "reasoningOutputTokens": null
+  },
+  "costUsd": 11.812274000000002,
+  "codeStats": {
+    "sourceFiles": 27,
+    "sourceLines": 7584
+  },
+  "subscription": {
+    "planLabel": null,
+    "windowLabel": null,
+    "remainingBeforePercent": null,
+    "remainingAfterPercent": null,
+    "observedChangePercent": null
+  },
+  "verification": {
+    "buildSucceeded": true,
+    "screenshotsCaptured": true
+  },
+  "notes": "Captured without follow-up messages or manual repair."
+}
