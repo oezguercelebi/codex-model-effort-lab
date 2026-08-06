@@ -1,0 +1,557 @@
+{
+  "schemaVersion": 1,
+  "reviewBenchmarkId": "weekender-code-review-v1",
+  "targetRunId": "claude-sonnet-5-low-20260805T214037Z",
+  "reviewer": {
+    "model": "gpt-5.6-sol",
+    "effort": "xhigh",
+    "codexVersion": "codex-cli 0.147.0-alpha.1.2",
+    "durationMs": 297607,
+    "usage": {
+      "inputTokens": 244788,
+      "cachedInputTokens": 198912,
+      "outputTokens": 13915,
+      "reasoningOutputTokens": 10414
+    }
+  },
+  "deterministicChecks": {
+    "schemaVersion": 1,
+    "reviewBenchmarkId": "weekender-code-review-v1",
+    "generatedAt": "2026-08-06T08:32:27.471Z",
+    "dependencyDiff": {
+      "status": "pass",
+      "added": [],
+      "removed": [],
+      "changed": []
+    },
+    "source": {
+      "files": 6,
+      "nonEmptyLines": 618,
+      "remoteReferences": [],
+      "hashBefore": "3b1e9a8e4091c12c4bd0f250e97c84e2ae6561266b0159b3a728e403faafe397",
+      "hashAfter": "3b1e9a8e4091c12c4bd0f250e97c84e2ae6561266b0159b3a728e403faafe397",
+      "unchangedByChecks": true,
+      "productionAssetBytes": 273389
+    },
+    "commands": {
+      "npmCi": {
+        "status": "pass",
+        "exitCode": 0,
+        "timedOut": false,
+        "durationMs": 3484,
+        "output": "added 83 packages in 3s\n\n(node:22527) ExperimentalWarning: CommonJS module /opt/homebrew/lib/node_modules/npm/node_modules/debug/src/node.js is loading ES Module /opt/homebrew/lib/node_modules/npm/node_modules/supports-color/index.js using require().\nSupport for loading ES Module in require() is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)"
+      },
+      "npmRunCheck": {
+        "status": "pass",
+        "exitCode": 0,
+        "timedOut": false,
+        "durationMs": 5196,
+        "output": "> weekender-benchmark-starter@1.0.0 check\n> npm run typecheck && npm run build\n\n\n> weekender-benchmark-starter@1.0.0 typecheck\n> tsc --noEmit\n\n\n> weekender-benchmark-starter@1.0.0 build\n> tsc --noEmit && vite build\n\nvite v6.4.3 building for production...\ntransforming...\n✓ 1787 modules transformed.\nrendering chunks...\ncomputing gzip size...\ndist/index.html                   0.48 kB │ gzip:  0.30 kB\ndist/assets/index-KD6_1MGV.css   55.90 kB │ gzip: 10.70 kB\ndist/assets/index-R14jRu9o.js   217.01 kB │ gzip: 67.32 kB\n✓ built in 1.72s"
+      }
+    },
+    "browser": {
+      "browserVersion": "151.0.7922.76",
+      "desktop": {
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "checks": [
+          {
+            "id": "multiple-destinations",
+            "status": "pass",
+            "evidence": "4 destination/article regions and 4 visible headings detected."
+          },
+          {
+            "id": "expected-budget",
+            "status": "pass",
+            "evidence": "4 monetary values detected; budget wording absent."
+          },
+          {
+            "id": "travel-time",
+            "status": "pass",
+            "evidence": "4 travel-time signals detected."
+          },
+          {
+            "id": "vote-interaction",
+            "status": "pass",
+            "evidence": "button \"Vote\" changed visible text or control state."
+          },
+          {
+            "id": "winner-itinerary",
+            "status": "pass",
+            "evidence": "Winner or itinerary content was visible or reachable. 0 visible itinerary regions detected."
+          },
+          {
+            "id": "no-sign-in-or-backend",
+            "status": "pass",
+            "evidence": "0 password fields; 995 visible text characters."
+          },
+          {
+            "id": "horizontal-overflow",
+            "status": "pass",
+            "evidence": "0px document-level horizontal overflow."
+          },
+          {
+            "id": "accessible-controls-and-keyboard",
+            "status": "pass",
+            "evidence": "0 enabled controls lacked a detectable name; 6 unique controls received focus across 12 Tab presses."
+          },
+          {
+            "id": "uncaught-browser-errors",
+            "status": "pass",
+            "evidence": "0 console errors and 0 page errors."
+          }
+        ],
+        "evidence": {
+          "headings": [
+            "Big Sur",
+            "Lake Tahoe",
+            "Asheville",
+            "Santa Fe"
+          ],
+          "controls": [
+            {
+              "index": 0,
+              "tag": "button",
+              "name": "Compare",
+              "disabled": false
+            },
+            {
+              "index": 1,
+              "tag": "button",
+              "name": "Itinerary",
+              "disabled": false
+            },
+            {
+              "index": 2,
+              "tag": "button",
+              "name": "View itinerary",
+              "disabled": false
+            },
+            {
+              "index": 3,
+              "tag": "button",
+              "name": "Vote",
+              "disabled": false
+            },
+            {
+              "index": 4,
+              "tag": "button",
+              "name": "Preview itinerary",
+              "disabled": false
+            },
+            {
+              "index": 5,
+              "tag": "button",
+              "name": "Vote",
+              "disabled": false
+            },
+            {
+              "index": 6,
+              "tag": "button",
+              "name": "Preview itinerary",
+              "disabled": false
+            },
+            {
+              "index": 7,
+              "tag": "button",
+              "name": "Vote",
+              "disabled": false
+            },
+            {
+              "index": 8,
+              "tag": "button",
+              "name": "Preview itinerary",
+              "disabled": false
+            },
+            {
+              "index": 9,
+              "tag": "button",
+              "name": "Vote",
+              "disabled": false
+            },
+            {
+              "index": 10,
+              "tag": "button",
+              "name": "Preview itinerary",
+              "disabled": false
+            }
+          ],
+          "keyboardTargets": [
+            "button:Preview itinerary",
+            "button:Vote",
+            "button:Compare",
+            "button:Itinerary",
+            "button:View itinerary",
+            "button:Voted"
+          ],
+          "consoleErrors": [],
+          "pageErrors": [],
+          "externalRequests": []
+        }
+      },
+      "mobile": {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "checks": [
+          {
+            "id": "multiple-destinations",
+            "status": "pass",
+            "evidence": "4 destination/article regions and 4 visible headings detected."
+          },
+          {
+            "id": "expected-budget",
+            "status": "pass",
+            "evidence": "4 monetary values detected; budget wording absent."
+          },
+          {
+            "id": "travel-time",
+            "status": "pass",
+            "evidence": "4 travel-time signals detected."
+          },
+          {
+            "id": "vote-interaction",
+            "status": "pass",
+            "evidence": "button \"Vote\" changed visible text or control state."
+          },
+          {
+            "id": "winner-itinerary",
+            "status": "pass",
+            "evidence": "Winner or itinerary content was visible or reachable. 0 visible itinerary regions detected."
+          },
+          {
+            "id": "no-sign-in-or-backend",
+            "status": "pass",
+            "evidence": "0 password fields; 995 visible text characters."
+          },
+          {
+            "id": "horizontal-overflow",
+            "status": "pass",
+            "evidence": "0px document-level horizontal overflow."
+          },
+          {
+            "id": "accessible-controls-and-keyboard",
+            "status": "pass",
+            "evidence": "0 enabled controls lacked a detectable name; 6 unique controls received focus across 12 Tab presses."
+          },
+          {
+            "id": "uncaught-browser-errors",
+            "status": "pass",
+            "evidence": "0 console errors and 0 page errors."
+          }
+        ],
+        "evidence": {
+          "headings": [
+            "Big Sur",
+            "Lake Tahoe",
+            "Asheville",
+            "Santa Fe"
+          ],
+          "controls": [
+            {
+              "index": 0,
+              "tag": "button",
+              "name": "Compare",
+              "disabled": false
+            },
+            {
+              "index": 1,
+              "tag": "button",
+              "name": "Itinerary",
+              "disabled": false
+            },
+            {
+              "index": 2,
+              "tag": "button",
+              "name": "View itinerary",
+              "disabled": false
+            },
+            {
+              "index": 3,
+              "tag": "button",
+              "name": "Vote",
+              "disabled": false
+            },
+            {
+              "index": 4,
+              "tag": "button",
+              "name": "Preview itinerary",
+              "disabled": false
+            },
+            {
+              "index": 5,
+              "tag": "button",
+              "name": "Vote",
+              "disabled": false
+            },
+            {
+              "index": 6,
+              "tag": "button",
+              "name": "Preview itinerary",
+              "disabled": false
+            },
+            {
+              "index": 7,
+              "tag": "button",
+              "name": "Vote",
+              "disabled": false
+            },
+            {
+              "index": 8,
+              "tag": "button",
+              "name": "Preview itinerary",
+              "disabled": false
+            },
+            {
+              "index": 9,
+              "tag": "button",
+              "name": "Vote",
+              "disabled": false
+            },
+            {
+              "index": 10,
+              "tag": "button",
+              "name": "Preview itinerary",
+              "disabled": false
+            }
+          ],
+          "keyboardTargets": [
+            "button:Preview itinerary",
+            "button:Vote",
+            "button:Compare",
+            "button:Itinerary",
+            "button:View itinerary",
+            "button:Voted"
+          ],
+          "consoleErrors": [],
+          "pageErrors": [],
+          "externalRequests": []
+        }
+      }
+    },
+    "guardrailFacts": {
+      "npmRunCheckFailed": false,
+      "corePathUnusable": false,
+      "corePathDefinition": "npm run check failed, or at least two core acceptance items failed at both viewports."
+    }
+  },
+  "findings": [
+    {
+      "severity": "medium",
+      "category": "correctness",
+      "title": "Travel comparisons use mutually incompatible origins",
+      "file": "source/src/data.ts",
+      "lineStart": 133,
+      "lineEnd": 142,
+      "evidence": "Asheville, North Carolina is presented as a 95-mile, 2-hour drive, while Big Sur and Lake Tahoe in California are respectively presented as 145-mile/3.5-hour and 120-mile/3-hour drives (source/src/data.ts:47-55 and 91-99). No differing origin is disclosed, so these values cannot describe comparable trips for one group.",
+      "impact": "Travel time and distance are core decision criteria, but users cannot meaningfully compare values calculated from incompatible or unstated starting points.",
+      "remediation": "Define and display one group departure location, then recalculate every destination's distance, travel time, and mode from that origin."
+    },
+    {
+      "severity": "medium",
+      "category": "reliability",
+      "title": "Participation count sums ballots instead of unique voters",
+      "file": "source/src/App.tsx",
+      "lineStart": 40,
+      "lineEnd": 41,
+      "evidence": "The displayed numerator sums every destination array length. The seed assigns Mia to both Big Sur and Asheville (source/src/App.tsx:21-26), producing \"6 of 6 voted\" even though only five distinct friends voted and You did not. Casting the current user's first vote raises the display to \"7 of 6 voted.\"",
+      "impact": "The prominent voting status immediately contradicts the underlying participants and can exceed its denominator during the normal voting path.",
+      "remediation": "Derive the numerator from a Set of voter IDs, or enforce one destination per voter in the seed and state model before counting."
+    },
+    {
+      "severity": "medium",
+      "category": "reliability",
+      "title": "Ties are silently presented as a single winner",
+      "file": "source/src/App.tsx",
+      "lineStart": 35,
+      "lineEnd": 39,
+      "evidence": "Winner selection always takes ranked[0] without checking whether multiple destinations share the maximum. Initially Big Sur has three votes and Lake Tahoe two; voting for Lake Tahoe creates a 3–3 tie, but stable ordering leaves Big Sur first and the UI still calls it \"Current favorite,\" \"Leading,\" and \"Group favorite\" (source/src/App.tsx:151-173 and 295-300).",
+      "impact": "A reachable vote state misrepresents a tie as a definitive outcome, undermining the core group-choice result.",
+      "remediation": "Compute all destinations at the maximum vote count and render a tie state, or expose an explicit deterministic tie-breaking rule."
+    },
+    {
+      "severity": "medium",
+      "category": "accessibility",
+      "title": "Destination header text has insufficient contrast over light gradient starts",
+      "file": "source/src/App.tsx",
+      "lineStart": 181,
+      "lineEnd": 188,
+      "evidence": "The shared card header places small `text-white/80` region text and white destination names directly over each gradient without an overlay. The configured starts are Tailwind emerald-500, sky-500, orange-500, and amber-500 (source/src/data.ts:51,95,137,179); opaque white at those light edges is approximately 2.15:1–2.80:1, and 80%-opacity white is lower.",
+      "impact": "Region labels and destination names are repeatedly difficult to read for users with low vision; the small region text is especially affected on every comparison card.",
+      "remediation": "Use darker gradient stops or add a consistent dark overlay behind text, then verify at least 4.5:1 for small text and 3:1 for large text."
+    },
+    {
+      "severity": "low",
+      "category": "accessibility",
+      "title": "Repeated card actions omit destination context from their names",
+      "file": "source/src/App.tsx",
+      "lineStart": 245,
+      "lineEnd": 263,
+      "evidence": "Every mapped card exposes actions named only \"Vote\"/\"Voted\" and \"Preview itinerary.\" The deterministic control inventory likewise records four identically named Vote buttons and four identically named Preview itinerary buttons.",
+      "impact": "Screen-reader users navigating a control list cannot determine which destination each action affects without returning to surrounding content.",
+      "remediation": "Give each action a destination-specific accessible name, such as `Vote for Big Sur` and `Preview Big Sur itinerary`, while retaining the concise visible label."
+    },
+    {
+      "severity": "low",
+      "category": "accessibility",
+      "title": "The comparison view has no top-level heading",
+      "file": "source/src/App.tsx",
+      "lineStart": 187,
+      "lineEnd": 188,
+      "evidence": "Destination names begin the comparison view's heading structure at h2. CompareView contains no h1, while the brand and current-favorite labels are paragraphs (source/src/App.tsx:70-71 and 151-152); only the separate itinerary view supplies an h1 at line 303.",
+      "impact": "Heading navigation does not provide a page-level subject for the app's primary comparison screen, reducing orientation for assistive-technology users.",
+      "remediation": "Add a descriptive h1 to the comparison view and keep destination headings beneath it."
+    }
+  ],
+  "categories": [
+    {
+      "id": "correctness",
+      "label": "Brief fidelity and functional correctness",
+      "score": 2,
+      "weight": 30,
+      "evidence": [
+        "The deterministic desktop and mobile checks found four destination articles, four budgets, four travel-time signals, an interactive vote, and a reachable itinerary with no sign-in or backend requirement.",
+        "source/src/App.tsx:169-268 renders comparable destination cards, while source/src/data.ts:45-216 supplies four complete three-day itineraries.",
+        "The travel-time and distance dataset lacks a coherent shared origin, making one core comparison dimension misleading."
+      ],
+      "findingCounts": {
+        "critical": 0,
+        "high": 0,
+        "medium": 1,
+        "low": 0,
+        "note": 0
+      }
+    },
+    {
+      "id": "reliability",
+      "label": "Reliability and state integrity",
+      "score": 1,
+      "weight": 15,
+      "evidence": [
+        "source/src/App.tsx:43-54 uses a functional state update and removes the current user's prior vote before adding another, preventing duplicate current-user selections.",
+        "source/src/App.tsx:35-41 derives ranking and summary values from vote state rather than storing redundant winner state.",
+        "The unique-voter total and tied-winner states are both incorrect under reachable interactions."
+      ],
+      "findingCounts": {
+        "critical": 0,
+        "high": 0,
+        "medium": 2,
+        "low": 0,
+        "note": 0
+      }
+    },
+    {
+      "id": "accessibility",
+      "label": "Accessibility",
+      "score": 2,
+      "weight": 15,
+      "evidence": [
+        "source/index.html:2 declares the document language, and the interface uses semantic main, nav, article, button, list, and heading elements.",
+        "Deterministic checks found zero enabled controls without detectable names and reached six unique native-button targets by keyboard at both viewports.",
+        "Repeated generic card action names, the missing comparison h1, and low-contrast gradient text remain source-confirmed barriers."
+      ],
+      "findingCounts": {
+        "critical": 0,
+        "high": 0,
+        "medium": 1,
+        "low": 2,
+        "note": 0
+      }
+    },
+    {
+      "id": "maintainability",
+      "label": "Maintainability and code clarity",
+      "score": 4,
+      "weight": 15,
+      "evidence": [
+        "source/src/data.ts:1-34 defines explicit domain types and keeps sample data separate from rendering behavior.",
+        "source/src/App.tsx:126-378 divides comparison, itinerary, and stat rendering into coherent components with typed props.",
+        "No material maintainability defect was found; state ownership and derived values are localized and understandable."
+      ],
+      "findingCounts": {
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "note": 0
+      }
+    },
+    {
+      "id": "security",
+      "label": "Security, privacy, and dependency compliance",
+      "score": 4,
+      "weight": 10,
+      "evidence": [
+        "The dependency comparison passed with no added, removed, or changed packages; source/package.json:12-24 contains only the frozen React, Lucide, Vite, TypeScript, and Tailwind dependencies.",
+        "The supplied checks found no remote references or external browser requests, and source/src/App.tsx renders fixed local data through React interpolation without unsafe HTML, URLs, credential fields, or data collection.",
+        "No material security, privacy, external-service, or dependency-compliance issue was found."
+      ],
+      "findingCounts": {
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "note": 0
+      }
+    },
+    {
+      "id": "performance",
+      "label": "Performance and responsive robustness",
+      "score": 4,
+      "weight": 10,
+      "evidence": [
+        "Both deterministic viewports reported 0px document-level horizontal overflow and no browser errors.",
+        "The production output was 273,389 bytes total; the recorded main assets were 217.01 kB JavaScript and 55.90 kB CSS before gzip, with no remote media or runtime requests.",
+        "source/src/App.tsx:169 uses a responsive one/two-column grid and source/src/App.tsx:307 uses a two/four-column itinerary stat grid; no material performance or responsive robustness issue was found."
+      ],
+      "findingCounts": {
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "note": 0
+      }
+    },
+    {
+      "id": "verification",
+      "label": "Verification readiness",
+      "score": 4,
+      "weight": 5,
+      "evidence": [
+        "The supplied `npm run check` completed successfully with exit code 0, including strict TypeScript checking and a production Vite build; source/package.json:6-10 defines the relevant scripts and source/tsconfig.json:10 enables strict mode.",
+        "Deterministic checks passed all nine acceptance items at both 1440×900 and 390×844, with zero console or page errors.",
+        "The itinerary heuristic recorded zero initially visible itinerary regions while passing reachability; source/src/App.tsx:160-165 and 258-263 independently confirms direct named paths to the rendered itinerary. No material verification-readiness defect was found."
+      ],
+      "findingCounts": {
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "note": 0
+      }
+    }
+  ],
+  "rawWeightedScore": 66.25,
+  "capsApplied": [],
+  "totalScore": 66.25,
+  "strengths": [
+    "All defined desktop and mobile acceptance checks passed, including voting, itinerary reachability, keyboard operation, responsive overflow, and error monitoring.",
+    "Four destinations include per-person budgets, travel modes and times, weather, highlights, and complete Friday-through-Sunday plans using only local data.",
+    "Voting uses immutable functional updates and derives the current ranking from state instead of maintaining a second mutable winner value.",
+    "Typed data models and distinct comparison and itinerary components make the principal product paths easy to trace.",
+    "The build passes strict type checking, adds no dependencies or external services, and produces modest self-contained assets."
+  ],
+  "risks": [
+    "Normal voting can display more voters than exist because ballot entries, not unique people, are counted.",
+    "A reachable 3–3 tie is labeled as an uncontested Big Sur win.",
+    "Unstated and incompatible departure origins make travel figures misleading across destinations.",
+    "Light gradient headers create repeated contrast failures for destination-identifying text.",
+    "Screen-reader orientation is weakened by generic repeated actions and the comparison view's missing h1."
+  ],
+  "recommendation": "Correct vote aggregation and tie handling first, then normalize travel data around a disclosed origin. Address gradient contrast and destination-specific accessible labels before release; the build, dependency compliance, core itinerary flow, and responsive implementation are otherwise solid.",
+  "reviewStatus": "frozen",
+  "reviewedAt": "2026-08-06T08:37:25.150Z"
+}

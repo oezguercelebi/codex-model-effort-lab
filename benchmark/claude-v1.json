@@ -24,7 +24,8 @@
     "Results are not comparable run-for-run with the Codex roll: different harness, different tool surface, different system prompt. The comparison this roll supports is within itself, across model and effort.",
     "Fable 5's Light and Medium runs were captured first; High, Extra High and Max were captured in a later sitting on the same frozen prompt and starter.",
     "Haiku 4.5 has no effort parameter, so it is recorded off the effort axis as a cost floor rather than assigned a level it never had.",
-    "Claude bills thinking inside output tokens and does not report it separately, so reasoning tokens are null for every run in this roll."
+    "Claude bills thinking inside output tokens and does not report it separately, so reasoning tokens are null for every run in this roll.",
+    "Reviews use the same frozen instrument as the Codex roll (GPT-5.6 Sol at Extra High, blinded to the builder), but ran on a newer Codex CLI \u2014 0.147.0-alpha vs 0.144.2. The reviewer model and effort are identical; the harness build is not."
   ],
   "configurations": [
     {

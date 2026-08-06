@@ -23,10 +23,11 @@ const severitySet = new Set(reviewBenchmark.severityLevels)
 const codeExtensions = new Set([".css", ".html", ".js", ".jsx", ".ts", ".tsx"])
 
 function parseArgs(argv) {
-  const options = { calibration: false, checksOnly: false, publish: false, recheckPublished: false }
+  const options = { calibration: false, checksOnly: false, publish: false, recheckPublished: false, resume: false }
   for (let index = 0; index < argv.length; index += 1) {
     const argument = argv[index]
     if (argument === "--calibration") options.calibration = true
+    else if (argument === "--resume") options.resume = true
     else if (argument === "--checks-only") options.checksOnly = true
     else if (argument === "--publish") options.publish = true
     else if (argument === "--recheck-published") options.recheckPublished = true
@@ -825,7 +826,7 @@ if (options.recheckPublished && (!options.runId || options.publish || options.ca
 if (options.publish && reviewBenchmark.status !== "frozen") throw new Error("The review benchmark must be frozen before publishing reviews")
 
 const availableRuns = await findRuns()
-const selectedRunIds = options.calibration
+let selectedRunIds = options.calibration
   ? calibration.runs
   : options.effort
     ? [...availableRuns.values()]
@@ -836,9 +837,24 @@ const selectedRunIds = options.calibration
 if (!selectedRunIds.length) throw new Error(`No captured runs match effort ${options.effort}`)
 for (const runId of selectedRunIds) if (!availableRuns.has(runId)) throw new Error(`Run not found: ${runId}`)
 if (options.publish) {
+  // A frozen review is never overwritten. --resume turns that from an abort
+  // into a skip, so a session interrupted partway — by a reviewer usage limit,
+  // say — can be continued without re-reviewing what already landed.
+  const reviewed = []
   for (const runId of selectedRunIds) {
     const reviewFile = path.join(availableRuns.get(runId).directory, "code-review.json")
-    if (await exists(reviewFile)) throw new Error(`A frozen review already exists for ${runId}; refusing to overwrite it`)
+    if (await exists(reviewFile)) reviewed.push(runId)
+  }
+  if (reviewed.length && !options.resume) {
+    throw new Error(`A frozen review already exists for ${reviewed.join(", ")}; refusing to overwrite it`)
+  }
+  if (reviewed.length) {
+    for (const runId of reviewed) process.stdout.write(`skip ${runId} (already reviewed)\n`)
+    selectedRunIds = selectedRunIds.filter((runId) => !reviewed.includes(runId))
+    if (!selectedRunIds.length) {
+      process.stdout.write("Every run in this selection is already reviewed.\n")
+      process.exit(0)
+    }
   }
 }
 const seed = options.seed ?? (options.calibration ? calibration.seed : options.effort ? `${reviewBenchmark.id}-${options.effort}` : `single-${options.runId}`)

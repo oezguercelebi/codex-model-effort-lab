@@ -1,0 +1,723 @@
+{
+  "schemaVersion": 1,
+  "reviewBenchmarkId": "weekender-code-review-v1",
+  "targetRunId": "claude-fable-5-low-20260805T204525Z",
+  "reviewer": {
+    "model": "gpt-5.6-sol",
+    "effort": "xhigh",
+    "codexVersion": "codex-cli 0.147.0-alpha.1.2",
+    "durationMs": 419385,
+    "usage": {
+      "inputTokens": 279885,
+      "cachedInputTokens": 226560,
+      "outputTokens": 13351,
+      "reasoningOutputTokens": 10102
+    }
+  },
+  "deterministicChecks": {
+    "schemaVersion": 1,
+    "reviewBenchmarkId": "weekender-code-review-v1",
+    "generatedAt": "2026-08-06T08:37:35.543Z",
+    "dependencyDiff": {
+      "status": "pass",
+      "added": [],
+      "removed": [],
+      "changed": []
+    },
+    "source": {
+      "files": 6,
+      "nonEmptyLines": 1110,
+      "remoteReferences": [],
+      "hashBefore": "79da2d7162d50741827499d253f8ab8cf1c0da4594ff6f67353b06d9b67ab89b",
+      "hashAfter": "79da2d7162d50741827499d253f8ab8cf1c0da4594ff6f67353b06d9b67ab89b",
+      "unchangedByChecks": true,
+      "productionAssetBytes": 309332
+    },
+    "commands": {
+      "npmCi": {
+        "status": "pass",
+        "exitCode": 0,
+        "timedOut": false,
+        "durationMs": 2038,
+        "output": "added 83 packages in 2s\n\n(node:32984) ExperimentalWarning: CommonJS module /opt/homebrew/lib/node_modules/npm/node_modules/debug/src/node.js is loading ES Module /opt/homebrew/lib/node_modules/npm/node_modules/supports-color/index.js using require().\nSupport for loading ES Module in require() is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)"
+      },
+      "npmRunCheck": {
+        "status": "pass",
+        "exitCode": 0,
+        "timedOut": false,
+        "durationMs": 5574,
+        "output": "> weekender-benchmark-starter@1.0.0 check\n> npm run typecheck && npm run build\n\n\n> weekender-benchmark-starter@1.0.0 typecheck\n> tsc --noEmit\n\n\n> weekender-benchmark-starter@1.0.0 build\n> tsc --noEmit && vite build\n\nvite v6.4.3 building for production...\ntransforming...\n✓ 1787 modules transformed.\nrendering chunks...\ncomputing gzip size...\ndist/index.html                   0.48 kB │ gzip:  0.30 kB\ndist/assets/index-BWKfSMTV.css   66.53 kB │ gzip: 11.89 kB\ndist/assets/index-hZTHeFR2.js   242.33 kB │ gzip: 74.79 kB\n✓ built in 1.72s"
+      }
+    },
+    "browser": {
+      "browserVersion": "151.0.7922.76",
+      "desktop": {
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "checks": [
+          {
+            "id": "multiple-destinations",
+            "status": "pass",
+            "evidence": "6 destination/article regions and 8 visible headings detected."
+          },
+          {
+            "id": "expected-budget",
+            "status": "pass",
+            "evidence": "6 monetary values detected; budget wording present."
+          },
+          {
+            "id": "travel-time",
+            "status": "pass",
+            "evidence": "7 travel-time signals detected."
+          },
+          {
+            "id": "vote-interaction",
+            "status": "pass",
+            "evidence": "button \"Vote\" changed visible text or control state."
+          },
+          {
+            "id": "winner-itinerary",
+            "status": "pass",
+            "evidence": "Winner or itinerary content was visible or reachable. 0 visible itinerary regions detected."
+          },
+          {
+            "id": "no-sign-in-or-backend",
+            "status": "pass",
+            "evidence": "0 password fields; 1356 visible text characters."
+          },
+          {
+            "id": "horizontal-overflow",
+            "status": "pass",
+            "evidence": "0px document-level horizontal overflow."
+          },
+          {
+            "id": "accessible-controls-and-keyboard",
+            "status": "pass",
+            "evidence": "0 enabled controls lacked a detectable name; 7 unique controls received focus across 12 Tab presses."
+          },
+          {
+            "id": "uncaught-browser-errors",
+            "status": "pass",
+            "evidence": "0 console errors and 0 page errors."
+          }
+        ],
+        "evidence": {
+          "headings": [
+            "Weekender",
+            "Where are we going this September?",
+            "Lisbon",
+            "Barcelona",
+            "Amalfi Coast",
+            "Interlaken",
+            "Copenhagen",
+            "Prague"
+          ],
+          "controls": [
+            {
+              "index": 0,
+              "tag": "button",
+              "name": "Explore",
+              "disabled": false
+            },
+            {
+              "index": 1,
+              "tag": "button",
+              "name": "Votes",
+              "disabled": false
+            },
+            {
+              "index": 2,
+              "tag": "button",
+              "name": "Itinerary",
+              "disabled": false
+            },
+            {
+              "index": 3,
+              "tag": "button",
+              "name": "See standings",
+              "disabled": false
+            },
+            {
+              "index": 4,
+              "tag": "button",
+              "name": "All",
+              "disabled": false
+            },
+            {
+              "index": 5,
+              "tag": "button",
+              "name": "Beach",
+              "disabled": false
+            },
+            {
+              "index": 6,
+              "tag": "button",
+              "name": "City",
+              "disabled": false
+            },
+            {
+              "index": 7,
+              "tag": "button",
+              "name": "Mountains",
+              "disabled": false
+            },
+            {
+              "index": 8,
+              "tag": "button",
+              "name": "Food & Wine",
+              "disabled": false
+            },
+            {
+              "index": 9,
+              "tag": "button",
+              "name": "Nightlife",
+              "disabled": false
+            },
+            {
+              "index": 10,
+              "tag": "button",
+              "name": "Outdoors",
+              "disabled": false
+            },
+            {
+              "index": 11,
+              "tag": "button",
+              "name": "Culture",
+              "disabled": false
+            },
+            {
+              "index": 12,
+              "tag": "select",
+              "name": "Most votesLowest budgetShortest travelHighest rated",
+              "disabled": false
+            },
+            {
+              "index": 13,
+              "tag": "button",
+              "name": "🌅 LeadingLisbon PortugalSun-drenched hills, pastéis and Atlantic viewsCityFood & WineBeach Budget€470 Travel3h Sept27°C",
+              "disabled": false
+            },
+            {
+              "index": 14,
+              "tag": "button",
+              "name": "Vote",
+              "disabled": false
+            },
+            {
+              "index": 15,
+              "tag": "button",
+              "name": "🏖️Barcelona SpainGaudí by day, vermut by nightCityBeachNightlifeCulture Budget€550 Travel2h 30m Sept29°C",
+              "disabled": false
+            },
+            {
+              "index": 16,
+              "tag": "button",
+              "name": "Vote",
+              "disabled": false
+            },
+            {
+              "index": 17,
+              "tag": "button",
+              "name": "🍋Amalfi Coast ItalyCliffside villages, lemon groves, la dolce vitaBeachFood & WineOutdoors Budget€780 Travel6h Sept30°C",
+              "disabled": false
+            },
+            {
+              "index": 18,
+              "tag": "button",
+              "name": "Vote",
+              "disabled": false
+            },
+            {
+              "index": 19,
+              "tag": "button",
+              "name": "🏔️Interlaken SwitzerlandTwo lakes, big peaks, bigger adrenalineMountainsOutdoors Budget€630 Travel5h 30m Sept19°C",
+              "disabled": false
+            },
+            {
+              "index": 20,
+              "tag": "button",
+              "name": "Vote",
+              "disabled": false
+            },
+            {
+              "index": 21,
+              "tag": "button",
+              "name": "🚲Copenhagen DenmarkBikes, harbour swims and world-class pastriesCityFood & WineCulture Budget€580 Travel1h 30m Sept21°C",
+              "disabled": false
+            },
+            {
+              "index": 22,
+              "tag": "button",
+              "name": "Vote",
+              "disabled": false
+            },
+            {
+              "index": 23,
+              "tag": "button",
+              "name": "🏰Prague CzechiaGothic spires and the best beer money barely buysCityNightlifeCulture Budget€325 Travel4h Sept23°C",
+              "disabled": false
+            },
+            {
+              "index": 24,
+              "tag": "button",
+              "name": "Vote",
+              "disabled": false
+            }
+          ],
+          "keyboardTargets": [
+            "button:🏖️Barcelona SpainGaudí by day, vermut by nightCityBeachNightlifeCulture Budget€",
+            "button:Vote",
+            "button:🍋Amalfi Coast ItalyCliffside villages, lemon groves, la dolce vitaBeachFood & W",
+            "button:🏔️Interlaken SwitzerlandTwo lakes, big peaks, bigger adrenalineMountainsOutdoor",
+            "button:🚲Copenhagen DenmarkBikes, harbour swims and world-class pastriesCityFood & Wine",
+            "button:🏰Prague CzechiaGothic spires and the best beer money barely buysCityNightlifeCu",
+            "button:Explore"
+          ],
+          "consoleErrors": [],
+          "pageErrors": [],
+          "externalRequests": []
+        }
+      },
+      "mobile": {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "checks": [
+          {
+            "id": "multiple-destinations",
+            "status": "pass",
+            "evidence": "6 destination/article regions and 8 visible headings detected."
+          },
+          {
+            "id": "expected-budget",
+            "status": "pass",
+            "evidence": "6 monetary values detected; budget wording present."
+          },
+          {
+            "id": "travel-time",
+            "status": "pass",
+            "evidence": "7 travel-time signals detected."
+          },
+          {
+            "id": "vote-interaction",
+            "status": "pass",
+            "evidence": "button \"Vote\" changed visible text or control state."
+          },
+          {
+            "id": "winner-itinerary",
+            "status": "pass",
+            "evidence": "Winner or itinerary content was visible or reachable. 0 visible itinerary regions detected."
+          },
+          {
+            "id": "no-sign-in-or-backend",
+            "status": "pass",
+            "evidence": "0 password fields; 1317 visible text characters."
+          },
+          {
+            "id": "horizontal-overflow",
+            "status": "pass",
+            "evidence": "0px document-level horizontal overflow."
+          },
+          {
+            "id": "accessible-controls-and-keyboard",
+            "status": "pass",
+            "evidence": "0 enabled controls lacked a detectable name; 8 unique controls received focus across 12 Tab presses."
+          },
+          {
+            "id": "uncaught-browser-errors",
+            "status": "pass",
+            "evidence": "0 console errors and 0 page errors."
+          }
+        ],
+        "evidence": {
+          "headings": [
+            "Weekender",
+            "Where are we going this September?",
+            "Lisbon",
+            "Barcelona",
+            "Amalfi Coast",
+            "Interlaken",
+            "Copenhagen",
+            "Prague"
+          ],
+          "controls": [
+            {
+              "index": 0,
+              "tag": "button",
+              "name": "See standings",
+              "disabled": false
+            },
+            {
+              "index": 1,
+              "tag": "button",
+              "name": "All",
+              "disabled": false
+            },
+            {
+              "index": 2,
+              "tag": "button",
+              "name": "Beach",
+              "disabled": false
+            },
+            {
+              "index": 3,
+              "tag": "button",
+              "name": "City",
+              "disabled": false
+            },
+            {
+              "index": 4,
+              "tag": "button",
+              "name": "Mountains",
+              "disabled": false
+            },
+            {
+              "index": 5,
+              "tag": "button",
+              "name": "Food & Wine",
+              "disabled": false
+            },
+            {
+              "index": 6,
+              "tag": "button",
+              "name": "Nightlife",
+              "disabled": false
+            },
+            {
+              "index": 7,
+              "tag": "button",
+              "name": "Outdoors",
+              "disabled": false
+            },
+            {
+              "index": 8,
+              "tag": "button",
+              "name": "Culture",
+              "disabled": false
+            },
+            {
+              "index": 9,
+              "tag": "select",
+              "name": "Most votesLowest budgetShortest travelHighest rated",
+              "disabled": false
+            },
+            {
+              "index": 10,
+              "tag": "button",
+              "name": "🌅 LeadingLisbon PortugalSun-drenched hills, pastéis and Atlantic viewsCityFood & WineBeach Budget€470 Travel3h Sept27°C",
+              "disabled": false
+            },
+            {
+              "index": 11,
+              "tag": "button",
+              "name": "Vote",
+              "disabled": false
+            },
+            {
+              "index": 12,
+              "tag": "button",
+              "name": "🏖️Barcelona SpainGaudí by day, vermut by nightCityBeachNightlifeCulture Budget€550 Travel2h 30m Sept29°C",
+              "disabled": false
+            },
+            {
+              "index": 13,
+              "tag": "button",
+              "name": "Vote",
+              "disabled": false
+            },
+            {
+              "index": 14,
+              "tag": "button",
+              "name": "🍋Amalfi Coast ItalyCliffside villages, lemon groves, la dolce vitaBeachFood & WineOutdoors Budget€780 Travel6h Sept30°C",
+              "disabled": false
+            },
+            {
+              "index": 15,
+              "tag": "button",
+              "name": "Vote",
+              "disabled": false
+            },
+            {
+              "index": 16,
+              "tag": "button",
+              "name": "🏔️Interlaken SwitzerlandTwo lakes, big peaks, bigger adrenalineMountainsOutdoors Budget€630 Travel5h 30m Sept19°C",
+              "disabled": false
+            },
+            {
+              "index": 17,
+              "tag": "button",
+              "name": "Vote",
+              "disabled": false
+            },
+            {
+              "index": 18,
+              "tag": "button",
+              "name": "🚲Copenhagen DenmarkBikes, harbour swims and world-class pastriesCityFood & WineCulture Budget€580 Travel1h 30m Sept21°C",
+              "disabled": false
+            },
+            {
+              "index": 19,
+              "tag": "button",
+              "name": "Vote",
+              "disabled": false
+            },
+            {
+              "index": 20,
+              "tag": "button",
+              "name": "🏰Prague CzechiaGothic spires and the best beer money barely buysCityNightlifeCulture Budget€325 Travel4h Sept23°C",
+              "disabled": false
+            },
+            {
+              "index": 21,
+              "tag": "button",
+              "name": "Vote",
+              "disabled": false
+            },
+            {
+              "index": 22,
+              "tag": "button",
+              "name": "Explore",
+              "disabled": false
+            },
+            {
+              "index": 23,
+              "tag": "button",
+              "name": "Votes",
+              "disabled": false
+            },
+            {
+              "index": 24,
+              "tag": "button",
+              "name": "Itinerary",
+              "disabled": false
+            }
+          ],
+          "keyboardTargets": [
+            "button:🏖️Barcelona SpainGaudí by day, vermut by nightCityBeachNightlifeCulture Budget€",
+            "button:Vote",
+            "button:🍋Amalfi Coast ItalyCliffside villages, lemon groves, la dolce vitaBeachFood & W",
+            "button:🏔️Interlaken SwitzerlandTwo lakes, big peaks, bigger adrenalineMountainsOutdoor",
+            "button:🚲Copenhagen DenmarkBikes, harbour swims and world-class pastriesCityFood & Wine",
+            "button:🏰Prague CzechiaGothic spires and the best beer money barely buysCityNightlifeCu",
+            "button:Explore",
+            "button:Votes"
+          ],
+          "consoleErrors": [],
+          "pageErrors": [],
+          "externalRequests": []
+        }
+      }
+    },
+    "guardrailFacts": {
+      "npmRunCheckFailed": false,
+      "corePathUnusable": false,
+      "corePathDefinition": "npm run check failed, or at least two core acceptance items failed at both viewports."
+    }
+  },
+  "findings": [
+    {
+      "severity": "medium",
+      "category": "reliability",
+      "title": "Persisted duplicate destination IDs can corrupt vote totals and the winner",
+      "file": "source/src/App.tsx",
+      "lineStart": 47,
+      "lineEnd": 51,
+      "evidence": "loadMyVotes validates ID types and existence but slices without deduplicating. Later, source/src/App.tsx:125-131 counts every array entry while voter display uses includes(). Preloading weekender.myVotes.v1 with [\"lisbon\",\"lisbon\"] therefore consumes both available votes, adds two votes to Lisbon, and displays the user only once.",
+      "impact": "Malformed or stale device state can contradict the one-person/one-destination voting model and incorrectly change the winning itinerary.",
+      "remediation": "Deduplicate validated IDs, for example with Set, before applying MAX_VOTES."
+    },
+    {
+      "severity": "medium",
+      "category": "accessibility",
+      "title": "The destination dialog leaves keyboard focus in the obscured page",
+      "file": "source/src/App.tsx",
+      "lineStart": 109,
+      "lineEnd": 118,
+      "evidence": "The selected-dialog effect only installs Escape handling and locks body scrolling. It does not move focus, make the background inert, trap focus, or restore the opener. The dialog at source/src/App.tsx:556-565 also has no programmatically focused target; after keyboard-opening the card at line 308, the next focusable control is the card's background Vote button at line 374.",
+      "impact": "Keyboard users can tab through controls hidden behind the modal and must traverse unrelated page controls before reaching its Close button and detailed budget content.",
+      "remediation": "Focus the dialog heading or Close button on open, contain focus while open or mark the background inert, and restore focus to the opener on close."
+    },
+    {
+      "severity": "medium",
+      "category": "accessibility",
+      "title": "Core comparison labels use insufficient text contrast",
+      "file": "source/src/App.tsx",
+      "lineStart": 335,
+      "lineEnd": 353,
+      "evidence": "Every destination card renders the essential Budget, Travel, and Sept labels at 10px using text-stone-400 over bg-stone-50. Tailwind's corresponding colors are approximately #a6a09b and #fafaf9, a contrast ratio of about 2.48:1, below the 4.5:1 requirement for regular text.",
+      "impact": "Low-vision users may see the numeric values but be unable to reliably identify which value represents budget, travel time, or weather across all six comparison cards.",
+      "remediation": "Use a label color with at least 4.5:1 contrast against the card background, and verify the resulting small-text contrast."
+    },
+    {
+      "severity": "low",
+      "category": "accessibility",
+      "title": "Selection controls do not expose their current state",
+      "file": "source/src/App.tsx",
+      "lineStart": 207,
+      "lineEnd": 216,
+      "evidence": "The desktop navigation communicates the active tab only through conditional colors. The same omission occurs in the vibe filters at lines 265-274, mobile navigation at lines 499-508, and itinerary-day controls at lines 708-719; none supplies aria-current, aria-pressed, or tab semantics.",
+      "impact": "Screen-reader users can activate these named controls but cannot directly determine the current view, filter, or selected itinerary day.",
+      "remediation": "Expose active navigation with aria-current or proper tab semantics, and expose toggle-like filters/day selectors with aria-pressed or aria-selected."
+    },
+    {
+      "severity": "low",
+      "category": "accessibility",
+      "title": "Vote-limit feedback is not announced",
+      "file": "source/src/App.tsx",
+      "lineStart": 513,
+      "lineEnd": 516,
+      "evidence": "Toast feedback is rendered as an ordinary visual div without role=\"status\" or an aria-live region. When MAX_VOTES is reached, source/src/App.tsx:166-168 leaves vote state unchanged and the toast is the only immediate explanation.",
+      "impact": "A screen-reader user attempting a third vote receives no announced reason that the action was rejected.",
+      "remediation": "Render feedback in a polite live status region and ensure repeated validation messages can be announced."
+    }
+  ],
+  "categories": [
+    {
+      "id": "correctness",
+      "label": "Brief fidelity and functional correctness",
+      "score": 4,
+      "weight": 30,
+      "evidence": [
+        "No material correctness defect was found: source/src/data.ts:51-359 supplies six destinations with per-person budget breakdowns, travel data, votes, highlights, and three-day itineraries.",
+        "source/src/App.tsx:144-173 implements filtering, sorting, and bounded vote toggling; lines 395-487 provide standings and the winner route; lines 674-742 render the winning destination's itinerary.",
+        "The deterministic check completed type checking and production build successfully, and all desktop and mobile acceptance items passed, including six comparable destinations, budget, travel time, voting, no backend requirement, and no browser errors.",
+        "The winner check reported zero heuristic itinerary regions, but source/src/App.tsx:199-217 and 490-509 provide visible Itinerary navigation and line 487 directly renders ItineraryView, so the source confirms a clear path that the region heuristic did not identify."
+      ],
+      "findingCounts": {
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "note": 0
+      }
+    },
+    {
+      "id": "reliability",
+      "label": "Reliability and state integrity",
+      "score": 2,
+      "weight": 15,
+      "evidence": [
+        "source/src/App.tsx:120-142 derives friends, vote totals, ranking, and winner from stable destination IDs, and lines 160-173 prevent duplicate votes through the normal UI while enforcing MAX_VOTES.",
+        "Persisted-state validation fails to deduplicate IDs at source/src/App.tsx:47-51, allowing a reproducible core vote-count contradiction.",
+        "The deterministic desktop and mobile paths recorded zero console errors and zero page errors under normal storage conditions."
+      ],
+      "findingCounts": {
+        "critical": 0,
+        "high": 0,
+        "medium": 1,
+        "low": 0,
+        "note": 0
+      }
+    },
+    {
+      "id": "accessibility",
+      "label": "Accessibility",
+      "score": 1,
+      "weight": 15,
+      "evidence": [
+        "The deterministic initial-page check found no enabled control without a detectable name and reached 7 desktop and 8 mobile unique controls in 12 Tab presses.",
+        "Native buttons, a select, landmarks, aria-pressed vote controls, a labeled dialog, and Escape handling provide a useful semantic baseline in source/src/App.tsx:188-233, 374-385, and 556-574.",
+        "The initial-page keyboard heuristic does not exercise dialog focus containment or test color contrast; source inspection demonstrates those material gaps, along with missing selection and live-status semantics."
+      ],
+      "findingCounts": {
+        "critical": 0,
+        "high": 0,
+        "medium": 2,
+        "low": 2,
+        "note": 0
+      }
+    },
+    {
+      "id": "maintainability",
+      "label": "Maintainability and code clarity",
+      "score": 4,
+      "weight": 15,
+      "evidence": [
+        "No material maintainability defect was found: source/src/data.ts:1-49 defines focused domain types and central budget calculation, while sample content is kept separate from rendering.",
+        "source/src/App.tsx:57-89 isolates icon and formatting helpers, and lines 533-744 separate the destination modal and itinerary view from the main application flow.",
+        "source/tsconfig.json:2-17 enables strict TypeScript checking, and the deterministic typecheck passed."
+      ],
+      "findingCounts": {
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "note": 0
+      }
+    },
+    {
+      "id": "security",
+      "label": "Security, privacy, and dependency compliance",
+      "score": 4,
+      "weight": 10,
+      "evidence": [
+        "No material security, privacy, or compliance defect was found: the deterministic dependency comparison reported no added, removed, or changed packages, and source/package.json:12-24 contains only frozen starter dependencies.",
+        "The deterministic source scan and browser run found no remote references or external requests; the React source contains no unsafe HTML injection or user-controlled URL handling.",
+        "Only destination IDs are retained in device-local storage at source/src/App.tsx:40-51, and source/src/App.tsx:481-483 explicitly discloses device persistence."
+      ],
+      "findingCounts": {
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "note": 0
+      }
+    },
+    {
+      "id": "performance",
+      "label": "Performance and responsive robustness",
+      "score": 4,
+      "weight": 10,
+      "evidence": [
+        "No material performance or responsive defect was found: the deterministic browser checks measured zero document-level horizontal overflow at both 1440x900 and 390x844.",
+        "The production output totaled 309,332 bytes; reported gzip sizes were 74.79 kB for JavaScript and 11.89 kB for CSS, with no external asset requests.",
+        "source/src/App.tsx:120-158 memoizes vote counts, ranking, and filtered destination results, while the app uses local gradients and icons instead of remote media."
+      ],
+      "findingCounts": {
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "note": 0
+      }
+    },
+    {
+      "id": "verification",
+      "label": "Verification readiness",
+      "score": 4,
+      "weight": 5,
+      "evidence": [
+        "No material verification-readiness defect was found: source/package.json:6-10 provides explicit typecheck, build, and combined check scripts, and source/tsconfig.json:10 enables strict mode.",
+        "The supplied npm run check passed both TypeScript validation and the Vite production build; deterministic interaction checks also completed at both required viewports.",
+        "Core calculations have named helpers in source/src/data.ts:49 and source/src/App.tsx:43-89, and domain data is strongly typed, providing practical seams for further automated verification without treating the starter's lack of tests as a defect."
+      ],
+      "findingCounts": {
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "note": 0
+      }
+    }
+  ],
+  "rawWeightedScore": 81.25,
+  "capsApplied": [],
+  "totalScore": 81.25,
+  "strengths": [
+    "Complete local-first flow for destination comparison, filtering, sorting, voting, standings, and a winner-driven three-day itinerary.",
+    "Vote counts and the winner are normally derived from stable IDs rather than duplicated display state, with an explicit rating tie-break.",
+    "Strict TypeScript and the production build pass; both target viewports complete the deterministic core path without overflow or browser errors.",
+    "No added dependencies, external services, remote assets, unsafe HTML injection, or meaningful personal-data collection."
+  ],
+  "risks": [
+    "Malformed persisted vote arrays can consume the vote allowance and alter the winner until the stored state is corrected.",
+    "The modal focus model and repeated low-contrast metric labels create meaningful barriers not covered by the initial-page keyboard heuristic.",
+    "Screen-reader feedback remains incomplete for selected navigation/filter/day state and rejected over-limit votes."
+  ],
+  "recommendation": "The app is deployable and covers the Weekender brief well, but persisted votes should be deduplicated and the modal, comparison-label contrast, selected states, and live feedback should be corrected before treating it as accessibility-ready.",
+  "reviewStatus": "frozen",
+  "reviewedAt": "2026-08-06T08:44:35.001Z"
+}
