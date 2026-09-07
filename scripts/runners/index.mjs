@@ -1,9 +1,12 @@
+import { antigravityRunner } from "./antigravity.mjs"
 import { claudeRunner } from "./claude.mjs"
 import { codexRunner } from "./codex.mjs"
 
 const runners = new Map([
   [codexRunner.id, codexRunner],
   [claudeRunner.id, claudeRunner],
+  [antigravityRunner.id, antigravityRunner],
+  ["gemini", antigravityRunner],
 ])
 
 export function getRunner(id = "codex") {
@@ -17,3 +20,4 @@ export function getRunner(id = "codex") {
 export function runnerIds() {
   return [...runners.keys()]
 }
+

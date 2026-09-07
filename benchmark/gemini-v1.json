@@ -1,0 +1,93 @@
+{
+  "schemaVersion": 2,
+  "id": "weekender-gemini-v1",
+  "status": "frozen",
+  "runner": "antigravity",
+  "prompt": "prompt/weekender-v1.md",
+  "starter": "starter",
+  "runtime": {
+    "node": "22",
+    "packageManager": "npm"
+  },
+  "policy": {
+    "freshTask": true,
+    "followUpMessages": 0,
+    "attemptsPerPublishedRun": 1,
+    "sandbox": "workspace-write",
+    "networkForGeneratedCommands": false,
+    "maxDurationMinutes": 45,
+    "publishFailures": true
+  },
+  "notes": [
+    "Same frozen prompt and starter as weekender-v1, run through Antigravity CLI with Gemini models.",
+    "Gemini models natively report thinking_tokens as explicit reasoning tokens."
+  ],
+  "configurations": [
+    {
+      "model": "gemini-3.7-flash",
+      "modelLabel": "Gemini 3.7 Flash",
+      "effort": "low",
+      "effortLabel": "Light"
+    },
+    {
+      "model": "gemini-3.7-flash",
+      "modelLabel": "Gemini 3.7 Flash",
+      "effort": "medium",
+      "effortLabel": "Medium"
+    },
+    {
+      "model": "gemini-3.7-flash",
+      "modelLabel": "Gemini 3.7 Flash",
+      "effort": "high",
+      "effortLabel": "High"
+    },
+    {
+      "model": "gemini-3.6-flash",
+      "modelLabel": "Gemini 3.6 Flash",
+      "effort": "low",
+      "effortLabel": "Light"
+    },
+    {
+      "model": "gemini-3.6-flash",
+      "modelLabel": "Gemini 3.6 Flash",
+      "effort": "medium",
+      "effortLabel": "Medium"
+    },
+    {
+      "model": "gemini-3.6-flash",
+      "modelLabel": "Gemini 3.6 Flash",
+      "effort": "high",
+      "effortLabel": "High"
+    },
+    {
+      "model": "gemini-3.5-flash",
+      "modelLabel": "Gemini 3.5 Flash",
+      "effort": "low",
+      "effortLabel": "Light"
+    },
+    {
+      "model": "gemini-3.5-flash",
+      "modelLabel": "Gemini 3.5 Flash",
+      "effort": "medium",
+      "effortLabel": "Medium"
+    },
+    {
+      "model": "gemini-3.5-flash",
+      "modelLabel": "Gemini 3.5 Flash",
+      "effort": "high",
+      "effortLabel": "High"
+    },
+    {
+      "model": "gemini-3.1-pro",
+      "modelLabel": "Gemini 3.1 Pro",
+      "effort": "low",
+      "effortLabel": "Light"
+    },
+    {
+      "model": "gemini-3.1-pro",
+      "modelLabel": "Gemini 3.1 Pro",
+      "effort": "high",
+      "effortLabel": "High"
+    }
+  ]
+}

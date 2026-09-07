@@ -16,7 +16,9 @@
     "dry-run": "node scripts/run-benchmark.mjs --model gpt-5.6-luna --effort low --dry-run",
     "roll:claude": "node scripts/run-roll.mjs --benchmark claude-v1.json --concurrency 2",
     "roll:codex": "node scripts/run-roll.mjs --benchmark v1.json --concurrency 2",
+    "roll:gemini": "node scripts/run-roll.mjs --benchmark gemini-v1.json --concurrency 2",
     "dry-run:claude": "node scripts/run-benchmark.mjs --benchmark claude-v1.json --model claude-haiku-4-5 --effort none --dry-run",
+    "dry-run:gemini": "node scripts/run-benchmark.mjs --benchmark gemini-v1.json --model gemini-3.7-flash --effort high --dry-run",
     "review:claude": "for e in low medium high xhigh max none; do node scripts/run-code-review.mjs --benchmark claude-v1.json --effort $e --publish --resume --seed weekender-claude-code-review-v1-$e-20260806; done"
   },
   "devDependencies": {

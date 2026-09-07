@@ -186,6 +186,7 @@ if (options.dryRun) {
     workspace,
     finalFile: capturedFinalFile,
     benchmark,
+    prompt,
   })
 
   const result = await run(tool.binary, invocation.args, {

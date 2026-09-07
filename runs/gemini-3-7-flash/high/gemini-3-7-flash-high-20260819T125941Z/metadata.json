@@ -1,0 +1,50 @@
+{
+  "schemaVersion": 2,
+  "benchmarkId": "weekender-gemini-v1",
+  "runId": "gemini-3-7-flash-high-20260819T125941Z",
+  "status": "failed",
+  "title": "Weekender",
+  "runner": {
+    "id": "antigravity",
+    "label": "Antigravity CLI",
+    "version": "agy 1.1.15",
+    "exitCode": 0,
+    "effortApplied": true,
+    "turns": 1,
+    "failure": "declaring permissions: cortex tool write_to_file: convert tool call for permissions: model output error: invalid tool call error (invalid_args) /Users/oezguercelebi/.gemini/antigravity-cli/scratch/weekender/package.json is not a valid artifact path; artifacts must be in /Users/oezguercelebi/.gemini/antigravity-cli/brain/31c918a8-8e8a-4009-ad6a-2474813428f2/"
+  },
+  "model": "gemini-3.7-flash",
+  "modelLabel": "Gemini 3.7 Flash",
+  "effort": "high",
+  "effortLabel": "High",
+  "recordedAt": "2026-08-19T13:04:58.237Z",
+  "durationMs": 309276,
+  "codexVersion": null,
+  "codexExitCode": null,
+  "previewDirectory": "preview",
+  "promptSha256": "e520b27a68f9f6bb40970d3d86ad7e02b65c33c3e956f43cd5b313847d94ea5f",
+  "starterSha256": "eb37b56a2b1f81ac888d39edbfdc4b684b79882d3db94c0d9ddb4b0538f9457e",
+  "usage": {
+    "inputTokens": 2674737,
+    "cachedInputTokens": 2401197,
+    "outputTokens": 91428,
+    "reasoningOutputTokens": 11497
+  },
+  "costUsd": null,
+  "codeStats": {
+    "sourceFiles": 5,
+    "sourceLines": 68
+  },
+  "subscription": {
+    "planLabel": null,
+    "windowLabel": null,
+    "remainingBeforePercent": null,
+    "remainingAfterPercent": null,
+    "observedChangePercent": null
+  },
+  "verification": {
+    "buildSucceeded": true,
+    "screenshotsCaptured": true
+  },
+  "notes": "The failed attempt is preserved without a retry."
+}
