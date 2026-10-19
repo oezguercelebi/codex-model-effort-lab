@@ -17,6 +17,9 @@
     "roll:claude": "node scripts/run-roll.mjs --benchmark claude-v1.json --concurrency 2",
     "roll:codex": "node scripts/run-roll.mjs --benchmark v1.json --concurrency 2",
     "roll:gemini": "node scripts/run-roll.mjs --benchmark gemini-v1.json --concurrency 2",
+    "roll:grok": "node scripts/run-roll.mjs --benchmark grok-v1.json --concurrency 1",
+    "dry-run:grok": "node scripts/run-benchmark.mjs --benchmark grok-v1.json --model grok-4.7 --effort medium --dry-run",
+    "dry-run:cursor-grok": "node scripts/run-benchmark.mjs --benchmark grok-v1.json --model grok-4.7 --effort medium --dry-run",
     "dry-run:claude": "node scripts/run-benchmark.mjs --benchmark claude-v1.json --model claude-haiku-4-5 --effort none --dry-run",
     "dry-run:gemini": "node scripts/run-benchmark.mjs --benchmark gemini-v1.json --model gemini-3.7-flash --effort high --dry-run",
     "review:claude": "for e in low medium high xhigh max none; do node scripts/run-code-review.mjs --benchmark claude-v1.json --effort $e --publish --resume --seed weekender-claude-code-review-v1-$e-20260806; done"

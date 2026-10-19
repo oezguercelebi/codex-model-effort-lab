@@ -77,10 +77,6 @@ const modelOrder = [
   "claude-sonnet-5",
   "claude-opus-5",
   "claude-fable-5",
-  "gemini-3.7-flash",
-  "gemini-3.6-flash",
-  "gemini-3.5-flash",
-  "gemini-3.1-pro",
 ]
 
 const creditRates = {
@@ -1235,6 +1231,7 @@ async function loadPrompt() {
 const rollLabels = {
   "weekender-v1": "Codex",
   "weekender-claude-v1": "Claude Code",
+  "weekender-grok-v1": "Grok",
 }
 
 function rollOrder(id) {

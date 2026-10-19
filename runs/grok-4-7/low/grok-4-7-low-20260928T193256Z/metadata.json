@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 2,
+  "benchmarkId": "weekender-grok-v1",
+  "runId": "grok-4-7-low-20260928T193256Z",
+  "status": "published",
+  "title": "Weekender",
+  "runner": {
+    "id": "grok",
+    "label": "Grok CLI",
+    "version": "grok 1.0.41 (4220f3b224a6) [stable]",
+    "exitCode": 0,
+    "effortApplied": true,
+    "turns": 7,
+    "failure": null
+  },
+  "model": "grok-4.7",
+  "modelLabel": "Grok 4.7",
+  "effort": "low",
+  "effortLabel": "Light",
+  "recordedAt": "2026-09-28T19:37:19.479Z",
+  "durationMs": 243399,
+  "codexVersion": null,
+  "codexExitCode": null,
+  "previewDirectory": "preview",
+  "promptSha256": "e520b27a68f9f6bb40970d3d86ad7e02b65c33c3e956f43cd5b313847d94ea5f",
+  "starterSha256": "eb37b56a2b1f81ac888d39edbfdc4b684b79882d3db94c0d9ddb4b0538f9457e",
+  "usage": {
+    "inputTokens": 219768,
+    "cachedInputTokens": 148992,
+    "outputTokens": 25975,
+    "reasoningOutputTokens": 3702
+  },
+  "contextWindowTokens": 500000,
+  "costUsd": 0.371898,
+  "codeStats": {
+    "sourceFiles": 6,
+    "sourceLines": 2369
+  },
+  "subscription": {
+    "planLabel": null,
+    "windowLabel": null,
+    "remainingBeforePercent": null,
+    "remainingAfterPercent": null,
+    "observedChangePercent": null
+  },
+  "verification": {
+    "buildSucceeded": true,
+    "screenshotsCaptured": true
+  },
+  "notes": "Captured without follow-up messages or manual repair."
+}

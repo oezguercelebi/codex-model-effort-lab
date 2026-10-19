@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 2,
+  "id": "weekender-grok-v1",
+  "status": "frozen",
+  "runner": "cursor-grok",
+  "prompt": "prompt/weekender-v1.md",
+  "starter": "starter",
+  "runtime": {
+    "node": "22",
+    "packageManager": "npm"
+  },
+  "policy": {
+    "freshTask": true,
+    "followUpMessages": 0,
+    "attemptsPerPublishedRun": 1,
+    "sandbox": "workspace-write",
+    "networkForGeneratedCommands": false,
+    "maxDurationMinutes": 90,
+    "publishFailures": true
+  },
+  "notes": [
+    "Same frozen prompt and starter as weekender-v1.",
+    "Gallery tab stays Grok. Light (low) was published through the xAI Grok CLI before free Build usage ran out.",
+    "Medium, High, and Extra High are run through Cursor Agent (`cursor-agent`) on Cursor subscription Grok models (slugs grok-4.7-medium / -high / -xhigh). Runner id on those runs is cursor-grok, not grok.",
+    "The Cursor Agent CLI has no accepted context-window flag for these Grok 4.7 slugs, so this roll does not pin 500k context.",
+    "Cursor Agent wall-clock for High/Extra High can exceed the old 45-minute Grok CLI budget; this roll allows 90 minutes.",
+    "Results are not comparable run-for-run with the Codex or Claude rolls: different harness, different tool surface, different system prompt. Within this tab, Light used a different harness than the higher efforts."
+  ],
+  "configurations": [
+    { "model": "grok-4.7", "modelLabel": "Grok 4.7", "effort": "low", "effortLabel": "Light" },
+    { "model": "grok-4.7", "modelLabel": "Grok 4.7", "effort": "medium", "effortLabel": "Medium" },
+    { "model": "grok-4.7", "modelLabel": "Grok 4.7", "effort": "high", "effortLabel": "High" },
+    { "model": "grok-4.7", "modelLabel": "Grok 4.7", "effort": "xhigh", "effortLabel": "Extra High" }
+  ]
+}
