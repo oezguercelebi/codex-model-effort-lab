@@ -180,7 +180,7 @@ if (options.dryRun) {
     : "no effort setting (unsupported on this model)"
   process.stdout.write(`Running ${options.model} with ${effortNote} using ${runnerVersion}\n`)
 
-  const invocation = runner.invocation({
+  const invocation = await runner.invocation({
     model: options.model,
     effort: options.effort,
     workspace,
@@ -191,6 +191,7 @@ if (options.dryRun) {
 
   const result = await run(tool.binary, invocation.args, {
     cwd: workspace,
+    env: invocation.env,
     input: invocation.usesStdinPrompt ? prompt : undefined,
     echoStderr: true,
     timeoutMs: benchmark.policy.maxDurationMinutes * 60_000,
@@ -285,6 +286,7 @@ const metadata = {
   promptSha256,
   starterSha256,
   usage: parsed.usage,
+  contextWindowTokens: benchmark.policy.contextWindowTokens ?? null,
   // Claude Code reports the real dollar cost of a run; Codex does not, and the
   // site estimates it from a rate card instead.
   costUsd: parsed.costUsd,

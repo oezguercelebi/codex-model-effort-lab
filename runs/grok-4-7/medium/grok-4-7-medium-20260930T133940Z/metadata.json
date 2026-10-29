@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 2,
+  "benchmarkId": "weekender-grok-v1",
+  "runId": "grok-4-7-medium-20260930T133940Z",
+  "status": "published",
+  "title": "Weekender",
+  "runner": {
+    "id": "cursor-grok",
+    "label": "Cursor Agent (Grok)",
+    "version": "cursor-agent 2026.09.28-64d2043",
+    "exitCode": 0,
+    "effortApplied": true,
+    "turns": null,
+    "failure": null
+  },
+  "model": "grok-4.7",
+  "modelLabel": "Grok 4.7",
+  "effort": "medium",
+  "effortLabel": "Medium",
+  "recordedAt": "2026-09-30T14:14:47.420Z",
+  "durationMs": 2095257,
+  "codexVersion": null,
+  "codexExitCode": null,
+  "previewDirectory": "preview",
+  "promptSha256": "e520b27a68f9f6bb40970d3d86ad7e02b65c33c3e956f43cd5b313847d94ea5f",
+  "starterSha256": "eb37b56a2b1f81ac888d39edbfdc4b684b79882d3db94c0d9ddb4b0538f9457e",
+  "usage": {
+    "inputTokens": 3541244,
+    "cachedInputTokens": 3494912,
+    "outputTokens": 31233,
+    "reasoningOutputTokens": null
+  },
+  "contextWindowTokens": null,
+  "costUsd": null,
+  "codeStats": {
+    "sourceFiles": 17,
+    "sourceLines": 3063
+  },
+  "subscription": {
+    "planLabel": null,
+    "windowLabel": null,
+    "remainingBeforePercent": null,
+    "remainingAfterPercent": null,
+    "observedChangePercent": null
+  },
+  "verification": {
+    "buildSucceeded": true,
+    "screenshotsCaptured": true
+  },
+  "notes": "Captured without follow-up messages or manual repair."
+}

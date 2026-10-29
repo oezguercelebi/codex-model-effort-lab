@@ -47,6 +47,22 @@ async function exists(file) {
   }
 }
 
+// Captured Gemini and Antigravity runs stay in the repo, but they are not
+// published. There are no finished tests for them yet. Drop this exclusion
+// when those runs should appear in the gallery again.
+const hiddenFamilies = ["gemini", "antigravity"]
+
+function isHiddenFromSite(record) {
+  const runner = typeof record.runner === "string" ? record.runner : record.runner?.id
+  const fields = [runner, record.model, record.id, record.benchmarkId]
+  for (const configuration of record.configurations ?? []) {
+    fields.push(configuration.model, configuration.runner)
+  }
+  return fields.some((value) =>
+    hiddenFamilies.some((family) => String(value ?? "").toLowerCase().includes(family)),
+  )
+}
+
 await rm(output, { recursive: true, force: true })
 await mkdir(output, { recursive: true })
 await cp(siteSource, output, { recursive: true })
@@ -58,6 +74,7 @@ const results = []
 for (const metadataFile of metadataFiles) {
   const runDirectory = path.dirname(metadataFile)
   const metadata = JSON.parse(await readFile(metadataFile, "utf8"))
+  if (isHiddenFromSite(metadata)) continue
   const runId = safeSegment(metadata.runId)
   const previewSource = path.resolve(runDirectory, metadata.previewDirectory ?? "preview")
   const expectedRoot = `${path.resolve(runDirectory)}${path.sep}`
@@ -131,6 +148,7 @@ for (const file of (await readdir(path.join(root, "benchmark"))).sort()) {
   if (!file.endsWith(".json")) continue
   const config = JSON.parse(await readFile(path.join(root, "benchmark", file), "utf8"))
   if (!config.id || !Array.isArray(config.configurations)) continue
+  if (isHiddenFromSite(config)) continue
   rolls.push({
     id: config.id,
     runner: config.runner ?? "codex",
